@@ -2,6 +2,7 @@ export type Project = {
   slug: string;
   title: string;
   subtitle: string;
+  cardDesc?: string;
   category: "B2B UX Service" | "B2C UX Service" | "Web Service" | "UX Planning/Branding";
   client: string;
   tags: string[];
@@ -33,7 +34,9 @@ export const projects: Project[] = [
     slug: "global-credit-bank",
     title: "글로벌 장벽을 허문\n학위 취득 플랫폼 서비스 디자인",
     subtitle: "글로벌 학점은행제",
-    category: "B2B UX Service",
+    cardDesc: "복잡한 학점 취득 플로우를 3-Zone 구조로 재설계한 프로젝트",
+    coverImage: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=75",
+    category: "B2C UX Service",
     client: "글로벌 학점은행제",
     tags: ["UX", "B2C", "Web"],
     year: "2024",
@@ -148,6 +151,8 @@ export const projects: Project[] = [
     slug: "humanities-lecture",
     title: "완강을 65%를 목표로 설계한\n고등학생용 인문학 강의 페이지",
     subtitle: "Gracture",
+    cardDesc: "완강률 65%를 목표로 학습 지속성을 높인 UX 프로젝트",
+    coverImage: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=75",
     category: "B2C UX Service",
     client: "Gracture",
     tags: ["UX", "B2C", "Mobile", "Web"],
@@ -263,6 +268,8 @@ export const projects: Project[] = [
     slug: "b2b-design-system",
     title: "두 B2B 제품의 일관성을 구축한\n디자인 시스템 — UI Kit이 아닌 운영 원칙",
     subtitle: "B2B Design System",
+    cardDesc: "두 B2B 제품의 일관성을 만든 운영 원칙 중심 디자인 시스템",
+    coverImage: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800&q=75",
     category: "B2B UX Service",
     client: "SDT Design System",
     tags: ["Design System", "Publishing", "Figma"],
@@ -380,6 +387,8 @@ export const projects: Project[] = [
       "양자 컴퓨팅 기업에서 초고밀도 데이터를 다루며 얻은 시각으로, 복잡한 파이프라인을 하나의 화면으로 압축했습니다.",
     title: "MLOps 4단계를 하나의 노드 그래프로\n시각화한 B2B 대시보드",
     subtitle: "SDT CLOUD",
+    cardDesc: "4단계 MLOps 파이프라인을 단일 노드 그래프로 시각화한 B2B 대시보드",
+    coverImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=75",
     category: "B2B UX Service",
     client: "SDT CLOUD",
     tags: ["B2B", "ML", "Dashboard"],
