@@ -89,9 +89,10 @@ const ContactWrap = styled(Link)`
   }
   @media (max-width: ${theme.breakpoints.sm}) {
     position: absolute;
-    bottom: -90vh;
+    bottom: -82vh;
     right: 24px;
     background: #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
   }
 `;
 

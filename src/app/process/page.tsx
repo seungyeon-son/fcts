@@ -206,6 +206,8 @@ const TableRow = styled.div`
   border-top: 1px solid #e8e6e0;
   @media (max-width: ${theme.breakpoints.sm}) {
     grid-template-columns: 1fr;
+    padding: 16px 0;
+    gap: 8px;
   }
 `;
 const TableCell = styled.div`
@@ -215,6 +217,22 @@ const TableCell = styled.div`
   line-height: 1.6;
   align-items: center;
   display: flex;
+  .mo {
+    display: none;
+  }
+  @media (max-width: ${theme.breakpoints.sm}) {
+    padding: 2px 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 2px;
+    &:not(:first-child) {
+      flex-direction: column;
+    }
+    .mo {
+      display: block;
+      color: #9a9890;
+    }
+  }
 `;
 const StepBadge = styled.span`
   display: inline-block;
@@ -227,12 +245,25 @@ const StepBadge = styled.span`
   margin-right: 8px;
 `;
 const StepCellName = styled.div`
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
   color: #1a1a18;
 `;
 const GenericCell = styled(TableCell)`
-  color: #726f6f;
+  color: #3f3f3f;
+  .mo {
+    display: none;
+  }
+  @media (max-width: ${theme.breakpoints.sm}) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    .mo {
+      display: block;
+      color: #9a9890;
+    }
+  }
 `;
 const PillLink = styled(Link)`
   display: inline-flex;
@@ -249,6 +280,11 @@ const PillLink = styled(Link)`
   border: 1px solid transparent;
   &:hover {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    border: 1px solid #efefef;
+  }
+  @media (max-width: ${theme.breakpoints.sm}) {
+    margin-left: 0;
+    margin-top: 8px;
     border: 1px solid #efefef;
   }
 `;
@@ -336,7 +372,7 @@ const CtaTitle = styled.h2`
   white-space: pre-line;
 `;
 const CtaDesc = styled.p`
-  font-size: 14px;
+  font-size: 15px;
   color: rgba(255, 255, 255, 0.6);
   line-height: 1.7;
 `;
@@ -550,8 +586,12 @@ export default function ResearchPage() {
                   <StepBadge>{row.badge}</StepBadge>
                   <StepCellName>{row.name}</StepCellName>
                 </TableCell>
-                <GenericCell>{row.generic}</GenericCell>
+                <GenericCell>
+                  <span className="mo">일반적 접근</span>
+                  {row.generic}
+                </GenericCell>
                 <TableCell>
+                  <span className="mo">FCTS는 이렇게 합니다.</span>
                   {row.fcts}
 
                   <PillLink href={row.href}>→ {row.linkText.replace("→ ", "")}</PillLink>
@@ -585,10 +625,10 @@ export default function ResearchPage() {
         <Container>
           <CtaBlock>
             <CtaLabel>💬 한마디로 말하면</CtaLabel>
-            <CtaTitle>{"완성된 화면이 아니라\n작동하는 시스템을 납품합니다."}</CtaTitle>
+            <CtaTitle>{"화면을 만들기 전에, \n구조를 먼저 설계합니다."}</CtaTitle>
             <CtaDesc>
-              FCTS의 디자인은 단순한 시각적 결과물이 아닙니다. 설계 이유가 있고, 근거가 있으며, 팀이 이어받아 운영할 수
-              있는 시스템입니다.
+              FCTS의 디자인은 단순한 시각적 결과물이 아닙니다. <br />
+              설계 이유가 있고, 근거가 있으며, 팀이 이어받아 운영할 수 있는 시스템입니다.
             </CtaDesc>
           </CtaBlock>
         </Container>
