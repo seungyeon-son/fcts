@@ -105,7 +105,7 @@ export default function Header() {
             <NavLink href="/works" $active={pathname.startsWith("/works")}>
               Works
             </NavLink>
-            <NavLink href="/research" $active={pathname === "/research"}>
+            <NavLink href="/process" $active={pathname === "/process"}>
               Process
             </NavLink>
             <NavLink href="/post" $active={pathname.startsWith("/post")}>

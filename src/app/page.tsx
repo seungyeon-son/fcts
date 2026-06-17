@@ -767,7 +767,7 @@ export default function Home() {
                   <CaseMetaKo>소식</CaseMetaKo>
                   <CaseMetaEn>Activity</CaseMetaEn>
                 </div>
-                <ViewMoreBtn href="/research">
+                <ViewMoreBtn href="/process">
                   View More
                   <ViewMoreCircle>→</ViewMoreCircle>
                 </ViewMoreBtn>
