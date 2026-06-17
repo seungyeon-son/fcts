@@ -579,7 +579,7 @@ export default function Home() {
             <CaseRow>
               <CaseMeta>
                 <div>
-                  <CaseMetaKo>연구</CaseMetaKo>
+                  <CaseMetaKo>노트</CaseMetaKo>
                   <CaseMetaEn>Research and Insight</CaseMetaEn>
                 </div>
                 <ViewMoreBtn href="/post">
@@ -599,13 +599,13 @@ export default function Home() {
               </ArticleList>
             </CaseRow>
 
-            <CaseSeparator />
+            {/* <CaseSeparator /> */}
 
-            <CaseRow>
+            {/* <CaseRow>
               <CaseMeta>
                 <div>
                   <CaseMetaKo>소식</CaseMetaKo>
-                  <CaseMetaEn>News</CaseMetaEn>
+                  <CaseMetaEn>Activity</CaseMetaEn>
                 </div>
                 <ViewMoreBtn href="/research">
                   View More
@@ -622,7 +622,7 @@ export default function Home() {
                   </ArticleCard>
                 ))}
               </ArticleList>
-            </CaseRow>
+            </CaseRow> */}
           </CaseInner>
         </Container>
       </CaseStudySection>
