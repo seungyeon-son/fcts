@@ -572,26 +572,12 @@ const fctsValues = [
   { letter: "S", name: "(System)", desc: "지속 가능하고 확장 가능한\n프로덕트의 질서" },
 ];
 
-const projectImages: Record<string, string> = {
-  "global-credit-bank": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=75",
-  "humanities-lecture": "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=75",
-  "b2b-design-system": "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800&q=75",
-  "mlops-b2b-dashboard": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=75",
-};
-
-const projectDesc: Record<string, string> = {
-  "global-credit-bank": "복잡한 학점 취득 플로우를 3-Zone 구조로 재설계한 프로젝트",
-  "mlops-b2b-dashboard": "4단계 MLOps 파이프라인을 단일 노드 그래프로 시각화한 B2B 대시보드",
-  "humanities-lecture": "완강률 65%를 목표로 학습 지속성을 높인 UX 프로젝트",
-  "b2b-design-system": "두 B2B 제품의 일관성을 만든 운영 원칙 중심 디자인 시스템",
-};
-
 // 데이터 배열 순서 = 최신순 (최신 프로젝트가 앞)
 const worksProjects = projects.map((p) => ({
   slug: p.slug,
   name: p.subtitle,
-  desc: projectDesc[p.slug] ?? "",
-  img: projectImages[p.slug] ?? "",
+  desc: p.cardDesc ?? "",
+  img: p.coverImage ?? "",
 }));
 
 const WORKS_PER_PAGE = 2;

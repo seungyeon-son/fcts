@@ -95,31 +95,43 @@ const CardImage = styled.div<{ $img?: string }>`
 
 const CardLabel = styled.div`
   position: absolute;
-  bottom: 0; left: 0; right: 0;
-  background: rgba(255,255,255,0.92);
-  backdrop-filter: blur(4px);
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  background: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 14px;
-  font-size: 14px;
-  font-weight: 500;
-  color: ${theme.colors.black};
+  gap: 12px;
+  padding: 16px;
+  border-radius: 4px;
+  color: #212529;
+  letter-spacing: -0.4px;
+`
+
+const CardName = styled.div`
+  font-size: 18px;
+  font-weight: 700;
+  color: #212529;
+  letter-spacing: -0.4px;
+  line-height: 1.3;
+`
+
+const CardDesc = styled.div`
+  font-size: 13px;
+  color: #868e96;
+  letter-spacing: -0.3px;
+  line-height: 1.45;
+  margin-top: 4px;
 `
 
 const CardArrow = styled.span`
+  flex-shrink: 0;
   color: ${theme.colors.accent};
   font-size: 14px;
 `
 
 /* ── 데이터 ── */
-const projectImages: Record<string, string> = {
-  'global-credit-bank': 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=75',
-  'humanities-lecture': 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=75',
-  'b2b-design-system':  'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800&q=75',
-  'mlops-b2b-dashboard':'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=75',
-}
-
 const categoryMeta: Record<string, { sub: string; desc: string }> = {
   'B2B UX Service':       { sub: '복잡한 도메인을 단순하게', desc: '대시보드·디자인 시스템·서비스 설계까지, 복잡한 B2B 데이터를 명료한 구조로 푸는 프로젝트' },
   'B2C UX Service':       { sub: '끝까지 남는 경험', desc: '학습 지속성과 전환율을 끌어올리는, 사용자 동기 중심의 B2C 서비스 프로젝트' },
@@ -160,9 +172,12 @@ export default function WorksPage() {
                   <ImageGrid>
                     {catProjects.map((p) => (
                       <ProjectCard key={p.slug} href={`/works/${p.slug}`}>
-                        <CardImage className="img" $img={projectImages[p.slug]} />
+                        <CardImage className="img" $img={p.coverImage} />
                         <CardLabel>
-                          {p.subtitle}
+                          <div>
+                            <CardName>{p.subtitle}</CardName>
+                            {p.cardDesc && <CardDesc>{p.cardDesc}</CardDesc>}
+                          </div>
                           <CardArrow>→</CardArrow>
                         </CardLabel>
                       </ProjectCard>

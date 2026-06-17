@@ -432,7 +432,7 @@ const tableRows = [
 const projectCards = [
   {
     href: "/works/global-credit-bank",
-    cat: "B2B UX SERVICE",
+    cat: "B2C UX SERVICE",
     name: "UBION 글로벌 학점은행제",
     desc: "복잡한 학점 취득 플로우를 3-Zone 구조로 재설계해 전환율을 높인 프로젝트",
   },
