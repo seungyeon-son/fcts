@@ -4,6 +4,7 @@ import Link from 'next/link'
 import styled from 'styled-components'
 import { theme } from '@/styles/theme'
 import { caseStudies } from '@/data/projects'
+import { researchPosts } from '@/data/posts'
 import { Container } from '@/styles/styled'
 
 /* ════════════════════════════════
@@ -581,18 +582,18 @@ export default function Home() {
                   <CaseMetaKo>연구</CaseMetaKo>
                   <CaseMetaEn>Research and Insight</CaseMetaEn>
                 </div>
-                <ViewMoreBtn href="/research">
+                <ViewMoreBtn href="/post">
                   View More
                   <ViewMoreCircle>→</ViewMoreCircle>
                 </ViewMoreBtn>
               </CaseMeta>
               <ArticleList>
-                {caseStudies.research[0].items.slice(0, 2).map((item, i) => (
-                  <ArticleCard key={i}>
-                    <ArticleTag>tag</ArticleTag>
-                    <ArticleTitle>{item.title}</ArticleTitle>
+                {researchPosts.slice(0, 2).map((post) => (
+                  <ArticleCard as={Link} href={`/post/${post.slug}`} key={post.slug}>
+                    <ArticleTag>{post.tag}</ArticleTag>
+                    <ArticleTitle>{post.title}</ArticleTitle>
                     <ArticleDivider />
-                    <ArticleDate>{item.date}</ArticleDate>
+                    <ArticleDate>{post.date}</ArticleDate>
                   </ArticleCard>
                 ))}
               </ArticleList>

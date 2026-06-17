@@ -108,6 +108,9 @@ export default function Header() {
             <NavLink href="/research" $active={pathname === "/research"}>
               Process
             </NavLink>
+            <NavLink href="/post" $active={pathname.startsWith("/post")}>
+              Post
+            </NavLink>
             <ContactWrap href="mailto:au1gust8@gmail.com">
               Contact
               <ContactCircle className="circle">→</ContactCircle>
