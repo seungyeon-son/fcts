@@ -58,8 +58,8 @@ export const projects: Project[] = [
       { step: 1, title: "리서치", desc: "사용자 인터뷰 및 경쟁사 분석" },
       { step: 2, title: "Zone 탐색", desc: "3-Zone 정보구조 설계" },
       { step: 3, title: "Zone 분석", desc: "각 존 별 사용자 흐름 정의" },
-      { step: 4, title: "4D 추진", desc: "와이어프레임 → 프로토타입" },
-      { step: 5, title: "렌더링", desc: "최종 UI 및 디자인 시스템 완성" },
+      { step: 4, title: "프로토타입", desc: "와이어프레임 → 프로토타입" },
+      { step: 5, title: "UI 디자인", desc: "최종 UI 및 디자인 시스템 완성" },
     ],
     keyDecisions: [
       {
@@ -90,7 +90,7 @@ export const projects: Project[] = [
       },
       {
         area: "영역 2",
-        areaTitle: "학점인정플로우(UX)의 구체 실현이란",
+        areaTitle: "학점 인정 플로우를 3단계로 압축하기",
         items: [
           {
             icon: "현황",
@@ -172,16 +172,16 @@ export const projects: Project[] = [
         '"수강 중 흥미를 잃는 지점이 어디인가"를 데이터로 추적한 결과, 3강 이후 이탈률이 급격히 상승했습니다. 강의 자체가 아닌 "지속하는 이유"의 부재가 핵심 원인이었습니다.',
     },
     approach: [
-      { step: 1, title: "자료 PDF 글쓰기", desc: "기존 수강 데이터 및 이탈 패턴 분석" },
-      { step: 2, title: "시준 정리", desc: "사용자 학습 동기 인터뷰" },
-      { step: 3, title: "KPI 수집", desc: "완강률 목표 지표 설정" },
-      { step: 4, title: "서비스평가", desc: "경쟁 플랫폼 UX 벤치마킹" },
-      { step: 5, title: "전략적 방안", desc: "학습 지속성 설계 전략 수립" },
+      { step: 1, title: "데이터 분석", desc: "기존 수강 데이터 및 이탈 패턴 분석" },
+      { step: 2, title: "동기 인터뷰", desc: "사용자 학습 동기 인터뷰" },
+      { step: 3, title: "KPI 정의", desc: "완강률 목표 지표 설정" },
+      { step: 4, title: "경쟁 분석", desc: "경쟁 플랫폼 UX 벤치마킹" },
+      { step: 5, title: "전략 수립", desc: "학습 지속성 설계 전략 수립" },
     ],
     keyDecisions: [
       {
         area: "영역 1",
-        areaTitle: '출결관리를 "학만된 기억하던" 1개로 만든',
+        areaTitle: "흩어진 학습 정보를 대시보드 하나로 통합",
         items: [
           {
             icon: "현황",
@@ -207,7 +207,7 @@ export const projects: Project[] = [
       },
       {
         area: "영역 2",
-        areaTitle: "진행률을 높이는 다지인 — 인터페이 안에",
+        areaTitle: "강의 플레이어 안에서 학습이 끊기지 않도록",
         items: [
           {
             icon: "현황",
@@ -273,11 +273,11 @@ export const projects: Project[] = [
     category: "B2B UX Service",
     client: "SDT Design System",
     tags: ["Design System", "Publishing", "Figma"],
-    year: "2024–년",
+    year: "2024",
     role: "Design System Lead / Sole",
     metrics: [
       { value: "2개", label: "제품 통합", sub: "공통 DS 적용" },
-      { value: "6제품", label: "컴포넌트 커버리지", sub: "커버된 제품 카운트 6가" },
+      { value: "48+", label: "공통 컴포넌트", sub: "원자 30 + 분자 18개" },
       { value: "3 레이어", label: "계층 구조", sub: "Foundation → Pattern → Figma/Components" },
     ],
     problemContext: {
@@ -292,13 +292,13 @@ export const projects: Project[] = [
       { step: 1, title: "두 제품 감사", desc: "기존 두 제품의 UI 컴포넌트 전수 감사" },
       { step: 2, title: "Foundation", desc: "색상·타이포·스페이싱 토큰 정의" },
       { step: 3, title: "Atomic 구성", desc: "원자 단위 컴포넌트 설계" },
-      { step: 4, title: "운영 대여", desc: "컴포넌트 기여 및 업데이트 프로세스 정의" },
-      { step: 5, title: "가이드라인 & 적용라인", desc: "문서화 및 핸드오프" },
+      { step: 4, title: "운영 체계", desc: "컴포넌트 기여 및 업데이트 프로세스 정의" },
+      { step: 5, title: "가이드 & 핸드오프", desc: "문서화 및 핸드오프" },
     ],
     keyDecisions: [
       {
         area: "영역 1",
-        areaTitle: "Foundation + Patterns 두 거치며 구조 — 속도 고일 같이 확인",
+        areaTitle: "Foundation → Pattern → Component 3계층 구조",
         items: [
           {
             icon: "현황",
@@ -324,7 +324,7 @@ export const projects: Project[] = [
       },
       {
         area: "영역 2",
-        areaTitle: "진행률을 높이는 다시인 — 인터페이스 안에",
+        areaTitle: "디자이너와 개발자가 같은 언어로 핸드오프하도록",
         items: [
           {
             icon: "현황",
@@ -392,12 +392,12 @@ export const projects: Project[] = [
     category: "B2B UX Service",
     client: "SDT CLOUD",
     tags: ["B2B", "ML", "Dashboard"],
-    year: "2024년 - 년",
-    role: "Product Designer / Planing",
+    year: "2024",
+    role: "Product Designer / Planning",
     metrics: [
       { value: "4 in 1", label: "4단계 통합", sub: "MLOps 파이프라인 단일 뷰" },
       { value: "11층", label: "데이터 계층", sub: "레이어 구조 시각화" },
-      { value: "회플 수", label: "파이프라인 노드 수", sub: "평균 대시보드 기준" },
+      { value: "23분↓", label: "오류 탐지 시간 단축", sub: "기존 평균 23분 → 개선 목표" },
     ],
     problemContext: {
       domain: "도메인 맥락",
@@ -415,15 +415,15 @@ export const projects: Project[] = [
         title: "도메인 이해",
         desc: "MLOps 4단계 파이프라인 도메인 학습 — 양자 컴퓨팅 기업 재직 경험을 바탕으로, 고밀도 데이터 환경에서의 가시성 설계 원칙을 이 도메인에 적용",
       },
-      { step: 2, title: "AA 설계", desc: "노드 그래프 정보 구조 설계" },
+      { step: 2, title: "IA 설계", desc: "노드 그래프 정보 구조 설계" },
       { step: 3, title: "노드 시각화", desc: "상태별 노드 컴포넌트 설계" },
-      { step: 4, title: "DX 연결", desc: "데이터 흐름 시각화 인터랙션" },
-      { step: 5, title: "6A 핸드오프", desc: "개발팀 스펙 문서화" },
+      { step: 4, title: "데이터 흐름 설계", desc: "데이터 흐름 시각화 인터랙션" },
+      { step: 5, title: "스펙 핸드오프", desc: "개발팀 스펙 문서화" },
     ],
     keyDecisions: [
       {
         area: "영역 1",
-        areaTitle: "서터 화면 연결 — 싸도 파케이드면 노드 그래프",
+        areaTitle: "분리된 4개 화면을 하나의 노드 그래프로",
         items: [
           {
             icon: "현황",
@@ -449,7 +449,7 @@ export const projects: Project[] = [
       },
       {
         area: "영역 2",
-        areaTitle: "기도/아토리/대시보드 — 라이트/다크 패밀 공유 trade-off",
+        areaTitle: "다크 모드 기본, 공유 화면은 라이트 — 모드 전환 trade-off",
         items: [
           {
             icon: "현황",
@@ -481,7 +481,7 @@ export const projects: Project[] = [
         desc: "4단계 MLOps 파이프라인을 방향성 그래프(DAG)로 시각화하여 데이터 흐름과 실행 상태를 단일 화면에서 파악할 수 있게 했습니다.",
       },
       {
-        zone: "현황 대비 알림판",
+        zone: "실시간 알림 패널",
         title: "실시간 모니터링 패널",
         desc: "오류 발생 시 해당 노드가 붉은색으로 강조되고, 사이드 패널에 로그와 수정 가이드가 자동으로 표시됩니다.",
       },
