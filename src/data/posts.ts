@@ -5,6 +5,8 @@ export type PostBlock =
   | { type: 'quote'; text: string }
   | { type: 'list'; items: string[] }
   | { type: 'callout'; label?: string; lines: string[] }
+  | { type: 'image'; src: string; alt: string; caption?: string }
+  | { type: 'table'; head: string[]; rows: string[][] }
 
 export type Post = {
   slug: string
@@ -20,6 +22,90 @@ export type Post = {
 }
 
 export const posts: Post[] = [
+  {
+    slug: 'gcb-ux-theory-map',
+    category: 'Research and Insight',
+    tag: 'UX Strategy',
+    title: 'GCB 메인 시안에 들어간 UX 이론',
+    excerpt:
+      '한 장의 랜딩 페이지를 뜯어보면, 섹션 순서부터 색 하나까지 이유가 있습니다. GCB 메인 시안에 감정 여정 지도·설득 심리·인지부하 이론이 어디에 어떻게 들어갔는지 해부한 기록입니다.',
+    date: '2026년 6월 17일',
+    dateISO: '2026-06-17',
+    readingMin: 9,
+    relatedWork: { slug: 'global-credit-bank', label: 'UBION 글로벌 학점은행제 케이스 보기' },
+    body: [
+      {
+        type: 'lead',
+        text:
+          'GCB 메인 시안은 "예쁘게 만든 랜딩"이 아닙니다. 명시적인 UX 이론 골격 위에 한 층씩 쌓아 올린 설계예요. 이 글은 그 한 장을 해부해, 어디에 어떤 이론이 왜 들어갔는지 짚어보는 기록입니다.',
+      },
+      {
+        type: 'image',
+        src: '/img/gcb-main-page.jpg',
+        alt: 'UBION GCB 글로벌 학점은행제 메인 페이지 시안',
+        caption: 'GCB 메인 페이지 — 섹션 순서 자체가 사용자의 감정 여정을 따라 설계됐다.',
+      },
+      {
+        type: 'callout',
+        label: '한 줄 정리',
+        lines: [
+          '골격: 감정 여정 지도 · 퍼소나 수렴 · 3-Zone 정보구조.',
+          '표면: 섹션마다 설득·인지 이론(사회적 증거 · Hick · 앵커링 · 목표구배)이 배치.',
+          '색: Zone 컬러로 위치를 인지시키되, 넓은 면엔 쓰지 않아 위계와 신뢰를 지킴.',
+        ],
+      },
+      { type: 'heading', text: '1. 전체를 지탱하는 상위 이론 3개' },
+      {
+        type: 'paragraph',
+        text:
+          '감정 여정 지도(Emotional Journey Map) — 인지→관심→탐색→신뢰→경험→결정→행동 7단계에 감정 곡선을 그리고, 골이 파이는 두 지점(탐색×신뢰 연속 이탈, CTA 직전 재이탈)을 진단했습니다. 시안의 섹션 순서가 곧 이 여정이고, 감정이 가장 꺼지는 "신뢰" 구간을 사회적 증거로 끌어올리고 CTA 직전을 리스크 해소로 방어하도록 배치했습니다.',
+      },
+      {
+        type: 'paragraph',
+        text:
+          '퍼소나 수렴(Personas) — Career Jumper·Dreamer·Bridge Seeker 세 사람을 만들고, 퍼소나 × 감정여정 × 디자인 매트릭스로 각자의 Pain·Zone·KPI를 한 표에 모았습니다. 그 수렴점이 공통 니즈(Guided·Clear·Trustworthy·Accessible)였고, 여기서 디자인 컨셉 "Guided Clarity"가 나왔습니다. 컨셉이 직관이 아니라 세 여정이 한 점으로 모인 결과물이라는 게 핵심입니다.',
+      },
+      {
+        type: 'paragraph',
+        text:
+          '3-Zone 정보구조(IA · Progressive Disclosure · Chunking) — 준비·학습·관리. 시안의 01 PREPARE / 02 LEARN / 03 MANAGE 라벨이 그대로 이 Zone입니다. 복잡한 학점은행 절차를 세 덩어리로 청킹해 인지 부하를 줄였습니다.',
+      },
+      { type: 'heading', text: '2. 메인 시안 — 섹션별 UX 이론 매핑' },
+      {
+        type: 'table',
+        head: ['시안 위치', '적용 UX 이론', '어떻게 들어갔나'],
+        rows: [
+          ['Sticky Navbar', "Jakob's Law · Fitts's Law", '익숙한 GNB를 항상 노출, 어디서든 한 클릭 도달'],
+          ['Hero (영문 헤드라인 + 이중 CTA)', 'AIDA · Von Restorff · 감정여정 "인지"', '영문 강조로 시선 고정, 이중 동선, 첫 3초 신뢰 형성'],
+          ['01 PREPARE 4단계 가이드', 'Progressive Disclosure · Hick\'s Law', '전체 절차를 4스텝으로 쪼개 선택지·부하 축소'],
+          ['"왜 UBION" 수치 (86.5% 등)', 'Social Proof · Authority · Anchoring', '교육부 인가(권위) + 취득률을 "신뢰 앵커"로 박아 감정 골 방어'],
+          ['학위 취득 후 기회 캐러셀', '목표 시각화 · 감정여정 "경험 상상"', 'Career Jumper의 동기를 미래 이미지로 자극'],
+          ['02 LEARN 4개 전공 카드', 'Gestalt(근접·유사) · Recognition', '카드 그룹핑으로 범위를 한눈에, 4개로 선택 단순화'],
+          ['K-Contents 카드뉴스', 'Social Proof · Digital-Native', '익숙한 SNS 카드 포맷으로 신뢰 적립'],
+          ['03 MANAGE 계산기·시뮬·상담 탭', 'Goal-Gradient · Progress Visibility', '예상 졸업일·진도율 시각화로 완주 동기, 계산기로 불확실성 제거'],
+          ['FAQ 아코디언', 'Objection Handling · Loss Aversion', '결정 직전 반대 의견·환불/리스크 해소'],
+          ['마지막 CTA (다크)', 'Peak-End Rule · Fitts · 낮은 진입장벽', '여정의 끝을 강한 단일 행동으로 마무리'],
+          ['컬러 (Blue/Teal/Yellow)', 'Color Coding · Preattentive · Signifier', 'Zone별 색으로 위치 인지. 넓은 면엔 안 쓰고 숫자·뱃지·링크에만'],
+        ],
+      },
+      { type: 'heading', text: '3. 그 아래 깔린 인지·설득 이론' },
+      {
+        type: 'paragraph',
+        text:
+          '뼈대는 Cialdini의 설득 원칙입니다 — 권위(교육부 인가), 사회적 증거(수치·후기), 일관성(무료상담→등록의 단계적 약속). 여기에 행동경제 세 가지(앵커링 86.5%, 손실회피=환불정책 노출, 목표구배=진도·졸업 시각화)와 Norman의 정서적 디자인(Guided Clarity = 불안↓ + 안내받는 느낌, 마이크로인터랙션·성취 보상)이 겹쳐 있습니다.',
+      },
+      { type: 'heading', text: '4. 한 가지 짚기' },
+      {
+        type: 'paragraph',
+        text:
+          '이 시안의 강점은 "이론 → 설계 → 예측 KPI(전환율 15%+, 완주율 65%+, NPS 45+)"가 한 줄로 꿰진다는 점입니다. 다만 그 KPI는 아직 목표치라, 실측 결과가 붙으면 비로소 완성됩니다. 그 구조 자체가 "근거로 설계하는 사람"을 증명한다고 봅니다.',
+      },
+      {
+        type: 'quote',
+        text: '좋은 화면은 우연이 아닙니다. 섹션의 순서, 수치의 위치, 색 하나까지 — 전부 이유를 댈 수 있어야 합니다.',
+      },
+    ],
+  },
   {
     slug: 'gcb-global-checkout-dropout',
     category: 'Research and Insight',

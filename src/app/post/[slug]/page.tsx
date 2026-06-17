@@ -151,6 +151,50 @@ const CalloutLine = styled.div`
   }
 `
 
+const Figure = styled.figure`
+  margin: 32px 0;
+`
+const FigImg = styled.img`
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid ${theme.colors.gray200};
+  display: block;
+`
+const FigCaption = styled.figcaption`
+  margin-top: 10px;
+  font-size: 13px;
+  color: ${theme.colors.gray500};
+  text-align: center;
+  line-height: 1.6;
+`
+const TableWrap = styled.div`
+  margin: 28px 0;
+  overflow-x: auto;
+  border: 1px solid ${theme.colors.gray200};
+  border-radius: 10px;
+`
+const TableEl = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  th, td {
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid ${theme.colors.gray200};
+    vertical-align: top;
+    line-height: 1.6;
+  }
+  thead th {
+    background: ${theme.colors.gray100};
+    font-weight: 700;
+    color: ${theme.colors.black};
+    white-space: nowrap;
+  }
+  td { color: ${theme.colors.gray700}; }
+  td:first-child { font-weight: 600; color: ${theme.colors.black}; white-space: nowrap; }
+  tbody tr:last-child td { border-bottom: none; }
+`
+
 /* ── Related work ── */
 const RelatedWork = styled(Link)`
   display: inline-flex;
@@ -221,6 +265,28 @@ function Block({ block }: { block: PostBlock }) {
           {block.label && <CalloutLabel>{block.label}</CalloutLabel>}
           {block.lines.map((l, i) => <CalloutLine key={i}>{l}</CalloutLine>)}
         </Callout>
+      )
+    case 'image':
+      return (
+        <Figure>
+          <FigImg src={block.src} alt={block.alt} />
+          {block.caption && <FigCaption>{block.caption}</FigCaption>}
+        </Figure>
+      )
+    case 'table':
+      return (
+        <TableWrap>
+          <TableEl>
+            <thead>
+              <tr>{block.head.map((h, i) => <th key={i}>{h}</th>)}</tr>
+            </thead>
+            <tbody>
+              {block.rows.map((row, i) => (
+                <tr key={i}>{row.map((cell, j) => <td key={j}>{cell}</td>)}</tr>
+              ))}
+            </tbody>
+          </TableEl>
+        </TableWrap>
       )
     default:
       return null
