@@ -1,11 +1,12 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import styled from 'styled-components'
-import { theme } from '@/styles/theme'
-import { caseStudies } from '@/data/projects'
-import { researchPosts } from '@/data/posts'
-import { Container } from '@/styles/styled'
+import { useState } from "react";
+import Link from "next/link";
+import styled, { keyframes } from "styled-components";
+import { theme } from "@/styles/theme";
+import { caseStudies, projects } from "@/data/projects";
+import { researchPosts } from "@/data/posts";
+import { Container } from "@/styles/styled";
 
 /* ════════════════════════════════
    HERO
@@ -15,8 +16,10 @@ const HeroSection = styled.section`
   height: 720px;
   overflow: hidden;
   background: #aaaaaa;
-  @media (max-width: ${theme.breakpoints.md}) { height: 520px; }
-`
+  @media (max-width: ${theme.breakpoints.md}) {
+    height: 520px;
+  }
+`;
 
 const HeroBg = styled.video`
   position: absolute;
@@ -26,7 +29,7 @@ const HeroBg = styled.video`
   object-fit: cover;
   filter: grayscale(40%);
   opacity: 0.85;
-`
+`;
 
 const HeroInner = styled.div`
   position: relative;
@@ -41,13 +44,13 @@ const HeroInner = styled.div`
   @media (max-width: ${theme.breakpoints.md}) {
     padding: 120px 24px 60px;
   }
-`
+`;
 
 const HeroTextBlock = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-`
+`;
 
 const HeroTitle = styled.h1`
   font-size: 45px;
@@ -57,8 +60,10 @@ const HeroTitle = styled.h1`
   color: ${theme.colors.white};
   max-width: 560px;
 
-  @media (max-width: ${theme.breakpoints.md}) { font-size: clamp(28px, 5vw, 45px); }
-`
+  @media (max-width: ${theme.breakpoints.md}) {
+    font-size: clamp(28px, 5vw, 45px);
+  }
+`;
 
 const HeroSub = styled.p`
   font-size: 18px;
@@ -67,15 +72,19 @@ const HeroSub = styled.p`
   font-weight: 400;
   max-width: 480px;
 
-  @media (max-width: ${theme.breakpoints.md}) { font-size: 15px; }
-`
+  @media (max-width: ${theme.breakpoints.md}) {
+    font-size: 15px;
+  }
+`;
 
 const HeroFCTS = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 
-  @media (max-width: ${theme.breakpoints.sm}) { display: none; }
-`
+  @media (max-width: ${theme.breakpoints.sm}) {
+    display: none;
+  }
+`;
 
 const HeroFCTSItem = styled.div<{ $pt?: number; $pb?: number; $end?: boolean }>`
   display: flex;
@@ -83,20 +92,20 @@ const HeroFCTSItem = styled.div<{ $pt?: number; $pb?: number; $end?: boolean }>`
   gap: 40px;
   padding-top: ${({ $pt }) => $pt ?? 0}px;
   padding-bottom: ${({ $pb }) => $pb ?? 0}px;
-  justify-content: ${({ $end }) => ($end ? 'flex-end' : 'flex-start')};
-`
+  justify-content: ${({ $end }) => ($end ? "flex-end" : "flex-start")};
+`;
 
 const HeroFCTSLetter = styled.span`
   font-size: 16px;
   font-weight: 700;
   color: rgba(255, 255, 255, 0.55);
-`
+`;
 
 const HeroFCTSName = styled.span`
   font-size: 16px;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.5);
-`
+`;
 
 /* ════════════════════════════════
    VALUE CARDS  (F · C · T · S)
@@ -105,8 +114,10 @@ const ValueSection = styled.section`
   padding: 160px 0;
   background: ${theme.colors.white};
 
-  @media (max-width: ${theme.breakpoints.md}) { padding: 80px 0; }
-`
+  @media (max-width: ${theme.breakpoints.md}) {
+    padding: 80px 0;
+  }
+`;
 
 const ValueHeading = styled.h2`
   text-align: center;
@@ -117,19 +128,21 @@ const ValueHeading = styled.h2`
   margin-bottom: 56px;
   color: ${theme.colors.black};
   text-transform: capitalize;
-`
+`;
 
 const ValueCards = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 20px;
 
-  @media (max-width: ${theme.breakpoints.lg}) { flex-wrap: wrap; }
+  @media (max-width: ${theme.breakpoints.lg}) {
+    flex-wrap: wrap;
+  }
   @media (max-width: ${theme.breakpoints.md}) {
     flex-wrap: wrap;
     gap: 16px;
   }
-`
+`;
 
 const ValueCard = styled.div`
   flex: 1;
@@ -142,7 +155,7 @@ const ValueCard = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 12px;
-`
+`;
 
 const ValueCardLetter = styled.div`
   font-size: 15px;
@@ -150,7 +163,7 @@ const ValueCardLetter = styled.div`
   color: ${theme.colors.black};
   text-align: center;
   width: 100%;
-`
+`;
 
 const ValueCardName = styled.div`
   font-size: 15px;
@@ -158,7 +171,7 @@ const ValueCardName = styled.div`
   color: ${theme.colors.black};
   text-align: center;
   white-space: nowrap;
-`
+`;
 
 const ValueCardDesc = styled.div`
   font-size: 14px;
@@ -166,7 +179,7 @@ const ValueCardDesc = styled.div`
   line-height: 1.44;
   text-align: center;
   letter-spacing: -0.28px;
-`
+`;
 
 /* ════════════════════════════════
    WORKS
@@ -175,8 +188,10 @@ const WorksSection = styled.section`
   padding: 0 0 160px;
   background: ${theme.colors.white};
 
-  @media (max-width: ${theme.breakpoints.md}) { padding: 0 0 80px; }
-`
+  @media (max-width: ${theme.breakpoints.md}) {
+    padding: 0 0 80px;
+  }
+`;
 
 const SectionHeading = styled.h2`
   text-align: center;
@@ -186,14 +201,14 @@ const SectionHeading = styled.h2`
   color: #343a40;
   margin-bottom: 80px;
   text-transform: capitalize;
-`
+`;
 
 const WorksInner = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 80px;
-`
+  gap: 24px;
+`;
 
 const WorksRow = styled.div`
   display: flex;
@@ -201,8 +216,11 @@ const WorksRow = styled.div`
   align-items: flex-start;
   width: 100%;
 
-  @media (max-width: ${theme.breakpoints.md}) { flex-direction: column; gap: 24px; }
-`
+  @media (max-width: ${theme.breakpoints.md}) {
+    flex-direction: column;
+    gap: 24px;
+  }
+`;
 
 const WorksMeta = styled.div`
   position: relative;
@@ -210,8 +228,10 @@ const WorksMeta = styled.div`
   flex-shrink: 0;
   align-self: stretch;
 
-  @media (max-width: ${theme.breakpoints.md}) { width: 100%; }
-`
+  @media (max-width: ${theme.breakpoints.md}) {
+    width: 100%;
+  }
+`;
 
 const WorksMetaTitle = styled.div`
   font-size: 28px;
@@ -219,7 +239,7 @@ const WorksMetaTitle = styled.div`
   color: #343a40;
   letter-spacing: -0.4px;
   line-height: 1.4;
-`
+`;
 
 const WorksMetaSub = styled.div`
   font-size: 20px;
@@ -227,7 +247,7 @@ const WorksMetaSub = styled.div`
   color: #343a40;
   letter-spacing: -0.4px;
   line-height: 1.6;
-`
+`;
 
 const WorksMetaDesc = styled.div`
   font-size: 14px;
@@ -235,7 +255,7 @@ const WorksMetaDesc = styled.div`
   line-height: 1.6;
   letter-spacing: -0.4px;
   margin-top: 4px;
-`
+`;
 
 const WorksMetaTags = styled.div`
   display: flex;
@@ -248,24 +268,20 @@ const WorksMetaTags = styled.div`
   left: 0;
   right: 0;
 
-  @media (max-width: ${theme.breakpoints.md}) { position: static; }
-`
+  @media (max-width: ${theme.breakpoints.md}) {
+    position: static;
+  }
+`;
 
 const WorksTag = styled(Link)`
   font-size: 16px;
   color: #343a40;
   letter-spacing: -0.4px;
   line-height: 1.6;
-  &:hover { color: ${theme.colors.black}; }
-`
-
-const WorksImages = styled.div`
-  display: flex;
-  gap: 36px;
-  flex: 1;
-
-  @media (max-width: ${theme.breakpoints.sm}) { flex-direction: column; }
-`
+  &:hover {
+    color: ${theme.colors.black};
+  }
+`;
 
 const ProjectCard = styled(Link)`
   display: block;
@@ -276,17 +292,21 @@ const ProjectCard = styled(Link)`
   flex: 1;
   box-shadow: -4px 9px 25px -6px rgba(0, 0, 0, 0.1);
 
-  &:hover .proj-img { transform: scale(1.04); }
+  &:hover .proj-img {
+    transform: scale(1.04);
+  }
 
-  @media (max-width: ${theme.breakpoints.md}) { height: 360px; }
-`
+  @media (max-width: ${theme.breakpoints.md}) {
+    height: 360px;
+  }
+`;
 
 const ProjImg = styled.div<{ $img: string }>`
   width: 100%;
   height: 100%;
   background: #ccc url(${({ $img }) => $img}) center/cover no-repeat;
   transition: transform 0.4s ease;
-`
+`;
 
 const ProjLabel = styled.div`
   position: absolute;
@@ -297,13 +317,99 @@ const ProjLabel = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
   padding: 16px;
   border-radius: 4px;
-  font-size: 20px;
-  font-weight: 600;
   color: #212529;
   letter-spacing: -0.4px;
-`
+
+  span {
+    flex-shrink: 0;
+    color: ${theme.colors.accent};
+  }
+`;
+
+const ProjName = styled.div`
+  font-size: 18px;
+  font-weight: 700;
+  color: #212529;
+  letter-spacing: -0.4px;
+  line-height: 1.3;
+`;
+
+const ProjDesc = styled.div`
+  font-size: 13px;
+  color: #868e96;
+  letter-spacing: -0.3px;
+  line-height: 1.45;
+  margin-top: 4px;
+`;
+
+const worksFade = keyframes`
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+`;
+
+const WorksCarousel = styled.div`
+  display: flex;
+  gap: 36px;
+  flex: 1;
+  animation: ${worksFade} 0.35s ease;
+
+  @media (max-width: ${theme.breakpoints.sm}) {
+    flex-direction: column;
+  }
+`;
+
+const WorksBottom = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+
+  @media (max-width: ${theme.breakpoints.sm}) {
+    flex-direction: column;
+    gap: 24px;
+    align-items: stretch;
+  }
+`;
+
+const CarouselNav = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 14px;
+`;
+
+const ArrowBtn = styled.button`
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid ${theme.colors.gray300};
+  background: white;
+  color: ${theme.colors.black};
+  font-size: 16px;
+  transition: border-color 0.2s, color 0.2s, opacity 0.2s;
+
+  &:hover:not(:disabled) {
+    border-color: ${theme.colors.accent};
+    color: ${theme.colors.accent};
+  }
+  &:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+`;
+
+const PageIndicator = styled.span`
+  font-size: 14px;
+  color: ${theme.colors.gray500};
+  min-width: 46px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+`;
 
 const ViewMoreBtn = styled(Link)`
   position: relative;
@@ -317,9 +423,11 @@ const ViewMoreBtn = styled(Link)`
   letter-spacing: -0.4px;
   transition: background 0.15s;
   white-space: nowrap;
-
-  &:hover { background: rgba(211, 211, 211, 0.4); }
-`
+  width: fit-content;
+  &:hover {
+    background: rgba(211, 211, 211, 0.4);
+  }
+`;
 
 const ViewMoreCircle = styled.span`
   position: absolute;
@@ -335,7 +443,7 @@ const ViewMoreCircle = styled.span`
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.08);
   font-size: 14px;
   color: #212529;
-`
+`;
 
 /* ════════════════════════════════
    CASE STUDY
@@ -344,29 +452,33 @@ const CaseStudySection = styled.section`
   padding: 0 0 160px;
   background: ${theme.colors.white};
 
-  @media (max-width: ${theme.breakpoints.md}) { padding: 0 0 80px; }
-`
+  @media (max-width: ${theme.breakpoints.md}) {
+    padding: 0 0 80px;
+  }
+`;
 
 const CaseInner = styled.div`
   display: flex;
   flex-direction: column;
   gap: 50px;
   padding-bottom: 80px;
-`
+`;
 
 const CaseSeparator = styled.div`
   height: 1px;
   background: #e1dac0;
   width: 100%;
-`
+`;
 
 const CaseRow = styled.div`
   display: flex;
   gap: 36px;
   align-items: flex-start;
 
-  @media (max-width: ${theme.breakpoints.md}) { flex-direction: column; }
-`
+  @media (max-width: ${theme.breakpoints.md}) {
+    flex-direction: column;
+  }
+`;
 
 const CaseMeta = styled.div`
   width: 240px;
@@ -375,8 +487,10 @@ const CaseMeta = styled.div`
   flex-direction: column;
   gap: 20px;
 
-  @media (max-width: ${theme.breakpoints.md}) { width: 100%; }
-`
+  @media (max-width: ${theme.breakpoints.md}) {
+    width: 100%;
+  }
+`;
 
 const CaseMetaKo = styled.div`
   font-size: 28px;
@@ -384,7 +498,7 @@ const CaseMetaKo = styled.div`
   color: #343a40;
   letter-spacing: -0.4px;
   line-height: 1.4;
-`
+`;
 
 const CaseMetaEn = styled.div`
   font-size: 20px;
@@ -393,15 +507,17 @@ const CaseMetaEn = styled.div`
   letter-spacing: -0.4px;
   line-height: 1.7;
   margin-top: -12px;
-`
+`;
 
 const ArticleList = styled.div`
   display: flex;
   gap: 36px;
   flex: 1;
 
-  @media (max-width: ${theme.breakpoints.sm}) { flex-direction: column; }
-`
+  @media (max-width: ${theme.breakpoints.sm}) {
+    flex-direction: column;
+  }
+`;
 
 const ArticleCard = styled.div`
   background: white;
@@ -413,7 +529,7 @@ const ArticleCard = styled.div`
   flex-direction: column;
   gap: 12px;
   box-shadow: 0 2px 15px -2px rgba(0, 0, 0, 0.1);
-`
+`;
 
 const ArticleTag = styled.span`
   display: inline-block;
@@ -423,7 +539,7 @@ const ArticleTag = styled.span`
   padding: 2px 10px;
   border-radius: 100px;
   letter-spacing: -0.4px;
-`
+`;
 
 const ArticleTitle = styled.div`
   font-size: 20px;
@@ -432,47 +548,65 @@ const ArticleTitle = styled.div`
   line-height: 1.45;
   letter-spacing: -0.4px;
   padding-bottom: 8px;
-`
+`;
 
 const ArticleDivider = styled.div`
   height: 1px;
   background: #e1dac0;
-`
+`;
 
 const ArticleDate = styled.div`
   font-size: 16px;
   color: #212529;
   padding-top: 7px;
   letter-spacing: -0.4px;
-`
+`;
 
 /* ════════════════════════════════
    STATIC DATA
 ════════════════════════════════ */
 const fctsValues = [
-  { letter: 'F', name: '(Function)', desc: '사용자의 문제를 해결하는\n실질적인 기능 정의' },
-  { letter: 'C', name: '(Concept)',  desc: '논리적 근거를 바탕으로 세워진\n디자인 전략' },
-  { letter: 'T', name: '(Token)',    desc: '디자인과 개발을 잇는 최소 단위의 약속 (Design Tokens)' },
-  { letter: 'S', name: '(System)',   desc: '지속 가능하고 확장 가능한\n프로덕트의 질서' },
-]
+  { letter: "F", name: "(Function)", desc: "사용자의 문제를 해결하는\n실질적인 기능 정의" },
+  { letter: "C", name: "(Concept)", desc: "논리적 근거를 바탕으로 세워진\n디자인 전략" },
+  { letter: "T", name: "(Token)", desc: "디자인과 개발을 잇는 최소 단위의 약속 (Design Tokens)" },
+  { letter: "S", name: "(System)", desc: "지속 가능하고 확장 가능한\n프로덕트의 질서" },
+];
 
-const previewProjects = [
-  {
-    slug: 'global-credit-bank',
-    label: 'project',
-    img: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=75',
-  },
-  {
-    slug: 'humanities-lecture',
-    label: 'project',
-    img: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=75',
-  },
-]
+const projectImages: Record<string, string> = {
+  "global-credit-bank": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=75",
+  "humanities-lecture": "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=75",
+  "b2b-design-system": "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800&q=75",
+  "mlops-b2b-dashboard": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=75",
+};
+
+const projectDesc: Record<string, string> = {
+  "global-credit-bank": "복잡한 학점 취득 플로우를 3-Zone 구조로 재설계한 프로젝트",
+  "mlops-b2b-dashboard": "4단계 MLOps 파이프라인을 단일 노드 그래프로 시각화한 B2B 대시보드",
+  "humanities-lecture": "완강률 65%를 목표로 학습 지속성을 높인 UX 프로젝트",
+  "b2b-design-system": "두 B2B 제품의 일관성을 만든 운영 원칙 중심 디자인 시스템",
+};
+
+// 데이터 배열 순서 = 최신순 (최신 프로젝트가 앞)
+const worksProjects = projects.map((p) => ({
+  slug: p.slug,
+  name: p.subtitle,
+  desc: projectDesc[p.slug] ?? "",
+  img: projectImages[p.slug] ?? "",
+}));
+
+const WORKS_PER_PAGE = 2;
 
 /* ════════════════════════════════
    PAGE
 ════════════════════════════════ */
 export default function Home() {
+  const [worksPage, setWorksPage] = useState(0);
+  const totalWorksPages = Math.ceil(worksProjects.length / WORKS_PER_PAGE);
+  const visibleWorks = worksProjects.slice(
+    worksPage * WORKS_PER_PAGE,
+    worksPage * WORKS_PER_PAGE + WORKS_PER_PAGE
+  );
+
   return (
     <>
       {/* Hero */}
@@ -483,11 +617,13 @@ export default function Home() {
         <HeroInner>
           <HeroTextBlock>
             <HeroTitle>
-              From Complex to Simple,<br />
+              From Complex to Simple,
+              <br />
               Building Visual Order.
             </HeroTitle>
             <HeroSub>
-              A design engineering group that transforms complexity<br />
+              A design engineering group that transforms complexity
+              <br />
               into simplicity and establishes order in business.
             </HeroSub>
           </HeroTextBlock>
@@ -517,7 +653,8 @@ export default function Home() {
       <ValueSection>
         <Container>
           <ValueHeading>
-            Transforms Complexity Into Simplicity<br />
+            Transforms Complexity Into Simplicity
+            <br />
             And Establishes Order In Business.
           </ValueHeading>
           <ValueCards>
@@ -539,34 +676,69 @@ export default function Home() {
           <WorksInner>
             <WorksRow>
               <WorksMeta>
-                <WorksMetaTitle>Category Title</WorksMetaTitle>
-                <WorksMetaSub>Sub Title</WorksMetaSub>
-                <WorksMetaDesc>
-                  설명 설명 입니다. 설명 설명 입니다. 설명 설명 입니다. 설명 설명 입니다.
-                </WorksMetaDesc>
+                <WorksMetaTitle>복잡함을<br />구조로</WorksMetaTitle>
+                <WorksMetaSub>From Complex To Simple</WorksMetaSub>
+                <WorksMetaDesc>B2B·B2C 서비스부터 디자인 시스템까지, 문제를 구조로 푼 프로젝트</WorksMetaDesc>
                 <WorksMetaTags>
-                  <WorksTag href="/works/global-credit-bank">project</WorksTag>
-                  <WorksTag href="/works/humanities-lecture">project</WorksTag>
+                  {worksProjects.map((p) => (
+                    <WorksTag key={p.slug} href={`/works/${p.slug}`}>
+                      {p.name}
+                    </WorksTag>
+                  ))}
                 </WorksMetaTags>
+                   <ViewMoreBtn href="/works" style={{ marginTop: 24 }}>
+                View More
+                <ViewMoreCircle>→</ViewMoreCircle>
+              </ViewMoreBtn>
               </WorksMeta>
 
-              <WorksImages>
-                {previewProjects.map((p) => (
+              <WorksCarousel key={worksPage}>
+                {visibleWorks.map((p) => (
                   <ProjectCard key={p.slug} href={`/works/${p.slug}`}>
                     <ProjImg className="proj-img" $img={p.img} />
                     <ProjLabel>
-                      {p.label}
+                      <div>
+                        <ProjName>{p.name}</ProjName>
+                        {p.desc && <ProjDesc>{p.desc}</ProjDesc>}
+                      </div>
                       <span>→</span>
                     </ProjLabel>
                   </ProjectCard>
                 ))}
-              </WorksImages>
+              </WorksCarousel>
             </WorksRow>
 
-            <ViewMoreBtn href="/works">
-              View More
-              <ViewMoreCircle>→</ViewMoreCircle>
-            </ViewMoreBtn>
+            <WorksBottom>
+              
+
+              {totalWorksPages > 1 ? (
+                <CarouselNav>
+                  <ArrowBtn
+                    type="button"
+                    aria-label="이전 프로젝트"
+                    onClick={() => setWorksPage((p) => Math.max(0, p - 1))}
+                    disabled={worksPage === 0}
+                  >
+                    ←
+                  </ArrowBtn>
+                  <PageIndicator>
+                    {worksPage + 1} / {totalWorksPages}
+                  </PageIndicator>
+                  <ArrowBtn
+                    type="button"
+                    aria-label="다음 프로젝트"
+                    onClick={() => setWorksPage((p) => Math.min(totalWorksPages - 1, p + 1))}
+                    disabled={worksPage === totalWorksPages - 1}
+                  >
+                    →
+                  </ArrowBtn>
+                </CarouselNav>
+              ) : (
+                <span />
+              )}
+
+             
+            </WorksBottom>
           </WorksInner>
         </Container>
       </WorksSection>
@@ -627,5 +799,5 @@ export default function Home() {
         </Container>
       </CaseStudySection>
     </>
-  )
+  );
 }
