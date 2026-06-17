@@ -8,7 +8,7 @@ import { Container, Section } from '@/styles/styled'
 
 const PageHeading = styled.h1`
   text-align: center;
-  font-size: clamp(28px, 4vw, 48px);
+  font-size: clamp(28px, 4vw, 45px);
   font-weight: 800;
   letter-spacing: -0.02em;
   padding: 64px 0 56px;
@@ -30,7 +30,12 @@ const CategoryRow = styled.div`
   @media (max-width: ${theme.breakpoints.md}) { grid-template-columns: 1fr; }
 `
 
-const CategoryMeta = styled.div``
+const CategoryMeta = styled.div`
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+`
 
 const CategoryTitle = styled.div`
   font-size: 20px;
@@ -57,6 +62,8 @@ const CategoryDesc = styled.div`
 const CategoryTags = styled.div`
   display: flex;
   flex-direction: column;
+  height: 100%;
+  justify-content: flex-end;
   gap: 4px;
 `
 
@@ -72,7 +79,7 @@ const CategoryTag = styled(Link)`
 const ImageGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
+  gap: 16px;
   @media (max-width: ${theme.breakpoints.sm}) { grid-template-columns: 1fr; }
 `
 
@@ -145,7 +152,7 @@ export default function WorksPage() {
   return (
     <>
       <Section style={{ padding: 0 }}>
-        <Container>
+        <Container style={{ paddingBottom: 100 }}>
           <PageHeading>Works</PageHeading>
 
           {categories.map((cat) => {

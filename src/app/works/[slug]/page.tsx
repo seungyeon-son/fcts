@@ -20,7 +20,7 @@ const HeroBreadcrumb = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 12px;
+  font-size: 13px;
   color: ${theme.colors.gray500};
   margin-bottom: 28px;
   a:hover { color: ${theme.colors.black}; }
@@ -37,7 +37,7 @@ const HeroLayout = styled.div`
 const HeroLeft = styled.div``
 
 const HeroTitle = styled.h1`
-  font-size: clamp(24px, 3.2vw, 44px);
+  font-size: clamp(28px, 3.2vw, 45px);
   font-weight: 800;
   line-height: 1.2;
   letter-spacing: -0.025em;
@@ -47,7 +47,7 @@ const HeroTitle = styled.h1`
 `
 
 const HeroSubtitle = styled.div`
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
   color: ${theme.colors.black};
   margin-bottom: 14px;
@@ -63,7 +63,7 @@ const HeroContext = styled.p`
 `
 
 const HeroDesc = styled.p`
-  font-size: 13px;
+  font-size: 14px;
   color: ${theme.colors.gray600};
   line-height: 1.85;
   margin-bottom: 20px;
@@ -78,7 +78,7 @@ const HeroTags = styled.div`
 `
 
 const HeroTag = styled.span`
-  font-size: 11px;
+  font-size: 13px;
   padding: 4px 12px;
   border: 1px solid ${theme.colors.gray300};
   border-radius: 100px;
@@ -98,7 +98,7 @@ const InfoItem = styled.div`
   padding-right: 16px;
 
   .label {
-    font-size: 10px;
+    font-size: 13px;
     color: ${theme.colors.gray500};
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -169,7 +169,7 @@ const ImpactCard = styled.div`
 const metricColors = ['#3B82F6', '#14B8A6', '#FF3229']
 
 const ImpactValue = styled.div<{ $color?: string }>`
-  font-size: clamp(28px, 3.5vw, 42px);
+  font-size: clamp(28px, 3.5vw, 45px);
   font-weight: 800;
   letter-spacing: -0.03em;
   color: ${({ $color }) => $color || theme.colors.black};
@@ -184,7 +184,7 @@ const ImpactLabel = styled.div`
 `
 
 const ImpactSub = styled.div`
-  font-size: 12px;
+  font-size: 13px;
   color: ${theme.colors.gray500};
   line-height: 1.5;
 `
@@ -207,8 +207,8 @@ const ContextBox = styled.div`
   border-right: 1px solid ${theme.colors.gray200};
   &:last-child { border-right: none; }
 
-  .label { font-size: 14px; font-weight: 700; margin-bottom: 14px; }
-  p { font-size: 13px; color: ${theme.colors.gray600}; line-height: 1.85; }
+  .label { font-size: 15px; font-weight: 700; margin-bottom: 14px; }
+  p { font-size: 14px; color: ${theme.colors.gray600}; line-height: 1.85; }
 `
 
 /* ════════════════════════════════
@@ -236,13 +236,13 @@ const ApproachStep = styled.div`
     border-radius: 50%;
     background: ${theme.colors.black};
     color: white;
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 700;
     display: flex; align-items: center; justify-content: center;
     margin: 0 auto 12px;
   }
-  .title { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
-  .desc  { font-size: 11px; color: ${theme.colors.gray500}; line-height: 1.5; }
+  .title { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+  .desc  { font-size: 14px; color: ${theme.colors.gray500}; line-height: 1.5; }
 `
 
 /* ════════════════════════════════
@@ -259,14 +259,14 @@ const DecisionHeader = styled.div`
   margin-bottom: 20px;
 
   .area {
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 700;
     color: ${theme.colors.accent};
     background: rgba(255,50,41,0.08);
     padding: 3px 10px;
     border-radius: 100px;
   }
-  .title { font-size: 17px; font-weight: 700; }
+  .title { font-size: 16px; font-weight: 700; }
 `
 
 const DecisionItems = styled.div`
@@ -281,7 +281,7 @@ const DecisionItem = styled.div`
   border-bottom: 1px solid ${theme.colors.gray200};
 
   .badge {
-    font-size: 10px;
+    font-size: 13px;
     font-weight: 700;
     padding: 3px 8px;
     border-radius: 100px;
@@ -290,7 +290,7 @@ const DecisionItem = styled.div`
     display: inline-block;
     width: fit-content;
   }
-  p { font-size: 13px; color: ${theme.colors.gray600}; line-height: 1.8; }
+  p { font-size: 14px; color: ${theme.colors.gray600}; line-height: 1.8; }
 `
 
 /* ════════════════════════════════
@@ -302,9 +302,9 @@ const ZoneSection = styled.div`
 
 const ZoneHeader = styled.div`
   margin-bottom: 16px;
-  .zone  { font-size: 11px; font-weight: 700; color: ${theme.colors.accent}; margin-bottom: 6px; }
+  .zone  { font-size: 13px; font-weight: 700; color: ${theme.colors.accent}; margin-bottom: 6px; }
   .title { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
-  .desc  { font-size: 13px; color: ${theme.colors.gray600}; line-height: 1.7; }
+  .desc  { font-size: 14px; color: ${theme.colors.gray600}; line-height: 1.7; }
 `
 
 const CheckerImage = styled.div`
@@ -332,8 +332,8 @@ const ReflectionGrid = styled.div`
 `
 
 const ReflectionItem = styled.div`
-  .title { font-size: 14px; font-weight: 700; margin-bottom: 10px; }
-  p { font-size: 13px; color: ${theme.colors.gray600}; line-height: 1.8; }
+  .title { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+  p { font-size: 14px; color: ${theme.colors.gray600}; line-height: 1.8; }
 `
 
 /* ════════════════════════════════
@@ -363,7 +363,7 @@ const NavItem = styled(Link)<{ $align?: 'left' | 'right' }>`
   text-align: ${({ $align }) => ($align === 'right' ? 'right' : 'left')};
 
   .dir {
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;

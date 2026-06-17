@@ -37,7 +37,7 @@ const PostRow = styled(Link)`
 `
 const Tag = styled.span`
   display: inline-block;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   color: ${theme.colors.accent};
   background: rgba(255, 50, 41, 0.08);
@@ -65,7 +65,7 @@ const Meta = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 12px;
+  font-size: 13px;
   color: ${theme.colors.gray500};
 `
 const Dot = styled.span`color: ${theme.colors.gray300};`

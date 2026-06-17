@@ -33,7 +33,7 @@ const LogoWrap = styled(Link)`
 `
 const Copy = styled.p`
   color: rgba(255, 255, 255, 0.75);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.01em;
   line-height: 1.5;
 `;

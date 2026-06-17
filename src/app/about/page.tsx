@@ -96,7 +96,7 @@ const NameRow = styled.div`
   flex-wrap: wrap;
 `
 const NameText = styled.h2`
-  font-size: 38px;
+  font-size: 28px;
   font-weight: 700;
   color: #0f0f0e;
   letter-spacing: -0.76px;
@@ -130,7 +130,7 @@ const Skill = styled.span`
 
 /* ── Value Cards (2×2) ── */
 const SectionTitle = styled.h2`
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 700;
   color: #0f0f0e;
   letter-spacing: -0.48px;
@@ -172,13 +172,13 @@ const ValTitle = styled.div`
   letter-spacing: -0.32px;
 `
 const ValDesc = styled.div`
-  font-size: 13px;
+  font-size: 14px;
   color: #5c5b56;
   line-height: 1.6;
   margin-bottom: 12px;
 `
 const ValPill = styled.span`
-  font-size: 12px;
+  font-size: 14px;
   color: #ff5229;
   font-weight: 600;
 `
@@ -195,7 +195,7 @@ const ProjectRow = styled.div`
   @media (max-width: ${theme.breakpoints.md}) { grid-template-columns: 1fr; gap: 12px; }
 `
 const ProjName = styled.div`
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 700;
   color: #0f0f0e;
   margin-bottom: 4px;
@@ -204,7 +204,7 @@ const ProjName = styled.div`
   transition: color 0.15s;
 `
 const ProjCat = styled.div`
-  font-size: 13px;
+  font-size: 14px;
   color: #9a9890;
   margin-bottom: 8px;
 `
@@ -214,7 +214,7 @@ const ProjChipsRow = styled.div`
   flex-wrap: wrap;
 `
 const ProjChip = styled.span`
-  font-size: 12px;
+  font-size: 13px;
   color: #5c5b56;
   background: #fafaf9;
   border: 1px solid #e8e6e0;
@@ -236,13 +236,13 @@ const ProjKPI = styled.div`
   flex-shrink: 0;
 `
 const KPIValue = styled.div`
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
   color: #ff5229;
   letter-spacing: -0.4px;
 `
 const KPILabel = styled.div`
-  font-size: 13px;
+  font-size: 14px;
   color: #5c5b56;
 `
 
@@ -275,7 +275,7 @@ const TeamTitle = styled.div`
   margin-bottom: 8px;
 `
 const TeamDesc = styled.div`
-  font-size: 13px;
+  font-size: 14px;
   color: #5c5b56;
   line-height: 20px;
 `
@@ -288,13 +288,13 @@ const CtaBlock = styled.div`
   @media (max-width: ${theme.breakpoints.sm}) { padding: 36px 24px; }
 `
 const CtaLabel = styled.div`
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   color: #ff5229;
   margin-bottom: 16px;
 `
 const CtaTitle = styled.h2`
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 700;
   color: white;
   line-height: 1.4;
@@ -306,7 +306,7 @@ const CtaBullets = styled.ul`
   margin-bottom: 24px;
 `
 const CtaBullet = styled.li`
-  font-size: 13px;
+  font-size: 14px;
   color: rgba(255, 255, 255, 0.65);
   line-height: 1.8;
   &::before {

@@ -61,7 +61,7 @@ const HeroTitle = styled.h1`
   max-width: 560px;
 
   @media (max-width: ${theme.breakpoints.md}) {
-    font-size: clamp(28px, 5vw, 45px);
+    font-size: clamp(32px, 5vw, 45px);
   }
 `;
 
@@ -121,7 +121,7 @@ const ValueSection = styled.section`
 
 const ValueHeading = styled.h2`
   text-align: center;
-  font-size: clamp(28px, 3.5vw, 45px);
+  font-size: clamp(32px, 3.5vw, 45px);
   font-weight: 800;
   letter-spacing: -0.5px;
   line-height: 1.18;
@@ -161,7 +161,7 @@ const ValueCardLetter = styled.div`
   font-size: 15px;
   font-weight: 600;
   color: ${theme.colors.black};
-  text-align: center;
+  text-align: left;
   width: 100%;
 `;
 
@@ -235,16 +235,16 @@ const WorksMeta = styled.div`
 
 const WorksMetaTitle = styled.div`
   font-size: 28px;
-  font-weight: 600;
+  font-weight: 700;
   color: #343a40;
   letter-spacing: -0.4px;
   line-height: 1.4;
 `;
 
 const WorksMetaSub = styled.div`
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
-  color: #343a40;
+  color: #495057;
   letter-spacing: -0.4px;
   line-height: 1.6;
 `;
@@ -275,9 +275,10 @@ const WorksMetaTags = styled.div`
 
 const WorksTag = styled(Link)`
   font-size: 16px;
-  color: #343a40;
+  color: #6c6e70;
   letter-spacing: -0.4px;
-  line-height: 1.6;
+  line-height: 2;
+  text-decoration: underline;
   &:hover {
     color: ${theme.colors.black};
   }
@@ -338,7 +339,7 @@ const ProjName = styled.div`
 `;
 
 const ProjDesc = styled.div`
-  font-size: 13px;
+  font-size: 14px;
   color: #868e96;
   letter-spacing: -0.3px;
   line-height: 1.45;
@@ -391,7 +392,10 @@ const ArrowBtn = styled.button`
   background: white;
   color: ${theme.colors.black};
   font-size: 16px;
-  transition: border-color 0.2s, color 0.2s, opacity 0.2s;
+  transition:
+    border-color 0.2s,
+    color 0.2s,
+    opacity 0.2s;
 
   &:hover:not(:disabled) {
     border-color: ${theme.colors.accent};
@@ -494,16 +498,17 @@ const CaseMeta = styled.div`
 
 const CaseMetaKo = styled.div`
   font-size: 28px;
-  font-weight: 600;
+  font-weight: 700;
   color: #343a40;
   letter-spacing: -0.4px;
   line-height: 1.4;
+  margin-bottom: 12px;
 `;
 
 const CaseMetaEn = styled.div`
-  font-size: 20px;
-  font-weight: 600;
-  color: #343a40;
+  font-size: 18px;
+  font-weight: 700;
+  color: #495057;
   letter-spacing: -0.4px;
   line-height: 1.7;
   margin-top: -12px;
@@ -588,10 +593,7 @@ const WORKS_PER_PAGE = 2;
 export default function Home() {
   const [worksPage, setWorksPage] = useState(0);
   const totalWorksPages = Math.ceil(worksProjects.length / WORKS_PER_PAGE);
-  const visibleWorks = worksProjects.slice(
-    worksPage * WORKS_PER_PAGE,
-    worksPage * WORKS_PER_PAGE + WORKS_PER_PAGE
-  );
+  const visibleWorks = worksProjects.slice(worksPage * WORKS_PER_PAGE, worksPage * WORKS_PER_PAGE + WORKS_PER_PAGE);
 
   return (
     <>
@@ -662,7 +664,11 @@ export default function Home() {
           <WorksInner>
             <WorksRow>
               <WorksMeta>
-                <WorksMetaTitle>복잡함을<br />구조로</WorksMetaTitle>
+                <WorksMetaTitle>
+                  복잡함을
+                  <br />
+                  구조로
+                </WorksMetaTitle>
                 <WorksMetaSub>From Complex To Simple</WorksMetaSub>
                 <WorksMetaDesc>B2B·B2C 서비스부터 디자인 시스템까지, 문제를 구조로 푼 프로젝트</WorksMetaDesc>
                 <WorksMetaTags>
@@ -672,10 +678,10 @@ export default function Home() {
                     </WorksTag>
                   ))}
                 </WorksMetaTags>
-                   <ViewMoreBtn href="/works" style={{ marginTop: 24 }}>
-                View More
-                <ViewMoreCircle>→</ViewMoreCircle>
-              </ViewMoreBtn>
+                <ViewMoreBtn href="/works" style={{ marginTop: 24 }}>
+                  View More
+                  <ViewMoreCircle>→</ViewMoreCircle>
+                </ViewMoreBtn>
               </WorksMeta>
 
               <WorksCarousel key={worksPage}>
@@ -695,8 +701,6 @@ export default function Home() {
             </WorksRow>
 
             <WorksBottom>
-              
-
               {totalWorksPages > 1 ? (
                 <CarouselNav>
                   <ArrowBtn
@@ -722,8 +726,6 @@ export default function Home() {
               ) : (
                 <span />
               )}
-
-             
             </WorksBottom>
           </WorksInner>
         </Container>

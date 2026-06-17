@@ -17,14 +17,14 @@ const Breadcrumb = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 12px;
+  font-size: 13px;
   color: ${theme.colors.gray500};
   margin-bottom: 24px;
   a:hover { color: ${theme.colors.black}; }
 `
 const PostTag = styled.span`
   display: inline-block;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   color: ${theme.colors.accent};
   background: rgba(255, 50, 41, 0.08);
@@ -125,7 +125,7 @@ const Callout = styled.div`
   margin: 28px 0;
 `
 const CalloutLabel = styled.div`
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -133,7 +133,7 @@ const CalloutLabel = styled.div`
   margin-bottom: 14px;
 `
 const CalloutLine = styled.div`
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.7;
   color: ${theme.colors.gray700};
   padding-left: 16px;
@@ -231,7 +231,7 @@ const MoreCard = styled(Link)`
   padding: 18px 0;
   border-top: 1px solid ${theme.colors.gray200};
   &:hover .t { color: ${theme.colors.accent}; }
-  .tag { font-size: 12px; color: ${theme.colors.accent}; font-weight: 600; }
+  .tag { font-size: 13px; color: ${theme.colors.accent}; font-weight: 600; }
   .t { font-size: 17px; font-weight: 700; color: ${theme.colors.black}; margin: 6px 0 4px; transition: color 0.2s; }
   .d { font-size: 12px; color: ${theme.colors.gray500}; }
 `

@@ -77,7 +77,7 @@ const DiffLabel = styled.div`
   margin-bottom: 10px;
 `;
 const DiffTitle = styled.div`
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
   color: #0f0f0e;
   line-height: 1.4;
@@ -85,7 +85,7 @@ const DiffTitle = styled.div`
   margin-bottom: 10px;
 `;
 const DiffDesc = styled.div`
-  font-size: 13px;
+  font-size: 14px;
   color: #5c5b56;
   line-height: 1.6;
   margin-bottom: 16px;
@@ -125,7 +125,7 @@ const StepsLeft = styled.div`
   }
 `;
 const StepsLeftTitle = styled.h2`
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 700;
   color: #0f0f0e;
   letter-spacing: -0.48px;
@@ -157,7 +157,7 @@ const StepItem = styled.div`
   align-items: flex-start;
 `;
 const StepNum = styled.div`
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   color: #ff5229;
   width: 20px;
@@ -173,7 +173,7 @@ const StepName = styled.div`
   margin-bottom: 4px;
 `;
 const StepDesc = styled.div`
-  font-size: 13px;
+  font-size: 14px;
   color: #5f5f5f;
   line-height: 1.6;
 `;
@@ -195,7 +195,7 @@ const TableHeader = styled.div`
 `;
 const TableHeaderCell = styled.div`
   padding: 12px 24px;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   color: #9a9890;
 `;
@@ -231,7 +231,7 @@ const StepCellName = styled.div`
   color: #1a1a18;
 `;
 const GenericCell = styled(TableCell)`
-  color: #9a9890;
+  color: #726f6f;
 `;
 const PillLink = styled(Link)`
   display: inline-flex;
@@ -243,9 +243,12 @@ const PillLink = styled(Link)`
   padding: 4px 12px;
   font-size: 14px;
   color: #1a1a18;
+  font-weight: 600;
   margin-left: 8px;
+  border: 1px solid transparent;
   &:hover {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    border: 1px solid #efefef;
   }
 `;
 
@@ -280,7 +283,7 @@ const ProjCatLabel = styled.div`
   margin-bottom: 8px;
 `;
 const ProjName = styled.div`
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
   color: #0f0f0e;
   letter-spacing: -0.4px;
@@ -288,7 +291,7 @@ const ProjName = styled.div`
   margin-bottom: 8px;
 `;
 const ProjDesc = styled.div`
-  font-size: 13px;
+  font-size: 14px;
   color: #5c5b56;
   line-height: 1.6;
   flex: 1;
@@ -317,7 +320,7 @@ const CtaBlock = styled.div`
   }
 `;
 const CtaLabel = styled.div`
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   color: #ff5229;
   margin-bottom: 16px;
