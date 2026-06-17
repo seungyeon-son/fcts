@@ -361,20 +361,25 @@ const ZoneHeader = styled.div`
   }
 `;
 
-const CheckerImage = styled.div`
+const CheckerImage = styled.div<{ $img?: string }>`
   width: 100%;
   aspect-ratio: 16/9;
   border-radius: 6px;
-  background-image:
-    linear-gradient(45deg, #e4e4e4 25%, transparent 25%), linear-gradient(-45deg, #e4e4e4 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, #e4e4e4 75%), linear-gradient(-45deg, transparent 75%, #e4e4e4 75%);
-  background-size: 20px 20px;
-  background-position:
-    0 0,
-    0 10px,
-    10px -10px,
-    -10px 0;
-  background-color: #f5f5f5;
+  overflow: hidden;
+  ${({ $img }) =>
+    $img
+      ? `
+        background: url(${$img}) center/cover no-repeat;
+        background-color: #f5f5f5;
+      `
+      : `
+        background-image:
+          linear-gradient(45deg, #e4e4e4 25%, transparent 25%), linear-gradient(-45deg, #e4e4e4 25%, transparent 25%),
+          linear-gradient(45deg, transparent 75%, #e4e4e4 75%), linear-gradient(-45deg, transparent 75%, #e4e4e4 75%);
+        background-size: 20px 20px;
+        background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+        background-color: #f5f5f5;
+      `};
 `;
 
 /* ════════════════════════════════
@@ -476,16 +481,6 @@ const NavAll = styled(Link)`
 `;
 
 /* ════════════════════════════════
-   DATA
-════════════════════════════════ */
-const coverImages: Record<string, string> = {
-  "global-credit-bank": "",
-  "humanities-lecture": "",
-  "b2b-design-system": "",
-  "mlops-b2b-dashboard": "",
-};
-
-/* ════════════════════════════════
    PAGE
 ════════════════════════════════ */
 export default function WorkDetailPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -548,7 +543,7 @@ export default function WorkDetailPage({ params }: { params: Promise<{ slug: str
               </InfoGrid>
             </HeroLeft>
 
-            <HeroImage $img={coverImages[project.slug]} />
+            <HeroImage $img={project.coverImage} />
           </HeroLayout>
         </Container>
       </Hero>
@@ -641,7 +636,7 @@ export default function WorkDetailPage({ params }: { params: Promise<{ slug: str
                 <div className="title">{zone.title}</div>
                 <div className="desc">{zone.desc}</div>
               </ZoneHeader>
-              <CheckerImage />
+              <CheckerImage $img={zone.image} />
             </ZoneSection>
           ))}
         </Container>

@@ -25,7 +25,7 @@ export type Project = {
     areaTitle: string;
     items: { icon: string; title: string; body: string }[];
   }[];
-  designHighlights: { zone: string; title: string; desc: string }[];
+  designHighlights: { zone: string; title: string; desc: string; image?: string }[];
   reflection: { title: string; body: string }[];
 };
 
@@ -120,16 +120,19 @@ export const projects: Project[] = [
         zone: "Zone 1",
         title: "Discover — 나에게 맞는 과목 찾기",
         desc: "사용자 목표(취득 학위)를 입력하면 필요 과목을 자동 추천하는 퍼스널라이즈드 플로우를 설계했습니다.",
+        image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1200&q=75",
       },
       {
         zone: "Zone 2",
         title: "학습 — 완강률을 높이는 학습 경험",
         desc: "강의 페이지 내 진도 시각화와 학점 누적 현황 위젯을 배치해 동기 부여를 강화했습니다.",
+        image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&q=75",
       },
       {
         zone: "Zone 3",
         title: "결제 — 신뢰 기반 전환 설계",
         desc: "가격 투명성과 환불 정책을 결제 화면에 선명하게 노출해 이탈률을 낮췄습니다.",
+        image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&q=75",
       },
     ],
     reflection: [
@@ -237,16 +240,19 @@ export const projects: Project[] = [
         zone: "강의 목록 (강의 목록)",
         title: "코스 구조 시각화",
         desc: "전체 커리큘럼을 타임라인 형태로 표현해 학습 여정 전체를 한눈에 파악할 수 있도록 했습니다.",
+        image: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=1200&q=75",
       },
       {
         zone: "강의 1강",
         title: "완강 의식 설계",
         desc: "각 강의 완료 시 성취 애니메이션과 다음 강의 예고로 이어지는 서사적 경험을 만들었습니다.",
+        image: "https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?w=1200&q=75",
       },
       {
         zone: "수강 신청",
         title: "수강 전환 설계",
         desc: "체험 강의 → 수강 신청 → 결제의 3단계 퍼널을 최소화하고 각 단계의 가치를 명확히 전달했습니다.",
+        image: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=1200&q=75",
       },
     ],
     reflection: [
@@ -354,16 +360,19 @@ export const projects: Project[] = [
         zone: "SDT 디자인 시스템 — 1단계 토큰",
         title: "토큰 기반 Foundation",
         desc: "Color, Spacing, Typography, Radius 토큰을 Figma Variables로 정의해 라이트/다크 모드를 단일 컴포넌트로 지원했습니다.",
+        image: "https://images.unsplash.com/photo-1502691876148-a84978e59af8?w=1200&q=75",
       },
       {
         zone: "SDT 컴포넌트 — Atomic Design",
         title: "Atomic 컴포넌트 구조",
         desc: "Button, Input, Badge 등 30개 원자 컴포넌트를 기반으로 Form, Card, Table 등 18개 분자 컴포넌트를 조립했습니다.",
+        image: "https://images.unsplash.com/photo-1545235617-9465d2a55698?w=1200&q=75",
       },
       {
         zone: "운영 프로세스",
         title: "기여 & 변경 관리 프로세스",
         desc: "새 컴포넌트 제안부터 리뷰, 머지, 배포까지의 프로세스를 문서화해 DS를 살아있는 시스템으로 운영했습니다.",
+        image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&q=75",
       },
     ],
     reflection: [
@@ -479,16 +488,19 @@ export const projects: Project[] = [
         zone: "MLOps — 노드 그래프",
         title: "파이프라인 노드 그래프",
         desc: "4단계 MLOps 파이프라인을 방향성 그래프(DAG)로 시각화하여 데이터 흐름과 실행 상태를 단일 화면에서 파악할 수 있게 했습니다.",
+        image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=75",
       },
       {
         zone: "실시간 알림 패널",
         title: "실시간 모니터링 패널",
         desc: "오류 발생 시 해당 노드가 붉은색으로 강조되고, 사이드 패널에 로그와 수정 가이드가 자동으로 표시됩니다.",
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=75",
       },
       {
         zone: "데이터 수준 정보",
         title: "계층적 데이터 뷰",
         desc: "파이프라인 → 스테이지 → 태스크 → 로그 순으로 드릴다운하는 계층 탐색 구조를 설계했습니다.",
+        image: "https://images.unsplash.com/photo-1597733336794-12d05021d510?w=1200&q=75",
       },
     ],
     reflection: [
