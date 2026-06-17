@@ -337,6 +337,68 @@ const ReflectionItem = styled.div`
 `
 
 /* ════════════════════════════════
+   PROJECT NAV (prev / all / next)
+════════════════════════════════ */
+const ProjectNav = styled.nav`
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 20px;
+  border-top: 1px solid ${theme.colors.gray200};
+  padding-top: 28px;
+
+  @media (max-width: ${theme.breakpoints.sm}) {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    gap: 16px;
+  }
+`
+
+const NavItem = styled(Link)<{ $align?: 'left' | 'right' }>`
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-self: ${({ $align }) => ($align === 'right' ? 'end' : 'start')};
+  text-align: ${({ $align }) => ($align === 'right' ? 'right' : 'left')};
+
+  .dir {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: ${theme.colors.gray500};
+  }
+  .name {
+    font-size: 15px;
+    font-weight: 700;
+    color: ${theme.colors.black};
+    transition: color 0.2s;
+  }
+  &:hover .name { color: ${theme.colors.accent}; }
+
+  @media (max-width: ${theme.breakpoints.sm}) {
+    justify-self: center;
+    text-align: center;
+  }
+`
+
+const NavAll = styled(Link)`
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border: 1px solid ${theme.colors.gray200};
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 600;
+  color: ${theme.colors.black};
+  white-space: nowrap;
+  transition: border-color 0.2s, color 0.2s;
+  &:hover { border-color: ${theme.colors.accent}; color: ${theme.colors.accent}; }
+`
+
+/* ════════════════════════════════
    DATA
 ════════════════════════════════ */
 const coverImages: Record<string, string> = {
@@ -519,23 +581,27 @@ export default function WorkDetailPage({ params }: { params: Promise<{ slug: str
         </Container>
       </Section>
 
-      {/* Next Project Nav */}
+      {/* Project Nav: prev / all / next */}
       <Section>
         <Container>
-          <div className="flex items-center justify-between border-t border-gray-200 pt-6">
-            <Link href="/works" className="text-sm text-[#999] hover:text-black transition-colors">
-              ← 모든 프로젝트 보기
-            </Link>
-            {(() => {
-              const idx = projects.findIndex((p) => p.slug === slug)
-              const next = projects[(idx + 1) % projects.length]
-              return (
-                <Link href={`/works/${next.slug}`} className="text-sm font-semibold hover:text-[#FF3229] transition-colors">
-                  다음 프로젝트: {next.subtitle} →
-                </Link>
-              )
-            })()}
-          </div>
+          {(() => {
+            const idx = projects.findIndex((p) => p.slug === slug)
+            const prev = projects[(idx - 1 + projects.length) % projects.length]
+            const next = projects[(idx + 1) % projects.length]
+            return (
+              <ProjectNav>
+                <NavItem href={`/works/${prev.slug}`} $align="left">
+                  <span className="dir">← 이전 프로젝트</span>
+                  <span className="name">{prev.subtitle}</span>
+                </NavItem>
+                <NavAll href="/works">전체 프로젝트 보기</NavAll>
+                <NavItem href={`/works/${next.slug}`} $align="right">
+                  <span className="dir">다음 프로젝트 →</span>
+                  <span className="name">{next.subtitle}</span>
+                </NavItem>
+              </ProjectNav>
+            )
+          })()}
         </Container>
       </Section>
     </>

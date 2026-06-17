@@ -33,23 +33,24 @@ const CategoryRow = styled.div`
 const CategoryMeta = styled.div``
 
 const CategoryTitle = styled.div`
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 800;
   color: ${theme.colors.black};
   margin-bottom: 4px;
 `
 
 const CategorySub = styled.div`
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 700;
+  line-height: 1.5;
   color: ${theme.colors.black};
-  margin-bottom: 8px;
+  margin-bottom: 16px;
 `
 
 const CategoryDesc = styled.div`
-  font-size: 12px;
+  font-size: 14px;
   color: ${theme.colors.gray500};
-  line-height: 1.7;
+  line-height: 1.375;
   margin-bottom: 16px;
 `
 
@@ -60,7 +61,7 @@ const CategoryTags = styled.div`
 `
 
 const CategoryTag = styled(Link)`
-  font-size: 11px;
+  font-size: 13px;
   color: ${theme.colors.gray500};
   text-decoration: underline;
   text-underline-offset: 2px;
@@ -101,7 +102,7 @@ const CardLabel = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 10px 14px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   color: ${theme.colors.black};
 `
@@ -120,10 +121,10 @@ const projectImages: Record<string, string> = {
 }
 
 const categoryMeta: Record<string, { sub: string; desc: string }> = {
-  'B2B UX Service':       { sub: 'Sub Title', desc: '설명 설명 있습니다. 설명 설명 있습니다. 설명 설명 있습니다. 설명 설명 있습니다.' },
-  'B2C UX Service':       { sub: 'Sub Title', desc: '설명 설명 있습니다. 설명 설명 있습니다. 설명 설명 있습니다. 설명 설명 있습니다.' },
-  'Web Service':          { sub: 'Sub Title', desc: '설명 설명 있습니다. 설명 설명 있습니다. 설명 설명 있습니다. 설명 설명 있습니다.' },
-  'UX Planning/Branding': { sub: 'Sub Title', desc: '설명 설명 있습니다. 설명 설명 있습니다. 설명 설명 있습니다. 설명 설명 있습니다.' },
+  'B2B UX Service':       { sub: '복잡한 도메인을 단순하게', desc: '대시보드·디자인 시스템·서비스 설계까지, 복잡한 B2B 데이터를 명료한 구조로 푸는 프로젝트' },
+  'B2C UX Service':       { sub: '끝까지 남는 경험', desc: '학습 지속성과 전환율을 끌어올리는, 사용자 동기 중심의 B2C 서비스 프로젝트' },
+  'Web Service':          { sub: '브라우저에서 완결되는 흐름', desc: '랜딩부터 전환까지 한 페이지에서 끝나는 웹 서비스 프로젝트' },
+  'UX Planning/Branding': { sub: '화면 이전의 설계', desc: '문제 정의와 브랜드 톤부터 잡는, 기획·브랜딩 중심 프로젝트' },
 }
 
 const categories = ['B2B UX Service', 'B2C UX Service', 'Web Service', 'UX Planning/Branding'] as const
@@ -161,7 +162,7 @@ export default function WorksPage() {
                       <ProjectCard key={p.slug} href={`/works/${p.slug}`}>
                         <CardImage className="img" $img={projectImages[p.slug]} />
                         <CardLabel>
-                          project
+                          {p.subtitle}
                           <CardArrow>→</CardArrow>
                         </CardLabel>
                       </ProjectCard>
