@@ -59,8 +59,6 @@ const MetaDot = styled.span`color: ${theme.colors.gray300};`
 
 /* ── Article body ── */
 const Article = styled.article`
-  max-width: 720px;
-  margin: 0 auto;
   padding: 56px 0 24px;
 `
 const Lead = styled.p`
@@ -213,10 +211,7 @@ const RelatedWork = styled(Link)`
 
 /* ── Footer nav / more posts ── */
 const FootNav = styled.div`
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 40px 0 80px;
-  border-top: 1px solid ${theme.colors.gray200};
+  padding: 80px 0;
 `
 const MoreTitle = styled.div`
   font-size: 13px;

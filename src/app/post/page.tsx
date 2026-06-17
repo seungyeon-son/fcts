@@ -24,8 +24,6 @@ const PageSub = styled.p`
 `
 
 const List = styled.div`
-  max-width: 800px;
-  margin: 0 auto;
   padding: 8px 0 96px;
 `
 const PostRow = styled(Link)`

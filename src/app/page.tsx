@@ -428,8 +428,12 @@ const ViewMoreBtn = styled(Link)`
   transition: background 0.15s;
   white-space: nowrap;
   width: fit-content;
+  height: 44px;
   &:hover {
     background: rgba(211, 211, 211, 0.4);
+  }
+  &:hover span {
+    color: ${theme.colors.accent};
   }
 `;
 
@@ -439,6 +443,8 @@ const ViewMoreCircle = styled.span`
   top: 0;
   bottom: 0;
   width: 44px;
+  height: 44px;
+  border: 1px solid ${theme.colors.gray100};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -532,6 +538,7 @@ const ArticleCard = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 12px;
   box-shadow: 0 2px 15px -2px rgba(0, 0, 0, 0.1);
 `;
@@ -541,9 +548,10 @@ const ArticleTag = styled.span`
   font-size: 14px;
   color: #343a40;
   background: #f6f6ee;
-  padding: 2px 10px;
+  padding: 8px 14px;
   border-radius: 100px;
   letter-spacing: -0.4px;
+  width: fit-content;
 `;
 
 const ArticleTitle = styled.div`
@@ -552,7 +560,6 @@ const ArticleTitle = styled.div`
   color: #212529;
   line-height: 1.45;
   letter-spacing: -0.4px;
-  padding-bottom: 8px;
 `;
 
 const ArticleDivider = styled.div`
@@ -561,9 +568,8 @@ const ArticleDivider = styled.div`
 `;
 
 const ArticleDate = styled.div`
-  font-size: 16px;
-  color: #212529;
-  padding-top: 7px;
+  font-size: 14px;
+  color: #505357;
   letter-spacing: -0.4px;
 `;
 
