@@ -13,7 +13,7 @@ export const theme = {
     green: '#22C55E',
   },
   fonts: {
-    sans: "'Pretendard', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+    sans: "'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, 'Segoe UI', sans-serif",
   },
   breakpoints: {
     sm: '640px',
