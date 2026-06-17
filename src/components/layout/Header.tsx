@@ -87,6 +87,17 @@ const ContactCircle = styled.span`
   transition: background 0.15s;
 `;
 
+// 도메인(배포)별 GNB 분기
+// NEXT_PUBLIC_SITE_VARIANT=team  → Process 사이트 (팀 소개)
+// 그 외(기본)                    → About 사이트 (개인 이력서)
+const SITE_VARIANT =
+  process.env.NEXT_PUBLIC_SITE_VARIANT === "team" ? "team" : "personal";
+
+const leadLink =
+  SITE_VARIANT === "team"
+    ? { href: "/process", label: "Process" }
+    : { href: "/about", label: "About" };
+
 export default function Header() {
   const pathname = usePathname();
 
@@ -99,14 +110,11 @@ export default function Header() {
             <img src="/img/logo.svg" alt="FCTS design studio" width={76} height={42} />
           </LogoWrap>
           <NavLinks>
-            <NavLink href="/about" $active={pathname === "/about"}>
-              About
+            <NavLink href={leadLink.href} $active={pathname === leadLink.href}>
+              {leadLink.label}
             </NavLink>
             <NavLink href="/works" $active={pathname.startsWith("/works")}>
               Works
-            </NavLink>
-            <NavLink href="/process" $active={pathname === "/process"}>
-              Process
             </NavLink>
             <NavLink href="/post" $active={pathname.startsWith("/post")}>
               Note
