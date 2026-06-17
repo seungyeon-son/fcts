@@ -3,6 +3,7 @@
 import Link from "next/link";
 import styled from "styled-components";
 import { theme } from "@/styles/theme";
+import { LOGO_SRC } from "@/lib/site";
 
 const FooterWrap = styled.footer`
   background: ${theme.colors.black};
@@ -30,8 +31,13 @@ const LogoWrap = styled(Link)`
   flex-direction: column;
   gap: 10px;
   line-height: 1;
+  img {
+    width: 76px;
+    height: 42px;
+  }
   @media (max-width: ${theme.breakpoints.sm}) {
     align-items: center;
+    height: 28px;
   }
 `;
 const Copy = styled.p`
@@ -69,7 +75,7 @@ export default function Footer() {
         <LogoWrap href="/">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/img/logo.svg"
+            src={LOGO_SRC}
             alt="FCTS design studio"
             width={76}
             height={42}
