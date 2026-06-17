@@ -82,7 +82,7 @@ export default function PostListPage() {
     <>
       <PageHead>
         <Container>
-          <PageTitle>Post</PageTitle>
+          <PageTitle>Note</PageTitle>
           <PageSub>
             Research and Insight — 작업하며 남긴 생각과 기록.<br />
             결과물이 아니라 결정의 과정을 담았습니다.

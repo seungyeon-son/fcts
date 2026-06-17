@@ -109,7 +109,7 @@ export default function Header() {
               Process
             </NavLink>
             <NavLink href="/post" $active={pathname.startsWith("/post")}>
-              Post
+              Note
             </NavLink>
             <ContactWrap href="mailto:au1gust8@gmail.com">
               Contact
