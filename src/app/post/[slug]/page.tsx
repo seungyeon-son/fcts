@@ -1,18 +1,18 @@
-'use client'
+"use client";
 
-import { notFound } from 'next/navigation'
-import Link from 'next/link'
-import styled from 'styled-components'
-import { use } from 'react'
-import { theme } from '@/styles/theme'
-import { Container } from '@/styles/styled'
-import { getPost, researchPosts, type PostBlock } from '@/data/posts'
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import styled from "styled-components";
+import { use } from "react";
+import { theme } from "@/styles/theme";
+import { Container } from "@/styles/styled";
+import { getPost, researchPosts, type PostBlock } from "@/data/posts";
 
 /* ── Hero ── */
 const Hero = styled.div`
   padding: 64px 0 36px;
   border-bottom: 1px solid ${theme.colors.gray200};
-`
+`;
 const Breadcrumb = styled.div`
   display: flex;
   align-items: center;
@@ -20,8 +20,10 @@ const Breadcrumb = styled.div`
   font-size: 13px;
   color: ${theme.colors.gray500};
   margin-bottom: 24px;
-  a:hover { color: ${theme.colors.black}; }
-`
+  a:hover {
+    color: ${theme.colors.black};
+  }
+`;
 const PostTag = styled.span`
   display: inline-block;
   font-size: 13px;
@@ -31,56 +33,58 @@ const PostTag = styled.span`
   padding: 4px 12px;
   border-radius: 100px;
   margin-bottom: 18px;
-`
+`;
 const PostTitle = styled.h1`
-  font-size: clamp(28px, 4vw, 44px);
+  font-size: clamp(24px, 4vw, 40px);
   font-weight: 800;
   line-height: 1.25;
   letter-spacing: -0.025em;
   color: ${theme.colors.black};
   max-width: 760px;
   margin-bottom: 18px;
-`
+`;
 const PostExcerpt = styled.p`
   font-size: 16px;
   color: ${theme.colors.gray600};
   line-height: 1.8;
   max-width: 720px;
   margin-bottom: 22px;
-`
+`;
 const PostMeta = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
   font-size: 13px;
   color: ${theme.colors.gray500};
-`
-const MetaDot = styled.span`color: ${theme.colors.gray300};`
+`;
+const MetaDot = styled.span`
+  color: ${theme.colors.gray300};
+`;
 
 /* ── Article body ── */
 const Article = styled.article`
   padding: 56px 0 24px;
-`
+`;
 const Lead = styled.p`
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
   line-height: 1.85;
   color: ${theme.colors.gray700};
   margin-bottom: 12px;
-`
+`;
 const H2 = styled.h2`
   font-size: 22px;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: ${theme.colors.black};
   margin: 44px 0 16px;
-`
+`;
 const P = styled.p`
   font-size: 16px;
   line-height: 1.9;
   color: ${theme.colors.gray700};
   margin-bottom: 18px;
-`
+`;
 const Quote = styled.blockquote`
   border-left: 3px solid ${theme.colors.accent};
   padding: 6px 0 6px 20px;
@@ -90,7 +94,7 @@ const Quote = styled.blockquote`
   line-height: 1.7;
   letter-spacing: -0.01em;
   color: ${theme.colors.black};
-`
+`;
 const Ul = styled.ul`
   margin: 8px 0 22px;
   padding: 0;
@@ -98,7 +102,7 @@ const Ul = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 12px;
-`
+`;
 const Li = styled.li`
   position: relative;
   padding-left: 22px;
@@ -106,7 +110,7 @@ const Li = styled.li`
   line-height: 1.8;
   color: ${theme.colors.gray700};
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     left: 4px;
     top: 13px;
@@ -115,13 +119,13 @@ const Li = styled.li`
     border-radius: 50%;
     background: ${theme.colors.accent};
   }
-`
+`;
 const Callout = styled.div`
   background: ${theme.colors.gray100};
   border-radius: 10px;
   padding: 24px 26px;
   margin: 28px 0;
-`
+`;
 const CalloutLabel = styled.div`
   font-size: 13px;
   font-weight: 700;
@@ -129,16 +133,18 @@ const CalloutLabel = styled.div`
   text-transform: uppercase;
   color: ${theme.colors.accent};
   margin-bottom: 14px;
-`
+`;
 const CalloutLine = styled.div`
   font-size: 14px;
   line-height: 1.7;
   color: ${theme.colors.gray700};
   padding-left: 16px;
   position: relative;
-  & + & { margin-top: 8px; }
+  & + & {
+    margin-top: 8px;
+  }
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     top: 11px;
@@ -147,35 +153,36 @@ const CalloutLine = styled.div`
     border-radius: 50%;
     background: ${theme.colors.gray500};
   }
-`
+`;
 
 const Figure = styled.figure`
   margin: 32px 0;
-`
+`;
 const FigImg = styled.img`
   width: 100%;
   border-radius: 10px;
   border: 1px solid ${theme.colors.gray200};
   display: block;
-`
+`;
 const FigCaption = styled.figcaption`
   margin-top: 10px;
   font-size: 13px;
   color: ${theme.colors.gray500};
   text-align: center;
   line-height: 1.6;
-`
+`;
 const TableWrap = styled.div`
   margin: 28px 0;
   overflow-x: auto;
   border: 1px solid ${theme.colors.gray200};
   border-radius: 10px;
-`
+`;
 const TableEl = styled.table`
   width: 100%;
   border-collapse: collapse;
   font-size: 14px;
-  th, td {
+  th,
+  td {
     text-align: left;
     padding: 12px 16px;
     border-bottom: 1px solid ${theme.colors.gray200};
@@ -188,10 +195,18 @@ const TableEl = styled.table`
     color: ${theme.colors.black};
     white-space: nowrap;
   }
-  td { color: ${theme.colors.gray700}; }
-  td:first-child { font-weight: 600; color: ${theme.colors.black}; white-space: nowrap; }
-  tbody tr:last-child td { border-bottom: none; }
-`
+  td {
+    color: ${theme.colors.gray700};
+  }
+  td:first-child {
+    font-weight: 600;
+    color: ${theme.colors.black};
+    white-space: nowrap;
+  }
+  tbody tr:last-child td {
+    border-bottom: none;
+  }
+`;
 
 /* ── Related work ── */
 const RelatedWork = styled(Link)`
@@ -205,14 +220,19 @@ const RelatedWork = styled(Link)`
   font-size: 14px;
   font-weight: 600;
   color: ${theme.colors.black};
-  transition: border-color 0.2s, color 0.2s;
-  &:hover { border-color: ${theme.colors.accent}; color: ${theme.colors.accent}; }
-`
+  transition:
+    border-color 0.2s,
+    color 0.2s;
+  &:hover {
+    border-color: ${theme.colors.accent};
+    color: ${theme.colors.accent};
+  }
+`;
 
 /* ── Footer nav / more posts ── */
 const FootNav = styled.div`
   padding: 80px 0;
-`
+`;
 const MoreTitle = styled.div`
   font-size: 13px;
   font-weight: 700;
@@ -220,80 +240,109 @@ const MoreTitle = styled.div`
   text-transform: uppercase;
   color: ${theme.colors.gray500};
   margin: 8px 0 18px;
-`
+`;
 const MoreCard = styled(Link)`
   display: block;
   padding: 18px 0;
   border-top: 1px solid ${theme.colors.gray200};
-  &:hover .t { color: ${theme.colors.accent}; }
-  .tag { font-size: 13px; color: ${theme.colors.accent}; font-weight: 600; }
-  .t { font-size: 17px; font-weight: 700; color: ${theme.colors.black}; margin: 6px 0 4px; transition: color 0.2s; }
-  .d { font-size: 12px; color: ${theme.colors.gray500}; }
-`
+  &:hover .t {
+    color: ${theme.colors.accent};
+  }
+  .tag {
+    font-size: 13px;
+    color: ${theme.colors.accent};
+    font-weight: 600;
+  }
+  .t {
+    font-size: 17px;
+    font-weight: 700;
+    color: ${theme.colors.black};
+    margin: 6px 0 4px;
+    transition: color 0.2s;
+  }
+  .d {
+    font-size: 12px;
+    color: ${theme.colors.gray500};
+  }
+`;
 const BackLink = styled(Link)`
   display: inline-block;
   margin-top: 24px;
   font-size: 14px;
   color: ${theme.colors.gray500};
-  &:hover { color: ${theme.colors.black}; }
-`
+  &:hover {
+    color: ${theme.colors.black};
+  }
+`;
 
 function Block({ block }: { block: PostBlock }) {
   switch (block.type) {
-    case 'lead':
-      return <Lead>{block.text}</Lead>
-    case 'heading':
-      return <H2>{block.text}</H2>
-    case 'paragraph':
-      return <P>{block.text}</P>
-    case 'quote':
-      return <Quote>{block.text}</Quote>
-    case 'list':
+    case "lead":
+      return <Lead>{block.text}</Lead>;
+    case "heading":
+      return <H2>{block.text}</H2>;
+    case "paragraph":
+      return <P>{block.text}</P>;
+    case "quote":
+      return <Quote>{block.text}</Quote>;
+    case "list":
       return (
         <Ul>
-          {block.items.map((it, i) => <Li key={i}>{it}</Li>)}
+          {block.items.map((it, i) => (
+            <Li key={i}>{it}</Li>
+          ))}
         </Ul>
-      )
-    case 'callout':
+      );
+    case "callout":
       return (
         <Callout>
           {block.label && <CalloutLabel>{block.label}</CalloutLabel>}
-          {block.lines.map((l, i) => <CalloutLine key={i}>{l}</CalloutLine>)}
+          {block.lines.map((l, i) => (
+            <CalloutLine key={i}>{l}</CalloutLine>
+          ))}
         </Callout>
-      )
-    case 'image':
+      );
+    case "image":
       return (
         <Figure>
           <FigImg src={block.src} alt={block.alt} />
           {block.caption && <FigCaption>{block.caption}</FigCaption>}
         </Figure>
-      )
-    case 'table':
+      );
+    case "table":
       return (
         <TableWrap>
           <TableEl>
             <thead>
-              <tr>{block.head.map((h, i) => <th key={i}>{h}</th>)}</tr>
+              <tr>
+                {block.head.map((h, i) => (
+                  <th key={i}>{h}</th>
+                ))}
+              </tr>
             </thead>
             <tbody>
               {block.rows.map((row, i) => (
-                <tr key={i}>{row.map((cell, j) => <td key={j}>{cell}</td>)}</tr>
+                <tr key={i}>
+                  {row.map((cell, j) => (
+                    <td key={j}>{cell}</td>
+                  ))}
+                </tr>
               ))}
             </tbody>
           </TableEl>
         </TableWrap>
-      )
+      );
     default:
-      return null
+      return null;
   }
 }
 
 export default function PostPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = use(params)
-  const post = getPost(slug)
-  if (!post) return notFound()
+  const { slug } = use(params);
+  const post = getPost(slug);
+  if (!post) return notFound();
 
-  const morePosts = researchPosts.filter((p) => p.slug !== post.slug).slice(0, 3)
+  const morePosts = researchPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
 
   return (
     <>
@@ -317,12 +366,12 @@ export default function PostPage({ params }: { params: Promise<{ slug: string }>
 
       <Container>
         <Article>
-          {post.body.map((block, i) => <Block key={i} block={block} />)}
+          {post.body.map((block, i) => (
+            <Block key={i} block={block} />
+          ))}
 
           {post.relatedWork && (
-            <RelatedWork href={`/works/${post.relatedWork.slug}`}>
-              {post.relatedWork.label} →
-            </RelatedWork>
+            <RelatedWork href={`/works/${post.relatedWork.slug}`}>{post.relatedWork.label} →</RelatedWork>
           )}
         </Article>
 
@@ -343,5 +392,5 @@ export default function PostPage({ params }: { params: Promise<{ slug: string }>
         </FootNav>
       </Container>
     </>
-  )
+  );
 }

@@ -30,6 +30,9 @@ const LogoWrap = styled(Link)`
   flex-direction: column;
   gap: 10px;
   line-height: 1;
+  @media (max-width: ${theme.breakpoints.sm}) {
+    align-items: center;
+  }
 `;
 const Copy = styled.p`
   color: rgba(255, 255, 255, 0.75);

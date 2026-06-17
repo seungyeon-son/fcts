@@ -1,12 +1,12 @@
-'use client'
+"use client";
 
-import { notFound } from 'next/navigation'
-import Link from 'next/link'
-import styled from 'styled-components'
-import { use } from 'react'
-import { theme } from '@/styles/theme'
-import { projects } from '@/data/projects'
-import { Container, Section } from '@/styles/styled'
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import styled from "styled-components";
+import { use } from "react";
+import { theme } from "@/styles/theme";
+import { projects } from "@/data/projects";
+import { Container, Section } from "@/styles/styled";
 
 /* ════════════════════════════════
    HERO
@@ -14,7 +14,7 @@ import { Container, Section } from '@/styles/styled'
 const Hero = styled.div`
   padding: 64px 0 56px;
   border-bottom: 1px solid ${theme.colors.gray200};
-`
+`;
 
 const HeroBreadcrumb = styled.div`
   display: flex;
@@ -23,35 +23,39 @@ const HeroBreadcrumb = styled.div`
   font-size: 13px;
   color: ${theme.colors.gray500};
   margin-bottom: 28px;
-  a:hover { color: ${theme.colors.black}; }
-`
+  a:hover {
+    color: ${theme.colors.black};
+  }
+`;
 
 const HeroLayout = styled.div`
   display: grid;
   grid-template-columns: 1fr 480px;
   gap: 56px;
   align-items: start;
-  @media (max-width: ${theme.breakpoints.lg}) { grid-template-columns: 1fr; }
-`
+  @media (max-width: ${theme.breakpoints.lg}) {
+    grid-template-columns: 1fr;
+  }
+`;
 
-const HeroLeft = styled.div``
+const HeroLeft = styled.div``;
 
 const HeroTitle = styled.h1`
-  font-size: clamp(28px, 3.2vw, 45px);
+  font-size: clamp(24px, 3.2vw, 40px);
   font-weight: 800;
   line-height: 1.2;
   letter-spacing: -0.025em;
   white-space: pre-line;
   color: ${theme.colors.black};
   margin-bottom: 16px;
-`
+`;
 
 const HeroSubtitle = styled.div`
   font-size: 16px;
   font-weight: 700;
   color: ${theme.colors.black};
   margin-bottom: 14px;
-`
+`;
 
 const HeroContext = styled.p`
   font-size: 14px;
@@ -60,7 +64,7 @@ const HeroContext = styled.p`
   line-height: 1.7;
   margin-bottom: 10px;
   max-width: 520px;
-`
+`;
 
 const HeroDesc = styled.p`
   font-size: 14px;
@@ -68,14 +72,14 @@ const HeroDesc = styled.p`
   line-height: 1.85;
   margin-bottom: 20px;
   max-width: 520px;
-`
+`;
 
 const HeroTags = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
   margin-bottom: 28px;
-`
+`;
 
 const HeroTag = styled.span`
   font-size: 13px;
@@ -83,14 +87,14 @@ const HeroTag = styled.span`
   border: 1px solid ${theme.colors.gray300};
   border-radius: 100px;
   color: ${theme.colors.gray600};
-`
+`;
 
 /* InfoGrid: 3열 × 2행, 테두리 없이 구분선만 */
 const InfoGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   border-top: 1px solid ${theme.colors.gray200};
-`
+`;
 
 const InfoItem = styled.div`
   padding: 14px 0 14px;
@@ -113,9 +117,11 @@ const InfoItem = styled.div`
     font-size: 13px;
     font-weight: 600;
     color: ${theme.colors.accent};
-    &:hover { text-decoration: underline; }
+    &:hover {
+      text-decoration: underline;
+    }
   }
-`
+`;
 
 /* 우측 이미지: 체커보드 */
 const HeroImage = styled.div<{ $img?: string }>`
@@ -123,20 +129,19 @@ const HeroImage = styled.div<{ $img?: string }>`
   aspect-ratio: 1/1;
   border-radius: 6px;
   overflow: hidden;
-  background:
-    ${({ $img }) => $img
+  background: ${({ $img }) =>
+    $img
       ? `url(${$img}) center/cover no-repeat`
       : `
         linear-gradient(45deg, #e4e4e4 25%, transparent 25%),
         linear-gradient(-45deg, #e4e4e4 25%, transparent 25%),
         linear-gradient(45deg, transparent 75%, #e4e4e4 75%),
         linear-gradient(-45deg, transparent 75%, #e4e4e4 75%)
-      `
-    };
-  background-size: ${({ $img }) => $img ? 'cover' : '20px 20px'};
-  background-position: ${({ $img }) => $img ? 'center' : '0 0, 0 10px, 10px -10px, -10px 0'};
+      `};
+  background-size: ${({ $img }) => ($img ? "cover" : "20px 20px")};
+  background-position: ${({ $img }) => ($img ? "center" : "0 0, 0 10px, 10px -10px, -10px 0")};
   background-color: #f0f0f0;
-`
+`;
 
 /* ════════════════════════════════
    IMPACT
@@ -148,7 +153,7 @@ const SectionLabel = styled.h2`
   padding-bottom: 14px;
   border-bottom: 1px solid ${theme.colors.black};
   margin-bottom: 28px;
-`
+`;
 
 const ImpactGrid = styled.div`
   display: grid;
@@ -158,15 +163,17 @@ const ImpactGrid = styled.div`
   border: 1px solid ${theme.colors.gray200};
   border-radius: 8px;
   overflow: hidden;
-  @media (max-width: ${theme.breakpoints.md}) { grid-template-columns: 1fr; }
-`
+  @media (max-width: ${theme.breakpoints.md}) {
+    grid-template-columns: 1fr;
+  }
+`;
 
 const ImpactCard = styled.div`
   padding: 32px 28px;
   background: white;
-`
+`;
 
-const metricColors = ['#3B82F6', '#14B8A6', '#FF3229']
+const metricColors = ["#3B82F6", "#14B8A6", "#FF3229"];
 
 const ImpactValue = styled.div<{ $color?: string }>`
   font-size: clamp(28px, 3.5vw, 45px);
@@ -174,20 +181,20 @@ const ImpactValue = styled.div<{ $color?: string }>`
   letter-spacing: -0.03em;
   color: ${({ $color }) => $color || theme.colors.black};
   margin-bottom: 10px;
-`
+`;
 
 const ImpactLabel = styled.div`
   font-size: 13px;
   font-weight: 700;
   color: ${theme.colors.black};
   margin-bottom: 4px;
-`
+`;
 
 const ImpactSub = styled.div`
   font-size: 13px;
   color: ${theme.colors.gray500};
   line-height: 1.5;
-`
+`;
 
 /* ════════════════════════════════
    PROBLEM CONTEXT
@@ -199,17 +206,29 @@ const ContextGrid = styled.div`
   border: 1px solid ${theme.colors.gray200};
   border-radius: 8px;
   overflow: hidden;
-  @media (max-width: ${theme.breakpoints.md}) { grid-template-columns: 1fr; }
-`
+  @media (max-width: ${theme.breakpoints.md}) {
+    grid-template-columns: 1fr;
+  }
+`;
 
 const ContextBox = styled.div`
   padding: 28px 32px;
   border-right: 1px solid ${theme.colors.gray200};
-  &:last-child { border-right: none; }
+  &:last-child {
+    border-right: none;
+  }
 
-  .label { font-size: 15px; font-weight: 700; margin-bottom: 14px; }
-  p { font-size: 14px; color: ${theme.colors.gray600}; line-height: 1.85; }
-`
+  .label {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  p {
+    font-size: 14px;
+    color: ${theme.colors.gray600};
+    line-height: 1.85;
+  }
+`;
 
 /* ════════════════════════════════
    APPROACH
@@ -222,9 +241,13 @@ const ApproachRow = styled.div`
   border: 1px solid ${theme.colors.gray200};
   border-radius: 8px;
   overflow: hidden;
-  @media (max-width: ${theme.breakpoints.lg}) { grid-template-columns: repeat(3, 1fr); }
-  @media (max-width: ${theme.breakpoints.sm}) { grid-template-columns: 1fr; }
-`
+  @media (max-width: ${theme.breakpoints.lg}) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (max-width: ${theme.breakpoints.sm}) {
+    grid-template-columns: 1fr;
+  }
+`;
 
 const ApproachStep = styled.div`
   padding: 24px 20px;
@@ -232,25 +255,36 @@ const ApproachStep = styled.div`
   text-align: center;
 
   .num {
-    width: 28px; height: 28px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
     background: ${theme.colors.black};
     color: white;
     font-size: 13px;
     font-weight: 700;
-    display: flex; align-items: center; justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 0 auto 12px;
   }
-  .title { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
-  .desc  { font-size: 14px; color: ${theme.colors.gray500}; line-height: 1.5; }
-`
+  .title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .desc {
+    font-size: 14px;
+    color: ${theme.colors.gray500};
+    line-height: 1.5;
+  }
+`;
 
 /* ════════════════════════════════
    KEY DECISIONS
 ════════════════════════════════ */
 const DecisionArea = styled.div`
   margin-bottom: 40px;
-`
+`;
 
 const DecisionHeader = styled.div`
   display: flex;
@@ -262,16 +296,19 @@ const DecisionHeader = styled.div`
     font-size: 13px;
     font-weight: 700;
     color: ${theme.colors.accent};
-    background: rgba(255,50,41,0.08);
+    background: rgba(255, 50, 41, 0.08);
     padding: 3px 10px;
     border-radius: 100px;
   }
-  .title { font-size: 16px; font-weight: 700; }
-`
+  .title {
+    font-size: 16px;
+    font-weight: 700;
+  }
+`;
 
 const DecisionItems = styled.div`
   border-top: 1px solid ${theme.colors.gray200};
-`
+`;
 
 const DecisionItem = styled.div`
   display: grid;
@@ -290,36 +327,55 @@ const DecisionItem = styled.div`
     display: inline-block;
     width: fit-content;
   }
-  p { font-size: 14px; color: ${theme.colors.gray600}; line-height: 1.8; }
-`
+  p {
+    font-size: 14px;
+    color: ${theme.colors.gray600};
+    line-height: 1.8;
+  }
+`;
 
 /* ════════════════════════════════
    DESIGN HIGHLIGHTS
 ════════════════════════════════ */
 const ZoneSection = styled.div`
   margin-bottom: 48px;
-`
+`;
 
 const ZoneHeader = styled.div`
   margin-bottom: 16px;
-  .zone  { font-size: 13px; font-weight: 700; color: ${theme.colors.accent}; margin-bottom: 6px; }
-  .title { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
-  .desc  { font-size: 14px; color: ${theme.colors.gray600}; line-height: 1.7; }
-`
+  .zone {
+    font-size: 13px;
+    font-weight: 700;
+    color: ${theme.colors.accent};
+    margin-bottom: 6px;
+  }
+  .title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .desc {
+    font-size: 14px;
+    color: ${theme.colors.gray600};
+    line-height: 1.7;
+  }
+`;
 
 const CheckerImage = styled.div`
   width: 100%;
   aspect-ratio: 16/9;
   border-radius: 6px;
   background-image:
-    linear-gradient(45deg, #e4e4e4 25%, transparent 25%),
-    linear-gradient(-45deg, #e4e4e4 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, #e4e4e4 75%),
-    linear-gradient(-45deg, transparent 75%, #e4e4e4 75%);
+    linear-gradient(45deg, #e4e4e4 25%, transparent 25%), linear-gradient(-45deg, #e4e4e4 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #e4e4e4 75%), linear-gradient(-45deg, transparent 75%, #e4e4e4 75%);
   background-size: 20px 20px;
-  background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+  background-position:
+    0 0,
+    0 10px,
+    10px -10px,
+    -10px 0;
   background-color: #f5f5f5;
-`
+`;
 
 /* ════════════════════════════════
    REFLECTION
@@ -328,13 +384,23 @@ const ReflectionGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
-  @media (max-width: ${theme.breakpoints.md}) { grid-template-columns: 1fr; }
-`
+  @media (max-width: ${theme.breakpoints.md}) {
+    grid-template-columns: 1fr;
+  }
+`;
 
 const ReflectionItem = styled.div`
-  .title { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
-  p { font-size: 14px; color: ${theme.colors.gray600}; line-height: 1.8; }
-`
+  .title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  p {
+    font-size: 14px;
+    color: ${theme.colors.gray600};
+    line-height: 1.8;
+  }
+`;
 
 /* ════════════════════════════════
    PROJECT NAV (prev / all / next)
@@ -353,14 +419,14 @@ const ProjectNav = styled.nav`
     text-align: center;
     gap: 16px;
   }
-`
+`;
 
-const NavItem = styled(Link)<{ $align?: 'left' | 'right' }>`
+const NavItem = styled(Link)<{ $align?: "left" | "right" }>`
   display: inline-flex;
   flex-direction: column;
   gap: 4px;
-  justify-self: ${({ $align }) => ($align === 'right' ? 'end' : 'start')};
-  text-align: ${({ $align }) => ($align === 'right' ? 'right' : 'left')};
+  justify-self: ${({ $align }) => ($align === "right" ? "end" : "start")};
+  text-align: ${({ $align }) => ($align === "right" ? "right" : "left")};
 
   .dir {
     font-size: 13px;
@@ -375,13 +441,15 @@ const NavItem = styled(Link)<{ $align?: 'left' | 'right' }>`
     color: ${theme.colors.black};
     transition: color 0.2s;
   }
-  &:hover .name { color: ${theme.colors.accent}; }
+  &:hover .name {
+    color: ${theme.colors.accent};
+  }
 
   @media (max-width: ${theme.breakpoints.sm}) {
     justify-self: center;
     text-align: center;
   }
-`
+`;
 
 const NavAll = styled(Link)`
   display: inline-flex;
@@ -394,27 +462,36 @@ const NavAll = styled(Link)`
   font-weight: 600;
   color: ${theme.colors.black};
   white-space: nowrap;
-  transition: border-color 0.2s, color 0.2s;
-  &:hover { border-color: ${theme.colors.accent}; color: ${theme.colors.accent}; }
-`
+  transition:
+    border-color 0.2s,
+    color 0.2s;
+  &:hover {
+    border-color: ${theme.colors.accent};
+    color: ${theme.colors.accent};
+  }
+  @media (max-width: ${theme.breakpoints.sm}) {
+    width: 100%;
+    justify-content: center;
+  }
+`;
 
 /* ════════════════════════════════
    DATA
 ════════════════════════════════ */
 const coverImages: Record<string, string> = {
-  'global-credit-bank':  '',
-  'humanities-lecture':  '',
-  'b2b-design-system':   '',
-  'mlops-b2b-dashboard': '',
-}
+  "global-credit-bank": "",
+  "humanities-lecture": "",
+  "b2b-design-system": "",
+  "mlops-b2b-dashboard": "",
+};
 
 /* ════════════════════════════════
    PAGE
 ════════════════════════════════ */
 export default function WorkDetailPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = use(params)
-  const project = projects.find((p) => p.slug === slug)
-  if (!project) return notFound()
+  const { slug } = use(params);
+  const project = projects.find((p) => p.slug === slug);
+  if (!project) return notFound();
 
   return (
     <>
@@ -435,7 +512,9 @@ export default function WorkDetailPage({ params }: { params: Promise<{ slug: str
               <HeroDesc>{project.problemContext.domainDetail}</HeroDesc>
 
               <HeroTags>
-                {project.tags.map((t) => <HeroTag key={t}>{t}</HeroTag>)}
+                {project.tags.map((t) => (
+                  <HeroTag key={t}>{t}</HeroTag>
+                ))}
               </HeroTags>
 
               {/* InfoGrid: 3열 × 2행 */}
@@ -450,7 +529,7 @@ export default function WorkDetailPage({ params }: { params: Promise<{ slug: str
                 </InfoItem>
                 <InfoItem>
                   <div className="label">유형</div>
-                  <div className="value">{project.category.replace(' Service', '')}</div>
+                  <div className="value">{project.category.replace(" Service", "")}</div>
                 </InfoItem>
                 <InfoItem>
                   <div className="label">툴</div>
@@ -462,7 +541,9 @@ export default function WorkDetailPage({ params }: { params: Promise<{ slug: str
                 </InfoItem>
                 <InfoItem>
                   <div className="label">Website</div>
-                  <a className="link" href="#">🔗 Link</a>
+                  <a className="link" href="#">
+                    🔗 Link
+                  </a>
                 </InfoItem>
               </InfoGrid>
             </HeroLeft>
@@ -497,7 +578,7 @@ export default function WorkDetailPage({ params }: { params: Promise<{ slug: str
               <div className="label">{project.problemContext.domain}</div>
               <p>{project.problemContext.domainDetail}</p>
               {project.problemContext.domainContextExtra && (
-                <p style={{ marginTop: '12px', fontStyle: 'italic' }}>{project.problemContext.domainContextExtra}</p>
+                <p style={{ marginTop: "12px", fontStyle: "italic" }}>{project.problemContext.domainContextExtra}</p>
               )}
             </ContextBox>
             <ContextBox>
@@ -585,9 +666,9 @@ export default function WorkDetailPage({ params }: { params: Promise<{ slug: str
       <Section>
         <Container>
           {(() => {
-            const idx = projects.findIndex((p) => p.slug === slug)
-            const prev = projects[(idx - 1 + projects.length) % projects.length]
-            const next = projects[(idx + 1) % projects.length]
+            const idx = projects.findIndex((p) => p.slug === slug);
+            const prev = projects[(idx - 1 + projects.length) % projects.length];
+            const next = projects[(idx + 1) % projects.length];
             return (
               <ProjectNav>
                 <NavItem href={`/works/${prev.slug}`} $align="left">
@@ -600,10 +681,10 @@ export default function WorkDetailPage({ params }: { params: Promise<{ slug: str
                   <span className="name">{next.subtitle}</span>
                 </NavItem>
               </ProjectNav>
-            )
+            );
           })()}
         </Container>
       </Section>
     </>
-  )
+  );
 }

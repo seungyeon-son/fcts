@@ -7,7 +7,6 @@ import { theme } from "@/styles/theme";
 
 /* ── Top Announcement Banner ── */
 
-
 const Nav = styled.header`
   position: sticky;
   top: 0;
@@ -24,12 +23,24 @@ const Inner = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @media (max-width: ${theme.breakpoints.sm}) {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    padding: 16px 24px 8px;
+    gap: 12px;
+  }
 `;
 
 const LogoWrap = styled(Link)`
   display: flex;
   align-items: center;
   line-height: 1;
+  @media (max-width: ${theme.breakpoints.sm}) {
+    img {
+      height: 28px;
+    }
+  }
 `;
 
 const NavLinks = styled.nav`
@@ -45,6 +56,10 @@ const NavLink = styled(Link)<{ $active?: boolean }>`
   transition: color 0.15s;
   &:hover {
     color: ${theme.colors.black};
+  }
+  @media (max-width: ${theme.breakpoints.sm}) {
+    height: 28px;
+    padding: 0 8px;
   }
 `;
 
@@ -72,6 +87,12 @@ const ContactWrap = styled(Link)`
   &:hover .circle {
     background: ${theme.colors.accentHover};
   }
+  @media (max-width: ${theme.breakpoints.sm}) {
+    position: absolute;
+    bottom: -90vh;
+    right: 24px;
+    background: #fff;
+  }
 `;
 
 const ContactCircle = styled.span`
@@ -90,13 +111,9 @@ const ContactCircle = styled.span`
 // 도메인(배포)별 GNB 분기
 // NEXT_PUBLIC_SITE_VARIANT=team  → Process 사이트 (팀 소개)
 // 그 외(기본)                    → About 사이트 (개인 이력서)
-const SITE_VARIANT =
-  process.env.NEXT_PUBLIC_SITE_VARIANT === "team" ? "team" : "personal";
+const SITE_VARIANT = process.env.NEXT_PUBLIC_SITE_VARIANT === "team" ? "team" : "personal";
 
-const leadLink =
-  SITE_VARIANT === "team"
-    ? { href: "/process", label: "Process" }
-    : { href: "/about", label: "About" };
+const leadLink = SITE_VARIANT === "team" ? { href: "/process", label: "Process" } : { href: "/about", label: "About" };
 
 export default function Header() {
   const pathname = usePathname();

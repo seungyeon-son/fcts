@@ -121,7 +121,7 @@ const ValueSection = styled.section`
 
 const ValueHeading = styled.h2`
   text-align: center;
-  font-size: clamp(32px, 3.5vw, 45px);
+  font-size: clamp(24px, 3.5vw, 45px);
   font-weight: 800;
   letter-spacing: -0.5px;
   line-height: 1.18;
@@ -195,12 +195,15 @@ const WorksSection = styled.section`
 
 const SectionHeading = styled.h2`
   text-align: center;
-  font-size: clamp(32px, 3.5vw, 45px);
+  font-size: clamp(28px, 3.5vw, 45px);
   font-weight: 800;
   letter-spacing: -0.5px;
   color: #343a40;
   margin-bottom: 80px;
   text-transform: capitalize;
+  @media (max-width: ${theme.breakpoints.sm}) {
+    margin-bottom: 40px;
+  }
 `;
 
 const WorksInner = styled.div`
@@ -230,6 +233,9 @@ const WorksMeta = styled.div`
 
   @media (max-width: ${theme.breakpoints.md}) {
     width: 100%;
+  }
+  @media (max-width: ${theme.breakpoints.sm}) {
+    display: none;
   }
 `;
 
@@ -358,7 +364,7 @@ const WorksCarousel = styled.div`
   animation: ${worksFade} 0.35s ease;
 
   @media (max-width: ${theme.breakpoints.sm}) {
-    flex-direction: column;
+    width: 100%;
   }
 `;
 
@@ -367,11 +373,16 @@ const WorksBottom = styled.div`
   display: flex;
   align-items: center;
   justify-content: end;
-
+  .mo {
+    display: none;
+  }
   @media (max-width: ${theme.breakpoints.sm}) {
-    flex-direction: column;
     gap: 24px;
-    align-items: stretch;
+    justify-content: space-between;
+    .mo {
+      display: block;
+      margin-top: 0 !important;
+    }
   }
 `;
 
@@ -484,9 +495,17 @@ const CaseRow = styled.div`
   display: flex;
   gap: 36px;
   align-items: flex-start;
-
+  .mo {
+    display: none;
+  }
   @media (max-width: ${theme.breakpoints.md}) {
     flex-direction: column;
+  }
+  @media (max-width: ${theme.breakpoints.sm}) {
+    align-items: center;
+    .mo {
+      display: block;
+    }
   }
 `;
 
@@ -499,6 +518,9 @@ const CaseMeta = styled.div`
 
   @media (max-width: ${theme.breakpoints.md}) {
     width: 100%;
+  }
+  @media (max-width: ${theme.breakpoints.sm}) {
+    display: none;
   }
 `;
 
@@ -527,6 +549,8 @@ const ArticleList = styled.div`
 
   @media (max-width: ${theme.breakpoints.sm}) {
     flex-direction: column;
+    width: 100%;
+    gap: 16px;
   }
 `;
 
@@ -707,6 +731,11 @@ export default function Home() {
             </WorksRow>
 
             <WorksBottom>
+              <ViewMoreBtn href="/works" className="mo" style={{ marginTop: 24 }}>
+                View More
+                <ViewMoreCircle>→</ViewMoreCircle>
+              </ViewMoreBtn>
+
               {totalWorksPages > 1 ? (
                 <CarouselNav>
                   <ArrowBtn
@@ -763,6 +792,10 @@ export default function Home() {
                   </ArticleCard>
                 ))}
               </ArticleList>
+              <ViewMoreBtn href="/post" className="mo">
+                View More
+                <ViewMoreCircle>→</ViewMoreCircle>
+              </ViewMoreBtn>
             </CaseRow>
 
             {/* <CaseSeparator /> */}
