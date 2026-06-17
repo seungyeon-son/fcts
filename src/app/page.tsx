@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import styled, { keyframes } from "styled-components";
 import { theme } from "@/styles/theme";
@@ -621,9 +621,23 @@ const WORKS_PER_PAGE = 2;
    PAGE
 ════════════════════════════════ */
 export default function Home() {
+  const [perPage, setPerPage] = useState(WORKS_PER_PAGE);
   const [worksPage, setWorksPage] = useState(0);
-  const totalWorksPages = Math.ceil(worksProjects.length / WORKS_PER_PAGE);
-  const visibleWorks = worksProjects.slice(worksPage * WORKS_PER_PAGE, worksPage * WORKS_PER_PAGE + WORKS_PER_PAGE);
+
+  // 모바일(sm 이하)에서는 1개씩, 그 외에는 기본 2개씩 노출
+  useEffect(() => {
+    const mq = window.matchMedia(`(max-width: ${theme.breakpoints.sm})`);
+    const apply = () => setPerPage(mq.matches ? 1 : WORKS_PER_PAGE);
+    apply();
+    mq.addEventListener("change", apply);
+    return () => mq.removeEventListener("change", apply);
+  }, []);
+
+  const totalWorksPages = Math.max(1, Math.ceil(worksProjects.length / perPage));
+  // perPage 변경(리사이즈)으로 범위를 벗어나면 렌더 시 보정
+  const safePage = Math.min(worksPage, totalWorksPages - 1);
+
+  const visibleWorks = worksProjects.slice(safePage * perPage, safePage * perPage + perPage);
 
   return (
     <>
@@ -714,7 +728,7 @@ export default function Home() {
                 </ViewMoreBtn>
               </WorksMeta>
 
-              <WorksCarousel key={worksPage}>
+              <WorksCarousel key={safePage}>
                 {visibleWorks.map((p) => (
                   <ProjectCard key={p.slug} href={`/works/${p.slug}`}>
                     <ProjImg className="proj-img" $img={p.img} />
@@ -741,19 +755,19 @@ export default function Home() {
                   <ArrowBtn
                     type="button"
                     aria-label="이전 프로젝트"
-                    onClick={() => setWorksPage((p) => Math.max(0, p - 1))}
-                    disabled={worksPage === 0}
+                    onClick={() => setWorksPage(Math.max(0, safePage - 1))}
+                    disabled={safePage === 0}
                   >
                     ←
                   </ArrowBtn>
                   <PageIndicator>
-                    {worksPage + 1} / {totalWorksPages}
+                    {safePage + 1} / {totalWorksPages}
                   </PageIndicator>
                   <ArrowBtn
                     type="button"
                     aria-label="다음 프로젝트"
-                    onClick={() => setWorksPage((p) => Math.min(totalWorksPages - 1, p + 1))}
-                    disabled={worksPage === totalWorksPages - 1}
+                    onClick={() => setWorksPage(Math.min(totalWorksPages - 1, safePage + 1))}
+                    disabled={safePage === totalWorksPages - 1}
                   >
                     →
                   </ArrowBtn>

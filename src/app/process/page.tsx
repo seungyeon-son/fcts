@@ -11,7 +11,7 @@ const PageHead = styled.div`
   text-align: center;
 `;
 const PageTitle = styled.h1`
-  font-size: 45px;
+  font-size: clamp(36px, 4vw, 45px);
   font-weight: 700;
   letter-spacing: -0.8px;
   color: #343a40;

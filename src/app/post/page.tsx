@@ -11,7 +11,7 @@ const PageHead = styled.div`
   text-align: center;
 `;
 const PageTitle = styled.h1`
-  font-size: 45px;
+  font-size: clamp(36px, 4vw, 45px);
   font-weight: 700;
   letter-spacing: -0.8px;
   color: #343a40;
@@ -48,16 +48,13 @@ const Tag = styled.span`
   margin-bottom: 12px;
 `;
 const Title = styled.div`
-  font-size: 24px;
+  font-size: clamp(18px, 3vw, 22px);
   font-weight: 700;
   letter-spacing: -0.3px;
   color: ${theme.colors.black};
   line-height: 1.35;
   margin-bottom: 10px;
   transition: color 0.2s;
-  @media (max-width: ${theme.breakpoints.md}) {
-    font-size: clamp(18px, 3vw, 24px);
-  }
 `;
 const Excerpt = styled.p`
   font-size: 14px;
