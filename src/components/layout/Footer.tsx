@@ -86,8 +86,9 @@ export default function Footer() {
             style={{ filter: "brightness(0) invert(1)" }}
           />
           <Copy>
-            A design engineering group that transforms complexity into
-            <br /> simplicity and establishes order in business.
+            Turning tangled problems into clear decisions
+            <br />
+            for users and business alike.
           </Copy>
         </LogoWrap>
         <Meta>

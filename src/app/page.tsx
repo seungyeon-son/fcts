@@ -655,9 +655,9 @@ export default function Home() {
               Building Visual Order.
             </HeroTitle>
             <HeroSub>
-              A design engineering group that transforms complexity
+              Turning tangled problems into clear decisions
               <br />
-              into simplicity and establishes order in business.
+              for users and business alike.
             </HeroSub>
           </HeroTextBlock>
 
