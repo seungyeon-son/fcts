@@ -37,9 +37,15 @@ const LogoWrap = styled(Link)`
   display: flex;
   align-items: center;
   line-height: 1;
+  img {
+    height: 42px;
+    width: 60%;
+  }
   @media (max-width: ${theme.breakpoints.sm}) {
+    justify-content: center;
     img {
-      height: 28px;
+      height: 42px;
+      width: 53%;
     }
   }
 `;

@@ -29,15 +29,19 @@ const Inner = styled.div`
 const LogoWrap = styled(Link)`
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 10px;
   line-height: 1;
   img {
-    width: 76px;
     height: 42px;
+    width: 60%;
   }
   @media (max-width: ${theme.breakpoints.sm}) {
-    align-items: center;
-    height: 28px;
+    justify-content: center;
+    img {
+      height: 42px;
+      width: 53%;
+    }
   }
 `;
 const Copy = styled.p`
