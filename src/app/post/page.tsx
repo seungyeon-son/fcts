@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { theme } from "@/styles/theme";
 import { Container } from "@/styles/styled";
 import { researchPosts } from "@/data/posts";
+import { projects } from "@/data/projects";
 
 const PageHead = styled.div`
   padding: 64px 0 40px;
@@ -98,18 +99,28 @@ export default function PostListPage() {
       <Container>
         <List>
           {researchPosts.length === 0 && <Empty>아직 발행된 글이 없습니다.</Empty>}
-          {researchPosts.map((post) => (
-            <PostRow key={post.slug} href={`/post/${post.slug}`}>
-              <Tag>{post.tag}</Tag>
-              <Title className="title">{post.title}</Title>
-              <Excerpt>{post.excerpt}</Excerpt>
-              <Meta>
-                <time dateTime={post.dateISO}>{post.date}</time>
-                <Dot>•</Dot>
-                <span>약 {post.readingMin}분</span>
-              </Meta>
-            </PostRow>
-          ))}
+          {researchPosts.map((post) => {
+            const rel = post.relatedWork;
+            const relatedName = rel
+              ? projects.find((p) => p.slug === rel.slug)?.subtitle ?? rel.label
+              : null;
+            return (
+              <PostRow key={post.slug} href={`/post/${post.slug}`}>
+                <Tag>{post.tag}</Tag>
+                <Title className="title">{post.title}</Title>
+                <Excerpt>{post.excerpt}</Excerpt>
+                <Meta>
+                  <time dateTime={post.dateISO}>{post.date}</time>
+                  {rel && (
+                    <>
+                      <Dot>•</Dot>
+                      <span>{relatedName}</span>
+                    </>
+                  )}
+                </Meta>
+              </PostRow>
+            );
+          })}
         </List>
       </Container>
     </>

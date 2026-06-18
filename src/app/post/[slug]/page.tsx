@@ -7,6 +7,7 @@ import { use } from "react";
 import { theme } from "@/styles/theme";
 import { Container } from "@/styles/styled";
 import { getPost, researchPosts, type PostBlock } from "@/data/posts";
+import { projects } from "@/data/projects";
 
 /* ── Hero ── */
 const Hero = styled.div`
@@ -344,6 +345,11 @@ export default function PostPage({ params }: { params: Promise<{ slug: string }>
 
   const morePosts = researchPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
 
+  const rel = post.relatedWork;
+  const relatedName = rel
+    ? projects.find((p) => p.slug === rel.slug)?.subtitle ?? rel.label
+    : null;
+
   return (
     <>
       <Hero>
@@ -358,8 +364,12 @@ export default function PostPage({ params }: { params: Promise<{ slug: string }>
           <PostExcerpt>{post.excerpt}</PostExcerpt>
           <PostMeta>
             <time dateTime={post.dateISO}>{post.date}</time>
-            <MetaDot>•</MetaDot>
-            <span>약 {post.readingMin}분</span>
+            {rel && (
+              <>
+                <MetaDot>•</MetaDot>
+                <span>{relatedName}</span>
+              </>
+            )}
           </PostMeta>
         </Container>
       </Hero>

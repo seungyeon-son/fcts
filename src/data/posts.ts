@@ -16,7 +16,6 @@ export type Post = {
   excerpt: string
   date: string // 표시용
   dateISO: string
-  readingMin: number
   relatedWork?: { slug: string; label: string }
   body: PostBlock[]
 }
@@ -30,9 +29,7 @@ export const posts: Post[] = [
     excerpt:
       '기획서를 그대로 화면으로 옮기는 대신 "이 정보를 어떤 기준으로 나눠 보여줄 것인가"를 다시 물었고, 원래의 정보 구조를 뒤집었습니다. UBION GCB에서 기획과 아이데이션으로 새 컨셉을 도출한 기록입니다.',
     date: '2026년 6월 18일',
-    dateISO: '2026-06-18',
-    readingMin: 7,
-    relatedWork: { slug: 'global-credit-bank', label: 'UBION 글로벌 학점은행제 케이스 보기' },
+    dateISO: '2026-06-18',    relatedWork: { slug: 'global-credit-bank', label: 'UBION 글로벌 학점은행제 케이스 보기' },
     body: [
       {
         type: 'lead',
@@ -105,9 +102,7 @@ export const posts: Post[] = [
     excerpt:
       '매 프로젝트마다 기획 분석부터 디자인 시스템·QA까지 반복하던 과정을, Claude 스킬로 박제해 자동화했습니다. 핸드오프 가이드로 쓰는 "Design Process OS"를 만들고 실제 프로젝트에 적용한 기록입니다.',
     date: '2026년 6월 18일',
-    dateISO: '2026-06-18',
-    readingMin: 8,
-    relatedWork: { slug: 'b2b-design-system', label: 'SDT 디자인 시스템 케이스 보기' },
+    dateISO: '2026-06-18',    relatedWork: { slug: 'b2b-design-system', label: 'SDT 디자인 시스템 케이스 보기' },
     body: [
       {
         type: 'lead',
@@ -211,9 +206,7 @@ export const posts: Post[] = [
     excerpt:
       '한 장의 랜딩 페이지를 뜯어보면, 섹션 순서부터 색 하나까지 이유가 있습니다. GCB 메인 시안에 감정 여정 지도·설득 심리·인지부하 이론이 어디에 어떻게 들어갔는지 해부한 기록입니다.',
     date: '2026년 6월 17일',
-    dateISO: '2026-06-17',
-    readingMin: 9,
-    relatedWork: { slug: 'global-credit-bank', label: 'UBION 글로벌 학점은행제 케이스 보기' },
+    dateISO: '2026-06-17',    relatedWork: { slug: 'global-credit-bank', label: 'UBION 글로벌 학점은행제 케이스 보기' },
     body: [
       {
         type: 'lead',
@@ -295,9 +288,7 @@ export const posts: Post[] = [
     excerpt:
       '글로벌 학점은행 GCB에서 결제 이탈을 추적하다 발견한 건 "결제 버튼"이 아니라 그 앞에 쌓인 언어와 신뢰의 문제였습니다. 디자이너에서 기획자의 시선으로 넘어가며 남긴 설계 기록.',
     date: '2026년 6월 17일',
-    dateISO: '2026-06-17',
-    readingMin: 6,
-    relatedWork: { slug: 'global-credit-bank', label: 'UBION 글로벌 학점은행제 케이스 보기' },
+    dateISO: '2026-06-17',    relatedWork: { slug: 'global-credit-bank', label: 'UBION 글로벌 학점은행제 케이스 보기' },
     body: [
       {
         type: 'lead',
@@ -380,9 +371,7 @@ export const posts: Post[] = [
     excerpt:
       '한국식 서비스 설계의 전제는 국경을 넘으면 하나씩 깨집니다. 본인인증, 학점인정 시스템, 언어 UI까지 — 글로벌 서비스를 디자인할 때 한국과 무엇이 다르고 무엇을 다시 설계해야 하는지 짚은, 진행 중인 리서치 기록입니다.',
     date: '2026년 6월 17일',
-    dateISO: '2026-06-17',
-    readingMin: 11,
-    relatedWork: { slug: 'global-credit-bank', label: 'UBION 글로벌 학점은행제 케이스 보기' },
+    dateISO: '2026-06-17',    relatedWork: { slug: 'global-credit-bank', label: 'UBION 글로벌 학점은행제 케이스 보기' },
     body: [
       {
         type: 'lead',
