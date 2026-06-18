@@ -29,7 +29,7 @@ const Inner = styled.div`
 const LogoWrap = styled(Link)`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
   line-height: 1;
   img {
@@ -37,7 +37,7 @@ const LogoWrap = styled(Link)`
     width: 60%;
   }
   @media (max-width: ${theme.breakpoints.sm}) {
-    justify-content: center;
+    align-items: center;
     img {
       height: 42px;
       width: 53%;

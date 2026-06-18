@@ -190,10 +190,16 @@ const ValDesc = styled.div`
   line-height: 1.6;
   margin-bottom: 12px;
 `;
-const ValPill = styled.span`
+const ValPill = styled(Link)`
+  display: inline-block;
   font-size: 14px;
   color: #ff5229;
   font-weight: 600;
+  transition: opacity 0.15s;
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
 `;
 
 /* ── Projects ── */
@@ -378,6 +384,7 @@ const values = [
     title: "비즈니스 맥락을 이해합니다",
     desc: "기능 명세서를 넘어 왜 이 기능이 필요한지, 어떤 지표를 움직여야 하는지 먼저 파악합니다.",
     pill: "→ UBION 사례 보기",
+    href: "/works/global-credit-bank",
   },
   {
     icon: "📋",
@@ -385,6 +392,7 @@ const values = [
     title: "리뷰에서 방어 가능한 디자인",
     desc: '모든 결정에는 근거가 있습니다. 리뷰에서 "왜 이렇게 했나요?"에 항상 답할 수 있습니다.',
     pill: "→ 프로세스 페이지 보기",
+    href: "/design-process",
   },
   {
     icon: "🧩",
@@ -392,6 +400,7 @@ const values = [
     title: "팀 생산성에 직접 기여합니다",
     desc: "디자인 시스템과 컴포넌트 정비로 팀 전체의 작업 속도를 높이는 방식으로 일합니다.",
     pill: "→ SDT DS 사례 보기",
+    href: "/works/b2b-design-system",
   },
   {
     icon: "🔗",
@@ -399,6 +408,7 @@ const values = [
     title: "핸드오프 마찰을 줄입니다",
     desc: "Figma 스펙 문서와 토큰 정의로 개발팀이 즉시 구현 가능한 산출물을 만듭니다.",
     pill: "→ 핸드오프 가이드 보기",
+    href: "/post/design-process-os",
   },
 ];
 
@@ -529,7 +539,7 @@ export default function AboutPage() {
                 <ValIcon $bg={v.bg}>{v.icon}</ValIcon>
                 <ValTitle>{v.title}</ValTitle>
                 <ValDesc>{v.desc}</ValDesc>
-                <ValPill>{v.pill}</ValPill>
+                <ValPill href={v.href}>{v.pill}</ValPill>
               </ValCard>
             ))}
           </ValuesGrid>
