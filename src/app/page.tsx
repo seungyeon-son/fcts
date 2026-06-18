@@ -248,15 +248,15 @@ const WorksMetaTitle = styled.div`
 `;
 
 const WorksMetaSub = styled.div`
-  font-size: 18px;
-  font-weight: 700;
-  color: #495057;
+  font-size: 15px;
+  font-weight: 600;
+  color: #aaa;
   letter-spacing: -0.4px;
   line-height: 1.6;
 `;
 
 const WorksMetaDesc = styled.div`
-  font-size: 14px;
+  font-size: 15px;
   color: #495057;
   line-height: 1.6;
   letter-spacing: -0.4px;
@@ -280,11 +280,12 @@ const WorksMetaTags = styled.div`
 `;
 
 const WorksTag = styled(Link)`
-  font-size: 16px;
+  font-size: 15px;
   color: #6c6e70;
   letter-spacing: -0.4px;
   line-height: 2;
   text-decoration: underline;
+  text-underline-position: under;
   &:hover {
     color: ${theme.colors.black};
   }
@@ -708,11 +709,7 @@ export default function Home() {
           <WorksInner>
             <WorksRow>
               <WorksMeta>
-                <WorksMetaTitle>
-                  복잡함을
-                  <br />
-                  구조로
-                </WorksMetaTitle>
+                <WorksMetaTitle>복잡함을 구조로</WorksMetaTitle>
                 <WorksMetaSub>From Complex To Simple</WorksMetaSub>
                 <WorksMetaDesc>B2B·B2C 서비스부터 디자인 시스템까지, 문제를 구조로 푼 프로젝트</WorksMetaDesc>
                 <WorksMetaTags>

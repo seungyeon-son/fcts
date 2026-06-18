@@ -119,6 +119,7 @@ const InfoItem = styled.div`
     color: ${theme.colors.accent};
     &:hover {
       text-decoration: underline;
+      text-underline-position: under;
     }
   }
 `;

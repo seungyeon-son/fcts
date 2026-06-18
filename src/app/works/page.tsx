@@ -46,25 +46,28 @@ const CategoryMeta = styled.div`
 `;
 
 const CategoryTitle = styled.div`
-  font-size: 22px;
-  font-weight: 800;
-  color: ${theme.colors.black};
+  font-size: 24px;
+  font-weight: 700;
+  color: #343a40;
+  letter-spacing: -0.4px;
+  line-height: 1.4;
   margin-bottom: 4px;
 `;
 
 const CategorySub = styled.div`
   font-size: 15px;
-  font-weight: 700;
-  line-height: 1.5;
-  color: ${theme.colors.black};
-  margin-bottom: 16px;
+  font-weight: 600;
+  color: #aaa;
+  letter-spacing: -0.4px;
+  line-height: 1.6;
 `;
 
 const CategoryDesc = styled.div`
-  font-size: 14px;
-  color: ${theme.colors.gray500};
-  line-height: 1.375;
-  margin-bottom: 16px;
+  font-size: 15px;
+  color: #495057;
+  line-height: 1.6;
+  letter-spacing: -0.4px;
+  margin-top: 8px;
 `;
 
 const CategoryTags = styled.div`
@@ -79,10 +82,10 @@ const CategoryTags = styled.div`
 `;
 
 const CategoryTag = styled(Link)`
-  font-size: 13px;
-  color: ${theme.colors.gray500};
+  font-size: 15px;
+  color: #6c6e70;
   text-decoration: underline;
-  text-underline-offset: 2px;
+  text-underline-position: under;
   &:hover {
     color: ${theme.colors.black};
   }

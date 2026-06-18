@@ -345,6 +345,7 @@ const CtaEmail = styled.a`
   font-weight: 700;
   color: white;
   text-decoration: underline;
+  text-underline-position: under;
   &:hover {
     opacity: 0.8;
   }
