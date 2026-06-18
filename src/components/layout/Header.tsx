@@ -2,18 +2,21 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { theme } from "@/styles/theme";
 import { leadLink, LOGO_SRC } from "@/lib/site";
 
 /* ── Top Announcement Banner ── */
 
-const Nav = styled.header`
+const Nav = styled.header<{ $hidden?: boolean }>`
   position: sticky;
   top: 0;
   z-index: 100;
   background: ${theme.colors.white};
   border-bottom: 1px solid ${theme.colors.gray200};
+  transform: translateY(${({ $hidden }) => ($hidden ? "-100%" : "0")});
+  transition: transform 0.3s ease;
 `;
 
 const Inner = styled.div`
@@ -118,10 +121,25 @@ const ContactCircle = styled.span`
 
 export default function Header() {
   const pathname = usePathname();
+  const [hidden, setHidden] = useState(false);
+
+  // 스크롤 다운 시 숨김, 업 시 표시 (상단 근처에서는 항상 표시)
+  useEffect(() => {
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      if (y < 80) setHidden(false);
+      else if (y > lastY) setHidden(true);
+      else if (y < lastY) setHidden(false);
+      lastY = y;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <>
-      <Nav>
+      <Nav $hidden={hidden}>
         <Inner>
           <LogoWrap href="/">
             {/* eslint-disable-next-line @next/next/no-img-element */}
