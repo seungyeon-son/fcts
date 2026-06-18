@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import styled, { keyframes } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import { theme } from "@/styles/theme";
 import { caseStudies, projects } from "@/data/projects";
 import { researchPosts } from "@/data/posts";
@@ -86,25 +86,46 @@ const HeroFCTS = styled.div`
   }
 `;
 
-const HeroFCTSItem = styled.div<{ $pt?: number; $pb?: number; $end?: boolean }>`
+const HeroFCTSItem = styled.div<{
+  $pt?: number;
+  $pb?: number;
+  $end?: boolean;
+  $lit?: boolean;
+}>`
   display: flex;
   align-items: center;
   gap: 40px;
   padding-top: ${({ $pt }) => $pt ?? 0}px;
   padding-bottom: ${({ $pb }) => $pb ?? 0}px;
   justify-content: ${({ $end }) => ($end ? "flex-end" : "flex-start")};
+
+  ${({ $lit }) =>
+    $lit &&
+    css`
+      .lj-letter {
+        color: #ffffff;
+        text-shadow: 0 0 6px rgba(150, 210, 255, 0.95),
+          0 0 16px rgba(90, 170, 255, 0.85), 0 0 34px rgba(60, 150, 255, 0.6);
+      }
+      .lj-name {
+        color: #ffffff;
+        text-shadow: 0 0 10px rgba(120, 190, 255, 0.7);
+      }
+    `}
 `;
 
 const HeroFCTSLetter = styled.span`
   font-size: 16px;
   font-weight: 700;
   color: rgba(255, 255, 255, 0.55);
+  transition: color 0.25s ease, text-shadow 0.25s ease;
 `;
 
 const HeroFCTSName = styled.span`
   font-size: 16px;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.5);
+  transition: color 0.25s ease, text-shadow 0.25s ease;
 `;
 
 /* ════════════════════════════════
@@ -588,8 +609,24 @@ const ArticleTitle = styled.div`
 `;
 
 const ArticleDivider = styled.div`
+  position: relative;
   height: 1px;
   background: #e1dac0;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: ${theme.colors.accent};
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+  }
+
+  ${ArticleCard}:hover &::after {
+    transform: scaleX(1);
+  }
 `;
 
 const ArticleDate = styled.div`
@@ -618,12 +655,37 @@ const worksProjects = projects.map((p) => ({
 
 const WORKS_PER_PAGE = 2;
 
+// Hero 영상에서 스위치가 켜지는 구간(초) — 영상 보며 미세조정
+const LIGHT_WINDOWS = [{ start: 1.8, end: 4.2 }];
+
 /* ════════════════════════════════
    PAGE
 ════════════════════════════════ */
 export default function Home() {
   const [perPage, setPerPage] = useState(WORKS_PER_PAGE);
   const [worksPage, setWorksPage] = useState(0);
+
+  // Hero 영상 스위치 ON 구간에 맞춰 Concept 글로우
+  const heroVideoRef = useRef<HTMLVideoElement>(null);
+  const [conceptLit, setConceptLit] = useState(false);
+
+  useEffect(() => {
+    const v = heroVideoRef.current;
+    if (!v) return;
+    let raf = 0;
+    let last = false;
+    const loop = () => {
+      const t = v.currentTime;
+      const lit = LIGHT_WINDOWS.some((w) => t >= w.start && t <= w.end);
+      if (lit !== last) {
+        last = lit;
+        setConceptLit(lit);
+      }
+      raf = requestAnimationFrame(loop);
+    };
+    raf = requestAnimationFrame(loop);
+    return () => cancelAnimationFrame(raf);
+  }, []);
 
   // 모바일(sm 이하)에서는 1개씩, 그 외에는 기본 2개씩 노출
   useEffect(() => {
@@ -644,7 +706,7 @@ export default function Home() {
     <>
       {/* Hero */}
       <HeroSection>
-        <HeroBg autoPlay muted loop playsInline>
+        <HeroBg ref={heroVideoRef} autoPlay muted loop playsInline>
           <source src="/img/video_main.mp4" type="video/mp4" />
         </HeroBg>
         <HeroInner>
@@ -666,9 +728,9 @@ export default function Home() {
               <HeroFCTSLetter>F</HeroFCTSLetter>
               <HeroFCTSName>Function</HeroFCTSName>
             </HeroFCTSItem>
-            <HeroFCTSItem $pt={54}>
-              <HeroFCTSLetter>C</HeroFCTSLetter>
-              <HeroFCTSName>Concept</HeroFCTSName>
+            <HeroFCTSItem $pt={54} $lit={conceptLit}>
+              <HeroFCTSLetter className="lj-letter">C</HeroFCTSLetter>
+              <HeroFCTSName className="lj-name">Concept</HeroFCTSName>
             </HeroFCTSItem>
             <HeroFCTSItem $pt={27}>
               <HeroFCTSLetter>T</HeroFCTSLetter>
