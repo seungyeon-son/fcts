@@ -4,6 +4,17 @@
 export const SITE_VARIANT: "team" | "personal" =
   process.env.NEXT_PUBLIC_SITE_VARIANT === "team" ? "team" : "personal";
 
+// 배포별 사이트 절대 URL (SEO canonical·OG·sitemap·robots 기준)
+// 우선순위: NEXT_PUBLIC_SITE_URL(직접 지정) > 변형별 기본 vercel 주소
+// ⚠️ 추후 커스텀 도메인(fcts.co.kr) 연결 시 Vercel 환경변수에
+//    NEXT_PUBLIC_SITE_URL=https://fcts.co.kr 만 넣으면 전체가 따라 바뀜.
+export const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (SITE_VARIANT === "team"
+    ? "https://studio-fcts.vercel.app"
+    : "https://seungyeondesign.vercel.app")
+).replace(/\/$/, "");
+
 // GNB 첫 번째 메뉴 분기
 export const leadLink =
   SITE_VARIANT === "team" ? { href: "/process", label: "Process" } : { href: "/about", label: "About" };
