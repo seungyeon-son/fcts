@@ -518,6 +518,246 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    slug: "sunnano-website-renewal",
+    title: "20년간 쌓인 정보를\n구조로 정리한 웹사이트 리뉴얼",
+    subtitle: "SunNano",
+    cardDesc: "오래 쌓여 복잡해진 썬팅필름 브랜드 사이트를 정보 구조 중심으로 개편",
+    coverImage: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=75",
+    category: "Web Service",
+    client: "썬나노 (SunNano)",
+    tags: ["Web", "Renewal", "Publishing"],
+    year: "2025",
+    role: "디자인 · 퍼블리싱",
+    metrics: [
+      { value: "2003→2025", label: "노후 사이트 전면 개편", sub: "시멘틱 마크업·정보구조 재정비" },
+      { value: "7개 라인업", label: "필름 제품군 체계화", sub: "Signature·Eco·Crystal·Nano·Prestige·Hi-Tec·Silver" },
+      { value: "단독 수행", label: "디자인 100% · 퍼블리싱 100%", sub: "Figma → React·Tailwind·SCSS·WordPress" },
+    ],
+    problemContext: {
+      domain: "도메인 맥락",
+      domainDetail:
+        "썬나노는 30년 업력의 썬팅(윈도우) 필름 브랜드입니다. 다만 웹사이트는 2003년에 제작된 이후 콘텐츠가 장기간 누적되며, 시멘틱 마크업이 지켜지지 않고 정보가 흩어져 복잡해 보이는 인상을 주고 있었습니다.",
+      coreChallenge: "핵심 페인포인트",
+      coreChallengeDetail:
+        "제품 라인업·시공 사례·구매 안내가 한 화면에 과도하게 쌓여, 방문자가 \"내게 맞는 필름과 다음 행동\"을 빠르게 판단하기 어려웠습니다. 오래된 마크업 구조는 유지보수와 검색 노출에도 불리했습니다.",
+    },
+    approach: [
+      { step: 1, title: "현황 진단", desc: "기존 사이트 정보·마크업 구조 분석" },
+      { step: 2, title: "정보 구조", desc: "제품·사례·문의 흐름 재설계" },
+      { step: 3, title: "마크업 정비", desc: "시멘틱 구조로 재구축" },
+      { step: 4, title: "UI 디자인", desc: "Figma로 화면·컴포넌트 설계" },
+      { step: 5, title: "퍼블리싱", desc: "React·Tailwind·SCSS·WordPress 구현" },
+    ],
+    keyDecisions: [
+      {
+        area: "영역 1",
+        areaTitle: "쌓인 정보를 '판단 흐름' 중심으로 재배치",
+        items: [
+          {
+            icon: "현황",
+            title: "",
+            body: "메인에 제품·이벤트·사례·구매가 평면적으로 나열되어, 처음 방문한 사용자가 무엇부터 봐야 할지 알기 어려웠습니다.",
+          },
+          {
+            icon: "목표",
+            title: "",
+            body: "\"필름 선택 → 사례 확인 → 견적/구매\"로 이어지는 의사결정 흐름에 맞춰 화면 위계를 다시 잡는 것을 목표로 했습니다.",
+          },
+          {
+            icon: "UX",
+            title: "",
+            body: "히어로에서 브랜드 메시지를 명확히 던지고, 그 아래로 제품 라인업과 대표 시공 사례를 단계적으로 노출했습니다.",
+          },
+          {
+            icon: "설 계",
+            title: "",
+            body: "견적 문의 CTA를 흐름의 끝에 일관되게 배치해, 탐색이 행동으로 자연스럽게 이어지도록 설계했습니다.",
+          },
+        ],
+      },
+      {
+        area: "영역 2",
+        areaTitle: "시멘틱 마크업으로 구조와 유지보수성 회복",
+        items: [
+          {
+            icon: "현황",
+            title: "",
+            body: "오래된 마크업은 의미 없는 태그 중첩이 많아, 화면이 복잡해 보이고 수정·확장이 어려웠습니다.",
+          },
+          {
+            icon: "목표",
+            title: "",
+            body: "시멘틱 태그 기반으로 문서 구조를 재정의해 가독성과 유지보수성, 검색 노출 기반을 함께 확보하려 했습니다.",
+          },
+          {
+            icon: "UX",
+            title: "",
+            body: "제품 라인업을 탭 구조로 정리하고, 특징·투과율 비교 같은 정보를 일관된 컴포넌트로 표준화했습니다.",
+          },
+          {
+            icon: "설 계",
+            title: "",
+            body: "디자인부터 퍼블리싱까지 단독으로 수행해, 설계 의도가 구현 단계에서 흐트러지지 않도록 일관성을 유지했습니다.",
+          },
+        ],
+      },
+    ],
+    designHighlights: [
+      {
+        zone: "Hero",
+        title: "모든 것을 갖춘 30년 브랜드 썬나노",
+        desc: "브랜드의 연혁과 신뢰를 전면에 내세운 히어로로, 첫 화면에서 핵심 메시지를 명확히 전달합니다.",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=75",
+      },
+      {
+        zone: "Products",
+        title: "필름 라인업 — 탭으로 정리한 제품군",
+        desc: "Signature부터 Silver까지 7개 라인업을 탭 구조로 묶고, 특징·투과율 비교를 표준 컴포넌트로 정리했습니다.",
+        image: "https://images.unsplash.com/photo-1545235617-9465d2a55698?w=1200&q=75",
+      },
+      {
+        zone: "Cases",
+        title: "대표 시공 사례",
+        desc: "공공기관·대형 건물 등 대표 시공 사례를 카드 갤러리로 구성해 브랜드 레퍼런스를 한눈에 보여줍니다.",
+        image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&q=75",
+      },
+    ],
+    reflection: [
+      {
+        title: "배운 것",
+        body: "오래 운영된 사이트의 리뉴얼은 '새로 그리는 일'보다 '쌓인 정보를 다시 구조화하는 일'에 가깝다는 것을 체감했습니다.",
+      },
+      {
+        title: "해결하지 못한 것",
+        body: "장기간 축적된 레거시 콘텐츠를 전부 재정리하지는 못해, 일부 하위 페이지는 단계적 이관 과제로 남겼습니다.",
+      },
+      {
+        title: "다음 ITERATION",
+        body: "정비한 시멘틱 구조를 바탕으로 검색 노출(SEO)과 견적 전환 퍼널을 데이터로 측정·개선할 계획입니다.",
+      },
+    ],
+  },
+  {
+    slug: "fatima-franciscan-renewal",
+    title: "오래된 수도회 사이트를\n정돈된 정보 구조로 리뉴얼",
+    subtitle: "파티마의 성모 프란치스코 수녀회",
+    cardDesc: "수도회 소개·사도직·교육 정보를 위계 중심으로 재정리한 웹사이트 리뉴얼",
+    coverImage: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800&q=75",
+    category: "Web Service",
+    client: "파티마의 성모 프란치스코 수녀회",
+    tags: ["Web", "Renewal", "Publishing"],
+    year: "2025",
+    role: "디자인 · 퍼블리싱",
+    metrics: [
+      { value: "진행 중", label: "수도회 웹사이트 리뉴얼", sub: "디자인 100% · 퍼블리싱 100%" },
+      { value: "4개 섹션", label: "정보 구조 재편", sub: "수도회 소개·우리의 사도직·청년 사도직·함께 나눠요" },
+      { value: "Figma→Web", label: "노후 사이트 전면 개편", sub: "가독성·위계 중심 재설계" },
+    ],
+    problemContext: {
+      domain: "도메인 맥락",
+      domainDetail:
+        "파티마의 성모 프란치스코 수녀회의 웹사이트는 오래된 디자인과 정돈되지 않은 정보 구조로, 수도회 소개·역사·사도직·교육 정보가 일관된 위계 없이 흩어져 있었습니다.",
+      coreChallenge: "핵심 페인포인트",
+      coreChallengeDetail:
+        "방문자가 수도회의 정체성과 활동(사도직), 교육·피정 정보를 차분하게 따라 읽기 어려웠습니다. 콘텐츠의 톤과 위계가 수도회의 분위기를 충분히 담아내지 못했습니다.",
+    },
+    approach: [
+      { step: 1, title: "현황 진단", desc: "기존 사이트 정보·톤 분석" },
+      { step: 2, title: "정보 구조", desc: "4개 핵심 섹션으로 재편" },
+      { step: 3, title: "톤 설정", desc: "수도회 분위기에 맞는 무드 정의" },
+      { step: 4, title: "UI 디자인", desc: "Figma로 화면·타이포 위계 설계" },
+      { step: 5, title: "퍼블리싱", desc: "웹 구현 (진행 중)" },
+    ],
+    keyDecisions: [
+      {
+        area: "영역 1",
+        areaTitle: "흩어진 정보를 4개 섹션 위계로 재편",
+        items: [
+          {
+            icon: "현황",
+            title: "",
+            body: "수도회 소개, 역사, 사도직, 교육·피정 정보가 분산되어 있어 방문자가 전체 그림을 파악하기 어려웠습니다.",
+          },
+          {
+            icon: "목표",
+            title: "",
+            body: "'수도회 소개 · 우리의 사도직 · 청년 사도직 · 함께 나눠요' 4개 축으로 정보를 묶어 탐색 경로를 명확히 했습니다.",
+          },
+          {
+            icon: "UX",
+            title: "",
+            body: "수도회 역사·교육과정 같은 긴 정보는 타임라인과 표로 정리해 차분히 읽히도록 구성했습니다.",
+          },
+          {
+            icon: "설 계",
+            title: "",
+            body: "각 섹션의 진입 지점을 상단 내비게이션에 일관되게 노출해, 처음 방문자도 길을 잃지 않게 했습니다.",
+          },
+        ],
+      },
+      {
+        area: "영역 2",
+        areaTitle: "수도회의 분위기를 담은 톤과 타이포 위계",
+        items: [
+          {
+            icon: "현황",
+            title: "",
+            body: "기존 화면은 색과 장식이 과해, 수도회 특유의 고요하고 정돈된 인상을 전달하지 못했습니다.",
+          },
+          {
+            icon: "목표",
+            title: "",
+            body: "여백과 절제된 색, 명확한 타이포 위계로 '고요함과 신뢰'의 톤을 화면 전반에 담는 것을 목표로 했습니다.",
+          },
+          {
+            icon: "UX",
+            title: "",
+            body: "히어로에 수도회의 정신을 담은 문장을 배치해, 첫 화면에서 정체성이 전해지도록 했습니다.",
+          },
+          {
+            icon: "설 계",
+            title: "",
+            body: "사진·텍스트의 위계를 일관된 규칙으로 정리해, 콘텐츠가 늘어나도 톤이 흐트러지지 않도록 설계했습니다.",
+          },
+        ],
+      },
+    ],
+    designHighlights: [
+      {
+        zone: "Hero",
+        title: "수도회의 정신을 담은 첫 화면",
+        desc: "'고요함 중에 주님의 뜻을 찾고, 인내함 중에 덕으로 나아가며, 사랑함으로써 복음을 전하라'는 메시지를 히어로에 담았습니다.",
+        image: "https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?w=1200&q=75",
+      },
+      {
+        zone: "History",
+        title: "수도회 역사 — 타임라인으로 정리",
+        desc: "긴 연혁을 연도별 타임라인으로 구조화해, 방문자가 흐름을 따라 자연스럽게 읽도록 했습니다.",
+        image: "https://images.unsplash.com/photo-1597733336794-12d05021d510?w=1200&q=75",
+      },
+      {
+        zone: "Education",
+        title: "교육 · 피정 안내",
+        desc: "교육과정과 피정 정보를 표와 카드로 정리해, 필요한 정보를 빠르게 찾을 수 있게 구성했습니다.",
+        image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=75",
+      },
+    ],
+    reflection: [
+      {
+        title: "배운 것",
+        body: "정보의 양보다 '톤과 위계'가 신뢰를 만든다는 것을 다시 확인했습니다. 절제된 디자인이 오히려 메시지를 더 선명하게 전달했습니다.",
+      },
+      {
+        title: "진행 상황",
+        body: "현재 디자인을 마치고 퍼블리싱을 진행 중이며, 콘텐츠 이관과 세부 페이지를 단계적으로 반영하고 있습니다.",
+      },
+      {
+        title: "다음 ITERATION",
+        body: "청년 사도직 등 활동 콘텐츠를 정기적으로 업데이트할 수 있는 구조를 더해, 살아있는 사이트로 운영되도록 할 계획입니다.",
+      },
+    ],
+  },
 ];
 
 export const caseStudies = {
