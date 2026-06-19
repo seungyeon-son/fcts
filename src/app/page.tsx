@@ -2,11 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import styled, { css, keyframes } from "styled-components";
+import styled, { css } from "styled-components";
 import { theme } from "@/styles/theme";
 import { caseStudies, projects } from "@/data/projects";
 import { researchPosts } from "@/data/posts";
 import { Container } from "@/styles/styled";
+import ProjectCarousel from "@/components/works/ProjectCarousel";
 
 /* ════════════════════════════════
    HERO
@@ -104,8 +105,10 @@ const HeroFCTSItem = styled.div<{
     css`
       .lj-letter {
         color: #ffffff;
-        text-shadow: 0 0 6px rgba(150, 210, 255, 0.95),
-          0 0 16px rgba(90, 170, 255, 0.85), 0 0 34px rgba(60, 150, 255, 0.6);
+        text-shadow:
+          0 0 6px rgba(150, 210, 255, 0.95),
+          0 0 16px rgba(90, 170, 255, 0.85),
+          0 0 34px rgba(60, 150, 255, 0.6);
       }
       .lj-name {
         color: #ffffff;
@@ -118,14 +121,18 @@ const HeroFCTSLetter = styled.span`
   font-size: 16px;
   font-weight: 700;
   color: rgba(255, 255, 255, 0.55);
-  transition: color 0.25s ease, text-shadow 0.25s ease;
+  transition:
+    color 0.25s ease,
+    text-shadow 0.25s ease;
 `;
 
 const HeroFCTSName = styled.span`
   font-size: 16px;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.5);
-  transition: color 0.25s ease, text-shadow 0.25s ease;
+  transition:
+    color 0.25s ease,
+    text-shadow 0.25s ease;
 `;
 
 /* ════════════════════════════════
@@ -210,7 +217,7 @@ const WorksSection = styled.section`
   background: ${theme.colors.white};
 
   @media (max-width: ${theme.breakpoints.md}) {
-    padding: 0 0 80px;
+    padding: 0 0 120px;
   }
 `;
 
@@ -230,25 +237,27 @@ const SectionHeading = styled.h2`
 const WorksInner = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  gap: 24px;
+  gap: 8px;
 `;
 
 const WorksRow = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 364px 1fr;
   gap: 36px;
-  align-items: flex-start;
-  width: 100%;
-
+  align-items: start;
+  @media (max-width: ${theme.breakpoints.lg}) {
+    grid-template-columns: 180px 1fr;
+  }
   @media (max-width: ${theme.breakpoints.md}) {
-    flex-direction: column;
-    gap: 24px;
+    grid-template-columns: 1fr;
+  }
+  @media (max-width: ${theme.breakpoints.sm}) {
+    gap: 16px;
   }
 `;
 
 const WorksMeta = styled.div`
   position: relative;
-  width: 240px;
   flex-shrink: 0;
   align-self: stretch;
 
@@ -274,6 +283,7 @@ const WorksMetaSub = styled.div`
   color: #aaa;
   letter-spacing: -0.4px;
   line-height: 1.6;
+  margin-bottom: 20px;
 `;
 
 const WorksMetaDesc = styled.div`
@@ -281,7 +291,6 @@ const WorksMetaDesc = styled.div`
   color: #495057;
   line-height: 1.6;
   letter-spacing: -0.4px;
-  margin-top: 4px;
 `;
 
 const WorksMetaTags = styled.div`
@@ -312,140 +321,18 @@ const WorksTag = styled(Link)`
   }
 `;
 
-const ProjectCard = styled(Link)`
-  display: block;
-  position: relative;
-  overflow: hidden;
-  border-radius: 4px;
-  height: 560px;
-  flex: 1;
-  box-shadow: -4px 9px 25px -6px rgba(0, 0, 0, 0.1);
-
-  &:hover .proj-img {
-    transform: scale(1.04);
-  }
-
-  @media (max-width: ${theme.breakpoints.md}) {
-    height: 360px;
-  }
-`;
-
-const ProjImg = styled.div<{ $img: string }>`
-  width: 100%;
-  height: 100%;
-  background: #ccc url(${({ $img }) => $img}) center/cover no-repeat;
-  transition: transform 0.4s ease;
-`;
-
-const ProjLabel = styled.div`
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  right: 20px;
-  background: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 16px;
-  border-radius: 4px;
-  color: #212529;
-  letter-spacing: -0.4px;
-
-  span {
-    flex-shrink: 0;
-    color: ${theme.colors.accent};
-  }
-`;
-
-const ProjName = styled.div`
-  font-size: 18px;
-  font-weight: 700;
-  color: #212529;
-  letter-spacing: -0.4px;
-  line-height: 1.3;
-`;
-
-const ProjDesc = styled.div`
-  font-size: 14px;
-  color: #868e96;
-  letter-spacing: -0.3px;
-  line-height: 1.45;
-  margin-top: 4px;
-`;
-
-const worksFade = keyframes`
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: none; }
-`;
-
-const WorksCarousel = styled.div`
-  display: flex;
-  gap: 36px;
-  flex: 1;
-  animation: ${worksFade} 0.35s ease;
-
-  @media (max-width: ${theme.breakpoints.sm}) {
-    width: 100%;
-  }
-`;
-
 const WorksBottom = styled.div`
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: end;
-  .mo {
-    display: none;
-  }
+  display: none;
   @media (max-width: ${theme.breakpoints.sm}) {
-    gap: 24px;
-    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     .mo {
       display: block;
       margin-top: 0 !important;
     }
   }
-`;
-
-const CarouselNav = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 14px;
-`;
-
-const ArrowBtn = styled.button`
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid ${theme.colors.gray300};
-  background: white;
-  color: ${theme.colors.black};
-  font-size: 16px;
-  transition:
-    border-color 0.2s,
-    color 0.2s,
-    opacity 0.2s;
-
-  &:hover:not(:disabled) {
-    border-color: ${theme.colors.accent};
-    color: ${theme.colors.accent};
-  }
-  &:disabled {
-    opacity: 0.35;
-    cursor: default;
-  }
-`;
-
-const PageIndicator = styled.span`
-  font-size: 14px;
-  color: ${theme.colors.gray500};
-  min-width: 46px;
-  text-align: center;
-  font-variant-numeric: tabular-nums;
 `;
 
 const ViewMoreBtn = styled(Link)`
@@ -653,8 +540,6 @@ const worksProjects = projects.map((p) => ({
   img: p.coverImage ?? "",
 }));
 
-const WORKS_PER_PAGE = 2;
-
 // Hero 영상에서 스위치가 켜지는 구간(초) — 영상 보며 미세조정
 const LIGHT_WINDOWS = [{ start: 1.8, end: 4.2 }];
 
@@ -662,9 +547,6 @@ const LIGHT_WINDOWS = [{ start: 1.8, end: 4.2 }];
    PAGE
 ════════════════════════════════ */
 export default function Home() {
-  const [perPage, setPerPage] = useState(WORKS_PER_PAGE);
-  const [worksPage, setWorksPage] = useState(0);
-
   // Hero 영상 스위치 ON 구간에 맞춰 Concept 글로우
   const heroVideoRef = useRef<HTMLVideoElement>(null);
   const [conceptLit, setConceptLit] = useState(false);
@@ -686,21 +568,6 @@ export default function Home() {
     raf = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(raf);
   }, []);
-
-  // 모바일(sm 이하)에서는 1개씩, 그 외에는 기본 2개씩 노출
-  useEffect(() => {
-    const mq = window.matchMedia(`(max-width: ${theme.breakpoints.sm})`);
-    const apply = () => setPerPage(mq.matches ? 1 : WORKS_PER_PAGE);
-    apply();
-    mq.addEventListener("change", apply);
-    return () => mq.removeEventListener("change", apply);
-  }, []);
-
-  const totalWorksPages = Math.max(1, Math.ceil(worksProjects.length / perPage));
-  // perPage 변경(리사이즈)으로 범위를 벗어나면 렌더 시 보정
-  const safePage = Math.min(worksPage, totalWorksPages - 1);
-
-  const visibleWorks = worksProjects.slice(safePage * perPage, safePage * perPage + perPage);
 
   return (
     <>
@@ -773,34 +640,24 @@ export default function Home() {
               <WorksMeta>
                 <WorksMetaTitle>복잡함을 구조로</WorksMetaTitle>
                 <WorksMetaSub>From Complex To Simple</WorksMetaSub>
-                <WorksMetaDesc>B2B·B2C 서비스부터 디자인 시스템까지, 문제를 구조로 푼 프로젝트</WorksMetaDesc>
-                <WorksMetaTags>
+                <WorksMetaDesc>
+                  B2B·B2C 서비스부터 디자인 시스템까지,
+                  <br /> 문제를 구조로 푼 프로젝트
+                </WorksMetaDesc>
+                {/* <WorksMetaTags>
                   {worksProjects.map((p) => (
                     <WorksTag key={p.slug} href={`/works/${p.slug}`}>
                       {p.name}
                     </WorksTag>
                   ))}
-                </WorksMetaTags>
+                </WorksMetaTags> */}
                 <ViewMoreBtn href="/works" style={{ marginTop: 24 }}>
                   View More
                   <ViewMoreCircle>→</ViewMoreCircle>
                 </ViewMoreBtn>
               </WorksMeta>
 
-              <WorksCarousel key={safePage}>
-                {visibleWorks.map((p) => (
-                  <ProjectCard key={p.slug} href={`/works/${p.slug}`}>
-                    <ProjImg className="proj-img" $img={p.img} />
-                    <ProjLabel>
-                      <div>
-                        <ProjName>{p.name}</ProjName>
-                        {p.desc && <ProjDesc>{p.desc}</ProjDesc>}
-                      </div>
-                      <span>→</span>
-                    </ProjLabel>
-                  </ProjectCard>
-                ))}
-              </WorksCarousel>
+              <ProjectCarousel items={projects} />
             </WorksRow>
 
             <WorksBottom>
@@ -808,32 +665,6 @@ export default function Home() {
                 View More
                 <ViewMoreCircle>→</ViewMoreCircle>
               </ViewMoreBtn>
-
-              {totalWorksPages > 1 ? (
-                <CarouselNav>
-                  <ArrowBtn
-                    type="button"
-                    aria-label="이전 프로젝트"
-                    onClick={() => setWorksPage(Math.max(0, safePage - 1))}
-                    disabled={safePage === 0}
-                  >
-                    ←
-                  </ArrowBtn>
-                  <PageIndicator>
-                    {safePage + 1} / {totalWorksPages}
-                  </PageIndicator>
-                  <ArrowBtn
-                    type="button"
-                    aria-label="다음 프로젝트"
-                    onClick={() => setWorksPage(Math.min(totalWorksPages - 1, safePage + 1))}
-                    disabled={safePage === totalWorksPages - 1}
-                  >
-                    →
-                  </ArrowBtn>
-                </CarouselNav>
-              ) : (
-                <span />
-              )}
             </WorksBottom>
           </WorksInner>
         </Container>
