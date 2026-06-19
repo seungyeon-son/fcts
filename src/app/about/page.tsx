@@ -346,12 +346,14 @@ const CtaBullet = styled.li`
     content: "· ";
   }
 `;
-const CtaEmail = styled.a`
+const CtaContact = styled.a`
   font-size: 14px;
   font-weight: 700;
   color: white;
   text-decoration: underline;
   text-underline-position: under;
+  display: inline-block;
+  margin-right: 16px;
   &:hover {
     opacity: 0.8;
   }
@@ -609,7 +611,8 @@ export default function AboutPage() {
                 <CtaBullet key={i}>{item}</CtaBullet>
               ))}
             </CtaBullets>
-            <CtaEmail href="mailto:au1gust8@gmail.com">au1gust8@gmail.com</CtaEmail>
+            <CtaContact href="mailto:au1gust8@gmail.com">au1gust8@gmail.com</CtaContact>
+            <CtaContact href="tel:010-4523-0029">010-4523-0029</CtaContact>
           </CtaBlock>
         </Container>
       </section>

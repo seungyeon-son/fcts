@@ -11,14 +11,14 @@ const PageHeading = styled.h1`
   font-size: clamp(36px, 4vw, 45px);
   font-weight: 800;
   letter-spacing: -0.02em;
-  padding: 64px 0 56px;
+  padding: 64px 0 104px;
   color: ${theme.colors.black};
 `;
 
 /* 카테고리 블록: 좌 메타 + 우 이미지 2개 */
 const CategoryBlock = styled.div`
-  padding: 48px 0;
-  border-top: 1px solid ${theme.colors.gray200};
+  padding: 0 0 160px;
+  /* border-top: 1px solid ${theme.colors.gray200}; */
   &:first-child {
     border-top: none;
     padding-top: 0;
@@ -106,7 +106,8 @@ const ProjectCard = styled(Link)`
   position: relative;
   overflow: hidden;
   border-radius: 4px;
-  aspect-ratio: 4/3;
+  aspect-ratio: 4/4;
+  box-shadow: 0 1px 3px rgba(223, 223, 223, 0.8);
   &:hover .img {
     transform: scale(1.04);
   }

@@ -523,7 +523,7 @@ export const projects: Project[] = [
     title: "20년간 쌓인 정보를\n구조로 정리한 웹사이트 리뉴얼",
     subtitle: "SunNano",
     cardDesc: "오래 쌓여 복잡해진 썬팅필름 브랜드 사이트를 정보 구조 중심으로 개편",
-    coverImage: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=75",
+    coverImage: "/img/works/sunnano-cover.jpg",
     category: "Web Service",
     client: "썬나노 (SunNano)",
     tags: ["Web", "Renewal", "Publishing"],
@@ -608,19 +608,19 @@ export const projects: Project[] = [
         zone: "Hero",
         title: "모든 것을 갖춘 30년 브랜드 썬나노",
         desc: "브랜드의 연혁과 신뢰를 전면에 내세운 히어로로, 첫 화면에서 핵심 메시지를 명확히 전달합니다.",
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=75",
+        image: "/img/works/sunnano-hero.jpg",
       },
       {
         zone: "Products",
         title: "필름 라인업 — 탭으로 정리한 제품군",
         desc: "Signature부터 Silver까지 7개 라인업을 탭 구조로 묶고, 특징·투과율 비교를 표준 컴포넌트로 정리했습니다.",
-        image: "https://images.unsplash.com/photo-1545235617-9465d2a55698?w=1200&q=75",
+        image: "/img/works/sunnano-products.jpg",
       },
       {
         zone: "Cases",
         title: "대표 시공 사례",
         desc: "공공기관·대형 건물 등 대표 시공 사례를 카드 갤러리로 구성해 브랜드 레퍼런스를 한눈에 보여줍니다.",
-        image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&q=75",
+        image: "/img/works/sunnano-cases.jpg",
       },
     ],
     reflection: [
@@ -643,7 +643,7 @@ export const projects: Project[] = [
     title: "오래된 수도회 사이트를\n정돈된 정보 구조로 리뉴얼",
     subtitle: "파티마의 성모 프란치스코 수녀회",
     cardDesc: "수도회 소개·사도직·교육 정보를 위계 중심으로 재정리한 웹사이트 리뉴얼",
-    coverImage: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800&q=75",
+    coverImage: "/img/works/fatima-cover.jpg",
     category: "Web Service",
     client: "파티마의 성모 프란치스코 수녀회",
     tags: ["Web", "Renewal", "Publishing"],
@@ -728,19 +728,19 @@ export const projects: Project[] = [
         zone: "Hero",
         title: "수도회의 정신을 담은 첫 화면",
         desc: "'고요함 중에 주님의 뜻을 찾고, 인내함 중에 덕으로 나아가며, 사랑함으로써 복음을 전하라'는 메시지를 히어로에 담았습니다.",
-        image: "https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?w=1200&q=75",
+        image: "/img/works/fatima-hero.jpg",
       },
       {
-        zone: "History",
-        title: "수도회 역사 — 타임라인으로 정리",
-        desc: "긴 연혁을 연도별 타임라인으로 구조화해, 방문자가 흐름을 따라 자연스럽게 읽도록 했습니다.",
-        image: "https://images.unsplash.com/photo-1597733336794-12d05021d510?w=1200&q=75",
+        zone: "About",
+        title: "수도회 소개 — 환영과 정체성",
+        desc: "첫 진입 이후 수도회의 정신과 정체성을 차분한 톤으로 소개하는 섹션으로 구성했습니다.",
+        image: "/img/works/fatima-intro.jpg",
       },
       {
-        zone: "Education",
-        title: "교육 · 피정 안내",
-        desc: "교육과정과 피정 정보를 표와 카드로 정리해, 필요한 정보를 빠르게 찾을 수 있게 구성했습니다.",
-        image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=75",
+        zone: "News",
+        title: "수녀원 소식 · 사도직 안내",
+        desc: "수녀원 소식과 사도직 안내를 정돈된 리스트로 정리해, 필요한 정보를 빠르게 찾도록 했습니다.",
+        image: "/img/works/fatima-gallery.jpg",
       },
     ],
     reflection: [
@@ -755,6 +755,126 @@ export const projects: Project[] = [
       {
         title: "다음 ITERATION",
         body: "청년 사도직 등 활동 콘텐츠를 정기적으로 업데이트할 수 있는 구조를 더해, 살아있는 사이트로 운영되도록 할 계획입니다.",
+      },
+    ],
+  },
+  {
+    slug: "dts-temperature-monitoring",
+    title: "실시간 온도 감지로\n현장 위험을 먼저 알리는 관제 서비스",
+    subtitle: "DTS",
+    cardDesc: "분산 온도 측정 데이터를 경보 위계로 시각화한 B2B 관제 대시보드",
+    coverImage: "/img/works/dts-cover.jpg",
+    category: "B2B UX Service",
+    client: "SDT Inc.",
+    tags: ["UX", "B2B", "Dashboard", "Data Viz"],
+    year: "2025",
+    role: "Product Designer (50%)",
+    metrics: [
+      { value: "5단계", label: "경보 위계 색 체계화", sub: "심각·경계·주의·관심·정상" },
+      { value: "실시간", label: "온도 이상 탐지·알림", sub: "경보·문자 메시지 즉시 전달" },
+      { value: "지도+그래프", label: "센서 위치·시간 분석 통합", sub: "GPS 광섬유 라인 시각화" },
+    ],
+    problemContext: {
+      domain: "도메인 맥락",
+      domainDetail:
+        "DTS는 분산 온도 측정(Distributed Temperature Sensing) 시스템으로, 국방·산림 지역의 관제 센서를 통해 실시간 온도 데이터를 수집·모니터링하는 서비스입니다. 배관·배전반 이상 감지, IT 인프라 화재 예방, 산불 조기 감지 등 핵심 역할을 수행합니다.",
+      coreChallenge: "핵심 페인포인트",
+      coreChallengeDetail:
+        "경보의 범위를 설정하는 것이 기본인데, 모든 경보가 중요할 때 무엇을 우선해 보여줄지 — 그리고 한 지점에 경보가 중첩될 때 사용자가 무엇을 먼저 판단해야 할지가 핵심 과제였습니다.",
+    },
+    approach: [
+      { step: 1, title: "기획 연계", desc: "SDT Cloud 디자인 시스템·UX 흐름 연장" },
+      { step: 2, title: "IA 설계", desc: "대시보드·장비·섹션 정보 구조 정의" },
+      { step: 3, title: "컴포넌트", desc: "경보 위계 색 기반 디자인 시스템" },
+      { step: 4, title: "화면 디자인", desc: "대시보드·섹션·경보 설정 설계" },
+      { step: 5, title: "인터랙션", desc: "경보 핀 모션·팝오버 정의" },
+    ],
+    keyDecisions: [
+      {
+        area: "영역 1",
+        areaTitle: "경보 우선순위 — 계층 색을 일관되게",
+        items: [
+          {
+            icon: "현황",
+            title: "",
+            body: "경보 범위 설정이 기본이지만, 모든 경보가 중요한 상황에서 무엇을 먼저 봐야 할지 우선순위를 판단하기 어려웠습니다.",
+          },
+          {
+            icon: "목표",
+            title: "",
+            body: "심각부터 정상까지의 온도 범위를 설정하는 것을 플로우의 첫 단계로 두어, 경보 기준 자체를 명확히 잡았습니다.",
+          },
+          {
+            icon: "UX",
+            title: "",
+            body: "토스트바·태그·핀 등 모든 컴포넌트에 동일한 경보 단계 색(심각·경계·주의·관심·정상)을 적용해 인지 부담을 줄였습니다.",
+          },
+          {
+            icon: "설 계",
+            title: "",
+            body: "경보 설정 화면도 같은 계층 색으로 통일해, 한 번에 많은 행동을 제안할 때의 혼란을 덜었습니다.",
+          },
+        ],
+      },
+      {
+        area: "영역 2",
+        areaTitle: "중첩 경보 — 값과 위치 중 우선순위 식별",
+        items: [
+          {
+            icon: "현황",
+            title: "",
+            body: "밀접한 지점에 경보가 다량 발생할 때, 사용자가 상황을 한눈에 파악하기 어려웠습니다.",
+          },
+          {
+            icon: "목표",
+            title: "",
+            body: "경보의 값과 위치 중 '경보가 발생한 지점'을 핵심 정보로 식별해 우선 노출하도록 정의했습니다.",
+          },
+          {
+            icon: "UX",
+            title: "",
+            body: "지도 위 경보 핀과 팝오버로 경보 유형·섹션을 안내하고, 핀이 깜빡이는 모션으로 주의를 끌었습니다.",
+          },
+          {
+            icon: "설 계",
+            title: "",
+            body: "핀에 생성된 경보 수를 표기해, 경보가 밀집된 지점의 심각도를 직관적으로 전달했습니다.",
+          },
+        ],
+      },
+    ],
+    designHighlights: [
+      {
+        zone: "Dashboard",
+        title: "메인 대시보드 — 경보 현황과 GPS 위치",
+        desc: "지도 위 광섬유 라인과 온도 경보 분포를 함께 배치해, 위험이 발생한 위치를 직관적으로 파악하도록 했습니다.",
+        image: "/img/works/dts-dashboard.jpg",
+      },
+      {
+        zone: "Sections",
+        title: "섹션 현황 모니터링 — 채널 단위 카드",
+        desc: "섹션 구간을 카드로 설계하고 심각·경계·주의 3단계를 경보 색으로 표시, 선택 시 상세 온도 현황을 노출합니다.",
+        image: "/img/works/dts-sections.jpg",
+      },
+      {
+        zone: "Settings",
+        title: "경보 설정 — 5단계 온도 범위 세팅",
+        desc: "채널마다 다섯 단계를 세팅하도록 레이아웃을 분배하고, 최소·최대치 설정과 범위 추가/삭제를 지원합니다.",
+        image: "/img/works/dts-settings.jpg",
+      },
+    ],
+    reflection: [
+      {
+        title: "배운 것",
+        body: "복잡한 관제 환경에서는 '색의 일관성'이 곧 사용자의 판단 속도라는 것을 확인했습니다. 경보 계층 색을 전 컴포넌트에 통일한 것이 핵심 결정이었습니다.",
+      },
+      {
+        title: "해결하지 못한 것",
+        body: "다채널·다섹션이 동시에 경보를 내는 상황의 정보 밀도는 완전히 해소하지 못해, 대량 경보 요약 뷰는 추가 과제로 남겼습니다.",
+      },
+      {
+        title: "다음 ITERATION",
+        body: "이상 탐지 알고리즘 결과를 지도·그래프에 오버레이해, 경보가 뜨기 전에 대응하는 선제적 관제 UX로 확장할 계획입니다.",
       },
     ],
   },
