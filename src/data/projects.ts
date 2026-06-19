@@ -35,7 +35,7 @@ export const projects: Project[] = [
     title: "글로벌 장벽을 허문\n학위 취득 플랫폼 서비스 디자인",
     subtitle: "글로벌 학점은행제",
     cardDesc: "복잡한 학점 취득 플로우를 3-Zone 구조로 재설계한 프로젝트",
-    coverImage: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=75",
+    coverImage: "/img/works/gcb-cover.jpg",
     category: "B2C UX Service",
     client: "글로벌 학점은행제",
     tags: ["UX", "B2C", "Web"],
@@ -155,7 +155,7 @@ export const projects: Project[] = [
     title: "완강을 65%를 목표로 설계한\n고등학생용 인문학 강의 페이지",
     subtitle: "Gracture",
     cardDesc: "완강률 65%를 목표로 학습 지속성을 높인 UX 프로젝트",
-    coverImage: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=75",
+    coverImage: "/img/works/gracture-cover.jpg",
     category: "B2C UX Service",
     client: "Gracture",
     tags: ["UX", "B2C", "Mobile", "Web"],
@@ -275,7 +275,7 @@ export const projects: Project[] = [
     title: "두 B2B 제품의 일관성을 구축한\n디자인 시스템 — UI Kit이 아닌 운영 원칙",
     subtitle: "B2B Design System",
     cardDesc: "두 B2B 제품의 일관성을 만든 운영 원칙 중심 디자인 시스템",
-    coverImage: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800&q=75",
+    coverImage: "/img/works/ds-cover.jpg",
     category: "B2B UX Service",
     client: "SDT Design System",
     tags: ["Design System", "Publishing", "Figma"],
@@ -397,7 +397,7 @@ export const projects: Project[] = [
     title: "MLOps 4단계를 하나의 노드 그래프로\n시각화한 B2B 대시보드",
     subtitle: "SDT CLOUD",
     cardDesc: "4단계 MLOps 파이프라인을 단일 노드 그래프로 시각화한 B2B 대시보드",
-    coverImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=75",
+    coverImage: "/img/works/cloud-cover.jpg",
     category: "B2B UX Service",
     client: "SDT CLOUD",
     tags: ["B2B", "ML", "Dashboard"],
@@ -540,7 +540,7 @@ export const projects: Project[] = [
         "썬나노는 30년 업력의 썬팅(윈도우) 필름 브랜드입니다. 다만 웹사이트는 2003년에 제작된 이후 콘텐츠가 장기간 누적되며, 시멘틱 마크업이 지켜지지 않고 정보가 흩어져 복잡해 보이는 인상을 주고 있었습니다.",
       coreChallenge: "핵심 페인포인트",
       coreChallengeDetail:
-        "제품 라인업·시공 사례·구매 안내가 한 화면에 과도하게 쌓여, 방문자가 \"내게 맞는 필름과 다음 행동\"을 빠르게 판단하기 어려웠습니다. 오래된 마크업 구조는 유지보수와 검색 노출에도 불리했습니다.",
+        '제품 라인업·시공 사례·구매 안내가 한 화면에 과도하게 쌓여, 방문자가 "내게 맞는 필름과 다음 행동"을 빠르게 판단하기 어려웠습니다. 오래된 마크업 구조는 유지보수와 검색 노출에도 불리했습니다.',
     },
     approach: [
       { step: 1, title: "현황 진단", desc: "기존 사이트 정보·마크업 구조 분석" },
@@ -562,7 +562,7 @@ export const projects: Project[] = [
           {
             icon: "목표",
             title: "",
-            body: "\"필름 선택 → 사례 확인 → 견적/구매\"로 이어지는 의사결정 흐름에 맞춰 화면 위계를 다시 잡는 것을 목표로 했습니다.",
+            body: '"필름 선택 → 사례 확인 → 견적/구매"로 이어지는 의사결정 흐름에 맞춰 화면 위계를 다시 잡는 것을 목표로 했습니다.',
           },
           {
             icon: "UX",

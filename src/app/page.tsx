@@ -401,17 +401,21 @@ const CaseSeparator = styled.div`
 `;
 
 const CaseRow = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 364px 1fr;
   gap: 36px;
-  align-items: flex-start;
+  align-items: start;
   .mo {
     display: none;
   }
+  @media (max-width: ${theme.breakpoints.lg}) {
+    grid-template-columns: 180px 1fr;
+  }
   @media (max-width: ${theme.breakpoints.md}) {
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
   @media (max-width: ${theme.breakpoints.sm}) {
-    align-items: center;
+    gap: 16px;
     .mo {
       display: block;
     }
@@ -419,7 +423,6 @@ const CaseRow = styled.div`
 `;
 
 const CaseMeta = styled.div`
-  width: 240px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
@@ -488,7 +491,7 @@ const ArticleTag = styled.span`
 `;
 
 const ArticleTitle = styled.div`
-  font-size: 20px;
+  font-size: clamp(16px, 2vw, 20px);
   font-weight: 600;
   color: #212529;
   line-height: 1.45;
