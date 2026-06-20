@@ -537,9 +537,13 @@ export default function WorkDetailPage({ params }: { params: Promise<{ slug: str
                 </InfoItem>
                 <InfoItem>
                   <div className="label">Website</div>
-                  <a className="link" href="#">
-                    🔗 Link
-                  </a>
+                  {project.website ? (
+                    <a className="link" href={project.website} target="_blank" rel="noopener noreferrer">
+                      🔗 Link
+                    </a>
+                  ) : (
+                    <div className="value">비공개</div>
+                  )}
                 </InfoItem>
               </InfoGrid>
             </HeroLeft>
