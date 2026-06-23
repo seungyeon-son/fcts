@@ -8,7 +8,8 @@ export type Project = {
   tags: string[];
   year: string;
   role: string;
-  metrics: { value: string; label: string; sub?: string }[];
+  /** kind: "result"=실제 설계 산출물, "goal"=목표치(아직 측정 전) */
+  metrics: { value: string; label: string; sub?: string; kind?: "result" | "goal" }[];
   coverImage?: string;
   images?: string[];
   heroContext?: string;
@@ -22,12 +23,20 @@ export type Project = {
     coreChallengeDetail: string;
   };
   approach: { step: number; title: string; desc: string }[];
+  /** Approach 아래 들어가는 큰 비주얼(유저 저니 맵 등). image 없으면 placeholder + direction 노출 */
+  journeyImage?: { image?: string; caption: string; direction: string };
   keyDecisions: {
     area: string;
     areaTitle: string;
     items: { icon: string; title: string; body: string }[];
+    /** 영역별 비포/애프터 또는 화면 이미지. 없으면 placeholder + direction */
+    image?: string;
+    imageCaption?: string;
+    imageDirection?: string;
+    /** 선택하지 않은 대안 + 그 이유 (디자인 판단·설득 근거) */
+    tradeoff?: string;
   }[];
-  designHighlights: { zone: string; title: string; desc: string; image?: string }[];
+  designHighlights: { zone: string; title: string; desc: string; image?: string; imageDirection?: string }[];
   reflection: { title: string; body: string }[];
 };
 
@@ -46,9 +55,9 @@ export const projects: Project[] = [
     heroContext:
       "복잡한 B2B 데이터 서비스에서 '얽힌 도메인을 명료한 구조로 푸는' 일을 해왔습니다. 그 시각으로, 외국인 학습자가 인지부터 학위까지 9단계 여정에서 한 번도 길을 잃지 않도록 설계했습니다.",
     metrics: [
-      { value: "4대 장벽", label: "외국인 학습자 페인포인트 재설계", sub: "언어·입학·결제·인증을 End-to-End로 통합" },
-      { value: "5개 언어", label: "다국어 UI(i18n) 설계", sub: "EN·ZH-CN·ZH-TW·JA·VI 동시 지원 구조" },
-      { value: "≥95%", label: "목표 글로벌 결제 성공률", sub: "Visa·PayPal·Alipay·WeChat·Wise 5종 통합" },
+      { value: "≥40%", kind: "goal", label: "가입 → 결제 전환율", sub: "언어·결제 장벽 해소 기준 · 출시 후 측정 예정" },
+      { value: "≥60%", kind: "goal", label: "강좌 수료율", sub: "다국어 자막·이수 대시보드 기준 · 측정 예정" },
+      { value: "≥95%", kind: "goal", label: "글로벌 결제 성공률", sub: "Visa·PayPal·Alipay·WeChat·Wise 5종 통합 · 측정 예정" },
     ],
     problemContext: {
       domain: "도메인 맥락",
@@ -67,84 +76,56 @@ export const projects: Project[] = [
       { step: 4, title: "기능 정의", desc: "화면별 상태(Variants)와 예외(Edge) 케이스까지 명세" },
       { step: 5, title: "i18n·핸드오프", desc: "다국어 설계 원칙 정립 + Figma 컴포넌트 스펙 전달" },
     ],
+    journeyImage: {
+      caption: "9단계 End-to-End 유저 저니 맵 — 이탈 위험 구간(언어·결제) 표시",
+      direction:
+        "들어갈 이미지: 인지→가입→학력인증→결제→수강→학점신청→학위 9단계를 가로 타임라인으로 그린 유저 저니 맵. 단계별 사용자 감정 곡선과 이탈 위험 구간(언어·결제)을 빨강으로 강조한 Figma 보드 캡처.",
+    },
     keyDecisions: [
       {
         area: "영역 1",
         areaTitle: "언어 장벽 — 가입 전부터 모국어로 만나게 하기",
         items: [
-          {
-            icon: "현황",
-            title: "",
-            body: "플랫폼이 한국어로만 제공돼, 외국인 학습자는 회원가입부터 수료까지 전 과정에서 의미를 파악하지 못하고 이탈했습니다.",
-          },
-          {
-            icon: "목표",
-            title: "",
-            body: "비회원 랜딩 단계부터 브라우저 언어를 자동 감지해 모국어 UI를 제안하고, EN·ZH-CN·ZH-TW·JA·VI 5개 언어를 동시에 지원하는 것을 목표로 했습니다.",
-          },
-          {
-            icon: "UX",
-            title: "",
-            body: "국적·거주지를 선택하면 UI 언어·통화·결제 수단이 즉시 함께 갱신되도록 묶었고, 수강 후기·강의 자막에도 원문/번역 토글을 제공했습니다.",
-          },
-          {
-            icon: "설 계",
-            title: "",
-            body: '모든 문자열을 i18n 키로 관리(하드코딩 금지)하고, 독일어·러시아어 같은 장문 언어에 대비해 버튼 min-width와 텍스트 래핑을 허용해 레이아웃이 깨지지 않게 했습니다.',
-          },
+          { icon: "현황", title: "", body: "한국어 전용 플랫폼이라 가입~수료 전 과정에서 의미를 파악 못 하고 이탈." },
+          { icon: "목표", title: "", body: "비회원 랜딩부터 브라우저 언어를 자동 감지해 모국어 UI 제안, 5개 언어 동시 지원." },
+          { icon: "UX", title: "", body: "국적·거주지 선택 시 UI 언어·통화·결제수단이 한 번에 갱신, 후기·자막엔 원문/번역 토글." },
+          { icon: "설 계", title: "", body: "전 문자열 i18n 키 관리(하드코딩 금지), 장문 언어 대비 버튼 min-width·래핑 허용." },
         ],
+        imageCaption: "비포 → 애프터: 한국어 전용 가입 폼 → 언어 자동감지 + 스위처가 붙은 폼",
+        imageDirection:
+          "들어갈 이미지: 좌(비포) 한국어만 있던 기존 가입 화면 / 우(애프터) 상단 언어 스위처 + 모국어로 번역된 가입 폼을 나란히 둔 비교 컷. 5개 언어 칩이 보이게.",
+        tradeoff:
+          "전체 자동 기계번역 대신 i18n 키 기반 수동 관리를 택했습니다 — 결제·학력인증 같은 민감 화면에서 오역이 곧 이탈·민원으로 이어지기 때문입니다.",
       },
       {
         area: "영역 2",
         areaTitle: "결제 장벽 — 전환을 막던 마지막 관문 열기",
         items: [
-          {
-            icon: "현황",
-            title: "",
-            body: "원화·국내 카드 결제만 지원해, 해외 사용자는 마지막 결제 단계에서 이탈했습니다. ‘가입 → 결제’ 전환율이 가장 큰 손실 구간이었습니다.",
-          },
-          {
-            icon: "목표",
-            title: "",
-            body: "거주 국가를 기준으로 Visa·Mastercard·PayPal·Alipay·WeChat Pay·Wise 등 5종 이상 해외 결제 수단을 노출하고, 글로벌 결제 성공률 95% 이상을 목표로 잡았습니다.",
-          },
-          {
-            icon: "UX",
-            title: "",
-            body: "다통화 금액 표시 + USD 기준 환산을 함께 보여주고, 거주 국가에서 쓸 수 없는 결제 수단은 자동으로 숨기며 대체 수단을 강조했습니다.",
-          },
-          {
-            icon: "설 계",
-            title: "",
-            body: "카드 토큰화(PCI-DSS) 저장, 3D Secure, 결제 타임아웃 30초 시 이메일 결과 통보, 멱등성 키 기반 중복 결제 방지까지 예외 흐름을 정의해 결제 신뢰를 확보했습니다.",
-          },
+          { icon: "현황", title: "", body: "원화·국내 카드만 지원해 해외 사용자는 마지막 결제 단계에서 이탈 — 가장 큰 손실 구간." },
+          { icon: "목표", title: "", body: "거주국 기준 Visa·PayPal·Alipay·WeChat·Wise 등 5종+ 노출, 결제 성공률 95%+ 목표." },
+          { icon: "UX", title: "", body: "다통화 표시 + USD 환산 병기, 거주국에서 못 쓰는 수단은 숨기고 대체 수단을 강조." },
+          { icon: "설 계", title: "", body: "토큰화·3D Secure·타임아웃 통보·멱등성 키로 중복결제 방지까지 예외 흐름 정의." },
         ],
+        imageCaption: "비포 → 애프터: 원화·국내카드만 있던 결제창 → 거주국 기준 동적 결제수단 + 다통화 결제창",
+        imageDirection:
+          "들어갈 이미지: 좌(비포) 카드 한 종류만 있던 결제 화면 / 우(애프터) 거주국을 고르면 결제수단이 동적으로 바뀌고 USD 환산이 병기된 화면. 결제수단 아이콘(PayPal·Alipay·WeChat 등)이 보이게.",
+        tradeoff:
+          "쓸 수 있는 결제수단을 전부 노출하지 않고, 거주국에서 불가한 수단은 숨겼습니다 — 선택지가 많을수록 결제 전환이 떨어진다는 판단(선택의 역설)에서 의도적으로 줄인 결정입니다.",
       },
       {
         area: "영역 3",
         areaTitle: "한 서비스, 두 사용자 — 개인 학습자와 B2B 기관을 분기하기",
         items: [
-          {
-            icon: "현황",
-            title: "",
-            body: "개인 학습자와 해외 파트너 기관(단체 등록·정산)은 요구가 전혀 다른데, 한 서비스 안에서 공존해야 했습니다.",
-          },
-          {
-            icon: "목표",
-            title: "",
-            body: "학습자 Free/Pro · 기관 관리자 · 시스템 관리자 4개 사용자 티어로 권한 매트릭스를 정의해, 기능 노출 자체를 역할에 따라 분기했습니다.",
-          },
-          {
-            icon: "UX",
-            title: "",
-            body: "기관 관리자에게는 CSV 멤버 일괄 등록(최대 500명), 멤버별 학습 현황 모니터링, 월별 인보이스 발행을 묶은 별도 대시보드를 제공했습니다.",
-          },
-          {
-            icon: "설 계",
-            title: "",
-            body: "이수(진도율 80% + 평가 합격) → 학점 인정 신청 → 블록체인 기반 위변조 방지 수료증 발급까지, 각 단계의 상태(Variants)를 끊김 없이 연결했습니다.",
-          },
+          { icon: "현황", title: "", body: "개인 학습자와 파트너 기관(단체 등록·정산)은 요구가 전혀 다른데 한 서비스에 공존해야 함." },
+          { icon: "목표", title: "", body: "학습자 Free/Pro·기관 관리자·시스템 관리자 4개 티어로 권한 매트릭스 정의, 역할별 기능 분기." },
+          { icon: "UX", title: "", body: "기관 관리자엔 CSV 일괄 등록(최대 500명)·멤버 학습 모니터링·월별 인보이스 대시보드 제공." },
+          { icon: "설 계", title: "", body: "이수(진도 80%+평가) → 학점 신청 → 위변조 방지 수료증까지 상태(Variants)를 끊김 없이 연결." },
         ],
+        imageCaption: "4개 티어 권한 매트릭스 + 기관 관리자 대시보드 와이어프레임",
+        imageDirection:
+          "들어갈 이미지: 좌 4개 사용자 티어 × 기능 권한을 ○/× 로 정리한 매트릭스 표 / 우 기관 관리자 대시보드(멤버 목록·학습 현황·인보이스) 와이어프레임 한 컷.",
+        tradeoff:
+          "기관용 기능을 별도 제품으로 분리하지 않고 한 서비스 안에서 권한으로 분기했습니다 — 운영·유지보수 비용과 두 제품 간 데이터 불일치 위험을 줄이기 위한 선택입니다.",
       },
     ],
     designHighlights: [
@@ -196,9 +177,9 @@ export const projects: Project[] = [
     heroContext:
       "정식 기획서도, 기획자도 없었습니다. 콘텐츠 대본과 외부 제안서만 있는 상태에서, 디자이너가 직접 가설을 세우고 '어떤 고전으로 교체해도 작동하는' 구조를 설계했습니다.",
     metrics: [
-      { value: "65%+", label: "목표 회당 완강율", sub: "영상·원문·시각자료 결합 몰입형 상세" },
-      { value: "60%+", label: "목표 시리즈 진입율", sub: "시청 직후 NEXT·크로스 추천 트리거" },
-      { value: "8섹션 5막", label: "교체 가능한 보편 구조", sub: "문학·철학·역사 3종 시뮬레이션으로 검증" },
+      { value: "65%+", kind: "goal", label: "회당 완강율", sub: "영상·원문·시각자료 결합 몰입형 상세 · 출시 후 측정 예정" },
+      { value: "60%+", kind: "goal", label: "시리즈 진입율", sub: "시청 직후 NEXT·크로스 추천 트리거 · 측정 예정" },
+      { value: "4회+", kind: "goal", label: "1인당 평균 시청 회차", sub: "8섹션 5막 보편 구조 기준 · 측정 예정" },
     ],
     problemContext: {
       domain: "도메인 맥락",

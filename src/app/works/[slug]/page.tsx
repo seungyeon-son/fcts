@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { use } from "react";
 import { theme } from "@/styles/theme";
 import { projects } from "@/data/projects";
+import { posts } from "@/data/posts";
 import { Container, Section } from "@/styles/styled";
 
 /* ════════════════════════════════
@@ -174,14 +175,12 @@ const ImpactCard = styled.div`
   background: white;
 `;
 
-const metricColors = ["#3B82F6", "#14B8A6", "#FF3229"];
-
-const ImpactValue = styled.div<{ $color?: string }>`
-  font-size: clamp(28px, 3.5vw, 45px);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: ${({ $color }) => $color || theme.colors.black};
-  margin-bottom: 10px;
+const ImpactValue = styled.div`
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: ${theme.colors.black};
+  margin-bottom: 8px;
 `;
 
 const ImpactLabel = styled.div`
@@ -383,9 +382,142 @@ const CheckerImage = styled.div<{ $img?: string }>`
       `};
 `;
 
+/* 이미지 캡션 + "여기 무슨 이미지" 디렉션 */
+const FigureCaption = styled.div`
+  font-size: 13px;
+  color: ${theme.colors.gray500};
+  margin-top: 10px;
+  line-height: 1.6;
+`;
+
+const ImageDirection = styled.div`
+  margin-top: 10px;
+  padding: 12px 14px;
+  border: 1px dashed ${theme.colors.gray300};
+  border-radius: 8px;
+  background: ${theme.colors.gray100};
+  font-size: 13px;
+  color: ${theme.colors.gray600};
+  line-height: 1.7;
+  .tag {
+    font-weight: 700;
+    color: ${theme.colors.accent};
+    margin-right: 8px;
+  }
+`;
+
+/* 선택하지 않은 대안(트레이드오프) 콜아웃 */
+const Tradeoff = styled.div`
+  margin-top: 16px;
+  display: flex;
+  gap: 12px;
+  padding: 14px 16px;
+  border-left: 3px solid ${theme.colors.accent};
+  background: rgba(255, 50, 41, 0.04);
+  border-radius: 0 8px 8px 0;
+  .k {
+    font-size: 12px;
+    font-weight: 700;
+    color: ${theme.colors.accent};
+    white-space: nowrap;
+    padding-top: 2px;
+  }
+  p {
+    font-size: 14px;
+    color: ${theme.colors.gray600};
+    line-height: 1.75;
+  }
+`;
+
+/* Impact 카드: 목표 / 설계 산출물 구분 배지 */
+const MetricKind = styled.span<{ $goal?: boolean }>`
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 9px;
+  border-radius: 100px;
+  margin-bottom: 12px;
+  background: ${({ $goal }) => ($goal ? "rgba(255, 50, 41, 0.08)" : theme.colors.gray100)};
+  color: ${({ $goal }) => ($goal ? theme.colors.accent : theme.colors.gray500)};
+`;
+
+function DirectedFigure({ img, caption, direction }: { img?: string; caption?: string; direction?: string }) {
+  return (
+    <figure style={{ margin: 0 }}>
+      <CheckerImage $img={img} />
+      {caption && <FigureCaption>{img ? caption : `▢ ${caption}`}</FigureCaption>}
+      {!img && direction && (
+        <ImageDirection>
+          <span className="tag">📌 들어갈 이미지</span>
+          {direction.replace(/^들어갈 이미지:\s*/, "")}
+        </ImageDirection>
+      )}
+    </figure>
+  );
+}
+
 /* ════════════════════════════════
    REFLECTION
 ════════════════════════════════ */
+const NotesGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+`;
+const NoteCard = styled(Link)`
+  display: block;
+  padding: 24px;
+  border: 1px solid ${theme.colors.gray200};
+  border-radius: 12px;
+  transition: border-color 0.2s, transform 0.2s;
+  &:hover {
+    border-color: ${theme.colors.black};
+    transform: translateY(-2px);
+  }
+  &:hover .note-title {
+    color: ${theme.colors.accent};
+  }
+  .note-tag {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    color: ${theme.colors.accent};
+    background: rgba(255, 50, 41, 0.08);
+    padding: 3px 11px;
+    border-radius: 100px;
+    margin-bottom: 12px;
+  }
+  .note-title {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    color: ${theme.colors.black};
+    line-height: 1.4;
+    margin-bottom: 8px;
+    transition: color 0.2s;
+  }
+  .note-excerpt {
+    font-size: 13px;
+    color: ${theme.colors.gray600};
+    line-height: 1.7;
+    margin-bottom: 12px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .note-meta {
+    font-size: 12px;
+    color: ${theme.colors.gray500};
+  }
+`;
+const NotesIntro = styled.p`
+  font-size: 14px;
+  color: ${theme.colors.gray600};
+  line-height: 1.7;
+  margin: -8px 0 24px;
+`;
+
 const ReflectionGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -489,6 +621,8 @@ export default function WorkDetailPage({ params }: { params: Promise<{ slug: str
   const project = projects.find((p) => p.slug === slug);
   if (!project) return notFound();
 
+  const relatedNotes = posts.filter((p) => p.relatedWork?.slug === slug);
+
   return (
     <>
       {/* Hero */}
@@ -541,6 +675,10 @@ export default function WorkDetailPage({ params }: { params: Promise<{ slug: str
                     <a className="link" href={project.website} target="_blank" rel="noopener noreferrer">
                       🔗 Link
                     </a>
+                  ) : relatedNotes.length > 0 ? (
+                    <a className="link" href="#related-notes">
+                      비공개 · 관련 노트 {relatedNotes.length}
+                    </a>
                   ) : (
                     <div className="value">비공개</div>
                   )}
@@ -560,7 +698,8 @@ export default function WorkDetailPage({ params }: { params: Promise<{ slug: str
           <ImpactGrid>
             {project.metrics.map((m, i) => (
               <ImpactCard key={i}>
-                <ImpactValue $color={metricColors[i % metricColors.length]}>{m.value}</ImpactValue>
+                {m.kind && <MetricKind $goal={m.kind === "goal"}>{m.kind === "goal" ? "목표" : "설계 산출물"}</MetricKind>}
+                <ImpactValue>{m.value}</ImpactValue>
                 <ImpactLabel>{m.label}</ImpactLabel>
                 {m.sub && <ImpactSub>{m.sub}</ImpactSub>}
               </ImpactCard>
@@ -602,6 +741,15 @@ export default function WorkDetailPage({ params }: { params: Promise<{ slug: str
               </ApproachStep>
             ))}
           </ApproachRow>
+          {project.journeyImage && (
+            <div style={{ marginTop: 28 }}>
+              <DirectedFigure
+                img={project.journeyImage.image}
+                caption={project.journeyImage.caption}
+                direction={project.journeyImage.direction}
+              />
+            </div>
+          )}
         </Container>
       </Section>
 
@@ -625,6 +773,17 @@ export default function WorkDetailPage({ params }: { params: Promise<{ slug: str
                   </DecisionItem>
                 ))}
               </DecisionItems>
+              {(area.image || area.imageDirection) && (
+                <div style={{ marginTop: 20 }}>
+                  <DirectedFigure img={area.image} caption={area.imageCaption} direction={area.imageDirection} />
+                </div>
+              )}
+              {area.tradeoff && (
+                <Tradeoff>
+                  <span className="k">선택하지 않은 길</span>
+                  <p>{area.tradeoff}</p>
+                </Tradeoff>
+              )}
             </DecisionArea>
           ))}
         </Container>
@@ -661,6 +820,28 @@ export default function WorkDetailPage({ params }: { params: Promise<{ slug: str
           </ReflectionGrid>
         </Container>
       </Section>
+
+      {/* Related Notes */}
+      {relatedNotes.length > 0 && (
+        <Section id="related-notes">
+          <Container>
+            <SectionLabel>관련 노트</SectionLabel>
+            <NotesIntro>
+              이 프로젝트의 설계 판단과 배경을 더 깊이 정리한 글입니다.
+            </NotesIntro>
+            <NotesGrid>
+              {relatedNotes.map((note) => (
+                <NoteCard key={note.slug} href={`/post/${note.slug}`}>
+                  <span className="note-tag">{note.tag}</span>
+                  <div className="note-title">{note.title}</div>
+                  <p className="note-excerpt">{note.excerpt}</p>
+                  <div className="note-meta">{note.date}</div>
+                </NoteCard>
+              ))}
+            </NotesGrid>
+          </Container>
+        </Section>
+      )}
 
       {/* Project Nav: prev / all / next */}
       <Section>
