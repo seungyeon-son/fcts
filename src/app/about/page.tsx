@@ -4,6 +4,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import { theme } from "@/styles/theme";
 import { Container } from "@/styles/styled";
+import { projects } from "@/data/projects";
 
 /* ── Page Header ── */
 const PageHead = styled.div`
@@ -103,7 +104,7 @@ const NameRow = styled.div`
 const NameText = styled.h2`
   font-size: 28px;
   font-weight: 700;
-  color: #0f0f0e;
+  color: #32322e;
   letter-spacing: -0.76px;
   line-height: 1;
   @media (max-width: ${theme.breakpoints.sm}) {
@@ -115,11 +116,30 @@ const RoleText = styled.span`
   color: #ff5229;
   font-weight: 400;
 `;
+const ProfileHeadline = styled.h2`
+  font-size: clamp(22px, 3.2vw, 28px);
+  font-weight: 800;
+  line-height: 1.32;
+  letter-spacing: -0.6px;
+  color: #0f0f0e;
+  margin-bottom: 48px;
+`;
+const ProfileMeta = styled.div`
+  font-size: 15px;
+  font-weight: 500;
+  color: #5c5b56;
+  letter-spacing: -0.2px;
+  margin-bottom: 24px;
+  b {
+    color: #0f0f0e;
+    font-weight: 700;
+  }
+`;
 const ProfileDesc = styled.p`
   font-size: 14px;
   color: #5c5b56;
   line-height: 1.8;
-  max-width: 640px;
+  max-width: 648px;
   margin-bottom: 24px;
 `;
 const SkillsRow = styled.div`
@@ -205,7 +225,7 @@ const ValPill = styled(Link)`
 /* ── Projects ── */
 const ProjectRow = styled.div`
   display: grid;
-  grid-template-columns: 220px 1fr auto;
+  grid-template-columns: 250px 1fr 192px;
   gap: 24px;
   align-items: start;
   padding: 24px 0;
@@ -255,9 +275,14 @@ const ProjDesc = styled.div`
 `;
 const ProjKPI = styled.div`
   min-width: 100px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background: #f8f8f8;
   border-radius: 4px;
-  padding: 12px 16px;
+  padding: 0 16px;
   text-align: center;
   flex-shrink: 0;
 `;
@@ -306,6 +331,27 @@ const TeamDesc = styled.div`
   font-size: 14px;
   color: #5c5b56;
   line-height: 20px;
+`;
+
+/* ── Closing ── */
+const Closing = styled.section`
+  padding: 96px 0;
+  text-align: center;
+  @media (max-width: ${theme.breakpoints.sm}) {
+    padding: 64px 0;
+  }
+`;
+const ClosingText = styled.p`
+  font-size: clamp(22px, 2.8vw, 28px);
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: -0.5px;
+  color: #0f0f0e;
+  max-width: 720px;
+  margin: 0 auto;
+  b {
+    color: #ff5229;
+  }
 `;
 
 /* ── CTA ── */
@@ -407,51 +453,27 @@ const values = [
   {
     icon: "🔗",
     bg: "#faeeda",
-    title: "핸드오프 마찰을 줄입니다",
-    desc: "Figma 스펙 문서와 토큰 정의로 개발팀이 즉시 구현 가능한 산출물을 만듭니다.",
+    title: "핸드오프 손실을 0으로 만듭니다",
+    desc: "구현까지 직접 다뤄본 감각으로, 디자인 의도가 개발 단계에서 손상되지 않게 제어합니다. 토큰·스펙으로 개발팀이 의도 그대로 구현하도록 간극을 메웁니다.",
     pill: "→ 핸드오프 가이드 보기",
     href: "/post/design-process-os",
   },
 ];
 
-const mainProjects = [
-  {
-    name: "UBION 글로벌 학점은행제",
-    category: "B2B UX Service",
-    tags: ["B2C", "Web"],
-    href: "/works/global-credit-bank",
-    desc: "복잡한 글로벌 학점 취득 플로우를 3-Zone 구조로 재설계. 사용자가 가입부터 학점 취득까지 끊김 없이 진행할 수 있는 경험을 구축했습니다.",
-    kpiValue: "3-Zone",
-    kpiLabel: "정보 구조 재설계",
-  },
-  {
-    name: "SDT MLOps 통합 플랫폼",
-    category: "B2B UX Service",
-    tags: ["B2B", "SaaS"],
-    href: "/works/mlops-b2b-dashboard",
-    desc: "MLOps 4단계 파이프라인을 단일 노드 그래프로 시각화한 B2B 대시보드. 오류 탐지부터 수정 가이드까지 단일 화면에서 처리합니다.",
-    kpiValue: "4 in 1",
-    kpiLabel: "파이프라인 통합",
-  },
-  {
-    name: "grecture 강의 상세 페이지",
-    category: "B2C UX Service",
-    tags: ["B2C", "Mobile"],
-    href: "/works/humanities-lecture",
-    desc: "고등학생 완강률 향상을 위한 UX 재설계. 학습 지속성을 높이는 스트릭 시각화와 강의 플레이어 UX 개선으로 완강률 목표를 달성했습니다.",
-    kpiValue: "65%",
-    kpiLabel: "완강률 목표 달성",
-  },
-  {
-    name: "SDT 공통 디자인 시스템",
-    category: "B2B UX Service",
-    tags: ["DS", "Figma"],
-    href: "/works/b2b-design-system",
-    desc: "두 B2B 제품의 일관성을 구축한 디자인 시스템. UI Kit이 아닌 운영 원칙 중심의 시스템으로 개발 핸드오프 마찰을 제거했습니다.",
-    kpiValue: "System",
-    kpiLabel: "운영 원칙 기반",
-  },
-];
+// About 대표 프로젝트 — projects.ts 단일 소스에서 파생 (카피 불일치 방지)
+const FEATURED_SLUGS = ["global-credit-bank", "mlops-b2b-dashboard", "humanities-lecture", "b2b-design-system"];
+
+const mainProjects = FEATURED_SLUGS.map((slug) => projects.find((p) => p.slug === slug))
+  .filter((p): p is (typeof projects)[number] => Boolean(p))
+  .map((p) => ({
+    name: p.subtitle,
+    category: p.category,
+    tags: p.tags.slice(0, 2),
+    href: `/works/${p.slug}`,
+    desc: p.cardDesc ?? "",
+    kpiValue: p.metrics[0]?.value ?? "",
+    kpiLabel: p.metrics[0]?.label ?? "",
+  }));
 
 const teamCards = [
   {
@@ -513,14 +535,22 @@ export default function AboutPage() {
       {/* Profile */}
       <section style={{ paddingBottom: "80px" }}>
         <Container>
+          <ProfileHeadline>
+            화면을 만들기 전에,
+            <br />
+            구조를 먼저 설계합니다.
+          </ProfileHeadline>
           <NameRow>
             <NameText>손승연</NameText>
-            <RoleText>Product / UX Designer</RoleText>
+            <RoleText>UX Designer</RoleText>
           </NameRow>
+          <ProfileMeta>
+            <b>5.5년</b> · B2B SaaS / 복잡한 데이터 시스템 / 글로벌 서비스
+          </ProfileMeta>
           <ProfileDesc>
-            복잡한 비즈니스 문제를 데이터와 시스템 사고로 해결하는 UX 디자이너입니다. B2B SaaS, 이커머스, 교육 플랫폼 등
-            다양한 도메인에서 사용자 경험을 설계해왔으며, 디자인 시스템 구축과 운영 원칙 정립을 통해 팀 전체의 설계
-            효율을 높이는 것에 관심이 많습니다. 완성된 화면이 아닌 작동하는 시스템을 납품하는 것을 목표로 합니다.
+            산업용 IoT 대시보드부터 글로벌 에듀테크 서비스까지, 저는 늘 한 가지를 먼저 묻습니다. <br /> “이 사용자는
+            지금 무엇을 판단해야 하는가.” 복잡한 정보를 사용자의 멘탈모델로 번역하고, 디자인 시스템과 운영 원칙으로 팀
+            전체의 설계 효율을 높입니다. 화면을 완성하는 것만이 아니라 작동하는 시스템을 구축하는 것을 목표로 합니다.
           </ProfileDesc>
           <SkillsRow>
             {skills.map((s) => (
@@ -591,8 +621,19 @@ export default function AboutPage() {
         </Container>
       </section>
 
+      {/* Closing */}
+      <Closing>
+        <Container>
+          <ClosingText>
+            좋은 UX는 사용자가 길을 잃지 않게 합니다.
+            <br />
+            저는 그 <b>길</b>을 설계합니다.
+          </ClosingText>
+        </Container>
+      </Closing>
+
       {/* CTA */}
-      <section style={{ padding: "80px 0" }}>
+      <section style={{ padding: "0 0 80px" }}>
         <Container>
           <CtaBlock>
             <CtaLabel>💬 함께하고 싶은 팀을 찾고 있습니다</CtaLabel>
