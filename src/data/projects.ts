@@ -57,7 +57,12 @@ export const projects: Project[] = [
     metrics: [
       { value: "≥40%", kind: "goal", label: "가입 → 결제 전환율", sub: "언어·결제 장벽 해소 기준 · 출시 후 측정 예정" },
       { value: "≥60%", kind: "goal", label: "강좌 수료율", sub: "다국어 자막·이수 대시보드 기준 · 측정 예정" },
-      { value: "≥95%", kind: "goal", label: "글로벌 결제 성공률", sub: "Visa·PayPal·Alipay·WeChat·Wise 5종 통합 · 측정 예정" },
+      {
+        value: "≥95%",
+        kind: "goal",
+        label: "글로벌 결제 성공률",
+        sub: "Visa·PayPal·Alipay·WeChat·Wise 5종 통합 · 측정 예정",
+      },
     ],
     problemContext: {
       domain: "도메인 맥락",
@@ -70,13 +75,22 @@ export const projects: Project[] = [
         "외국인 학습자의 이탈은 네 가지 구조적 장벽에서 비롯됐습니다 — ① 언어 장벽(플랫폼이 한국어 전용이라 가입~수료 전 과정에서 이탈), ② 입학 절차의 불투명성(학력 인정 기준·서류·기간 미명시), ③ 결제 장벽(원화·국내 카드만 지원해 해외 결제 불가), ④ 수료 후 인증 불확실성. 특히 ‘언어·결제’ 장벽이 가입→결제 전환을 직접 가로막는 가장 큰 손실 구간이었습니다.",
     },
     approach: [
-      { step: 1, title: "리서치", desc: "글로벌 학습자·재외교포·국내 유학생·B2B 기관 등 5개 페르소나 정의, 4대 장벽 도출" },
-      { step: 2, title: "유저 저니", desc: "인지 → 가입 → 학력 인증 → 결제 → 수강 → 학점 신청 → 학위까지 9단계 End-to-End 설계" },
+      {
+        step: 1,
+        title: "리서치",
+        desc: "글로벌 학습자·재외교포·국내 유학생·B2B 기관 등 5개 페르소나 정의, 4대 장벽 도출",
+      },
+      {
+        step: 2,
+        title: "유저 저니",
+        desc: "인지 → 가입 → 학력 인증 → 결제 → 수강 → 학점 신청 → 학위까지 9단계 End-to-End 설계",
+      },
       { step: 3, title: "IA·권한", desc: "4개 사용자 티어 권한 매트릭스 설계, 개인(B2C)·기관(B2B) 분기" },
       { step: 4, title: "기능 정의", desc: "화면별 상태(Variants)와 예외(Edge) 케이스까지 명세" },
       { step: 5, title: "i18n·핸드오프", desc: "다국어 설계 원칙 정립 + Figma 컴포넌트 스펙 전달" },
     ],
     journeyImage: {
+      image: "/img/works/gcb-ujm.jpg",
       caption: "9단계 End-to-End 유저 저니 맵 — 이탈 위험 구간(언어·결제) 표시",
       direction:
         "들어갈 이미지: 인지→가입→학력인증→결제→수강→학점신청→학위 9단계를 가로 타임라인으로 그린 유저 저니 맵. 단계별 사용자 감정 곡선과 이탈 위험 구간(언어·결제)을 빨강으로 강조한 Figma 보드 캡처.",
@@ -87,13 +101,22 @@ export const projects: Project[] = [
         areaTitle: "언어 장벽 — 가입 전부터 모국어로 만나게 하기",
         items: [
           { icon: "현황", title: "", body: "한국어 전용 플랫폼이라 가입~수료 전 과정에서 의미를 파악 못 하고 이탈." },
-          { icon: "목표", title: "", body: "비회원 랜딩부터 브라우저 언어를 자동 감지해 모국어 UI 제안, 5개 언어 동시 지원." },
-          { icon: "UX", title: "", body: "국적·거주지 선택 시 UI 언어·통화·결제수단이 한 번에 갱신, 후기·자막엔 원문/번역 토글." },
-          { icon: "설 계", title: "", body: "전 문자열 i18n 키 관리(하드코딩 금지), 장문 언어 대비 버튼 min-width·래핑 허용." },
+          {
+            icon: "목표",
+            title: "",
+            body: "비회원 랜딩부터 브라우저 언어를 자동 감지해 모국어 UI 제안, 5개 언어 동시 지원.",
+          },
+          {
+            icon: "UX",
+            title: "",
+            body: "국적·거주지 선택 시 UI 언어·통화·결제수단이 한 번에 갱신, 후기·자막엔 원문/번역 토글.",
+          },
+          {
+            icon: "설 계",
+            title: "",
+            body: "전 문자열 i18n 키 관리(하드코딩 금지), 장문 언어 대비 버튼 min-width·래핑 허용.",
+          },
         ],
-        imageCaption: "비포 → 애프터: 한국어 전용 가입 폼 → 언어 자동감지 + 스위처가 붙은 폼",
-        imageDirection:
-          "들어갈 이미지: 좌(비포) 한국어만 있던 기존 가입 화면 / 우(애프터) 상단 언어 스위처 + 모국어로 번역된 가입 폼을 나란히 둔 비교 컷. 5개 언어 칩이 보이게.",
         tradeoff:
           "전체 자동 기계번역 대신 i18n 키 기반 수동 관리를 택했습니다 — 결제·학력인증 같은 민감 화면에서 오역이 곧 이탈·민원으로 이어지기 때문입니다.",
       },
@@ -101,14 +124,27 @@ export const projects: Project[] = [
         area: "영역 2",
         areaTitle: "결제 장벽 — 전환을 막던 마지막 관문 열기",
         items: [
-          { icon: "현황", title: "", body: "원화·국내 카드만 지원해 해외 사용자는 마지막 결제 단계에서 이탈 — 가장 큰 손실 구간." },
-          { icon: "목표", title: "", body: "거주국 기준 Visa·PayPal·Alipay·WeChat·Wise 등 5종+ 노출, 결제 성공률 95%+ 목표." },
-          { icon: "UX", title: "", body: "다통화 표시 + USD 환산 병기, 거주국에서 못 쓰는 수단은 숨기고 대체 수단을 강조." },
-          { icon: "설 계", title: "", body: "토큰화·3D Secure·타임아웃 통보·멱등성 키로 중복결제 방지까지 예외 흐름 정의." },
+          {
+            icon: "현황",
+            title: "",
+            body: "원화·국내 카드만 지원해 해외 사용자는 마지막 결제 단계에서 이탈 — 가장 큰 손실 구간.",
+          },
+          {
+            icon: "목표",
+            title: "",
+            body: "거주국 기준 Visa·PayPal·Alipay·WeChat·Wise 등 5종+ 노출, 결제 성공률 95%+ 목표.",
+          },
+          {
+            icon: "UX",
+            title: "",
+            body: "다통화 표시 + USD 환산 병기, 거주국에서 못 쓰는 수단은 숨기고 대체 수단을 강조.",
+          },
+          {
+            icon: "설 계",
+            title: "",
+            body: "토큰화·3D Secure·타임아웃 통보·멱등성 키로 중복결제 방지까지 예외 흐름 정의.",
+          },
         ],
-        imageCaption: "비포 → 애프터: 원화·국내카드만 있던 결제창 → 거주국 기준 동적 결제수단 + 다통화 결제창",
-        imageDirection:
-          "들어갈 이미지: 좌(비포) 카드 한 종류만 있던 결제 화면 / 우(애프터) 거주국을 고르면 결제수단이 동적으로 바뀌고 USD 환산이 병기된 화면. 결제수단 아이콘(PayPal·Alipay·WeChat 등)이 보이게.",
         tradeoff:
           "쓸 수 있는 결제수단을 전부 노출하지 않고, 거주국에서 불가한 수단은 숨겼습니다 — 선택지가 많을수록 결제 전환이 떨어진다는 판단(선택의 역설)에서 의도적으로 줄인 결정입니다.",
       },
@@ -116,14 +152,27 @@ export const projects: Project[] = [
         area: "영역 3",
         areaTitle: "한 서비스, 두 사용자 — 개인 학습자와 B2B 기관을 분기하기",
         items: [
-          { icon: "현황", title: "", body: "개인 학습자와 파트너 기관(단체 등록·정산)은 요구가 전혀 다른데 한 서비스에 공존해야 함." },
-          { icon: "목표", title: "", body: "학습자 Free/Pro·기관 관리자·시스템 관리자 4개 티어로 권한 매트릭스 정의, 역할별 기능 분기." },
-          { icon: "UX", title: "", body: "기관 관리자엔 CSV 일괄 등록(최대 500명)·멤버 학습 모니터링·월별 인보이스 대시보드 제공." },
-          { icon: "설 계", title: "", body: "이수(진도 80%+평가) → 학점 신청 → 위변조 방지 수료증까지 상태(Variants)를 끊김 없이 연결." },
+          {
+            icon: "현황",
+            title: "",
+            body: "개인 학습자와 파트너 기관(단체 등록·정산)은 요구가 전혀 다른데 한 서비스에 공존해야 함.",
+          },
+          {
+            icon: "목표",
+            title: "",
+            body: "학습자 Free/Pro·기관 관리자·시스템 관리자 4개 티어로 권한 매트릭스 정의, 역할별 기능 분기.",
+          },
+          {
+            icon: "UX",
+            title: "",
+            body: "기관 관리자엔 CSV 일괄 등록(최대 500명)·멤버 학습 모니터링·월별 인보이스 대시보드 제공.",
+          },
+          {
+            icon: "설 계",
+            title: "",
+            body: "이수(진도 80%+평가) → 학점 신청 → 위변조 방지 수료증까지 상태(Variants)를 끊김 없이 연결.",
+          },
         ],
-        imageCaption: "4개 티어 권한 매트릭스 + 기관 관리자 대시보드 와이어프레임",
-        imageDirection:
-          "들어갈 이미지: 좌 4개 사용자 티어 × 기능 권한을 ○/× 로 정리한 매트릭스 표 / 우 기관 관리자 대시보드(멤버 목록·학습 현황·인보이스) 와이어프레임 한 컷.",
         tradeoff:
           "기관용 기능을 별도 제품으로 분리하지 않고 한 서비스 안에서 권한으로 분기했습니다 — 운영·유지보수 비용과 두 제품 간 데이터 불일치 위험을 줄이기 위한 선택입니다.",
       },
@@ -133,19 +182,19 @@ export const projects: Project[] = [
         zone: "Global Landing",
         title: "첫 화면부터 ‘외국인을 위한 서비스’임을 선언",
         desc: "영문 헤드카피와 글로벌 학습자 이미지로, 비회원도 진입 즉시 자신을 위한 서비스임을 인지하도록 랜딩을 설계했습니다.",
-        image: "/img/works/gcb-hero.jpg",
+        image: "/img/works/gcb1.jpg",
       },
       {
         zone: "Curriculum",
         title: "4개 전공을 카드로 — 탐색 부담을 줄이기",
         desc: "한국어학·경영세무·IT컴퓨터공학·한국화예술 4개 전공을 카드로 정리해, 외국인 학습자가 자신에게 맞는 학습 경로를 빠르게 고르도록 했습니다.",
-        image: "/img/works/gcb-curriculum.jpg",
+        image: "/img/works/gcb2.jpg",
       },
       {
         zone: "Credit Management",
         title: "학점부터 졸업까지 — 여정을 시뮬레이션",
         desc: "학점 계산기·강의 계획 시뮬레이션·1:1 컨설팅 예약을 한 화면에 묶어, 졸업까지 남은 학점과 예상 기간을 스스로 그려볼 수 있게 했습니다.",
-        image: "/img/works/gcb-manage.jpg",
+        image: "/img/works/gcb3.jpg",
       },
     ],
     reflection: [
@@ -177,7 +226,12 @@ export const projects: Project[] = [
     heroContext:
       "정식 기획서도, 기획자도 없었습니다. 콘텐츠 대본과 외부 제안서만 있는 상태에서, 디자이너가 직접 가설을 세우고 '어떤 고전으로 교체해도 작동하는' 구조를 설계했습니다.",
     metrics: [
-      { value: "65%+", kind: "goal", label: "회당 완강율", sub: "영상·원문·시각자료 결합 몰입형 상세 · 출시 후 측정 예정" },
+      {
+        value: "65%+",
+        kind: "goal",
+        label: "회당 완강율",
+        sub: "영상·원문·시각자료 결합 몰입형 상세 · 출시 후 측정 예정",
+      },
       { value: "60%+", kind: "goal", label: "시리즈 진입율", sub: "시청 직후 NEXT·크로스 추천 트리거 · 측정 예정" },
       { value: "4회+", kind: "goal", label: "1인당 평균 시청 회차", sub: "8섹션 5막 보편 구조 기준 · 측정 예정" },
     ],
@@ -192,9 +246,21 @@ export const projects: Project[] = [
         "‘오뒷세이아 7화’ 하나만을 위한 화면을 그리면, 다음 작품이 들어올 때마다 새로 설계해야 합니다. 한 에피소드에 묶이지 않고 어떤 고전(문학·철학·역사)으로 교체해도 어색하지 않은 회차 상세페이지 구조를 만드는 것이 핵심 과제였습니다.",
     },
     approach: [
-      { step: 1, title: "입력 자료 해석", desc: "기획서 부재 — 강의 대본·외부 제안서를 콘텐츠 입력값으로 보고 추정+확인 질문 분리" },
-      { step: 2, title: "타겟·KPI 픽스", desc: "고등학생 메인 + 교사 보조 페르소나, 완강율 65%·진입율 60%·시청 4회 목표 확정" },
-      { step: 3, title: "IA·동선", desc: "시리즈 › 작품 › 회차 3단계 위계, 메인→시리즈 마스터→작품 허브→회차 상세 4단계 동선" },
+      {
+        step: 1,
+        title: "입력 자료 해석",
+        desc: "기획서 부재 — 강의 대본·외부 제안서를 콘텐츠 입력값으로 보고 추정+확인 질문 분리",
+      },
+      {
+        step: 2,
+        title: "타겟·KPI 픽스",
+        desc: "고등학생 메인 + 교사 보조 페르소나, 완강율 65%·진입율 60%·시청 4회 목표 확정",
+      },
+      {
+        step: 3,
+        title: "IA·동선",
+        desc: "시리즈 › 작품 › 회차 3단계 위계, 메인→시리즈 마스터→작품 허브→회차 상세 4단계 동선",
+      },
       { step: 4, title: "보편 레이아웃", desc: "8섹션 5막 구조 + 슬롯 추상화로 작품 교체 가능한 컨테이너 설계" },
       { step: 5, title: "검증·컴펌", desc: "HTML 목업 + design-critique 검증 → v2 반영 후 Figma 시안 컴펌" },
     ],
@@ -283,6 +349,7 @@ export const projects: Project[] = [
         zone: "HERO · 5막 흐름",
         title: "ATTRACT부터 CONVERT까지, 하나의 몰입 흐름",
         desc: "시네마틱 HERO로 끌어들여 강사·챕터 컨텍스트, 원문 인용, 오늘의 인사이트, 다음 회차 추천까지 5막을 하나의 흐름으로 설계했습니다.",
+        image: "/img/works/gracture1.jpg",
       },
       {
         zone: "Universal Layout",
@@ -428,16 +495,19 @@ export const projects: Project[] = [
         zone: "Design Tokens",
         title: "단일 토큰 — 색상·타이포·간격·radius",
         desc: "프로젝트마다 달랐던 기준을 Figma 토큰으로 통일해, 토큰 하나를 바꾸면 이를 쓰는 모든 컴포넌트에 자동 반영되도록 설계했습니다.",
+        image: "/img/works/ds1.jpg",
       },
       {
         zone: "Atomic Components",
         title: "Atomic 컴포넌트 40종+",
         desc: "버튼·인풋·테이블·모달 등 원자 단위 컴포넌트를 기반으로, 폼·카드·페이지 템플릿까지 조립식으로 쌓아 올렸습니다.",
+        image: "/img/works/ds2.jpg",
       },
       {
         zone: "Handoff",
         title: "React/Tailwind 코드 매핑 + Page Template",
         desc: "Figma 컴포넌트를 코드 구조와 1:1로 매핑하고 로그인·GNB·LNB 템플릿을 제공해, 디자인-개발 핸드오프 마찰을 줄였습니다.",
+        image: "/img/works/ds3.jpg",
       },
     ],
     reflection: [
@@ -579,16 +649,19 @@ export const projects: Project[] = [
         zone: "Main Dashboard",
         title: "장비↔앱을 잇는 노드 그래프",
         desc: "현장 장비와 그 데이터로 만들어진 앱의 연관성을 노드 그래프로 시각화하고, 노드를 선택하면 우측 패널이 상세 정보로 전환되도록 설계했습니다.",
+        image: "/img/works/cloud1.jpg",
       },
       {
         zone: "Monitoring",
         title: "장비 상태 모니터링 — 테이블 + 라인 차트",
         desc: "장비 목록 테이블과 라인 차트를 함께 배치해 수치와 추세를 한 화면에서 파악하고, 상세 정보는 Bottom Sheet로 펼치도록 했습니다.",
+        image: "/img/works/cloud2.png",
       },
       {
         zone: "Data & Apps",
         title: "커스텀 차트 패널과 데이터 앱 관리",
         desc: "필요한 데이터를 골라 배치하는 커스텀 차트 패널과, 가공된 데이터로 만들어진 앱을 카드 그리드로 관리하는 화면을 설계했습니다.",
+        image: "/img/works/cloud3.png",
       },
     ],
     reflection: [
@@ -697,19 +770,19 @@ export const projects: Project[] = [
         zone: "Hero",
         title: "모든 것을 갖춘 30년 브랜드 썬나노",
         desc: "브랜드의 연혁과 신뢰를 전면에 내세운 히어로로, 첫 화면에서 핵심 메시지를 명확히 전달합니다.",
-        image: "/img/works/sunnano-hero.jpg",
+        image: "/img/works/sunnano1.png",
       },
       {
         zone: "Products",
         title: "필름 라인업 — 탭으로 정리한 제품군",
         desc: "Signature부터 Silver까지 7개 라인업을 탭 구조로 묶고, 특징·투과율 비교를 표준 컴포넌트로 정리했습니다.",
-        image: "/img/works/sunnano-products.jpg",
+        image: "/img/works/sunnano2.png",
       },
       {
         zone: "Cases",
         title: "대표 시공 사례",
         desc: "공공기관·대형 건물 등 대표 시공 사례를 카드 갤러리로 구성해 브랜드 레퍼런스를 한눈에 보여줍니다.",
-        image: "/img/works/sunnano-cases.jpg",
+        image: "/img/works/sunnano3.png",
       },
     ],
     reflection: [
@@ -852,7 +925,9 @@ export const projects: Project[] = [
     slug: "klairs-cosmetics-renewal",
     title: "브랜드 철학과 제품을\n한 흐름으로 잇는 글로벌 코스메틱 리뉴얼",
     subtitle: "Dear Klairs",
-    cardDesc: "‘Positive Beauty’ 철학과 비건 제품 라인을 한 흐름으로 잇도록 재편한 글로벌 코스메틱 브랜드 사이트 리뉴얼",
+    cardDesc:
+      "‘Positive Beauty’ 철학과 비건 제품 라인을 한 흐름으로 잇도록 재편한 글로벌 코스메틱 브랜드 사이트 리뉴얼",
+    coverImage: "/img/works/klairs-cover.jpg",
     category: "Web Service",
     client: "Dear Klairs",
     tags: ["Web", "Renewal", "Publishing", "Global"],
@@ -862,7 +937,11 @@ export const projects: Project[] = [
     heroContext:
       "웹에이전시에서 디자인과 퍼블리싱을 함께 맡아, 글로벌 뷰티 브랜드의 감성을 화면으로 옮기는 동시에 코드로 직접 구현했습니다.",
     metrics: [
-      { value: "3축 스토리", label: "브랜드 서사 구조화", sub: "Positive Beauty · Across the Globe · Proven by Millions" },
+      {
+        value: "3축 스토리",
+        label: "브랜드 서사 구조화",
+        sub: "Positive Beauty · Across the Globe · Proven by Millions",
+      },
       { value: "디자인+퍼블", label: "디자인 50% · 퍼블리싱 100%", sub: "Figma → 반응형 웹 직접 구현" },
       { value: "80+개국", label: "글로벌 브랜드 신뢰 시각화", sub: "5,400+ 매장 · 다국어 대응" },
     ],
@@ -1111,19 +1190,19 @@ export const projects: Project[] = [
         zone: "Dashboard",
         title: "메인 대시보드 — 맵 + 경보 현황",
         desc: "지도 위 Alert pin으로 경보 발생 위치를 표시하고, Critical-alert_top5로 핵심 위험 순위를 함께 배치해 위험을 직관적으로 파악하도록 했습니다.",
-        image: "/img/works/dts-dashboard.jpg",
+        image: "/img/works/dts1.png",
       },
       {
         zone: "Sections",
         title: "온도 분포 — 그라데이션 바와 섹션 팝업",
         desc: "Temp overview 그라데이션 바(노랑→주황→레드)로 전체 온도 분포를 보여주고, 위험 구간 선택 시 Section popup으로 상세 온도·거리를 노출합니다.",
-        image: "/img/works/dts-sections.jpg",
+        image: "/img/works/dts2.png",
       },
       {
         zone: "Settings",
         title: "경보 설정 — 4단계 온도 범위 세팅",
         desc: "관심·주의·경계·심각 4단계 임계치를 채널마다 세팅하도록 레이아웃을 분배하고, 최소·최대치 설정과 토글·범위 추가/삭제를 지원합니다.",
-        image: "/img/works/dts-settings.jpg",
+        image: "/img/works/dts3.png",
       },
     ],
     reflection: [
