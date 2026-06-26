@@ -25,6 +25,8 @@ export type Project = {
   approach: { step: number; title: string; desc: string }[];
   /** Approach 아래 들어가는 큰 비주얼(유저 저니 맵 등). image 없으면 placeholder + direction 노출 */
   journeyImage?: { image?: string; caption: string; direction: string };
+  /** Key Decisions 섹션 도입부. 확정된 결론이 아니라 "고려 중인 방향"임을 알리는 리프레이밍 문구 */
+  keyDecisionsIntro?: string;
   keyDecisions: {
     area: string;
     areaTitle: string;
@@ -35,6 +37,8 @@ export type Project = {
     imageDirection?: string;
     /** 선택하지 않은 대안 + 그 이유 (디자인 판단·설득 근거) */
     tradeoff?: string;
+    /** 이 방향을 고려하며 아이데이션한 Notes 글 slug 목록 (리스트 링크로 노출) */
+    relatedNoteSlugs?: string[];
   }[];
   designHighlights: { zone: string; title: string; desc: string; image?: string; imageDirection?: string }[];
   reflection: { title: string; body: string }[];
@@ -95,10 +99,13 @@ export const projects: Project[] = [
       direction:
         "들어갈 이미지: 인지→가입→학력인증→결제→수강→학점신청→학위 9단계를 가로 타임라인으로 그린 유저 저니 맵. 단계별 사용자 감정 곡선과 이탈 위험 구간(언어·결제)을 빨강으로 강조한 Figma 보드 캡처.",
     },
+    keyDecisionsIntro:
+      "여기 정리한 방향은 확정해서 서비스에 그대로 적용한 결론이 아니라, 작업하면서 '이 문제를 이렇게 풀면 어떨까' 고려하고 있는 설계 방향입니다. 각 고민을 더 깊이 풀어둔 노트를 함께 연결해 뒀어요 — 아래 글들은 이 내용을 고려하며 아이데이션해 본 기록입니다.",
     keyDecisions: [
       {
         area: "영역 1",
         areaTitle: "언어 장벽 — 가입 전부터 모국어로 만나게 하기",
+        relatedNoteSlugs: ["foreign-learner-identity-verification", "gcb-ux-theory-map"],
         items: [
           { icon: "현황", title: "", body: "한국어 전용 플랫폼이라 가입~수료 전 과정에서 의미를 파악 못 하고 이탈." },
           {
@@ -123,6 +130,7 @@ export const projects: Project[] = [
       {
         area: "영역 2",
         areaTitle: "결제 장벽 — 전환을 막던 마지막 관문 열기",
+        relatedNoteSlugs: ["gcb-global-checkout-dropout"],
         items: [
           {
             icon: "현황",
@@ -151,6 +159,7 @@ export const projects: Project[] = [
       {
         area: "영역 3",
         areaTitle: "한 서비스, 두 사용자 — 개인 학습자와 B2B 기관을 분기하기",
+        relatedNoteSlugs: ["reframing-information-by-value"],
         items: [
           {
             icon: "현황",

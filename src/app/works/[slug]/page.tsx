@@ -409,6 +409,74 @@ const ImageDirection = styled.div`
   }
 `;
 
+/* Key Decisions 섹션 도입부 — "확정 결론이 아니라 고려 중인 방향" 리프레이밍 */
+const DecisionsIntro = styled.p`
+  font-size: 14px;
+  color: ${theme.colors.gray600};
+  line-height: 1.8;
+  max-width: 760px;
+  margin: -8px 0 32px;
+  padding-left: 14px;
+  border-left: 3px solid ${theme.colors.gray300};
+`;
+
+/* 영역별 — 이 방향을 고려하며 쓴 노트 리스트 링크 */
+const DecisionNotes = styled.div`
+  margin-top: 16px;
+
+  .cap {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: ${theme.colors.gray500};
+    margin-bottom: 8px;
+  }
+`;
+
+const DecisionNoteLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  border: 1px solid ${theme.colors.gray200};
+  border-radius: 8px;
+  background: white;
+  margin-bottom: 8px;
+  transition: border-color 0.2s, transform 0.2s;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  &:hover {
+    border-color: ${theme.colors.black};
+    transform: translateX(2px);
+  }
+  &:hover .nl-title {
+    color: ${theme.colors.accent};
+  }
+  .nl-tag {
+    flex-shrink: 0;
+    font-size: 11px;
+    font-weight: 700;
+    color: ${theme.colors.accent};
+    background: rgba(255, 50, 41, 0.08);
+    padding: 3px 9px;
+    border-radius: 100px;
+  }
+  .nl-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: ${theme.colors.black};
+    line-height: 1.5;
+    transition: color 0.2s;
+  }
+  .nl-arrow {
+    margin-left: auto;
+    flex-shrink: 0;
+    font-size: 13px;
+    color: ${theme.colors.gray500};
+  }
+`;
+
 /* 선택하지 않은 대안(트레이드오프) 콜아웃 */
 const Tradeoff = styled.div`
   margin-top: 16px;
@@ -625,6 +693,7 @@ export default function WorkDetailPage({ params }: { params: Promise<{ slug: str
   if (!project) return notFound();
 
   const relatedNotes = posts.filter((p) => p.relatedWork?.slug === slug);
+  const postBySlug = (s: string) => posts.find((p) => p.slug === s);
 
   return (
     <>
@@ -760,35 +829,53 @@ export default function WorkDetailPage({ params }: { params: Promise<{ slug: str
       <Section $bg={theme.colors.gray100}>
         <Container>
           <SectionLabel>Key Decisions</SectionLabel>
-          {project.keyDecisions.map((area, i) => (
-            <DecisionArea key={i}>
-              <DecisionHeader>
-                <span className="area">{area.area}</span>
-                <span className="title">{area.areaTitle}</span>
-              </DecisionHeader>
-              <DecisionItems>
-                {area.items.map((item, j) => (
-                  <DecisionItem key={j}>
-                    <div>
-                      <span className="badge">{item.icon}</span>
-                    </div>
-                    <p>{item.body}</p>
-                  </DecisionItem>
-                ))}
-              </DecisionItems>
-              {(area.image || area.imageDirection) && (
-                <div style={{ marginTop: 20 }}>
-                  <DirectedFigure img={area.image} caption={area.imageCaption} direction={area.imageDirection} />
-                </div>
-              )}
-              {area.tradeoff && (
-                <Tradeoff>
-                  <span className="k">선택하지 않은 길</span>
-                  <p>{area.tradeoff}</p>
-                </Tradeoff>
-              )}
-            </DecisionArea>
-          ))}
+          {project.keyDecisionsIntro && <DecisionsIntro>{project.keyDecisionsIntro}</DecisionsIntro>}
+          {project.keyDecisions.map((area, i) => {
+            const areaNotes = (area.relatedNoteSlugs ?? [])
+              .map(postBySlug)
+              .filter((p): p is NonNullable<typeof p> => Boolean(p));
+            return (
+              <DecisionArea key={i}>
+                <DecisionHeader>
+                  <span className="area">{area.area}</span>
+                  <span className="title">{area.areaTitle}</span>
+                </DecisionHeader>
+                <DecisionItems>
+                  {area.items.map((item, j) => (
+                    <DecisionItem key={j}>
+                      <div>
+                        <span className="badge">{item.icon}</span>
+                      </div>
+                      <p>{item.body}</p>
+                    </DecisionItem>
+                  ))}
+                </DecisionItems>
+                {(area.image || area.imageDirection) && (
+                  <div style={{ marginTop: 20 }}>
+                    <DirectedFigure img={area.image} caption={area.imageCaption} direction={area.imageDirection} />
+                  </div>
+                )}
+                {area.tradeoff && (
+                  <Tradeoff>
+                    <span className="k">선택하지 않은 길</span>
+                    <p>{area.tradeoff}</p>
+                  </Tradeoff>
+                )}
+                {areaNotes.length > 0 && (
+                  <DecisionNotes>
+                    <div className="cap">이 방향을 고려하며 아이데이션한 노트</div>
+                    {areaNotes.map((note) => (
+                      <DecisionNoteLink key={note.slug} href={`/post/${note.slug}`}>
+                        <span className="nl-tag">{note.tag}</span>
+                        <span className="nl-title">{note.title}</span>
+                        <span className="nl-arrow">→</span>
+                      </DecisionNoteLink>
+                    ))}
+                  </DecisionNotes>
+                )}
+              </DecisionArea>
+            );
+          })}
         </Container>
       </Section>
 
