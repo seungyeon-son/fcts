@@ -347,6 +347,47 @@ const ProjArrow = styled.div`
   margin-top: 16px;
 `;
 
+/* ── Quick Links ── */
+const LinksRow = styled.div`
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+`;
+const QuickLink = styled.a`
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  border: 1px solid #f2f1ec;
+  border-radius: 12px;
+  padding: 14px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a18;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  transition:
+    box-shadow 0.2s,
+    border-color 0.2s,
+    transform 0.2s;
+  &:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    border-color: #ff5229;
+    transform: translateY(-1px);
+  }
+  img {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    flex-shrink: 0;
+    display: block;
+  }
+`;
+const LinkArrow = styled.span`
+  color: #9a9890;
+  font-size: 14px;
+  margin-left: 2px;
+`;
+
 /* ── CTA ── */
 const CtaBlock = styled.div`
   background: #0f0f0e;
@@ -631,6 +672,26 @@ export default function ResearchPage() {
               설계 이유가 있고, 근거가 있으며, 팀이 이어받아 운영할 수 있는 시스템입니다.
             </CtaDesc>
           </CtaBlock>
+        </Container>
+      </section>
+
+      {/* Quick Links */}
+      <section style={{ padding: "0 0 80px" }}>
+        <Container>
+          <LinksRow>
+            <QuickLink href="https://www.instagram.com/studio.fcts" target="_blank" rel="noopener noreferrer">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/img/logo-instagram.png" alt="Instagram" width={24} height={24} />
+              Instagram
+              <LinkArrow>↗</LinkArrow>
+            </QuickLink>
+            <QuickLink href="https://kmong.com/gig/773803" target="_blank" rel="noopener noreferrer">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/img/logo-kmong.png" alt="Kmong" width={24} height={24} />
+              Kmong
+              <LinkArrow>↗</LinkArrow>
+            </QuickLink>
+          </LinksRow>
         </Container>
       </section>
     </>
