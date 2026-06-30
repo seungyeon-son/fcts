@@ -190,6 +190,12 @@ export const posts: Post[] = [
           '결과: 리뷰에서 "왜?"에 늘 답하게 되고, 핸드오프에서 설계 의도가 추적 가능해졌다.',
         ],
       },
+      {
+        type: 'image',
+        src: '/img/posts/design-process-os-dashboard.png',
+        alt: 'Design Process OS — 6단계 운영 체계와 Notion 대시보드, Scheduled Tasks 자동화 개요',
+        caption: 'Design Process OS — 기획 분석부터 퍼블 인계까지 6단계를 자동화한 운영 체계',
+      },
       { type: 'heading', text: '1. 왜 만들었나' },
       {
         type: 'paragraph',
