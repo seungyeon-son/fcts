@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { getPost } from '@/data/posts'
+import { SITE_URL } from '@/lib/site'
 
 export async function generateMetadata({
   params,
@@ -16,6 +17,8 @@ export async function generateMetadata({
     }
   }
 
+  const ogImage = post.thumbnail ? `${SITE_URL}${post.thumbnail}` : undefined
+
   return {
     title: post.title,
     description: post.excerpt,
@@ -27,11 +30,13 @@ export async function generateMetadata({
       description: post.excerpt,
       url: `/post/${post.slug}`,
       publishedTime: post.dateISO,
+      ...(ogImage ? { images: [{ url: ogImage, alt: post.thumbnailAlt ?? post.title }] } : {}),
     },
     twitter: {
       card: 'summary_large_image',
       title: post.title,
       description: post.excerpt,
+      ...(ogImage ? { images: [ogImage] } : {}),
     },
   }
 }

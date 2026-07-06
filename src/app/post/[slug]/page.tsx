@@ -165,6 +165,20 @@ const FigImg = styled.img`
   border: 1px solid ${theme.colors.gray200};
   display: block;
 `;
+const RatioBox = styled.div<{ $ratio: "4:3" | "16:9" }>`
+  width: 100%;
+  aspect-ratio: ${(p) => (p.$ratio === "16:9" ? "16 / 9" : "4 / 3")};
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid ${theme.colors.gray200};
+  background: ${theme.colors.gray100};
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+`;
 const FigCaption = styled.figcaption`
   margin-top: 10px;
   font-size: 13px;
@@ -306,7 +320,13 @@ function Block({ block }: { block: PostBlock }) {
     case "image":
       return (
         <Figure>
-          <FigImg src={block.src} alt={block.alt} />
+          {block.ratio ? (
+            <RatioBox $ratio={block.ratio}>
+              <img src={block.src} alt={block.alt} />
+            </RatioBox>
+          ) : (
+            <FigImg src={block.src} alt={block.alt} />
+          )}
           {block.caption && <FigCaption>{block.caption}</FigCaption>}
         </Figure>
       );
