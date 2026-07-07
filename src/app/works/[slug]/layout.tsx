@@ -1,6 +1,10 @@
 import type { Metadata } from 'next'
 import { projects } from '@/data/projects'
 
+export function generateStaticParams() {
+  return projects.map((p) => ({ slug: p.slug }))
+}
+
 export async function generateMetadata({
   params,
 }: {

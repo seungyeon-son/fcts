@@ -3,7 +3,7 @@ import './globals.css'
 import StyledComponentsRegistry from '@/lib/registry'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
-import { SITE_URL } from '@/lib/site'
+import { SITE_URL, SITE_NAME } from '@/lib/site'
 
 const SITE_DESC =
   'B2B·B2C 복잡한 서비스를 단순하고 명료한 UX로 재설계하는 디자인 스튜디오 FCTS. 디자인 프로세스와 의사결정 과정을 공개합니다.'
@@ -45,11 +45,12 @@ export const metadata: Metadata = {
       'max-video-preview': -1,
     },
   },
+  applicationName: SITE_NAME,
   openGraph: {
     title: 'FCTS — From Complex To Simple',
     description: SITE_DESC,
     url: SITE_URL,
-    siteName: 'FCTS design studio',
+    siteName: SITE_NAME,
     locale: 'ko_KR',
     images: [
       {
@@ -69,10 +70,22 @@ export const metadata: Metadata = {
   },
 }
 
+const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: SITE_NAME,
+  alternateName: ['FCTS', 'FCTS design studio', 'From Complex To Simple'],
+  url: SITE_URL,
+}
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
         <StyledComponentsRegistry>
           <Header />
           <main>{children}</main>

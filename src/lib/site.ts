@@ -15,6 +15,10 @@ export const SITE_URL = (
     : "https://seungyeondesign.vercel.app")
 ).replace(/\/$/, "");
 
+// 검색결과 사이트명 (og:site_name + WebSite 구조화 데이터에 사용)
+export const SITE_NAME =
+  SITE_VARIANT === "team" ? "Design Studio — FCTS" : "FCTS design studio";
+
 // GNB 첫 번째 메뉴 분기
 export const leadLink =
   SITE_VARIANT === "team" ? { href: "/process", label: "Process" } : { href: "/about", label: "About" };

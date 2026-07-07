@@ -1,6 +1,10 @@
 import type { Metadata } from 'next'
-import { getPost } from '@/data/posts'
+import { getPost, posts } from '@/data/posts'
 import { SITE_URL } from '@/lib/site'
+
+export function generateStaticParams() {
+  return posts.map((p) => ({ slug: p.slug }))
+}
 
 export async function generateMetadata({
   params,
