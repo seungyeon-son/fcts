@@ -11,6 +11,8 @@ export type Project = {
   /** kind: "result"=실제 설계 산출물, "goal"=목표치(아직 측정 전) */
   metrics: { value: string; label: string; sub?: string; kind?: "result" | "goal" }[];
   coverImage?: string;
+  /** 상세페이지 히어로 전용 3:4 소개 이미지 (목록 썸네일은 coverImage 사용) */
+  heroImage?: string;
   images?: string[];
   heroContext?: string;
   /** 라이브 사이트 URL. 비공개/내부 제품이면 생략 */
@@ -51,16 +53,22 @@ export const projects: Project[] = [
     subtitle: "UBION 글로벌 학점은행제",
     cardDesc: "한국어·결제 장벽에 막혀 있던 외국인 학습자의 학위 여정을 9단계 End-to-End로 재설계한 프로젝트",
     coverImage: "/img/works/gcb-cover.jpg",
+    heroImage: "/img/works/gcb-intro.svg",
     category: "B2C UX Service",
     client: "UBION (글로벌 학점은행제)",
     tags: ["UX", "B2C", "i18n", "Web"],
-    year: "2024",
-    role: "UX Designer",
+    year: "2026",
+    role: "UX Designer (기획·UX·디자인시스템·퍼블리싱 단독)",
     heroContext:
       "복잡한 B2B 데이터 서비스에서 '얽힌 도메인을 명료한 구조로 푸는' 일을 해왔습니다. 그 시각으로, 외국인 학습자가 인지부터 학위까지 9단계 여정에서 한 번도 길을 잃지 않도록 설계했습니다.",
     metrics: [
+      {
+        value: "9단계",
+        kind: "result",
+        label: "인지→학위 End-to-End 여정 재설계",
+        sub: "5개 언어 · 5종 결제수단 · 4개 사용자 티어를 하나의 흐름으로 통합 설계",
+      },
       { value: "≥40%", kind: "goal", label: "가입 → 결제 전환율", sub: "언어·결제 장벽 해소 기준 · 출시 후 측정 예정" },
-      { value: "≥60%", kind: "goal", label: "강좌 수료율", sub: "다국어 자막·이수 대시보드 기준 · 측정 예정" },
       {
         value: "≥95%",
         kind: "goal",
@@ -100,7 +108,7 @@ export const projects: Project[] = [
         "들어갈 이미지: 인지→가입→학력인증→결제→수강→학점신청→학위 9단계를 가로 타임라인으로 그린 유저 저니 맵. 단계별 사용자 감정 곡선과 이탈 위험 구간(언어·결제)을 빨강으로 강조한 Figma 보드 캡처.",
     },
     keyDecisionsIntro:
-      "여기 정리한 방향은 확정해서 서비스에 그대로 적용한 결론이 아니라, 작업하면서 '이 문제를 이렇게 풀면 어떨까' 고려하고 있는 설계 방향입니다. 각 고민을 더 깊이 풀어둔 노트를 함께 연결해 뒀어요 — 아래 글들은 이 내용을 고려하며 아이데이션해 본 기록입니다.",
+      "아래는 이 서비스를 설계하며 내린 핵심 판단들입니다. 일부는 확정해 적용한 결정이고, 일부는 더 나은 방향을 탐색하며 검토한 설계안이에요. 각 판단을 더 깊이 풀어둔 노트도 함께 연결해 두었습니다.",
     keyDecisions: [
       {
         area: "영역 1",
@@ -227,6 +235,7 @@ export const projects: Project[] = [
     subtitle: "grecture · AI고전: 지혜의 항해",
     cardDesc: "에피소드가 바뀌어도 작동하는 8섹션 5막 보편 구조로 설계한 고등학생 고전 강의 회차 상세페이지",
     coverImage: "/img/works/gracture-cover.jpg",
+    heroImage: "/img/works/gracture-intro.svg",
     category: "B2C UX Service",
     client: "ubion (grecture)",
     tags: ["UX", "B2C", "EdTech", "Web"],
@@ -236,13 +245,18 @@ export const projects: Project[] = [
       "정식 기획서도, 기획자도 없었습니다. 콘텐츠 대본과 외부 제안서만 있는 상태에서, 디자이너가 직접 가설을 세우고 '어떤 고전으로 교체해도 작동하는' 구조를 설계했습니다.",
     metrics: [
       {
+        value: "8섹션 5막",
+        kind: "result",
+        label: "작품 교체 가능한 보편 구조 설계",
+        sub: "문학·철학·역사 3개 작품으로 교체 검증 완료",
+      },
+      {
         value: "65%+",
         kind: "goal",
         label: "회당 완강율",
         sub: "영상·원문·시각자료 결합 몰입형 상세 · 출시 후 측정 예정",
       },
       { value: "60%+", kind: "goal", label: "시리즈 진입율", sub: "시청 직후 NEXT·크로스 추천 트리거 · 측정 예정" },
-      { value: "4회+", kind: "goal", label: "1인당 평균 시청 회차", sub: "8섹션 5막 보편 구조 기준 · 측정 예정" },
     ],
     problemContext: {
       domain: "도메인 맥락",
@@ -392,6 +406,7 @@ export const projects: Project[] = [
     subtitle: "SDT Design System",
     cardDesc: "디자인-개발 비일관성으로 새던 반복 비용을 토큰·Atomic 컴포넌트로 잡은 사내 최초 디자인 시스템",
     coverImage: "/img/works/ds-cover.jpg",
+    heroImage: "/img/works/ds-intro.svg",
     category: "B2B UX Service",
     client: "SDT Inc.",
     tags: ["Design System", "Design Token", "Publishing", "Figma"],
@@ -400,9 +415,14 @@ export const projects: Project[] = [
     heroContext:
       "디자인과 퍼블리싱을 동시에 해온 사람으로서, 디자인 의도가 코드에서 손상되는 지점을 누구보다 잘 알았습니다. 그 간극을 0으로 만드는 시스템을 0에서 만들었습니다.",
     metrics: [
-      { value: "0→1", label: "사내 최초 디자인 시스템 구축", sub: "반복 작업 시간 30% 단축" },
-      { value: "40종+", label: "Atomic 컴포넌트 체계", sub: "QA 수정 건수 30% 감소" },
-      { value: "3개 프로덕트", label: "실서비스 적용 · 일정 준수율 95%", sub: "SDT Cloud · DTS · AquaRack" },
+      { value: "0→1", kind: "result", label: "사내 최초 디자인 시스템 구축", sub: "반복 작업 시간 30% 단축" },
+      { value: "40종+", kind: "result", label: "Atomic 컴포넌트 체계", sub: "QA 수정 건수 30% 감소" },
+      {
+        value: "3개 프로덕트",
+        kind: "result",
+        label: "실서비스 적용 · 일정 준수율 95%",
+        sub: "SDT Cloud · DTS · AquaRack",
+      },
     ],
     problemContext: {
       domain: "도메인 맥락",
@@ -542,15 +562,26 @@ export const projects: Project[] = [
     subtitle: "SDT CLOUD",
     cardDesc: "현장 장비부터 ML 모델 배포까지, 흩어진 산업 MLOps를 노드 그래프 하나로 연결한 B2B 대시보드",
     coverImage: "/img/works/cloud-cover.jpg",
+    heroImage: "/img/works/cloud-intro.svg",
     category: "B2B UX Service",
     client: "SDT Inc. (SDT CLOUD)",
     tags: ["B2B", "MLOps", "Dashboard", "Data Viz"],
     year: "2024",
     role: "Product Designer / Planning",
     metrics: [
-      { value: "4 in 1", label: "MLOps 플랫폼 통합", sub: "Blokworks·Datalake·Cobiops·Stackbase 단일 뷰" },
-      { value: "11개 화면", label: "데스크탑 대시보드 설계", sub: "노드 그래프·모니터링·데이터·앱 관리" },
-      { value: "4개 산업", label: "현장 데이터 대응 범위", sub: "컨베이어·스마트팩토리·화학·식품" },
+      {
+        value: "50%↓",
+        kind: "result",
+        label: "사용자 테스트 오류 감소",
+        sub: "4in1 단일 허브 재설계 후 사용성 테스트 기준",
+      },
+      { value: "3건 미만", kind: "result", label: "배포 후 UX 수정 요청", sub: "고객사 VOC 반영 2차 배포 기준" },
+      {
+        value: "4 in 1",
+        kind: "result",
+        label: "MLOps 플랫폼 통합",
+        sub: "Blokworks·Datalake·Cobiops·Stackbase 단일 뷰",
+      },
     ],
     problemContext: {
       domain: "도메인 맥락",
@@ -694,6 +725,7 @@ export const projects: Project[] = [
     subtitle: "SunNano",
     cardDesc: "오래 쌓여 복잡해진 썬팅필름 브랜드 사이트를 정보 구조 중심으로 개편",
     coverImage: "/img/works/sunnano-cover.jpg",
+    heroImage: "/img/works/sunnano-intro.svg",
     website: "https://sunnano.co.kr/",
     category: "Web Service",
     client: "썬나노 (SunNano)",
@@ -701,9 +733,19 @@ export const projects: Project[] = [
     year: "2025",
     role: "디자인 · 퍼블리싱",
     metrics: [
-      { value: "2003→2025", label: "노후 사이트 전면 개편", sub: "시멘틱 마크업·정보구조 재정비" },
-      { value: "7개 라인업", label: "필름 제품군 체계화", sub: "Signature·Eco·Crystal·Nano·Prestige·Hi-Tec·Silver" },
-      { value: "단독 수행", label: "디자인 100% · 퍼블리싱 100%", sub: "Figma → React·Tailwind·SCSS·WordPress" },
+      {
+        value: "30%↓",
+        kind: "result",
+        label: "기획→배포 일정 단축",
+        sub: "디자인·퍼블리싱 1인 완결로 외주 커뮤니케이션 제거",
+      },
+      { value: "2003→2025", kind: "result", label: "노후 사이트 전면 개편", sub: "시멘틱 마크업·정보구조 재정비" },
+      {
+        value: "단독 수행",
+        kind: "result",
+        label: "디자인 100% · 퍼블리싱 100%",
+        sub: "Figma → React·Tailwind·SCSS·WordPress",
+      },
     ],
     problemContext: {
       domain: "도메인 맥락",
@@ -815,6 +857,7 @@ export const projects: Project[] = [
     subtitle: "파티마의 성모 프란치스코 수녀회",
     cardDesc: "수도회 소개·사도직·교육 정보를 위계 중심으로 재정리한 웹사이트 리뉴얼",
     coverImage: "/img/works/fatima-cover.jpg",
+    heroImage: "/img/works/fatima-intro.svg",
     website: "https://fof.or.kr/",
     category: "Web Service",
     client: "파티마의 성모 프란치스코 수녀회",
@@ -822,9 +865,14 @@ export const projects: Project[] = [
     year: "2025",
     role: "디자인 · 퍼블리싱",
     metrics: [
-      { value: "진행 중", label: "수도회 웹사이트 리뉴얼", sub: "디자인 100% · 퍼블리싱 100%" },
-      { value: "4개 섹션", label: "정보 구조 재편", sub: "수도회 소개·우리의 사도직·청년 사도직·함께 나눠요" },
-      { value: "Figma→Web", label: "노후 사이트 전면 개편", sub: "가독성·위계 중심 재설계" },
+      {
+        value: "4개 섹션",
+        kind: "result",
+        label: "정보 구조 재편",
+        sub: "수도회 소개·우리의 사도직·청년 사도직·함께 나눠요",
+      },
+      { value: "단독 수행", kind: "result", label: "디자인 100% · 퍼블리싱 100%", sub: "Figma → React·WordPress" },
+      { value: "Figma→Web", kind: "result", label: "노후 사이트 전면 개편", sub: "가독성·위계 중심 재설계" },
     ],
     problemContext: {
       domain: "도메인 맥락",
@@ -937,6 +985,7 @@ export const projects: Project[] = [
     cardDesc:
       "‘Positive Beauty’ 철학과 비건 제품 라인을 한 흐름으로 잇도록 재편한 글로벌 코스메틱 브랜드 사이트 리뉴얼",
     coverImage: "/img/works/klairs-cover.jpg",
+    heroImage: "/img/works/klairs-intro.svg",
     category: "Web Service",
     client: "Dear Klairs",
     tags: ["Web", "Renewal", "Publishing", "Global"],
@@ -948,11 +997,12 @@ export const projects: Project[] = [
     metrics: [
       {
         value: "3축 스토리",
+        kind: "result",
         label: "브랜드 서사 구조화",
         sub: "Positive Beauty · Across the Globe · Proven by Millions",
       },
-      { value: "디자인+퍼블", label: "디자인 50% · 퍼블리싱 100%", sub: "Figma → 반응형 웹 직접 구현" },
-      { value: "80+개국", label: "글로벌 브랜드 신뢰 시각화", sub: "5,400+ 매장 · 다국어 대응" },
+      { value: "디자인+퍼블", kind: "result", label: "디자인 50% · 퍼블리싱 100%", sub: "Figma → 반응형 웹 직접 구현" },
+      { value: "80+개국", kind: "result", label: "글로벌 브랜드 신뢰 시각화", sub: "5,400+ 매장 · 다국어 대응" },
     ],
     problemContext: {
       domain: "도메인 맥락",
@@ -1087,6 +1137,7 @@ export const projects: Project[] = [
     subtitle: "DTS Dashboard · SDT Inc.",
     cardDesc: "광섬유 분산온도감지 데이터를 4단계 경보 위계로 시각화한 B2B 산업 관제 대시보드",
     coverImage: "/img/works/dts-cover.jpg",
+    heroImage: "/img/works/dts-intro.svg",
     category: "B2B UX Service",
     client: "SDT Inc.",
     tags: ["UX", "B2B", "Dashboard", "Data Viz"],
@@ -1095,9 +1146,14 @@ export const projects: Project[] = [
     heroContext:
       "SDT Cloud에서 만든 디자인 시스템을 산업 관제 도메인으로 확장한 작업입니다. 24시간 돌아가는 모니터링 화면에서는 색 하나가 곧 대응 속도가 된다는 것을 기준으로 삼았습니다.",
     metrics: [
-      { value: "4단계", label: "경보 위계 색 체계화", sub: "관심·주의·경계·심각을 전 컴포넌트에 통일" },
-      { value: "5종 팝업", label: "맥락 유지형 Section popup", sub: "페이지 전환 없이 섹션 상세 확인" },
-      { value: "맵 + 그래프", label: "위치·온도 분포 통합 뷰", sub: "Alert pin 맵 + Temp overview 그라데이션 바" },
+      { value: "4단계", kind: "result", label: "경보 위계 색 체계화", sub: "관심·주의·경계·심각을 전 컴포넌트에 통일" },
+      { value: "5종 팝업", kind: "result", label: "맥락 유지형 Section popup", sub: "페이지 전환 없이 섹션 상세 확인" },
+      {
+        value: "맵 + 그래프",
+        kind: "result",
+        label: "위치·온도 분포 통합 뷰",
+        sub: "Alert pin 맵 + Temp overview 그라데이션 바",
+      },
     ],
     problemContext: {
       domain: "도메인 맥락",
