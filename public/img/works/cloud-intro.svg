@@ -1,0 +1,43 @@
+<svg viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SDT Cloud cover">
+  <defs>
+    <pattern id="d_cl" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.6" fill="#F0F0F0"/></pattern>
+    <linearGradient id="f_cl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#FAFAFA"/></linearGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#f_cl)"/>
+  <rect width="600" height="800" fill="url(#d_cl)"/>
+
+  <rect x="40" y="44" width="132" height="30" rx="15" fill="rgba(255,50,41,0.08)"/>
+  <text x="106" y="64" text-anchor="middle" font-family="'Pretendard','Apple SD Gothic Neo',sans-serif" font-size="13" font-weight="700" fill="#FF3229" letter-spacing="0.5">B2B · MLOps</text>
+  <text x="560" y="64" text-anchor="end" font-family="'Pretendard',sans-serif" font-size="13" font-weight="700" fill="#CFCFCF" letter-spacing="1">SDT CLOUD</text>
+
+  <!-- edges -->
+  <g stroke="#D5D5D5" stroke-width="2">
+    <line x1="150" y1="230" x2="300" y2="410"/>
+    <line x1="450" y1="230" x2="300" y2="410"/>
+    <line x1="140" y1="470" x2="300" y2="410"/>
+    <line x1="460" y1="470" x2="300" y2="410"/>
+    <line x1="300" y1="600" x2="300" y2="410"/>
+    <line x1="150" y1="230" x2="450" y2="230"/>
+    <line x1="140" y1="470" x2="460" y2="470"/>
+  </g>
+
+  <!-- 4 source nodes (4 in 1) -->
+  <g font-family="'Pretendard',sans-serif" font-size="12" font-weight="700" fill="#8A8A8A" text-anchor="middle">
+    <circle cx="150" cy="230" r="26" fill="#FFFFFF" stroke="#0D0D0D" stroke-width="2.2"/><text x="150" y="234">장비</text>
+    <circle cx="450" cy="230" r="26" fill="#FFFFFF" stroke="#0D0D0D" stroke-width="2.2"/><text x="450" y="234">수집</text>
+    <circle cx="140" cy="470" r="26" fill="#FFFFFF" stroke="#0D0D0D" stroke-width="2.2"/><text x="140" y="474">저장</text>
+    <circle cx="460" cy="470" r="26" fill="#FFFFFF" stroke="#0D0D0D" stroke-width="2.2"/><text x="460" y="474">배포</text>
+  </g>
+
+  <!-- app node -->
+  <circle cx="300" cy="600" r="24" fill="#FFFFFF" stroke="#0D0D0D" stroke-width="2.2"/>
+  <text x="300" y="604" text-anchor="middle" font-family="'Pretendard',sans-serif" font-size="12" font-weight="700" fill="#8A8A8A">앱</text>
+
+  <!-- central hub (single view) -->
+  <circle cx="300" cy="410" r="44" fill="#FF3229"/>
+  <circle cx="300" cy="410" r="56" fill="none" stroke="#FF3229" stroke-width="2" opacity="0.3"/>
+  <text x="300" y="405" text-anchor="middle" font-family="'Pretendard',sans-serif" font-size="20" font-weight="800" fill="#FFFFFF">4in1</text>
+  <text x="300" y="424" text-anchor="middle" font-family="'Pretendard',sans-serif" font-size="10" font-weight="600" fill="#FFD9D6" letter-spacing="1">SINGLE VIEW</text>
+
+  <text x="300" y="726" text-anchor="middle" font-family="'Pretendard',sans-serif" font-size="12" font-weight="700" fill="#B4B4B4" letter-spacing="2">흩어진 장비·데이터·모델을 하나의 노드 그래프로</text>
+</svg>

@@ -1,0 +1,43 @@
+<svg viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Global Credit Bank cover">
+  <defs>
+    <pattern id="d_gcb" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.6" fill="#F0F0F0"/></pattern>
+    <linearGradient id="f_gcb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#FAFAFA"/></linearGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#f_gcb)"/>
+  <rect width="600" height="800" fill="url(#d_gcb)"/>
+
+  <rect x="40" y="44" width="164" height="30" rx="15" fill="rgba(255,50,41,0.08)"/>
+  <text x="122" y="64" text-anchor="middle" font-family="'Pretendard','Apple SD Gothic Neo',sans-serif" font-size="13" font-weight="700" fill="#FF3229" letter-spacing="0.5">B2C · Global UX</text>
+  <text x="560" y="64" text-anchor="end" font-family="'Pretendard',sans-serif" font-size="13" font-weight="700" fill="#CFCFCF" letter-spacing="1">GCB</text>
+
+  <!-- globe backdrop -->
+  <g stroke="#E6E6E6" stroke-width="1.5" fill="none">
+    <circle cx="300" cy="410" r="190"/>
+    <ellipse cx="300" cy="410" rx="74" ry="190"/>
+    <ellipse cx="300" cy="410" rx="140" ry="190"/>
+    <line x1="110" y1="410" x2="490" y2="410"/>
+    <path d="M138 310 Q300 268 462 310"/>
+    <path d="M138 510 Q300 552 462 510"/>
+  </g>
+
+  <!-- language glyphs -->
+  <g font-family="'Pretendard','Apple SD Gothic Neo',sans-serif" font-size="23" font-weight="600" fill="#CDCDCD">
+    <text x="150" y="225">A</text><text x="430" y="235">文</text><text x="112" y="392">한</text><text x="472" y="405">あ</text><text x="402" y="560">ع</text>
+  </g>
+
+  <!-- broken barrier -->
+  <g stroke="#C9C9C9" stroke-width="2" stroke-dasharray="6 7">
+    <line x1="300" y1="176" x2="300" y2="412"/><line x1="300" y1="492" x2="300" y2="642"/>
+  </g>
+
+  <!-- 9-step journey -->
+  <polyline points="112,592 158,568 204,532 252,492 300,452 352,408 404,366 452,320 500,272" fill="none" stroke="#0D0D0D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#FFFFFF" stroke="#0D0D0D" stroke-width="2.2">
+    <circle cx="112" cy="592" r="7.5"/><circle cx="158" cy="568" r="7.5"/><circle cx="204" cy="532" r="7.5"/><circle cx="252" cy="492" r="7.5"/><circle cx="352" cy="408" r="7.5"/><circle cx="404" cy="366" r="7.5"/><circle cx="452" cy="320" r="7.5"/><circle cx="500" cy="272" r="7.5"/>
+  </g>
+  <circle cx="300" cy="452" r="16" fill="none" stroke="#FF3229" stroke-width="2" opacity="0.35"/>
+  <circle cx="300" cy="452" r="10" fill="#FF3229"/>
+  <g font-family="'Pretendard','Apple SD Gothic Neo',sans-serif" font-size="13" font-weight="600" fill="#9A9A9A">
+    <text x="98" y="618">인지</text><text x="470" y="258">학위</text>
+  </g>
+</svg>

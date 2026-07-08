@@ -40,7 +40,7 @@ const ProjectCard = styled(Link)`
   overflow: hidden;
   border-radius: 4px;
   aspect-ratio: 510 / 560;
-  box-shadow: -4px 9px 25px -6px rgba(0, 0, 0, 0.1);
+
   &:hover .proj-img {
     transform: scale(1.04);
   }
@@ -53,7 +53,9 @@ const ProjectCard = styled(Link)`
 const CardImage = styled.div<{ $img?: string }>`
   width: 100%;
   height: 100%;
-  background: ${theme.colors.gray200} ${({ $img }) => ($img ? `url(${$img}) center/cover no-repeat` : "")};
+  background: ${theme.colors.gray200} ${({ $img }) => ($img ? `url(${$img}) bottom center/cover no-repeat` : "")};
+  overflow: hidden;
+  border: 1px solid ${theme.colors.gray200};
   transition: transform 0.4s ease;
 `;
 
@@ -71,6 +73,7 @@ const CardLabel = styled.div`
   border-radius: 4px;
   color: #212529;
   letter-spacing: -0.4px;
+  box-shadow: 0 0 3px 0 rgba(23, 27, 32, 0.15);
 `;
 
 const CardName = styled.div`

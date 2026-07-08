@@ -128,7 +128,8 @@ const InfoItem = styled.div`
 /* 우측 이미지: 체커보드 */
 const HeroImage = styled.div<{ $img?: string }>`
   width: 100%;
-  aspect-ratio: 1/1;
+  height: 560px;
+  aspect-ratio: 3/4;
   border-radius: 6px;
   overflow: hidden;
   background: ${({ $img }) =>
@@ -141,7 +142,7 @@ const HeroImage = styled.div<{ $img?: string }>`
         linear-gradient(-45deg, transparent 75%, #e4e4e4 75%)
       `};
   background-size: ${({ $img }) => ($img ? "cover" : "20px 20px")};
-  background-position: ${({ $img }) => ($img ? "center" : "0 0, 0 10px, 10px -10px, -10px 0")};
+  background-position: ${({ $img }) => ($img ? "top center" : "0 0, 0 10px, 10px -10px, -10px 0")};
   background-color: #f0f0f0;
 `;
 
@@ -758,7 +759,7 @@ export default function WorkDetailPage({ params }: { params: Promise<{ slug: str
               </InfoGrid>
             </HeroLeft>
 
-            <HeroImage $img={project.coverImage} />
+            <HeroImage $img={project.heroImage ?? project.coverImage} />
           </HeroLayout>
         </Container>
       </Hero>

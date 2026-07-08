@@ -1,0 +1,35 @@
+<svg viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Fatima cover">
+  <defs>
+    <pattern id="d_fa" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.6" fill="#F0F0F0"/></pattern>
+    <linearGradient id="f_fa" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F8F8F8"/></linearGradient>
+    <linearGradient id="glow_fa" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3EFE6"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></linearGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#f_fa)"/>
+  <rect width="600" height="800" fill="url(#d_fa)"/>
+
+  <rect x="40" y="44" width="140" height="30" rx="15" fill="rgba(255,50,41,0.08)"/>
+  <text x="110" y="64" text-anchor="middle" font-family="'Pretendard','Apple SD Gothic Neo',sans-serif" font-size="13" font-weight="700" fill="#FF3229" letter-spacing="0.5">Web · Renewal</text>
+  <text x="560" y="64" text-anchor="end" font-family="'Pretendard',sans-serif" font-size="13" font-weight="700" fill="#CFCFCF" letter-spacing="1">FATIMA</text>
+
+  <!-- soft light behind arch -->
+  <rect x="222" y="150" width="156" height="360" fill="url(#glow_fa)"/>
+
+  <!-- arch window -->
+  <path d="M225 500 L225 300 A75 75 0 0 1 375 300 L375 500" fill="#FFFFFF" stroke="#0D0D0D" stroke-width="2.4"/>
+  <!-- inner arch frame -->
+  <path d="M258 500 L258 312 A42 42 0 0 1 342 312 L342 500" fill="none" stroke="#DADADA" stroke-width="1.5"/>
+  <!-- vertical mullion -->
+  <line x1="300" y1="252" x2="300" y2="500" stroke="#DADADA" stroke-width="1.5"/>
+  <line x1="258" y1="380" x2="342" y2="380" stroke="#DADADA" stroke-width="1.5"/>
+
+  <!-- gentle light beam -->
+  <path d="M300 236 L300 560" stroke="#E7C86A" stroke-width="2.4" opacity="0.55" stroke-linecap="round"/>
+  <circle cx="300" cy="236" r="6" fill="#E7C86A" opacity="0.8"/>
+
+  <!-- 4 section markers -->
+  <g fill="#CFCFCF">
+    <circle cx="248" cy="590" r="5"/><circle cx="283" cy="590" r="5"/><circle cx="318" cy="590" r="5"/><circle cx="353" cy="590" r="5"/>
+  </g>
+
+  <text x="300" y="654" text-anchor="middle" font-family="'Pretendard','Apple SD Gothic Neo',sans-serif" font-size="12" font-weight="700" fill="#B4B4B4" letter-spacing="2">고요함과 신뢰의 톤 · 4개 섹션 재편</text>
+</svg>
