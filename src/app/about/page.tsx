@@ -1,10 +1,12 @@
 "use client";
 
+import React from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import { theme } from "@/styles/theme";
 import { Container } from "@/styles/styled";
 import { projects } from "@/data/projects";
+import { useInView } from "@/hooks/useInView";
 
 /* ── Page Header ── */
 const PageHead = styled.div`
@@ -213,12 +215,13 @@ const ValDesc = styled.div`
 const ValPill = styled(Link)`
   display: inline-block;
   font-size: 14px;
-  color: #ff5229;
+  color: ${theme.colors.black};
   font-weight: 600;
   transition: opacity 0.15s;
   &:hover {
     text-decoration: underline;
     text-underline-offset: 3px;
+    opacity: 0.55;
   }
 `;
 
@@ -287,14 +290,25 @@ const ProjKPI = styled.div`
   flex-shrink: 0;
 `;
 const KPIValue = styled.div`
-  font-size: 18px;
-  font-weight: 700;
-  color: #ff5229;
-  letter-spacing: -0.4px;
+  font-size: clamp(26px, 2.2vw, 34px);
+  font-weight: 800;
+  color: ${theme.colors.black};
+  letter-spacing: -0.04em;
+  line-height: 1;
 `;
 const KPILabel = styled.div`
-  font-size: 14px;
-  color: #5c5b56;
+  font-size: 12px;
+  color: ${theme.colors.gray500};
+  margin-top: 5px;
+  line-height: 1.4;
+`;
+const KPIGoalBadge = styled.div`
+  font-size: 10px;
+  font-weight: 700;
+  color: ${theme.colors.gray500};
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-top: 4px;
 `;
 
 /* ── Team Cards ── */
@@ -461,19 +475,23 @@ const values = [
 ];
 
 // About 대표 프로젝트 — projects.ts 단일 소스에서 파생 (카피 불일치 방지)
-const FEATURED_SLUGS = ["global-credit-bank", "mlops-b2b-dashboard", "humanities-lecture", "b2b-design-system"];
+const FEATURED_SLUGS = ["b2b-design-system", "global-credit-bank", "mlops-b2b-dashboard", "humanities-lecture"];
 
 const mainProjects = FEATURED_SLUGS.map((slug) => projects.find((p) => p.slug === slug))
   .filter((p): p is (typeof projects)[number] => Boolean(p))
-  .map((p) => ({
-    name: p.subtitle,
-    category: p.category,
-    tags: p.tags.slice(0, 2),
-    href: `/works/${p.slug}`,
-    desc: p.cardDesc ?? "",
-    kpiValue: p.metrics[0]?.value ?? "",
-    kpiLabel: p.metrics[0]?.label ?? "",
-  }));
+  .map((p) => {
+    const resultMetric = p.metrics.find((m) => m.kind === "result") ?? p.metrics[0];
+    return {
+      name: p.subtitle,
+      category: p.category,
+      tags: p.tags.slice(0, 2),
+      href: `/works/${p.slug}`,
+      desc: p.cardDesc ?? "",
+      kpiValue: resultMetric?.value ?? "",
+      kpiLabel: resultMetric?.label ?? "",
+      kpiKind: resultMetric?.kind ?? "result",
+    };
+  });
 
 const teamCards = [
   {
@@ -497,6 +515,38 @@ const teamCards = [
     desc: "HTML/CSS 퍼블리싱 경험으로 개발 제약을 이해하고 현실적인 설계를 합니다.",
   },
 ];
+
+function AnimatedProjectRow({ p, index }: { p: (typeof mainProjects)[number]; index: number }) {
+  const { ref, inView } = useInView({ threshold: 0.1 });
+  return (
+    <ProjectRow
+      ref={ref as React.RefObject<HTMLDivElement>}
+      style={{
+        opacity: inView ? 1 : 0,
+        transform: inView ? "translateY(0)" : "translateY(16px)",
+        transition: `opacity 0.55s cubic-bezier(.23,1,.32,1) ${index * 80}ms, transform 0.55s cubic-bezier(.23,1,.32,1) ${index * 80}ms`,
+      }}
+    >
+      <div>
+        <Link href={p.href}>
+          <ProjName>{p.name}</ProjName>
+        </Link>
+        <ProjCat>{p.category}</ProjCat>
+        <ProjChipsRow>
+          {p.tags.map((t) => (
+            <ProjChip key={t}>{t}</ProjChip>
+          ))}
+        </ProjChipsRow>
+      </div>
+      <ProjDesc>{p.desc}</ProjDesc>
+      <ProjKPI>
+        <KPIValue>{p.kpiValue}</KPIValue>
+        <KPILabel>{p.kpiLabel}</KPILabel>
+        {p.kpiKind === "goal" && <KPIGoalBadge>목표치</KPIGoalBadge>}
+      </ProjKPI>
+    </ProjectRow>
+  );
+}
 
 export default function AboutPage() {
   return (
@@ -535,6 +585,9 @@ export default function AboutPage() {
       {/* Profile */}
       <section style={{ paddingBottom: "80px" }}>
         <Container>
+          <div style={{ fontSize: "12px", fontWeight: 700, color: theme.colors.gray500, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "20px" }}>
+            B2B · Data Product Designer
+          </div>
           <ProfileHeadline>
             화면을 만들기 전에,
             <br />
@@ -542,7 +595,7 @@ export default function AboutPage() {
           </ProfileHeadline>
           <NameRow>
             <NameText>손승연</NameText>
-            <RoleText>UX Designer</RoleText>
+            <RoleText>Product Designer</RoleText>
           </NameRow>
           <ProfileMeta>
             <b>5.5년</b> · B2B SaaS / 복잡한 데이터 시스템 / 글로벌 서비스
@@ -583,24 +636,7 @@ export default function AboutPage() {
         <Container>
           <SectionTitle style={{ marginBottom: "32px" }}>주요 프로젝트</SectionTitle>
           {mainProjects.map((p, i) => (
-            <ProjectRow key={i}>
-              <div>
-                <Link href={p.href}>
-                  <ProjName>{p.name}</ProjName>
-                </Link>
-                <ProjCat>{p.category}</ProjCat>
-                <ProjChipsRow>
-                  {p.tags.map((t) => (
-                    <ProjChip key={t}>{t}</ProjChip>
-                  ))}
-                </ProjChipsRow>
-              </div>
-              <ProjDesc>{p.desc}</ProjDesc>
-              <ProjKPI>
-                <KPIValue>{p.kpiValue}</KPIValue>
-                <KPILabel>{p.kpiLabel}</KPILabel>
-              </ProjKPI>
-            </ProjectRow>
+            <AnimatedProjectRow key={i} p={p} index={i} />
           ))}
         </Container>
       </section>

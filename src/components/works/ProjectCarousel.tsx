@@ -42,7 +42,14 @@ const ProjectCard = styled(Link)`
   aspect-ratio: 510 / 560;
 
   &:hover .proj-img {
-    transform: scale(1.04);
+    transform: scale(1.05);
+  }
+  &:hover .card-label {
+    transform: translateY(0);
+    box-shadow: 0 6px 24px rgba(23, 27, 32, 0.18);
+  }
+  &:hover .card-arrow {
+    transform: translateX(3px);
   }
   @media (max-width: ${theme.breakpoints.sm}) {
     /* 모바일: 1.5개 노출 (gap 16px 기준) */
@@ -56,7 +63,7 @@ const CardImage = styled.div<{ $img?: string }>`
   background: ${theme.colors.gray200} ${({ $img }) => ($img ? `url(${$img}) bottom center/cover no-repeat` : "")};
   overflow: hidden;
   border: 1px solid ${theme.colors.gray200};
-  transition: transform 0.4s ease;
+  transition: transform 0.5s cubic-bezier(.23, 1, .32, 1);
 `;
 
 const CardLabel = styled.div`
@@ -74,6 +81,10 @@ const CardLabel = styled.div`
   color: #212529;
   letter-spacing: -0.4px;
   box-shadow: 0 0 3px 0 rgba(23, 27, 32, 0.15);
+  transform: translateY(6px);
+  transition:
+    transform 0.4s cubic-bezier(.23, 1, .32, 1),
+    box-shadow 0.4s cubic-bezier(.23, 1, .32, 1);
 `;
 
 const CardName = styled.div`
@@ -96,6 +107,7 @@ const CardArrow = styled.span`
   flex-shrink: 0;
   color: ${theme.colors.accent};
   font-size: 14px;
+  transition: transform 0.3s cubic-bezier(.23, 1, .32, 1);
 `;
 
 const Nav = styled.div`
@@ -193,12 +205,12 @@ export default function ProjectCarousel({ items }: { items: Project[] }) {
         {items.map((p) => (
           <ProjectCard key={p.slug} href={`/works/${p.slug}`} data-card>
             <CardImage className="proj-img" $img={p.coverImage} />
-            <CardLabel>
+            <CardLabel className="card-label">
               <div>
                 <CardName>{p.subtitle}</CardName>
                 {p.cardDesc && <CardDesc>{p.cardDesc}</CardDesc>}
               </div>
-              <CardArrow>→</CardArrow>
+              <CardArrow className="card-arrow">→</CardArrow>
             </CardLabel>
           </ProjectCard>
         ))}

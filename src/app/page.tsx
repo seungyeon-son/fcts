@@ -345,7 +345,7 @@ const ViewMoreBtn = styled(Link)`
   font-size: 16px;
   color: #212529;
   letter-spacing: -0.4px;
-  transition: background 0.15s;
+  transition: background 0.2s cubic-bezier(.23, 1, .32, 1);
   white-space: nowrap;
   width: fit-content;
   height: 44px;
@@ -354,6 +354,7 @@ const ViewMoreBtn = styled(Link)`
   }
   &:hover span {
     color: ${theme.colors.accent};
+    transform: translateX(3px);
   }
 `;
 
@@ -373,6 +374,7 @@ const ViewMoreCircle = styled.span`
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.08);
   font-size: 14px;
   color: #212529;
+  transition: transform 0.3s cubic-bezier(.23, 1, .32, 1), color 0.15s, background 0.15s;
 `;
 
 /* ════════════════════════════════

@@ -112,31 +112,6 @@ export const projects: Project[] = [
     keyDecisions: [
       {
         area: "영역 1",
-        areaTitle: "언어 장벽 — 가입 전부터 모국어로 만나게 하기",
-        relatedNoteSlugs: ["foreign-learner-identity-verification", "gcb-ux-theory-map"],
-        items: [
-          { icon: "현황", title: "", body: "한국어 전용 플랫폼이라 가입~수료 전 과정에서 의미를 파악 못 하고 이탈." },
-          {
-            icon: "목표",
-            title: "",
-            body: "비회원 랜딩부터 브라우저 언어를 자동 감지해 모국어 UI 제안, 5개 언어 동시 지원.",
-          },
-          {
-            icon: "UX",
-            title: "",
-            body: "국적·거주지 선택 시 UI 언어·통화·결제수단이 한 번에 갱신, 후기·자막엔 원문/번역 토글.",
-          },
-          {
-            icon: "설 계",
-            title: "",
-            body: "전 문자열 i18n 키 관리(하드코딩 금지), 장문 언어 대비 버튼 min-width·래핑 허용.",
-          },
-        ],
-        tradeoff:
-          "전체 자동 기계번역 대신 i18n 키 기반 수동 관리를 택했습니다 — 결제·학력인증 같은 민감 화면에서 오역이 곧 이탈·민원으로 이어지기 때문입니다.",
-      },
-      {
-        area: "영역 2",
         areaTitle: "결제 장벽 — 전환을 막던 마지막 관문 열기",
         relatedNoteSlugs: ["gcb-global-checkout-dropout"],
         items: [
@@ -161,11 +136,14 @@ export const projects: Project[] = [
             body: "토큰화·3D Secure·타임아웃 통보·멱등성 키로 중복결제 방지까지 예외 흐름 정의.",
           },
         ],
+        image: "/img/works/gcb-kd2.jpg",
+        imageCaption:
+          "결제 화면 비포/애프터 — 원화·국내카드만 지원(좌)에서, 거주국 기준 글로벌 5종 결제수단 + 다통화 병기(우)로.",
         tradeoff:
           "쓸 수 있는 결제수단을 전부 노출하지 않고, 거주국에서 불가한 수단은 숨겼습니다 — 선택지가 많을수록 결제 전환이 떨어진다는 판단(선택의 역설)에서 의도적으로 줄인 결정입니다.",
       },
       {
-        area: "영역 3",
+        area: "영역 2",
         areaTitle: "한 서비스, 두 사용자 — 개인 학습자와 B2B 기관을 분기하기",
         relatedNoteSlugs: ["reframing-information-by-value"],
         items: [
@@ -190,6 +168,9 @@ export const projects: Project[] = [
             body: "이수(진도 80%+평가) → 학점 신청 → 위변조 방지 수료증까지 상태(Variants)를 끊김 없이 연결.",
           },
         ],
+        image: "/img/works/gcb-kd3.jpg",
+        imageCaption:
+          "대시보드 비포/애프터 — 개인·기관 기능이 뒤섞인 단일 화면(좌)에서, 4개 티어 권한 매트릭스(우)로.",
         tradeoff:
           "기관용 기능을 별도 제품으로 분리하지 않고 한 서비스 안에서 권한으로 분기했습니다 — 운영·유지보수 비용과 두 제품 간 데이터 불일치 위험을 줄이기 위한 선택입니다.",
       },

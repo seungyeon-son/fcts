@@ -1,13 +1,15 @@
 "use client";
 
+import React from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import styled from "styled-components";
 import { use } from "react";
 import { theme } from "@/styles/theme";
-import { projects } from "@/data/projects";
+import { projects, type Project } from "@/data/projects";
 import { posts } from "@/data/posts";
 import { Container, Section } from "@/styles/styled";
+import { useInView } from "@/hooks/useInView";
 
 /* ════════════════════════════════
    HERO
@@ -177,11 +179,12 @@ const ImpactCard = styled.div`
 `;
 
 const ImpactValue = styled.div`
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-size: clamp(32px, 3.5vw, 44px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
   color: ${theme.colors.black};
-  margin-bottom: 8px;
+  line-height: 1;
+  margin-bottom: 10px;
 `;
 
 const ImpactLabel = styled.div`
@@ -254,7 +257,6 @@ const ApproachStep = styled.div`
   padding: 24px 20px;
   background: white;
   text-align: center;
-
   .num {
     width: 28px;
     height: 28px;
@@ -284,7 +286,7 @@ const ApproachStep = styled.div`
    KEY DECISIONS
 ════════════════════════════════ */
 const DecisionArea = styled.div`
-  margin-bottom: 40px;
+  margin-bottom: 80px;
 `;
 
 const DecisionHeader = styled.div`
@@ -315,7 +317,7 @@ const DecisionItem = styled.div`
   display: grid;
   grid-template-columns: 72px 1fr;
   gap: 16px;
-  padding: 16px 0;
+  padding: 12px 0;
   border-bottom: 1px solid ${theme.colors.gray200};
 
   .badge {
@@ -344,6 +346,9 @@ const ZoneSection = styled.div`
 
 const ZoneHeader = styled.div`
   margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid ${theme.colors.gray200};
+
   .zone {
     font-size: 13px;
     font-weight: 700;
@@ -367,6 +372,7 @@ const CheckerImg = styled.img`
   width: 100%;
   height: auto;
   border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
 `;
 
 const CheckerPlaceholder = styled.div`
@@ -378,7 +384,11 @@ const CheckerPlaceholder = styled.div`
     linear-gradient(45deg, #e4e4e4 25%, transparent 25%), linear-gradient(-45deg, #e4e4e4 25%, transparent 25%),
     linear-gradient(45deg, transparent 75%, #e4e4e4 75%), linear-gradient(-45deg, transparent 75%, #e4e4e4 75%);
   background-size: 20px 20px;
-  background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+  background-position:
+    0 0,
+    0 10px,
+    10px -10px,
+    -10px 0;
   background-color: #f5f5f5;
 `;
 
@@ -414,9 +424,9 @@ const ImageDirection = styled.div`
 const DecisionsIntro = styled.p`
   font-size: 14px;
   color: ${theme.colors.gray600};
-  line-height: 1.8;
+  line-height: 1.35;
   max-width: 760px;
-  margin: -8px 0 32px;
+  margin: 0 0 40px;
   padding-left: 14px;
   border-left: 3px solid ${theme.colors.gray300};
 `;
@@ -424,7 +434,6 @@ const DecisionsIntro = styled.p`
 /* 영역별 — 이 방향을 고려하며 쓴 노트 리스트 링크 */
 const DecisionNotes = styled.div`
   margin-top: 16px;
-
   .cap {
     font-size: 12px;
     font-weight: 700;
@@ -437,20 +446,33 @@ const DecisionNotes = styled.div`
 const DecisionNoteLink = styled(Link)`
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 11px 14px;
+  gap: 8px;
+  height: 40px;
   border: 1px solid ${theme.colors.gray200};
-  border-radius: 8px;
+  border-radius: 20px;
   background: white;
   margin-bottom: 8px;
-  transition: border-color 0.2s, transform 0.2s;
+  padding: 0 12px 0 8px;
+  width: fit-content;
+
+  transition:
+    border-color 0.2s,
+    transform 0.2s;
   &:last-child {
     margin-bottom: 0;
   }
   &:hover {
-    border-color: ${theme.colors.black};
+    border-color: ${theme.colors.gray200};
     transform: translateX(2px);
+    .nl-tag {
+      color: ${theme.colors.accent};
+      background: rgba(255, 50, 41, 0.08);
+    }
+    .nl-arrow {
+      color: ${theme.colors.accent};
+    }
   }
+
   &:hover .nl-title {
     color: ${theme.colors.accent};
   }
@@ -458,8 +480,8 @@ const DecisionNoteLink = styled(Link)`
     flex-shrink: 0;
     font-size: 11px;
     font-weight: 700;
-    color: ${theme.colors.accent};
-    background: rgba(255, 50, 41, 0.08);
+    color: ${theme.colors.gray600};
+    background: rgba(97, 97, 97, 0.08);
     padding: 3px 9px;
     border-radius: 100px;
   }
@@ -480,17 +502,13 @@ const DecisionNoteLink = styled(Link)`
 
 /* 선택하지 않은 대안(트레이드오프) 콜아웃 */
 const Tradeoff = styled.div`
-  margin-top: 16px;
   display: flex;
   gap: 12px;
-  padding: 14px 16px;
-  border-left: 3px solid ${theme.colors.accent};
-  background: rgba(255, 50, 41, 0.04);
-  border-radius: 0 8px 8px 0;
+  padding: 12px 0;
   .k {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 700;
-    color: ${theme.colors.accent};
+    color: ${theme.colors.black};
     white-space: nowrap;
     padding-top: 2px;
   }
@@ -498,6 +516,61 @@ const Tradeoff = styled.div`
     font-size: 14px;
     color: ${theme.colors.gray600};
     line-height: 1.75;
+  }
+`;
+
+/* ════════════════════════════════
+   3줄 요약 바 (히어로 직후)
+════════════════════════════════ */
+const SummaryBar = styled.div`
+  background: ${theme.colors.gray100};
+  border-bottom: 1px solid ${theme.colors.gray200};
+`;
+
+const SummaryRow = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  @media (max-width: ${theme.breakpoints.md}) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const SummaryItem = styled.div`
+  padding: 20px 28px;
+  border-right: 1px solid ${theme.colors.gray200};
+  &:first-child {
+    padding-left: 0;
+  }
+  &:last-child {
+    border-right: none;
+  }
+  @media (max-width: ${theme.breakpoints.md}) {
+    border-right: none;
+    border-bottom: 1px solid ${theme.colors.gray200};
+    padding: 16px 0;
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+`;
+
+const SummaryKey = styled.div`
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: ${theme.colors.gray500};
+  margin-bottom: 6px;
+`;
+
+const SummaryVal = styled.div`
+  font-size: 14px;
+  font-weight: 500;
+  color: ${theme.colors.black};
+  line-height: 1.5;
+  strong {
+    font-weight: 800;
+    letter-spacing: -0.02em;
   }
 `;
 
@@ -528,6 +601,28 @@ function DirectedFigure({ img, caption, direction }: { img?: string; caption?: s
   );
 }
 
+/* Impact 카드 진입 애니메이션 래퍼 */
+function ImpactCardItem({ m, index }: { m: Project["metrics"][number]; index: number }) {
+  const { ref, inView } = useInView({ threshold: 0.1 });
+  return (
+    <ImpactCard
+      ref={ref as React.RefObject<HTMLDivElement>}
+      style={{
+        opacity: inView ? 1 : 0,
+        transform: inView ? "translateY(0)" : "translateY(20px)",
+        transition: `opacity 0.6s cubic-bezier(.23,1,.32,1) ${index * 90}ms, transform 0.6s cubic-bezier(.23,1,.32,1) ${index * 90}ms`,
+      }}
+    >
+      {m.kind && (
+        <MetricKind $goal={m.kind === "goal"}>{m.kind === "goal" ? "목표" : "설계 산출물"}</MetricKind>
+      )}
+      <ImpactValue>{m.value}</ImpactValue>
+      <ImpactLabel>{m.label}</ImpactLabel>
+      {m.sub && <ImpactSub>{m.sub}</ImpactSub>}
+    </ImpactCard>
+  );
+}
+
 /* ════════════════════════════════
    REFLECTION
 ════════════════════════════════ */
@@ -541,7 +636,9 @@ const NoteCard = styled(Link)`
   padding: 24px;
   border: 1px solid ${theme.colors.gray200};
   border-radius: 12px;
-  transition: border-color 0.2s, transform 0.2s;
+  transition:
+    border-color 0.2s,
+    transform 0.2s;
   &:hover {
     border-color: ${theme.colors.black};
     transform: translateY(-2px);
@@ -764,18 +861,43 @@ export default function WorkDetailPage({ params }: { params: Promise<{ slug: str
         </Container>
       </Hero>
 
+      {/* 3줄 요약: 문제 - 핵심결정 - 결과 */}
+      <SummaryBar>
+        <Container>
+          <SummaryRow>
+            <SummaryItem>
+              <SummaryKey>문제</SummaryKey>
+              <SummaryVal>{project.problemContext.coreChallenge}</SummaryVal>
+            </SummaryItem>
+            {project.keyDecisions[0] && (
+              <SummaryItem>
+                <SummaryKey>핵심결정</SummaryKey>
+                <SummaryVal>{project.keyDecisions[0].areaTitle}</SummaryVal>
+              </SummaryItem>
+            )}
+            {(() => {
+              const m = project.metrics.find((m) => m.kind === "result") ?? project.metrics[0];
+              return m ? (
+                <SummaryItem>
+                  <SummaryKey>결과</SummaryKey>
+                  <SummaryVal>
+                    <strong>{m.value}</strong> {m.label}
+                    {m.kind === "goal" && <span style={{ fontSize: "11px", color: "#999", fontWeight: 600, marginLeft: "6px" }}>(목표)</span>}
+                  </SummaryVal>
+                </SummaryItem>
+              ) : null;
+            })()}
+          </SummaryRow>
+        </Container>
+      </SummaryBar>
+
       {/* Impact */}
       <Section>
         <Container>
           <SectionLabel>Impact</SectionLabel>
           <ImpactGrid>
             {project.metrics.map((m, i) => (
-              <ImpactCard key={i}>
-                {m.kind && <MetricKind $goal={m.kind === "goal"}>{m.kind === "goal" ? "목표" : "설계 산출물"}</MetricKind>}
-                <ImpactValue>{m.value}</ImpactValue>
-                <ImpactLabel>{m.label}</ImpactLabel>
-                {m.sub && <ImpactSub>{m.sub}</ImpactSub>}
-              </ImpactCard>
+              <ImpactCardItem key={i} m={m} index={i} />
             ))}
           </ImpactGrid>
         </Container>
@@ -917,9 +1039,7 @@ export default function WorkDetailPage({ params }: { params: Promise<{ slug: str
         <Section id="related-notes">
           <Container>
             <SectionLabel>관련 노트</SectionLabel>
-            <NotesIntro>
-              이 프로젝트의 설계 판단과 배경을 더 깊이 정리한 글입니다.
-            </NotesIntro>
+            <NotesIntro>이 프로젝트의 설계 판단과 배경을 더 깊이 정리한 글입니다.</NotesIntro>
             <NotesGrid>
               {relatedNotes.map((note) => (
                 <NoteCard key={note.slug} href={`/post/${note.slug}`}>
