@@ -1,11 +1,13 @@
 "use client";
 
+import React from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import { theme } from "@/styles/theme";
 import { projects } from "@/data/projects";
 import { Container, Section } from "@/styles/styled";
 import ProjectCarousel from "@/components/works/ProjectCarousel";
+import { useInView } from "@/hooks/useInView";
 
 const PageHeading = styled.h1`
   text-align: center;
@@ -116,6 +118,46 @@ const categoryMeta: Record<string, { sub: string; desc: string }> = {
 
 const categories = ["B2B UX Service", "B2C UX Service", "Web Service", "UX Planning/Branding"] as const;
 
+function AnimatedCategoryBlock({
+  cat,
+  catProjects,
+  meta,
+  index,
+}: {
+  cat: string;
+  catProjects: typeof projects;
+  meta: { sub: string; desc: string };
+  index: number;
+}) {
+  const { ref, inView } = useInView({ threshold: 0.05 });
+  return (
+    <CategoryBlock
+      ref={ref as React.RefObject<HTMLDivElement>}
+      style={{
+        opacity: inView ? 1 : 0,
+        transform: inView ? "translateY(0)" : "translateY(24px)",
+        transition: `opacity 0.65s cubic-bezier(.23,1,.32,1) ${index * 80}ms, transform 0.65s cubic-bezier(.23,1,.32,1) ${index * 80}ms`,
+      }}
+    >
+      <CategoryRow>
+        <CategoryMeta>
+          <CategoryTitle>{cat}</CategoryTitle>
+          <CategorySub>{meta.sub}</CategorySub>
+          <CategoryDesc>{meta.desc}</CategoryDesc>
+          <CategoryTags>
+            {catProjects.map((p) => (
+              <CategoryTag key={p.slug} href={`/works/${p.slug}`}>
+                {p.subtitle}
+              </CategoryTag>
+            ))}
+          </CategoryTags>
+        </CategoryMeta>
+        <ProjectCarousel items={catProjects} />
+      </CategoryRow>
+    </CategoryBlock>
+  );
+}
+
 export default function WorksPage() {
   return (
     <>
@@ -123,30 +165,12 @@ export default function WorksPage() {
         <Container style={{ paddingBottom: 100 }}>
           <PageHeading>Works</PageHeading>
 
-          {categories.map((cat) => {
+          {categories.map((cat, catIndex) => {
             const catProjects = projects.filter((p) => p.category === cat);
             if (!catProjects.length) return null;
             const meta = categoryMeta[cat];
-
             return (
-              <CategoryBlock key={cat}>
-                <CategoryRow>
-                  <CategoryMeta>
-                    <CategoryTitle>{cat}</CategoryTitle>
-                    <CategorySub>{meta.sub}</CategorySub>
-                    <CategoryDesc>{meta.desc}</CategoryDesc>
-                    <CategoryTags>
-                      {catProjects.map((p) => (
-                        <CategoryTag key={p.slug} href={`/works/${p.slug}`}>
-                          {p.subtitle}
-                        </CategoryTag>
-                      ))}
-                    </CategoryTags>
-                  </CategoryMeta>
-
-                  <ProjectCarousel items={catProjects} />
-                </CategoryRow>
-              </CategoryBlock>
+              <AnimatedCategoryBlock key={cat} cat={cat} catProjects={catProjects} meta={meta} index={catIndex} />
             );
           })}
         </Container>

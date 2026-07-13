@@ -152,8 +152,10 @@ const HeroImage = styled.div<{ $img?: string }>`
    IMPACT
 ════════════════════════════════ */
 const SectionLabel = styled.h2`
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: ${theme.colors.black};
   padding-bottom: 14px;
   border-bottom: 1px solid ${theme.colors.black};
@@ -298,8 +300,8 @@ const DecisionHeader = styled.div`
   .area {
     font-size: 13px;
     font-weight: 700;
-    color: ${theme.colors.accent};
-    background: rgba(255, 50, 41, 0.08);
+    color: ${theme.colors.gray600};
+    background: ${theme.colors.gray100};
     padding: 3px 10px;
     border-radius: 100px;
   }
@@ -352,7 +354,7 @@ const ZoneHeader = styled.div`
   .zone {
     font-size: 13px;
     font-weight: 700;
-    color: ${theme.colors.accent};
+    color: ${theme.colors.gray500};
     margin-bottom: 6px;
   }
   .title {
@@ -367,12 +369,12 @@ const ZoneHeader = styled.div`
   }
 `;
 
-const CheckerImg = styled.img`
+const CheckerImg = styled.img<{ $noShadow?: boolean }>`
   display: block;
   width: 100%;
   height: auto;
   border-radius: 6px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  box-shadow: ${({ $noShadow }) => ($noShadow ? "none" : "0 1px 4px rgba(0, 0, 0, 0.08)")};
 `;
 
 const CheckerPlaceholder = styled.div`
@@ -392,8 +394,12 @@ const CheckerPlaceholder = styled.div`
   background-color: #f5f5f5;
 `;
 
+// box-shadow를 뺄 이미지 파일명 (b2b-design-system: dts1/dts2/dts3)
+const NO_SHADOW_IMAGES = ["dts1", "dts2", "dts3", "cloud1", "cloud2", "cloud3"];
+
 function CheckerImage({ $img }: { $img?: string }) {
-  return $img ? <CheckerImg src={$img} alt="" /> : <CheckerPlaceholder />;
+  const noShadow = !!$img && NO_SHADOW_IMAGES.some((name) => $img.includes(name));
+  return $img ? <CheckerImg src={$img} alt="" $noShadow={noShadow} /> : <CheckerPlaceholder />;
 }
 
 /* 이미지 캡션 + "여기 무슨 이미지" 디렉션 */
@@ -415,7 +421,7 @@ const ImageDirection = styled.div`
   line-height: 1.7;
   .tag {
     font-weight: 700;
-    color: ${theme.colors.accent};
+    color: ${theme.colors.gray600};
     margin-right: 8px;
   }
 `;
@@ -650,8 +656,8 @@ const NoteCard = styled(Link)`
     display: inline-block;
     font-size: 12px;
     font-weight: 600;
-    color: ${theme.colors.accent};
-    background: rgba(255, 50, 41, 0.08);
+    color: ${theme.colors.gray600};
+    background: ${theme.colors.gray100};
     padding: 3px 11px;
     border-radius: 100px;
     margin-bottom: 12px;
@@ -980,7 +986,7 @@ export default function WorkDetailPage({ params }: { params: Promise<{ slug: str
                 )}
                 {area.tradeoff && (
                   <Tradeoff>
-                    <span className="k">선택하지 않은 길</span>
+                    <span className="k">이견·조율</span>
                     <p>{area.tradeoff}</p>
                   </Tradeoff>
                 )}

@@ -516,6 +516,43 @@ const teamCards = [
   },
 ];
 
+function AnimatedValCard({ v, index }: { v: (typeof values)[number]; index: number }) {
+  const { ref, inView } = useInView({ threshold: 0.1 });
+  return (
+    <ValCard
+      ref={ref as React.RefObject<HTMLDivElement>}
+      style={{
+        opacity: inView ? 1 : 0,
+        transform: inView ? "translateY(0)" : "translateY(20px)",
+        transition: `opacity 0.55s cubic-bezier(.23,1,.32,1) ${index * 70}ms, transform 0.55s cubic-bezier(.23,1,.32,1) ${index * 70}ms`,
+      }}
+    >
+      <ValIcon $bg={v.bg}>{v.icon}</ValIcon>
+      <ValTitle>{v.title}</ValTitle>
+      <ValDesc>{v.desc}</ValDesc>
+      <ValPill href={v.href}>{v.pill}</ValPill>
+    </ValCard>
+  );
+}
+
+function AnimatedTeamCard({ c, index }: { c: (typeof teamCards)[number]; index: number }) {
+  const { ref, inView } = useInView({ threshold: 0.1 });
+  return (
+    <TeamCard
+      ref={ref as React.RefObject<HTMLDivElement>}
+      style={{
+        opacity: inView ? 1 : 0,
+        transform: inView ? "translateY(0)" : "translateY(20px)",
+        transition: `opacity 0.55s cubic-bezier(.23,1,.32,1) ${index * 70}ms, transform 0.55s cubic-bezier(.23,1,.32,1) ${index * 70}ms`,
+      }}
+    >
+      <TeamEmoji>{c.emoji}</TeamEmoji>
+      <TeamTitle>{c.title}</TeamTitle>
+      <TeamDesc>{c.desc}</TeamDesc>
+    </TeamCard>
+  );
+}
+
 function AnimatedProjectRow({ p, index }: { p: (typeof mainProjects)[number]; index: number }) {
   const { ref, inView } = useInView({ threshold: 0.1 });
   return (
@@ -620,12 +657,7 @@ export default function AboutPage() {
           <SectionSub>매 프로젝트에서 비즈니스 목표와 사용자 경험을 함께 고민합니다</SectionSub>
           <ValuesGrid>
             {values.map((v, i) => (
-              <ValCard key={i}>
-                <ValIcon $bg={v.bg}>{v.icon}</ValIcon>
-                <ValTitle>{v.title}</ValTitle>
-                <ValDesc>{v.desc}</ValDesc>
-                <ValPill href={v.href}>{v.pill}</ValPill>
-              </ValCard>
+              <AnimatedValCard key={i} v={v} index={i} />
             ))}
           </ValuesGrid>
         </Container>
@@ -647,11 +679,7 @@ export default function AboutPage() {
           <SectionTitle style={{ marginBottom: "32px" }}>저는 이런 팀원입니다</SectionTitle>
           <TeamCards>
             {teamCards.map((c, i) => (
-              <TeamCard key={i}>
-                <TeamEmoji>{c.emoji}</TeamEmoji>
-                <TeamTitle>{c.title}</TeamTitle>
-                <TeamDesc>{c.desc}</TeamDesc>
-              </TeamCard>
+              <AnimatedTeamCard key={i} c={c} index={i} />
             ))}
           </TeamCards>
         </Container>

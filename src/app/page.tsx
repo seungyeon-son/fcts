@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import styled, { css } from "styled-components";
 import { theme } from "@/styles/theme";
@@ -8,6 +8,7 @@ import { caseStudies, projects } from "@/data/projects";
 import { researchPosts } from "@/data/posts";
 import { Container } from "@/styles/styled";
 import ProjectCarousel from "@/components/works/ProjectCarousel";
+import { useInView } from "@/hooks/useInView";
 
 /* ════════════════════════════════
    HERO
@@ -551,6 +552,46 @@ const LIGHT_WINDOWS = [{ start: 1.8, end: 4.2 }];
 /* ════════════════════════════════
    PAGE
 ════════════════════════════════ */
+function AnimatedValueCard({ v, index }: { v: (typeof fctsValues)[number]; index: number }) {
+  const { ref, inView } = useInView({ threshold: 0.1 });
+  return (
+    <ValueCard
+      ref={ref as React.RefObject<HTMLDivElement>}
+      style={{
+        opacity: inView ? 1 : 0,
+        transform: inView ? "translateY(0)" : "translateY(20px)",
+        transition: `opacity 0.6s cubic-bezier(.23,1,.32,1) ${index * 80}ms, transform 0.6s cubic-bezier(.23,1,.32,1) ${index * 80}ms`,
+      }}
+    >
+      <ValueCardLetter>{v.letter}</ValueCardLetter>
+      <ValueCardName>{v.name}</ValueCardName>
+      <ValueCardDesc>{v.desc}</ValueCardDesc>
+    </ValueCard>
+  );
+}
+
+function AnimatedArticleCard({ post, index }: { post: (typeof researchPosts)[number]; index: number }) {
+  const { ref, inView } = useInView({ threshold: 0.1 });
+  return (
+    <div
+      ref={ref}
+      style={{
+        flex: 1,
+        opacity: inView ? 1 : 0,
+        transform: inView ? "translateY(0)" : "translateY(20px)",
+        transition: `opacity 0.6s cubic-bezier(.23,1,.32,1) ${index * 80}ms, transform 0.6s cubic-bezier(.23,1,.32,1) ${index * 80}ms`,
+      }}
+    >
+      <ArticleCard as={Link} href={`/post/${post.slug}`}>
+        <ArticleTag>{post.tag}</ArticleTag>
+        <ArticleTitle>{post.title}</ArticleTitle>
+        <ArticleDivider />
+        <ArticleDate>{post.date}</ArticleDate>
+      </ArticleCard>
+    </div>
+  );
+}
+
 export default function Home() {
   // Hero 영상 스위치 ON 구간에 맞춰 Concept 글로우
   const heroVideoRef = useRef<HTMLVideoElement>(null);
@@ -625,12 +666,8 @@ export default function Home() {
             And Establishes Order In Business.
           </ValueHeading>
           <ValueCards>
-            {fctsValues.map((v) => (
-              <ValueCard key={v.letter}>
-                <ValueCardLetter>{v.letter}</ValueCardLetter>
-                <ValueCardName>{v.name}</ValueCardName>
-                <ValueCardDesc>{v.desc}</ValueCardDesc>
-              </ValueCard>
+            {fctsValues.map((v, i) => (
+              <AnimatedValueCard key={v.letter} v={v} index={i} />
             ))}
           </ValueCards>
         </Container>
@@ -692,13 +729,8 @@ export default function Home() {
                 </ViewMoreBtn>
               </CaseMeta>
               <ArticleList>
-                {researchPosts.slice(0, 2).map((post) => (
-                  <ArticleCard as={Link} href={`/post/${post.slug}`} key={post.slug}>
-                    <ArticleTag>{post.tag}</ArticleTag>
-                    <ArticleTitle>{post.title}</ArticleTitle>
-                    <ArticleDivider />
-                    <ArticleDate>{post.date}</ArticleDate>
-                  </ArticleCard>
+                {researchPosts.slice(0, 2).map((post, i) => (
+                  <AnimatedArticleCard key={post.slug} post={post} index={i} />
                 ))}
               </ArticleList>
               <ViewMoreBtn href="/post" className="mo">
