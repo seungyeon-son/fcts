@@ -426,7 +426,7 @@ const ImageDirection = styled.div`
   }
 `;
 
-/* Key Decisions 섹션 도입부 — "확정 결론이 아니라 고려 중인 방향" 리프레이밍 */
+/* Key Decisions 섹션 도입부 - "확정 결론이 아니라 고려 중인 방향" 리프레이밍 */
 const DecisionsIntro = styled.p`
   font-size: 14px;
   color: ${theme.colors.gray600};
@@ -437,7 +437,7 @@ const DecisionsIntro = styled.p`
   border-left: 3px solid ${theme.colors.gray300};
 `;
 
-/* 영역별 — 이 방향을 고려하며 쓴 노트 리스트 링크 */
+/* 영역별 - 이 방향을 고려하며 쓴 노트 리스트 링크 */
 const DecisionNotes = styled.div`
   margin-top: 16px;
   .cap {
@@ -619,9 +619,7 @@ function ImpactCardItem({ m, index }: { m: Project["metrics"][number]; index: nu
         transition: `opacity 0.6s cubic-bezier(.23,1,.32,1) ${index * 90}ms, transform 0.6s cubic-bezier(.23,1,.32,1) ${index * 90}ms`,
       }}
     >
-      {m.kind && (
-        <MetricKind $goal={m.kind === "goal"}>{m.kind === "goal" ? "목표" : "설계 산출물"}</MetricKind>
-      )}
+      {m.kind && <MetricKind $goal={m.kind === "goal"}>{m.kind === "goal" ? "목표" : "설계 산출물"}</MetricKind>}
       <ImpactValue>{m.value}</ImpactValue>
       <ImpactLabel>{m.label}</ImpactLabel>
       {m.sub && <ImpactSub>{m.sub}</ImpactSub>}
@@ -888,7 +886,11 @@ export default function WorkDetailPage({ params }: { params: Promise<{ slug: str
                   <SummaryKey>결과</SummaryKey>
                   <SummaryVal>
                     <strong>{m.value}</strong> {m.label}
-                    {m.kind === "goal" && <span style={{ fontSize: "11px", color: "#999", fontWeight: 600, marginLeft: "6px" }}>(목표)</span>}
+                    {m.kind === "goal" && (
+                      <span style={{ fontSize: "11px", color: "#999", fontWeight: 600, marginLeft: "6px" }}>
+                        (목표)
+                      </span>
+                    )}
                   </SummaryVal>
                 </SummaryItem>
               ) : null;

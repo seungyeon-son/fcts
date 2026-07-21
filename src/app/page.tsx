@@ -346,7 +346,7 @@ const ViewMoreBtn = styled(Link)`
   font-size: 16px;
   color: #212529;
   letter-spacing: -0.4px;
-  transition: background 0.2s cubic-bezier(.23, 1, .32, 1);
+  transition: background 0.2s cubic-bezier(0.23, 1, 0.32, 1);
   white-space: nowrap;
   width: fit-content;
   height: 44px;
@@ -375,7 +375,10 @@ const ViewMoreCircle = styled.span`
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.08);
   font-size: 14px;
   color: #212529;
-  transition: transform 0.3s cubic-bezier(.23, 1, .32, 1), color 0.15s, background 0.15s;
+  transition:
+    transform 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+    color 0.15s,
+    background 0.15s;
 `;
 
 /* ════════════════════════════════
@@ -546,7 +549,7 @@ const worksProjects = projects.map((p) => ({
   img: p.coverImage ?? "",
 }));
 
-// Hero 영상에서 스위치가 켜지는 구간(초) — 영상 보며 미세조정
+// Hero 영상에서 스위치가 켜지는 구간(초) - 영상 보며 미세조정
 const LIGHT_WINDOWS = [{ start: 1.8, end: 4.2 }];
 
 /* ════════════════════════════════

@@ -89,7 +89,7 @@ export default function PostListPage() {
         <Container>
           <PageTitle>Note</PageTitle>
           <PageSub>
-            Research and Insight — 작업하며 남긴 생각과 기록.
+            Research and Insight - 작업하며 남긴 생각과 기록.
             <br />
             결과물이 아니라 결정의 과정을 담았습니다.
           </PageSub>
@@ -101,9 +101,7 @@ export default function PostListPage() {
           {researchPosts.length === 0 && <Empty>아직 발행된 글이 없습니다.</Empty>}
           {researchPosts.map((post) => {
             const rel = post.relatedWork;
-            const relatedName = rel
-              ? projects.find((p) => p.slug === rel.slug)?.subtitle ?? rel.label
-              : null;
+            const relatedName = rel ? (projects.find((p) => p.slug === rel.slug)?.subtitle ?? rel.label) : null;
             return (
               <PostRow key={post.slug} href={`/post/${post.slug}`}>
                 <Tag>{post.tag}</Tag>

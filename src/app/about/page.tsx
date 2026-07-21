@@ -474,7 +474,7 @@ const values = [
   },
 ];
 
-// About 대표 프로젝트 — projects.ts 단일 소스에서 파생 (카피 불일치 방지)
+// About 대표 프로젝트 - projects.ts 단일 소스에서 파생 (카피 불일치 방지)
 const FEATURED_SLUGS = ["b2b-design-system", "global-credit-bank", "mlops-b2b-dashboard", "humanities-lecture"];
 
 const mainProjects = FEATURED_SLUGS.map((slug) => projects.find((p) => p.slug === slug))
@@ -622,7 +622,16 @@ export default function AboutPage() {
       {/* Profile */}
       <section style={{ paddingBottom: "80px" }}>
         <Container>
-          <div style={{ fontSize: "12px", fontWeight: 700, color: theme.colors.gray500, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "20px" }}>
+          <div
+            style={{
+              fontSize: "12px",
+              fontWeight: 700,
+              color: theme.colors.gray500,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              marginBottom: "20px",
+            }}
+          >
             B2B · Data Product Designer
           </div>
           <ProfileHeadline>

@@ -81,10 +81,10 @@ export const projects: Project[] = [
       domainDetail:
         "한국의 학점은행제는 국내 학습자 중심으로 운영되어, 글로벌 K-Education 수요가 급증하는데도 외국인이 온라인으로 한국 학위·학점을 취득할 경로가 사실상 없었습니다. UBION 글로벌 학점은행제는 이 공백을 채우기 위한 외국인 전용 End-to-End 학위 취득 서비스입니다.",
       domainContextExtra:
-        "시장 수요는 이미 검증돼 있었습니다 — 누적 수강생 15,000+, 한국 학위 취득 비중 70.7%, 평균 취득 기간 18개월. 문제는 그 '입구'였습니다. 외국인이 가입·결제 단계에서 대거 이탈하고 있었으니까요.",
+        "시장 수요는 이미 검증돼 있었습니다 - 누적 수강생 15,000+, 한국 학위 취득 비중 70.7%, 평균 취득 기간 18개월. 문제는 그 '입구'였습니다. 외국인이 가입·결제 단계에서 대거 이탈하고 있었으니까요.",
       coreChallenge: "핵심 페인포인트",
       coreChallengeDetail:
-        "외국인 학습자의 이탈은 네 가지 구조적 장벽에서 비롯됐습니다 — ① 언어 장벽(플랫폼이 한국어 전용이라 가입~수료 전 과정에서 이탈), ② 입학 절차의 불투명성(학력 인정 기준·서류·기간 미명시), ③ 결제 장벽(원화·국내 카드만 지원해 해외 결제 불가), ④ 수료 후 인증 불확실성. 특히 ‘언어·결제’ 장벽이 가입→결제 전환을 직접 가로막는 가장 큰 손실 구간이었습니다.",
+        "외국인 학습자의 이탈은 네 가지 구조적 장벽에서 비롯됐습니다 - ① 언어 장벽(플랫폼이 한국어 전용이라 가입~수료 전 과정에서 이탈), ② 입학 절차의 불투명성(학력 인정 기준·서류·기간 미명시), ③ 결제 장벽(원화·국내 카드만 지원해 해외 결제 불가), ④ 수료 후 인증 불확실성. 특히 ‘언어·결제’ 장벽이 가입→결제 전환을 직접 가로막는 가장 큰 손실 구간이었습니다.",
     },
     approach: [
       {
@@ -103,7 +103,7 @@ export const projects: Project[] = [
     ],
     journeyImage: {
       image: "/img/works/gcb-ujm.jpg",
-      caption: "9단계 End-to-End 유저 저니 맵 — 이탈 위험 구간(언어·결제) 표시",
+      caption: "9단계 End-to-End 유저 저니 맵 - 이탈 위험 구간(언어·결제) 표시",
       direction:
         "들어갈 이미지: 인지→가입→학력인증→결제→수강→학점신청→학위 9단계를 가로 타임라인으로 그린 유저 저니 맵. 단계별 사용자 감정 곡선과 이탈 위험 구간(언어·결제)을 빨강으로 강조한 Figma 보드 캡처.",
     },
@@ -112,13 +112,13 @@ export const projects: Project[] = [
     keyDecisions: [
       {
         area: "영역 1",
-        areaTitle: "결제 장벽 — 전환을 막던 마지막 관문 열기",
+        areaTitle: "결제 장벽 - 전환을 막던 마지막 관문 열기",
         relatedNoteSlugs: ["gcb-global-checkout-dropout"],
         items: [
           {
             icon: "현황",
             title: "",
-            body: "원화·국내 카드만 지원해 해외 사용자는 마지막 결제 단계에서 이탈 — 가장 큰 손실 구간.",
+            body: "원화·국내 카드만 지원해 해외 사용자는 마지막 결제 단계에서 이탈 - 가장 큰 손실 구간.",
           },
           {
             icon: "목표",
@@ -138,13 +138,13 @@ export const projects: Project[] = [
         ],
         image: "/img/works/gcb-kd2.jpg",
         imageCaption:
-          "결제 화면 비포/애프터 — 원화·국내카드만 지원(좌)에서, 거주국 기준 글로벌 5종 결제수단 + 다통화 병기(우)로.",
+          "결제 화면 비포/애프터 - 원화·국내카드만 지원(좌)에서, 거주국 기준 글로벌 5종 결제수단 + 다통화 병기(우)로.",
         tradeoff:
           "비즈니스 팀은 신뢰도를 위해 이용 가능한 결제수단 전체를 노출하자고 했습니다. 저는 선택의 역설 리서치와 해외 결제 최적화 사례를 근거로 선택지 과부하가 전환율을 낮춘다고 설득했고, 거주국에서 불가한 수단을 숨겨 3종 이하로 좁히는 방향으로 합의했습니다.",
       },
       {
         area: "영역 2",
-        areaTitle: "한 서비스, 두 사용자 — 개인 학습자와 B2B 기관을 분기하기",
+        areaTitle: "한 서비스, 두 사용자 - 개인 학습자와 B2B 기관을 분기하기",
         relatedNoteSlugs: ["reframing-information-by-value"],
         items: [
           {
@@ -169,7 +169,7 @@ export const projects: Project[] = [
           },
         ],
         image: "/img/works/gcb-kd3.jpg",
-        imageCaption: "대시보드 비포/애프터 — 개인·기관 기능이 뒤섞인 단일 화면(좌)에서, 4개 티어 권한 매트릭스(우)로.",
+        imageCaption: "대시보드 비포/애프터 - 개인·기관 기능이 뒤섞인 단일 화면(좌)에서, 4개 티어 권한 매트릭스(우)로.",
         tradeoff:
           "PM 측에서 기업 고객용을 별도 B2B Portal로 분리하자는 의견을 냈습니다. 저는 두 제품 간 데이터 불일치 위험과 운영 비용 증가를 근거로 반대했고, 개발팀과 IA를 함께 검토해 단일 서비스 내 4개 티어 권한 분기 구조로 합의했습니다.",
       },
@@ -183,13 +183,13 @@ export const projects: Project[] = [
       },
       {
         zone: "Curriculum",
-        title: "4개 전공을 카드로 — 탐색 부담을 줄이기",
+        title: "4개 전공을 카드로 - 탐색 부담을 줄이기",
         desc: "한국어학·경영세무·IT컴퓨터공학·한국화예술 4개 전공을 카드로 정리해, 외국인 학습자가 자신에게 맞는 학습 경로를 빠르게 고르도록 했습니다.",
         image: "/img/works/gcb2.jpg",
       },
       {
         zone: "Credit Management",
-        title: "학점부터 졸업까지 — 여정을 시뮬레이션",
+        title: "학점부터 졸업까지 - 여정을 시뮬레이션",
         desc: "학점 계산기·강의 계획 시뮬레이션·1:1 컨설팅 예약을 한 화면에 묶어, 졸업까지 남은 학점과 예상 기간을 스스로 그려볼 수 있게 했습니다.",
         image: "/img/works/gcb3.jpg",
       },
@@ -243,7 +243,7 @@ export const projects: Project[] = [
       domainDetail:
         "grecture는 고등학교 B2B 구독으로 학생에게 제공되는 고전 강의 서비스입니다. 이번 과제는 신규 카테고리 ‘AI고전: 지혜의 항해’ 시리즈의 회차 상세페이지를 설계하는 것으로, 영상·원문·시각자료를 결합해 고등학생의 몰입과 완강을 끌어내는 것이 목표였습니다.",
       domainContextExtra:
-        "특수한 출발점이었습니다 — 정식 기획서도, 기획자도 없었습니다. 입력은 강의 대본 1편과 외부 디자인 제안서뿐. 비즈니스 목표·KPI·페이지 구조가 모두 미정인 상태에서, 추정값과 확인 질문을 분리하며 디자이너 단독으로 가설을 픽스해 진행했습니다.",
+        "특수한 출발점이었습니다 - 정식 기획서도, 기획자도 없었습니다. 입력은 강의 대본 1편과 외부 디자인 제안서뿐. 비즈니스 목표·KPI·페이지 구조가 모두 미정인 상태에서, 추정값과 확인 질문을 분리하며 디자이너 단독으로 가설을 픽스해 진행했습니다.",
       coreChallenge: "핵심 페인포인트",
       coreChallengeDetail:
         "‘오뒷세이아 7화’ 하나만을 위한 화면을 그리면, 다음 작품이 들어올 때마다 새로 설계해야 합니다. 한 에피소드에 묶이지 않고 어떤 고전(문학·철학·역사)으로 교체해도 어색하지 않은 회차 상세페이지 구조를 만드는 것이 핵심 과제였습니다.",
@@ -252,7 +252,7 @@ export const projects: Project[] = [
       {
         step: 1,
         title: "입력 자료 해석",
-        desc: "기획서 부재 — 강의 대본·외부 제안서를 콘텐츠 입력값으로 보고 추정+확인 질문 분리",
+        desc: "기획서 부재 - 강의 대본·외부 제안서를 콘텐츠 입력값으로 보고 추정+확인 질문 분리",
       },
       {
         step: 2,
@@ -270,7 +270,7 @@ export const projects: Project[] = [
     keyDecisions: [
       {
         area: "영역 1",
-        areaTitle: "한 에피소드에 묶이지 않게 — 8섹션 5막 보편 구조",
+        areaTitle: "한 에피소드에 묶이지 않게 - 8섹션 5막 보편 구조",
         items: [
           {
             icon: "현황",
@@ -296,7 +296,7 @@ export const projects: Project[] = [
       },
       {
         area: "영역 2",
-        areaTitle: "시스템 제약을 디자인으로 — 회차 상세를 catalog + 컨텍스트로",
+        areaTitle: "시스템 제약을 디자인으로 - 회차 상세를 catalog + 컨텍스트로",
         items: [
           {
             icon: "현황",
@@ -322,7 +322,7 @@ export const projects: Project[] = [
       },
       {
         area: "영역 3",
-        areaTitle: "빨강 단일 톤 유지 — sub-브랜드보다 통합 카탈로그",
+        areaTitle: "빨강 단일 톤 유지 - sub-브랜드보다 통합 카탈로그",
         items: [
           {
             icon: "현황",
@@ -424,7 +424,7 @@ export const projects: Project[] = [
     keyDecisions: [
       {
         area: "영역 1",
-        areaTitle: "폰트·컬러·간격을 단일 토큰으로 — 바꾸면 전 제품에 번지게",
+        areaTitle: "폰트·컬러·간격을 단일 토큰으로 - 바꾸면 전 제품에 번지게",
         items: [
           {
             icon: "현황",
@@ -450,7 +450,7 @@ export const projects: Project[] = [
       },
       {
         area: "영역 2",
-        areaTitle: "디자이너가 만든 게 개발에서 안 깨지도록 — 코드 매핑 핸드오프",
+        areaTitle: "디자이너가 만든 게 개발에서 안 깨지도록 - 코드 매핑 핸드오프",
         items: [
           {
             icon: "현황",
@@ -478,7 +478,7 @@ export const projects: Project[] = [
       },
       {
         area: "영역 3",
-        areaTitle: "브랜드가 바뀌어도 무너지지 않게 — 토큰 기반 리브랜딩",
+        areaTitle: "브랜드가 바뀌어도 무너지지 않게 - 토큰 기반 리브랜딩",
         items: [
           {
             icon: "현황",
@@ -506,7 +506,7 @@ export const projects: Project[] = [
     designHighlights: [
       {
         zone: "Design Tokens",
-        title: "단일 토큰 — 색상·타이포·간격·radius",
+        title: "단일 토큰 - 색상·타이포·간격·radius",
         desc: "프로젝트마다 달랐던 기준을 Figma 토큰으로 통일해, 토큰 하나를 바꾸면 이를 쓰는 모든 컴포넌트에 자동 반영되도록 설계했습니다.",
         image: "/img/works/ds1.jpg",
       },
@@ -581,7 +581,7 @@ export const projects: Project[] = [
       {
         step: 1,
         title: "도메인 이해",
-        desc: "4in1 서비스(Blokworks·Datalake·Cobiops·Stackbase)와 스마트팩토리 데이터 파이프라인 학습 — 양자 컴퓨팅 기업의 고밀도 데이터 환경 경험을 가시성 설계에 적용",
+        desc: "4in1 서비스(Blokworks·Datalake·Cobiops·Stackbase)와 스마트팩토리 데이터 파이프라인 학습 - 양자 컴퓨팅 기업의 고밀도 데이터 환경 경험을 가시성 설계에 적용",
       },
       { step: 2, title: "IA 설계", desc: "메인 대시보드·장비·데이터·앱·온보딩·계정으로 정보구조 정리" },
       { step: 3, title: "노드 그래프", desc: "장비↔앱 연결을 노드 그래프로 시각화, 노드 선택 시 우측 패널 전환 설계" },
@@ -645,7 +645,7 @@ export const projects: Project[] = [
       },
       {
         area: "영역 3",
-        areaTitle: "복잡한 산업 시스템일수록 화면은 더 단순하게 — 모듈형 라이트 UI",
+        areaTitle: "복잡한 산업 시스템일수록 화면은 더 단순하게 - 모듈형 라이트 UI",
         items: [
           {
             icon: "현황",
@@ -679,7 +679,7 @@ export const projects: Project[] = [
       },
       {
         zone: "Monitoring",
-        title: "장비 상태 모니터링 — 테이블 + 라인 차트",
+        title: "장비 상태 모니터링 - 테이블 + 라인 차트",
         desc: "장비 목록 테이블과 라인 차트를 함께 배치해 수치와 추세를 한 화면에서 파악하고, 상세 정보는 Bottom Sheet로 펼치도록 했습니다.",
         image: "/img/works/cloud2.png",
       },
@@ -932,7 +932,7 @@ export const projects: Project[] = [
       },
       {
         zone: "About ・ News",
-        title: "수도회 소개 — 환영과 정체성 그리고 수녀원 소식 · 사도직 안내",
+        title: "수도회 소개 - 환영과 정체성 그리고 수녀원 소식 · 사도직 안내",
         desc: "첫 진입 이후 수도회의 정신과 정체성을 차분한 톤으로 소개하는 섹션으로 구성했습니다. 또한 수녀원 소식과 사도직 안내를 정돈된 리스트로 정리해, 필요한 정보를 빠르게 찾도록 했습니다.",
         image: "/img/works/fatima2.jpg",
       },
@@ -1022,7 +1022,7 @@ export const projects: Project[] = [
       },
       {
         area: "영역 2",
-        areaTitle: "제품을 ‘고르기 쉽게’ — 비주얼 중심 제품 그리드",
+        areaTitle: "제품을 ‘고르기 쉽게’ - 비주얼 중심 제품 그리드",
         items: [
           {
             icon: "현황",
@@ -1048,7 +1048,7 @@ export const projects: Project[] = [
       },
       {
         area: "영역 3",
-        areaTitle: "디자인 의도가 구현에서 안 깨지게 — 디자인+퍼블리싱 단독 연결",
+        areaTitle: "디자인 의도가 구현에서 안 깨지게 - 디자인+퍼블리싱 단독 연결",
         items: [
           {
             icon: "현황",
@@ -1076,7 +1076,7 @@ export const projects: Project[] = [
     designHighlights: [
       {
         zone: "Hero",
-        title: "제품을 주인공으로 — 감각적 히어로 슬라이더",
+        title: "제품을 주인공으로 - 감각적 히어로 슬라이더",
         desc: "비타민 젤리 클렌저 등 대표 제품을 큰 비주얼과 카피로 전면에 내세운 히어로 슬라이더로, 첫 화면에서 브랜드의 감각을 전달합니다.",
       },
       {
@@ -1147,7 +1147,7 @@ export const projects: Project[] = [
     keyDecisions: [
       {
         area: "영역 1",
-        areaTitle: "경보 우선순위 — 4단계 위계 색을 일관되게",
+        areaTitle: "경보 우선순위 - 4단계 위계 색을 일관되게",
         items: [
           {
             icon: "현황",
@@ -1173,7 +1173,7 @@ export const projects: Project[] = [
       },
       {
         area: "영역 2",
-        areaTitle: "중첩 경보 — 값과 위치 중 우선순위 식별",
+        areaTitle: "중첩 경보 - 값과 위치 중 우선순위 식별",
         items: [
           {
             icon: "현황",
@@ -1199,7 +1199,7 @@ export const projects: Project[] = [
       },
       {
         area: "영역 3",
-        areaTitle: "지도 맥락을 잃지 않게 — Section popup으로 드릴다운",
+        areaTitle: "지도 맥락을 잃지 않게 - Section popup으로 드릴다운",
         items: [
           {
             icon: "현황",
@@ -1227,19 +1227,19 @@ export const projects: Project[] = [
     designHighlights: [
       {
         zone: "Dashboard",
-        title: "메인 대시보드 — 맵 + 경보 현황",
+        title: "메인 대시보드 - 맵 + 경보 현황",
         desc: "지도 위 Alert pin으로 경보 발생 위치를 표시하고, Critical-alert_top5로 핵심 위험 순위를 함께 배치해 위험을 직관적으로 파악하도록 했습니다.",
         image: "/img/works/dts1.png",
       },
       {
         zone: "Sections",
-        title: "온도 분포 — 그라데이션 바와 섹션 팝업",
+        title: "온도 분포 - 그라데이션 바와 섹션 팝업",
         desc: "Temp overview 그라데이션 바(노랑→주황→레드)로 전체 온도 분포를 보여주고, 위험 구간 선택 시 Section popup으로 상세 온도·거리를 노출합니다.",
         image: "/img/works/dts2.png",
       },
       {
         zone: "Settings",
-        title: "경보 설정 — 4단계 온도 범위 세팅",
+        title: "경보 설정 - 4단계 온도 범위 세팅",
         desc: "관심·주의·경계·심각 4단계 임계치를 채널마다 세팅하도록 레이아웃을 분배하고, 최소·최대치 설정과 토글·범위 추가/삭제를 지원합니다.",
         image: "/img/works/dts3.png",
       },
