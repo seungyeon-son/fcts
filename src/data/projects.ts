@@ -554,17 +554,22 @@ export const projects: Project[] = [
     role: "Product Designer / Planning",
     metrics: [
       {
-        value: "50%↓",
-        kind: "result",
-        label: "사용자 테스트 오류 감소",
-        sub: "4in1 단일 허브 재설계 후 사용성 테스트 기준",
-      },
-      { value: "3건 미만", kind: "result", label: "배포 후 UX 수정 요청", sub: "고객사 VOC 반영 2차 배포 기준" },
-      {
         value: "4 in 1",
         kind: "result",
         label: "MLOps 플랫폼 통합",
         sub: "Blokworks·Datalake·Cobiops·Stackbase 단일 뷰",
+      },
+      {
+        value: "노드 그래프",
+        kind: "result",
+        label: "장비↔앱 연결을 단일 화면에",
+        sub: "흩어진 장비·데이터·모델을 한 화면에서 읽히도록 재설계",
+      },
+      {
+        value: "모듈형",
+        kind: "result",
+        label: "노드·차트·폼 컴포넌트 표준화",
+        sub: "상태(Variants)·예외 케이스 정의 후 개발 핸드오프",
       },
     ],
     problemContext: {
@@ -615,7 +620,7 @@ export const projects: Project[] = [
           },
         ],
         tradeoff:
-          "개발팀은 노드 그래프 렌더링의 구현 복잡성을 이유로 기존 테이블 뷰 유지를 제안했습니다. 저는 사용성 테스트에서 테이블 뷰로 장비와 앱의 연결 관계를 파악하는 데 평균 3분 이상이 걸렸다는 데이터로 반박했고, 노드를 모듈형 컴포넌트로 구성해 구현 부담을 줄이는 절충안을 함께 구체화해 합의했습니다.",
+          "개발팀은 노드 그래프 렌더링의 구현 복잡성을 이유로 기존 테이블 뷰 유지를 제안했습니다. 저는 테이블이 행 단위 나열이라 장비와 앱의 연결 관계를 한눈에 보여주지 못하고, 사용자가 관계를 따라가려면 여러 목록을 교차 대조해야 한다는 정보구조상의 한계를 근거로 노드 그래프의 필요성을 설득했습니다. 개발팀의 구현 부담은 노드를 모듈형 컴포넌트로 표준화하는 절충안을 함께 구체화해 합의했습니다.",
       },
       {
         area: "영역 2",

@@ -181,7 +181,7 @@ const ImpactCard = styled.div`
 `;
 
 const ImpactValue = styled.div`
-  font-size: clamp(32px, 3.5vw, 44px);
+  font-size: clamp(22px, 2.2vw, 26px);
   font-weight: 800;
   letter-spacing: -0.04em;
   color: ${theme.colors.black};
