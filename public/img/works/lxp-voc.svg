@@ -1,0 +1,47 @@
+<svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="LXP VoC and improvement loop">
+  <defs>
+    <pattern id="d_vc" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.6" fill="#ECECEC"/></pattern>
+    <filter id="s_vc" x="-10%" y="-10%" width="120%" height="120%"><feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000" flood-opacity="0.10"/></filter>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F7F7"/>
+  <rect width="1600" height="900" fill="url(#d_vc)"/>
+  <text x="120" y="110" text-anchor="start" font-family="'Pretendard','Apple SD Gothic Neo',sans-serif" font-size="26" font-weight="700" fill="#343A40">피드백 815건 · 반복된 불만 (키워드 기준, 2024.03–2026.10)</text>
+  <text x="120" y="150" text-anchor="start" font-family="'Pretendard','Apple SD Gothic Neo',sans-serif" font-size="19" font-weight="500" fill="#8A8A8A">앱 내 문의 727 · 구글플레이 36 · App Store 35 · 슬랙 17 → 하나의 노션 DB</text>
+  <text x="120" y="252" text-anchor="start" font-family="'Pretendard','Apple SD Gothic Neo',sans-serif" font-size="20" font-weight="700" fill="#5C5B56">로딩 지연 · 파일 안 열림</text>
+  <rect x="480" y="220" width="820" height="46" rx="6" fill="#D5D5D5"/>
+  <text x="1316" y="251" text-anchor="start" font-family="'Pretendard','Apple SD Gothic Neo',sans-serif" font-size="20" font-weight="700" fill="#5C5B56">222건</text>
+  <text x="1480" y="251" text-anchor="end" font-family="'Pretendard','Apple SD Gothic Neo',sans-serif" font-size="17" font-weight="600" fill="#B4B4B4">서버 영역</text>
+  <text x="120" y="342" text-anchor="start" font-family="'Pretendard','Apple SD Gothic Neo',sans-serif" font-size="20" font-weight="700" fill="#FF3229">로그인 오류 · 학교 선택 불가</text>
+  <rect x="480" y="310" width="169.9099099099099" height="46" rx="6" fill="#FF3229"/>
+  <text x="665.9099099099099" y="341" text-anchor="start" font-family="'Pretendard','Apple SD Gothic Neo',sans-serif" font-size="20" font-weight="700" fill="#FF3229">46건</text>
+  <text x="1480" y="341" text-anchor="end" font-family="'Pretendard','Apple SD Gothic Neo',sans-serif" font-size="17" font-weight="600" fill="#FF3229">디자인으로 풀 수 있는 1순위</text>
+  <text x="120" y="432" text-anchor="start" font-family="'Pretendard','Apple SD Gothic Neo',sans-serif" font-size="20" font-weight="700" fill="#5C5B56">알림이 오지 않음</text>
+  <rect x="480" y="400" width="169.9099099099099" height="46" rx="6" fill="#D5D5D5"/>
+  <text x="665.9099099099099" y="431" text-anchor="start" font-family="'Pretendard','Apple SD Gothic Neo',sans-serif" font-size="20" font-weight="700" fill="#5C5B56">46건</text>
+  
+  <text x="120" y="522" text-anchor="start" font-family="'Pretendard','Apple SD Gothic Neo',sans-serif" font-size="20" font-weight="700" fill="#5C5B56">동영상 배속 요청</text>
+  <rect x="480" y="490" width="62.79279279279279" height="46" rx="6" fill="#D5D5D5"/>
+  <text x="558.7927927927927" y="521" text-anchor="start" font-family="'Pretendard','Apple SD Gothic Neo',sans-serif" font-size="20" font-weight="700" fill="#5C5B56">17건</text>
+  
+  <rect x="145" y="660" width="190" height="64" rx="32" fill="#FFFFFF" stroke="#E2E2E2"/>
+  <text x="240" y="699" text-anchor="middle" font-family="'Pretendard','Apple SD Gothic Neo',sans-serif" font-size="18" font-weight="700" fill="#5C5B56">피드백 수집</text>
+  <line x1="339" y1="692" x2="357" y2="692" stroke="#B4B4B4" stroke-width="2.5"/><path d="M355 685 L365 692 L355 699" fill="none" stroke="#B4B4B4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="369" y="660" width="190" height="64" rx="32" fill="#FFFFFF" stroke="#E2E2E2"/>
+  <text x="464" y="699" text-anchor="middle" font-family="'Pretendard','Apple SD Gothic Neo',sans-serif" font-size="18" font-weight="700" fill="#5C5B56">반복 불만 확인</text>
+  <line x1="563" y1="692" x2="581" y2="692" stroke="#B4B4B4" stroke-width="2.5"/><path d="M579 685 L589 692 L579 699" fill="none" stroke="#B4B4B4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="593" y="660" width="190" height="64" rx="32" fill="#FFFFFF" stroke="#E2E2E2"/>
+  <text x="688" y="699" text-anchor="middle" font-family="'Pretendard','Apple SD Gothic Neo',sans-serif" font-size="18" font-weight="700" fill="#5C5B56">요청 다시 정의</text>
+  <line x1="787" y1="692" x2="805" y2="692" stroke="#B4B4B4" stroke-width="2.5"/><path d="M803 685 L813 692 L803 699" fill="none" stroke="#B4B4B4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="817" y="660" width="190" height="64" rx="32" fill="#FFFFFF" stroke="#E2E2E2"/>
+  <text x="912" y="699" text-anchor="middle" font-family="'Pretendard','Apple SD Gothic Neo',sans-serif" font-size="18" font-weight="700" fill="#5C5B56">설계</text>
+  <line x1="1011" y1="692" x2="1029" y2="692" stroke="#B4B4B4" stroke-width="2.5"/><path d="M1027 685 L1037 692 L1027 699" fill="none" stroke="#B4B4B4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="1041" y="660" width="190" height="64" rx="32" fill="#FFFFFF" stroke="#E2E2E2"/>
+  <text x="1136" y="699" text-anchor="middle" font-family="'Pretendard','Apple SD Gothic Neo',sans-serif" font-size="18" font-weight="700" fill="#5C5B56">출시</text>
+  <line x1="1235" y1="692" x2="1253" y2="692" stroke="#B4B4B4" stroke-width="2.5"/><path d="M1251 685 L1261 692 L1251 699" fill="none" stroke="#B4B4B4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="1265" y="660" width="190" height="64" rx="32" fill="#FFFFFF" stroke="#E2E2E2"/>
+  <text x="1360" y="699" text-anchor="middle" font-family="'Pretendard','Apple SD Gothic Neo',sans-serif" font-size="18" font-weight="700" fill="#5C5B56">같은 도구로 재확인</text>
+  
+  <path d="M1360 728 C 1360 800, 240 800, 240 734" fill="none" stroke="#FF3229" stroke-width="2.5" stroke-dasharray="6 6"/>
+  <path d="M233 744 L240 732 L247 744" fill="none" stroke="#FF3229" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="800" y="830" text-anchor="middle" font-family="'Pretendard','Apple SD Gothic Neo',sans-serif" font-size="18" font-weight="700" fill="#FF3229">개선 루프 — 한 바퀴가 개선 한 건</text>
+</svg>

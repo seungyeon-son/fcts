@@ -1,0 +1,28 @@
+<svg viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="LXP intro">
+  <defs>
+    <pattern id="d_in" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.6" fill="#ECECEC"/></pattern>
+    <filter id="s_in" x="-10%" y="-10%" width="120%" height="120%"><feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000" flood-opacity="0.10"/></filter>
+  </defs>
+  <rect width="600" height="800" fill="#F7F7F7"/>
+  <rect width="600" height="800" fill="url(#d_in)"/>
+  <rect x="40" y="44" width="150" height="30" rx="15" fill="rgba(255,50,41,0.08)"/>
+  <text x="115" y="64" text-anchor="middle" font-family="'Pretendard','Apple SD Gothic Neo',sans-serif" font-size="13" font-weight="700" fill="#FF3229">B2C · Mobile App</text>
+  <text x="560" y="64" text-anchor="end" font-family="'Pretendard','Apple SD Gothic Neo',sans-serif" font-size="13" font-weight="700" fill="#CFCFCF">COURSEMOS LXP</text>
+  <text x="300" y="170" text-anchor="middle" font-family="'Pretendard','Apple SD Gothic Neo',sans-serif" font-size="15" font-weight="700" fill="#8A8A8A">같은 빈 화면으로 가던 세 경로를 나누다</text>
+  <rect x="70" y="222" width="150" height="56" rx="28" fill="#FFFFFF" stroke="#E2E2E2"/>
+  <text x="145" y="256" text-anchor="middle" font-family="'Pretendard','Apple SD Gothic Neo',sans-serif" font-size="17" font-weight="700" fill="#5C5B56">로그아웃</text>
+  <line x1="232" y1="250" x2="310" y2="250" stroke="#BDBDBD" stroke-width="2.5"/><path d="M308 243 L318 250 L308 257" fill="none" stroke="#BDBDBD" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="330" y="222" width="200" height="56" rx="8" fill="#FFFFFF" stroke="#E2E2E2" stroke-width="1"/>
+  <text x="430" y="256" text-anchor="middle" font-family="'Pretendard','Apple SD Gothic Neo',sans-serif" font-size="15" font-weight="700" fill="#5C5B56">로그인 화면</text>
+  <rect x="70" y="372" width="150" height="56" rx="28" fill="#FFFFFF" stroke="#E2E2E2"/>
+  <text x="145" y="406" text-anchor="middle" font-family="'Pretendard','Apple SD Gothic Neo',sans-serif" font-size="17" font-weight="700" fill="#5C5B56">계정 추가</text>
+  <line x1="232" y1="400" x2="310" y2="400" stroke="#BDBDBD" stroke-width="2.5"/><path d="M308 393 L318 400 L308 407" fill="none" stroke="#BDBDBD" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="330" y="372" width="200" height="56" rx="8" fill="#FFFFFF" stroke="#E2E2E2" stroke-width="1"/>
+  <text x="430" y="406" text-anchor="middle" font-family="'Pretendard','Apple SD Gothic Neo',sans-serif" font-size="15" font-weight="700" fill="#5C5B56">계정 목록으로</text>
+  <rect x="70" y="522" width="150" height="56" rx="28" fill="#FF3229" stroke="#FF3229"/>
+  <text x="145" y="556" text-anchor="middle" font-family="'Pretendard','Apple SD Gothic Neo',sans-serif" font-size="17" font-weight="700" fill="#FFFFFF">세션 만료</text>
+  <line x1="232" y1="550" x2="310" y2="550" stroke="#FF3229" stroke-width="2.5"/><path d="M308 543 L318 550 L308 557" fill="none" stroke="#FF3229" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="330" y="522" width="200" height="56" rx="8" fill="#FFFFFF" stroke="#FF3229" stroke-width="2"/>
+  <text x="430" y="556" text-anchor="middle" font-family="'Pretendard','Apple SD Gothic Neo',sans-serif" font-size="15" font-weight="700" fill="#FF3229">저장된 계정 → 보던 화면</text>
+  <text x="300" y="662" text-anchor="middle" font-family="'Pretendard','Apple SD Gothic Neo',sans-serif" font-size="12" font-weight="700" fill="#B4B4B4">로그인 화면이 아니라, 로그아웃 경로를 설계하다</text>
+</svg>
