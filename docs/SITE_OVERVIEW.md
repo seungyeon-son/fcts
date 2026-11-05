@@ -63,7 +63,7 @@ CMS 없이 **TypeScript 데이터 파일**로 관리한다. 항목을 추가하�
 - `metrics[].kind`: `"result"`(실제 결과) / `"goal"`(아직 측정 전 목표치). 측정하지 않은 수치를 결과처럼 쓰지 않으려는 구분이다.
 - `keyDecisions[].relatedNoteSlugs`: 해당 결정을 고민한 Note 글로 연결.
 - 이미지가 없으면 `imageDirection` 등의 문구로 placeholder를 보여 준다.
-- 현재 프로젝트: UBION 글로벌 학점은행제, grecture(AI고전), SDT Design System, SDT CLOUD(MLOps), SunNano, 파티마의 성모 프란치스코 수녀회, Dear Klairs, DTS Dashboard.
+- 현재 프로젝트: LXP 모바일 앱 로그인 개선, CX AI 도움말 챗봇, UBION 글로벌 학점은행제, grecture(AI고전), SDT Design System, SDT CLOUD(MLOps), SunNano, 파티마의 성모 프란치스코 수녀회, Dear Klairs, DTS Dashboard.
 - 이미지: `public/img/works/`
 
 ### Note — [`src/data/posts.ts`](../src/data/posts.ts)
