@@ -563,18 +563,6 @@ export default function AboutPage() {
       {/* Profile */}
       <section style={{ paddingBottom: "80px" }}>
         <Container>
-          <div
-            style={{
-              fontSize: "12px",
-              fontWeight: 700,
-              color: theme.colors.gray500,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              marginBottom: "20px",
-            }}
-          >
-            B2B · Data Product Designer
-          </div>
           <ProfileHeadline>
             화면을 만들기 전에,
             <br />
