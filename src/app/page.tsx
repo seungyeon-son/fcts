@@ -4,10 +4,10 @@ import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import styled, { css } from "styled-components";
 import { theme } from "@/styles/theme";
-import { caseStudies, projects } from "@/data/projects";
+import { caseStudies } from "@/data/projects";
 import { researchPosts } from "@/data/posts";
 import { Container } from "@/styles/styled";
-import ProjectCarousel from "@/components/works/ProjectCarousel";
+import WorksCategories from "@/components/works/WorksCategories";
 import { useInView } from "@/hooks/useInView";
 
 /* ════════════════════════════════
@@ -214,12 +214,7 @@ const ValueCardDesc = styled.div`
    WORKS
 ════════════════════════════════ */
 const WorksSection = styled.section`
-  padding: 0 0 160px;
   background: ${theme.colors.white};
-
-  @media (max-width: ${theme.breakpoints.md}) {
-    padding: 0 0 120px;
-  }
 `;
 
 const SectionHeading = styled.h2`
@@ -232,107 +227,6 @@ const SectionHeading = styled.h2`
   text-transform: capitalize;
   @media (max-width: ${theme.breakpoints.sm}) {
     margin-bottom: 40px;
-  }
-`;
-
-const WorksInner = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-`;
-
-const WorksRow = styled.div`
-  display: grid;
-  grid-template-columns: 364px 1fr;
-  gap: 36px;
-  align-items: start;
-  @media (max-width: ${theme.breakpoints.lg}) {
-    grid-template-columns: 180px 1fr;
-  }
-  @media (max-width: ${theme.breakpoints.md}) {
-    grid-template-columns: 1fr;
-  }
-  @media (max-width: ${theme.breakpoints.sm}) {
-    gap: 16px;
-  }
-`;
-
-const WorksMeta = styled.div`
-  position: relative;
-  flex-shrink: 0;
-  align-self: stretch;
-
-  @media (max-width: ${theme.breakpoints.md}) {
-    width: 100%;
-  }
-  @media (max-width: ${theme.breakpoints.sm}) {
-    display: none;
-  }
-`;
-
-const WorksMetaTitle = styled.div`
-  font-size: 28px;
-  font-weight: 700;
-  color: #343a40;
-  letter-spacing: -0.4px;
-  line-height: 1.4;
-`;
-
-const WorksMetaSub = styled.div`
-  font-size: 15px;
-  font-weight: 600;
-  color: #aaa;
-  letter-spacing: -0.4px;
-  line-height: 1.6;
-  margin-bottom: 20px;
-`;
-
-const WorksMetaDesc = styled.div`
-  font-size: 15px;
-  color: #495057;
-  line-height: 1.6;
-  letter-spacing: -0.4px;
-`;
-
-const WorksMetaTags = styled.div`
-  display: flex;
-  flex-direction: column;
-  border-top: 1px solid #e1dac0;
-  padding-top: 12px;
-  margin-top: 12px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-
-  @media (max-width: ${theme.breakpoints.md}) {
-    position: static;
-  }
-`;
-
-const WorksTag = styled(Link)`
-  font-size: 15px;
-  color: #6c6e70;
-  letter-spacing: -0.4px;
-  line-height: 2;
-  text-decoration: underline;
-  text-underline-position: under;
-  &:hover {
-    color: ${theme.colors.black};
-  }
-`;
-
-const WorksBottom = styled.div`
-  width: 100%;
-  display: none;
-  @media (max-width: ${theme.breakpoints.sm}) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    .mo {
-      display: block;
-      margin-top: 0 !important;
-    }
   }
 `;
 
@@ -541,14 +435,6 @@ const fctsValues = [
   { letter: "S", name: "(System)", desc: "지속 가능하고 확장 가능한\n프로덕트의 질서" },
 ];
 
-// 데이터 배열 순서 = 최신순 (최신 프로젝트가 앞)
-const worksProjects = projects.map((p) => ({
-  slug: p.slug,
-  name: p.subtitle,
-  desc: p.cardDesc ?? "",
-  img: p.coverImage ?? "",
-}));
-
 // Hero 영상에서 스위치가 켜지는 구간(초) - 영상 보며 미세조정
 const LIGHT_WINDOWS = [{ start: 1.8, end: 4.2 }];
 
@@ -680,38 +566,7 @@ export default function Home() {
       <WorksSection>
         <Container>
           <SectionHeading>Works</SectionHeading>
-          <WorksInner>
-            <WorksRow>
-              <WorksMeta>
-                <WorksMetaTitle>복잡함을 구조로</WorksMetaTitle>
-                <WorksMetaSub>From Complex To Simple</WorksMetaSub>
-                <WorksMetaDesc>
-                  B2B·B2C 서비스부터 디자인 시스템까지,
-                  <br /> 문제를 구조로 푼 프로젝트
-                </WorksMetaDesc>
-                {/* <WorksMetaTags>
-                  {worksProjects.map((p) => (
-                    <WorksTag key={p.slug} href={`/works/${p.slug}`}>
-                      {p.name}
-                    </WorksTag>
-                  ))}
-                </WorksMetaTags> */}
-                <ViewMoreBtn href="/works" style={{ marginTop: 24 }}>
-                  View More
-                  <ViewMoreCircle>→</ViewMoreCircle>
-                </ViewMoreBtn>
-              </WorksMeta>
-
-              <ProjectCarousel items={projects} />
-            </WorksRow>
-
-            <WorksBottom>
-              <ViewMoreBtn href="/works" className="mo" style={{ marginTop: 24 }}>
-                View More
-                <ViewMoreCircle>→</ViewMoreCircle>
-              </ViewMoreBtn>
-            </WorksBottom>
-          </WorksInner>
+          <WorksCategories />
         </Container>
       </WorksSection>
 
