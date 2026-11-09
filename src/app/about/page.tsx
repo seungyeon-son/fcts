@@ -134,10 +134,10 @@ const SectionSub = styled.p`
 const ValuesGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: 1fr;
   gap: 16px;
   @media (max-width: ${theme.breakpoints.sm}) {
     grid-template-columns: 1fr;
+    grid-auto-rows: 1fr;
   }
 `;
 const ValCard = styled.div`
@@ -304,8 +304,8 @@ const ClosingText = styled.p`
 
 /* ── CTA ── */
 const CtaBlock = styled.div`
-  background: #0f0f0e;
-  border-radius: 20px;
+  background: ${theme.colors.gray100};
+  border-radius: 4px;
   padding: 48px;
   @media (max-width: ${theme.breakpoints.sm}) {
     padding: 36px 24px;
@@ -314,42 +314,37 @@ const CtaBlock = styled.div`
 const CtaLabel = styled.div`
   font-size: 13px;
   font-weight: 700;
-  color: #ff5229;
+  color: ${theme.colors.gray500};
   margin-bottom: 16px;
 `;
 const CtaTitle = styled.h2`
   font-size: 28px;
   font-weight: 700;
-  color: white;
+  color: ${theme.colors.black};
   line-height: 1.4;
   letter-spacing: -0.52px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   @media (max-width: ${theme.breakpoints.sm}) {
     font-size: clamp(20px, 3vw, 28px);
   }
 `;
-const CtaBullets = styled.ul`
-  list-style: none;
+const CtaDesc = styled.p`
+  font-size: 15px;
+  color: #5c5b56;
+  line-height: 1.7;
   margin-bottom: 24px;
-`;
-const CtaBullet = styled.li`
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.65);
-  line-height: 1.8;
-  &::before {
-    content: "· ";
-  }
 `;
 const CtaContact = styled.a`
   font-size: 14px;
   font-weight: 700;
-  color: white;
+  color: ${theme.colors.black};
   text-decoration: underline;
   text-underline-position: under;
   display: inline-block;
   margin-right: 16px;
+  transition: color 0.15s;
   &:hover {
-    opacity: 0.8;
+    color: ${theme.colors.accent};
   }
 `;
 
@@ -399,6 +394,12 @@ const values = [
     pill: "→ 프로세스 페이지 보기",
     href: "/design-process",
   },
+  {
+    icon: "🔍",
+    bg: "#e8eefc",
+    title: "문제를 재정의합니다",
+    desc: "프로젝트 진행 중 기능의 목적과 성공 기준이 명확하지 않아 의사결정이 반복적으로 바뀌는 문제를 경험했습니다. 그 이후 디자인에 들어가기 전에 문제 정의, 사용자, 성공 지표를 먼저 확인하고, 기획의 빈틈을 조기에 발견해 질문하는 방식으로 협업합니다.",
+  },
 ];
 
 // About 대표 프로젝트 - projects.ts 단일 소스에서 파생 (카피 불일치 방지)
@@ -430,7 +431,7 @@ function AnimatedValCard({ v, index }: { v: (typeof values)[number]; index: numb
       <ValIcon $bg={v.bg}>{v.icon}</ValIcon>
       <ValTitle>{v.title}</ValTitle>
       <ValDesc>{v.desc}</ValDesc>
-      <ValPill href={v.href}>{v.pill}</ValPill>
+      {v.href && <ValPill href={v.href}>{v.pill}</ValPill>}
     </ValCard>
   );
 }
@@ -562,22 +563,12 @@ export default function AboutPage() {
       <section style={{ padding: "0 0 80px" }}>
         <Container>
           <CtaBlock>
-            <CtaLabel>💬 함께하고 싶은 팀을 찾고 있습니다</CtaLabel>
-            <CtaTitle>
-              디자인이 결정의 근거가 되고
-              <br />
-              지표로 검증되는 팀을 찾고 있습니다.
-            </CtaTitle>
-            <CtaBullets>
-              {[
-                '디자인 결정에 "왜"를 함께 고민하는 PM, 개발팀이 있는 환경',
-                "B2B SaaS, 에듀테크, 복잡한 도메인을 다루는 프로젝트",
-                "디자인 시스템을 함께 만들고 운영하여 성장할 수 있는 곳",
-                "데이터와 지표를 기반으로 디자인을 개선하는 문화",
-              ].map((item, i) => (
-                <CtaBullet key={i}>{item}</CtaBullet>
-              ))}
-            </CtaBullets>
+            <CtaLabel>함께 일하고 싶습니다</CtaLabel>
+            <CtaTitle>복잡한 문제를 함께 풀어갈 기회를 기다립니다.</CtaTitle>
+            <CtaDesc>
+              B2B SaaS, 에듀테크처럼 도메인이 복잡한 프로덕트에서 PM·개발팀과 &quot;왜&quot;를 함께 고민해 왔습니다.
+              디자인 시스템과 데이터 기반 개선에 관심 있는 팀이라면 편하게 연락 주세요.
+            </CtaDesc>
             <CtaContact href="mailto:au1gust8@gmail.com">au1gust8@gmail.com</CtaContact>
             <CtaContact href="tel:010-4523-0029">010-4523-0029</CtaContact>
           </CtaBlock>
