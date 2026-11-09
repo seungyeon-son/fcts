@@ -101,6 +101,10 @@ const CardDesc = styled.div`
   letter-spacing: -0.3px;
   line-height: 1.45;
   margin-top: 4px;
+  /* 모바일: 좁은 카드에서 설명이 커버를 덮지 않도록 프로젝트명만 노출 */
+  @media (max-width: ${theme.breakpoints.sm}) {
+    display: none;
+  }
 `;
 
 const CardArrow = styled.span`
