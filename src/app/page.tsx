@@ -8,6 +8,7 @@ import { caseStudies } from "@/data/projects";
 import { researchPosts } from "@/data/posts";
 import { Container } from "@/styles/styled";
 import WorksCategories from "@/components/works/WorksCategories";
+import { SHOW_HOME_INTRO } from "@/lib/site";
 import { useInView } from "@/hooks/useInView";
 
 /* ════════════════════════════════
@@ -208,6 +209,37 @@ const ValueCardDesc = styled.div`
   line-height: 1.44;
   text-align: center;
   letter-spacing: -0.28px;
+`;
+
+const IntroBlock = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  margin-top: 48px;
+
+  @media (max-width: ${theme.breakpoints.md}) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    margin-top: 32px;
+  }
+`;
+
+const IntroTitle = styled.div`
+  font-size: 20px;
+  font-weight: 700;
+  color: ${theme.colors.black};
+  letter-spacing: -0.4px;
+  line-height: 1.4;
+`;
+
+const IntroDesc = styled.p`
+  margin-top: 6px;
+  font-size: 15px;
+  color: #4c4c4c;
+  line-height: 1.6;
+  letter-spacing: -0.3px;
 `;
 
 /* ════════════════════════════════
@@ -559,6 +591,18 @@ export default function Home() {
               <AnimatedValueCard key={v.letter} v={v} index={i} />
             ))}
           </ValueCards>
+          {SHOW_HOME_INTRO && (
+            <IntroBlock>
+              <div>
+                <IntroTitle>안녕하세요, 6년차 Product Designer 손승연입니다.</IntroTitle>
+                <IntroDesc>복잡한 정보를 사용자의 멘탈모델로 번역하고, 화면을 넘어 작동하는 시스템을 설계합니다.</IntroDesc>
+              </div>
+              <ViewMoreBtn href="/about">
+                About Me
+                <ViewMoreCircle>→</ViewMoreCircle>
+              </ViewMoreBtn>
+            </IntroBlock>
+          )}
         </Container>
       </ValueSection>
 

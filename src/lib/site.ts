@@ -19,6 +19,9 @@ export const SITE_NAME = SITE_VARIANT === "team" ? "Design Studio - FCTS" : "FCT
 export const leadLink =
   SITE_VARIANT === "team" ? { href: "/process", label: "Process" } : { href: "/about", label: "About" };
 
+// 홈 F·C·T·S 섹션의 자기소개 + About CTA 노출 여부 (개인 포트폴리오 전용)
+export const SHOW_HOME_INTRO = SITE_VARIANT === "personal";
+
 // 변형별 로고 이미지 경로 (public/ 기준)
 // ⚠️ 아래 파일은 추후 추가 예정 - 없으면 logo.svg로 폴백
 export const LOGO_SRC = SITE_VARIANT === "team" ? "/img/logo-team.svg" : "/img/logo-personal.svg";

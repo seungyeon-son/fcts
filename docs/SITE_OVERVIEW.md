@@ -33,8 +33,9 @@ FCTS(From Complex To Simple)는 복잡한 B2B·B2C 서비스를 단순하고 명
 | `SITE_NAME` | og:site_name, 구조화 데이터 | `app/layout.tsx` |
 | `leadLink` | GNB 첫 메뉴 (About ↔ Process) | `components/layout/Header.tsx` |
 | `LOGO_SRC` | 헤더·푸터 로고 | `Header.tsx`, `Footer.tsx` |
+| `SHOW_HOME_INTRO` | 홈 F·C·T·S 섹션의 자기소개 + About CTA (personal 전용) | `app/page.tsx` |
 
-> 분기는 **GNB 첫 메뉴, 로고, 사이트명, URL**만 바꾼다. 라우트 자체는 두 배포 모두에 존재한다.
+> 분기는 **GNB 첫 메뉴, 로고, 사이트명, URL, 홈 자기소개 블록**만 바꾼다. 라우트 자체는 두 배포 모두에 존재한다.
 > (예: team 배포에서도 `/about`을 직접 입력하면 열린다.)
 > 배포별로 다르게 보여야 하는 것이 생기면 `site.ts`에 상수를 추가하는 방식을 따른다.
 
