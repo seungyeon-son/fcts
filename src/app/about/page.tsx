@@ -134,12 +134,15 @@ const SectionSub = styled.p`
 const ValuesGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 1fr;
   gap: 16px;
   @media (max-width: ${theme.breakpoints.sm}) {
     grid-template-columns: 1fr;
   }
 `;
 const ValCard = styled.div`
+  display: flex;
+  flex-direction: column;
   background: white;
   border-radius: 4px;
   padding: 24px;
@@ -167,18 +170,23 @@ const ValDesc = styled.div`
   font-size: 14px;
   color: #5c5b56;
   line-height: 1.6;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 `;
 const ValPill = styled(Link)`
-  display: inline-block;
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 8px 14px;
+  border-radius: 100px;
+  background: rgba(211, 211, 211, 0.2);
   font-size: 14px;
   color: ${theme.colors.black};
   font-weight: 600;
-  transition: opacity 0.15s;
+  transition:
+    background 0.2s,
+    color 0.15s;
   &:hover {
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    opacity: 0.55;
+    background: rgba(211, 211, 211, 0.4);
+    color: ${theme.colors.accent};
   }
 `;
 
@@ -273,42 +281,6 @@ const ProjArrow = styled(Link)`
   }
 `;
 
-/* ── Team Cards ── */
-const TeamCards = styled.div`
-  display: flex;
-  gap: 16px;
-  @media (max-width: ${theme.breakpoints.md}) {
-    flex-wrap: wrap;
-  }
-`;
-const TeamCard = styled.div`
-  flex: 1;
-  min-width: 220px;
-  height: 213px;
-  background: white;
-  border-radius: 4px;
-  padding: 24px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
-  display: flex;
-  flex-direction: column;
-`;
-const TeamEmoji = styled.div`
-  font-size: 22px;
-  margin-bottom: 12px;
-`;
-const TeamTitle = styled.div`
-  font-size: 16px;
-  font-weight: 600;
-  color: #0f0f0e;
-  letter-spacing: -0.32px;
-  margin-bottom: 8px;
-`;
-const TeamDesc = styled.div`
-  font-size: 14px;
-  color: #5c5b56;
-  line-height: 20px;
-`;
-
 /* ── Closing ── */
 const Closing = styled.section`
   padding: 96px 0;
@@ -399,33 +371,33 @@ const values = [
     icon: "🎯",
     bg: "#faece7",
     title: "비즈니스 맥락을 이해합니다",
-    desc: "기능 명세서를 넘어 왜 이 기능이 필요한지, 어떤 지표를 움직여야 하는지 먼저 파악합니다.",
+    desc: "기능 명세서를 넘어 왜 이 기능이 필요한지, 어떤 지표를 움직여야 하는지 먼저 파악합니다. 요구사항이 불명확해도 가설을 세우고 빠르게 검증하며 앞으로 나아갑니다.",
     pill: "→ UBION 사례 보기",
     href: "/works/global-credit-bank",
-  },
-  {
-    icon: "📋",
-    bg: "#ff5229",
-    title: "리뷰에서 방어 가능한 디자인",
-    desc: '모든 결정에는 근거가 있습니다. 리뷰에서 "왜 이렇게 했나요?"에 항상 답할 수 있습니다.',
-    pill: "→ 프로세스 페이지 보기",
-    href: "/design-process",
-  },
-  {
-    icon: "🧩",
-    bg: "#e1f5ee",
-    title: "팀 생산성에 직접 기여합니다",
-    desc: "디자인 시스템과 컴포넌트 정비로 팀 전체의 작업 속도를 높이는 방식으로 일합니다.",
-    pill: "→ SDT DS 사례 보기",
-    href: "/works/b2b-design-system",
   },
   {
     icon: "🔗",
     bg: "#faeeda",
     title: "핸드오프 손실을 0으로 만듭니다",
-    desc: "구현까지 직접 다뤄본 감각으로, 디자인 의도가 개발 단계에서 손상되지 않게 제어합니다. 토큰·스펙으로 개발팀이 의도 그대로 구현하도록 간극을 메웁니다.",
+    desc: "HTML/CSS 퍼블리싱 경험으로 개발 제약을 이해하고 현실적인 설계를 합니다. 토큰·스펙으로 개발팀이 의도 그대로 구현하도록 간극을 메웁니다.",
     pill: "→ 핸드오프 가이드 보기",
     href: "/post/design-process-os",
+  },
+  {
+    icon: "🧩",
+    bg: "#e1f5ee",
+    title: "팀 생산성에 직접 기여합니다",
+    desc: "디자인 시스템과 컴포넌트 정비로 팀 전체의 작업 속도를 높입니다. 결정 이유와 맥락을 기록해 팀원이 언제든 이어받을 수 있는 환경을 만듭니다.",
+    pill: "→ SDT DS 사례 보기",
+    href: "/works/b2b-design-system",
+  },
+  {
+    icon: "📋",
+    bg: "#ff5229",
+    title: "근거 있는 디자인을 합니다",
+    desc: '감각이 아닌 데이터와 구조로 설명합니다. 모든 결정에는 "왜"가 있습니다.',
+    pill: "→ 프로세스 페이지 보기",
+    href: "/design-process",
   },
 ];
 
@@ -444,29 +416,6 @@ const mainProjects = FEATURED_SLUGS.map((slug) => projects.find((p) => p.slug ==
     role: p.role,
   }));
 
-const teamCards = [
-  {
-    emoji: "🗣",
-    title: "논리로 소통합니다",
-    desc: '감각이 아닌 데이터와 구조로 설명합니다. 모든 결정에는 "왜"가 있습니다.',
-  },
-  {
-    emoji: "📝",
-    title: "문서를 남깁니다",
-    desc: "결정 이유와 맥락을 기록해 팀원이 언제든 이어받을 수 있는 환경을 만듭니다.",
-  },
-  {
-    emoji: "🔄",
-    title: "불확실성에서 움직입니다",
-    desc: "요구사항이 불명확해도 가설을 세우고 빠르게 검증하며 앞으로 나아갑니다.",
-  },
-  {
-    emoji: "👩‍💻",
-    title: "구현까지 고려합니다",
-    desc: "HTML/CSS 퍼블리싱 경험으로 개발 제약을 이해하고 현실적인 설계를 합니다.",
-  },
-];
-
 function AnimatedValCard({ v, index }: { v: (typeof values)[number]; index: number }) {
   const { ref, inView } = useInView({ threshold: 0.1 });
   return (
@@ -483,24 +432,6 @@ function AnimatedValCard({ v, index }: { v: (typeof values)[number]; index: numb
       <ValDesc>{v.desc}</ValDesc>
       <ValPill href={v.href}>{v.pill}</ValPill>
     </ValCard>
-  );
-}
-
-function AnimatedTeamCard({ c, index }: { c: (typeof teamCards)[number]; index: number }) {
-  const { ref, inView } = useInView({ threshold: 0.1 });
-  return (
-    <TeamCard
-      ref={ref as React.RefObject<HTMLDivElement>}
-      style={{
-        opacity: inView ? 1 : 0,
-        transform: inView ? "translateY(0)" : "translateY(20px)",
-        transition: `opacity 0.55s cubic-bezier(.23,1,.32,1) ${index * 70}ms, transform 0.55s cubic-bezier(.23,1,.32,1) ${index * 70}ms`,
-      }}
-    >
-      <TeamEmoji>{c.emoji}</TeamEmoji>
-      <TeamTitle>{c.title}</TeamTitle>
-      <TeamDesc>{c.desc}</TeamDesc>
-    </TeamCard>
   );
 }
 
@@ -596,7 +527,7 @@ export default function AboutPage() {
       {/* Values 2×2 */}
       <section style={{ background: theme.colors.gray100, padding: "80px 0" }}>
         <Container>
-          <SectionTitle>팀에 합류하면 이런 가치를 드립니다</SectionTitle>
+          <SectionTitle>저는 이런 팀원입니다</SectionTitle>
           <SectionSub>매 프로젝트에서 비즈니스 목표와 사용자 경험을 함께 고민합니다</SectionSub>
           <ValuesGrid>
             {values.map((v, i) => (
@@ -613,18 +544,6 @@ export default function AboutPage() {
           {mainProjects.map((p, i) => (
             <AnimatedProjectRow key={i} p={p} index={i} />
           ))}
-        </Container>
-      </section>
-
-      {/* Team */}
-      <section style={{ background: theme.colors.gray100, padding: "80px 0" }}>
-        <Container>
-          <SectionTitle style={{ marginBottom: "32px" }}>저는 이런 팀원입니다</SectionTitle>
-          <TeamCards>
-            {teamCards.map((c, i) => (
-              <AnimatedTeamCard key={i} c={c} index={i} />
-            ))}
-          </TeamCards>
         </Container>
       </section>
 
