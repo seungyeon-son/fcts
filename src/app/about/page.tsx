@@ -573,7 +573,7 @@ export default function AboutPage() {
             <RoleText>Product Designer</RoleText>
           </NameRow>
           <ProfileMeta>
-            <b>5.5년</b> · B2B SaaS / 복잡한 데이터 시스템 / 글로벌 서비스
+            <b>6년차</b> B2B SaaS / B2C Service / Web Service
           </ProfileMeta>
           <ProfileDesc>
             산업용 IoT 대시보드부터 글로벌 에듀테크 서비스까지, 저는 늘 한 가지를 먼저 묻습니다. <br /> “이 사용자는
