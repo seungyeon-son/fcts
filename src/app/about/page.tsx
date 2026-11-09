@@ -52,49 +52,6 @@ const BannerText = styled.p`
   }
 `;
 
-/* ── FCTS Value Cards ── */
-const ValueCards = styled.div`
-  display: flex;
-  gap: 16px;
-  margin-top: 48px;
-  @media (max-width: ${theme.breakpoints.md}) {
-    flex-wrap: wrap;
-  }
-`;
-const ValueCard = styled.div`
-  flex: 1;
-  min-width: 220px;
-  background: white;
-  border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(223, 223, 223, 0.8);
-  padding: 20px 24px 48px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-`;
-const VCardLetter = styled.div`
-  font-size: 15px;
-  font-weight: 600;
-  color: ${theme.colors.black};
-  text-align: center;
-  width: 100%;
-`;
-const VCardName = styled.div`
-  font-size: 15px;
-  font-style: italic;
-  color: ${theme.colors.black};
-  text-align: center;
-`;
-const VCardDesc = styled.div`
-  font-size: 14px;
-  color: #4c4c4c;
-  line-height: 1.44;
-  text-align: center;
-  letter-spacing: -0.28px;
-  white-space: pre-line;
-`;
-
 /* ── Profile ── */
 const NameRow = styled.div`
   display: flex;
@@ -420,13 +377,6 @@ const CtaContact = styled.a`
 `;
 
 /* ── Data ── */
-const fctsValues = [
-  { letter: "F", name: "(Function)", desc: "사용자의 문제를 해결하는\n실질적인 기능 정의" },
-  { letter: "C", name: "(Concept)", desc: "논리적 근거를 바탕으로 세워진\n디자인 전략" },
-  { letter: "T", name: "(Token)", desc: "디자인과 개발을 잇는 최소 단위의 약속 (Design Tokens)" },
-  { letter: "S", name: "(System)", desc: "지속 가능하고 확장 가능한\n프로덕트의 질서" },
-];
-
 const skills = [
   "Figma",
   "Adobe Illustrator",
@@ -594,7 +544,7 @@ export default function AboutPage() {
         </Container>
       </PageHead>
 
-      {/* Banner + FCTS Value Cards */}
+      {/* Banner */}
       <section style={{ paddingBottom: "80px" }}>
         <Container>
           <Banner>
@@ -607,15 +557,6 @@ export default function AboutPage() {
               And Establishes Order In Business.
             </BannerText>
           </Banner>
-          <ValueCards>
-            {fctsValues.map((v) => (
-              <ValueCard key={v.letter}>
-                <VCardLetter>{v.letter}</VCardLetter>
-                <VCardName>{v.name}</VCardName>
-                <VCardDesc>{v.desc}</VCardDesc>
-              </ValueCard>
-            ))}
-          </ValueCards>
         </Container>
       </section>
 
