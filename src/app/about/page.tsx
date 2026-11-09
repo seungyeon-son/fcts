@@ -184,8 +184,9 @@ const ValPill = styled(Link)`
 
 /* ── Projects ── */
 const ProjectRow = styled.div`
+  position: relative;
   display: grid;
-  grid-template-columns: 250px 1fr 192px;
+  grid-template-columns: 250px 1fr 192px 32px;
   gap: 24px;
   align-items: start;
   padding: 24px 0;
@@ -204,8 +205,8 @@ const ProjName = styled.div`
   color: #0f0f0e;
   margin-bottom: 4px;
   letter-spacing: -0.3px;
-  &:hover {
-    color: #ff5229;
+  ${ProjectRow}:has(a:hover) & {
+    color: ${theme.colors.accent};
   }
   transition: color 0.15s;
 `;
@@ -233,39 +234,43 @@ const ProjDesc = styled.div`
   color: #5c5b56;
   line-height: 1.7;
 `;
-const ProjKPI = styled.div`
-  min-width: 100px;
-  height: 100%;
+const ProjMeta = styled.dl`
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 6px 8px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+`;
+const ProjMetaLabel = styled.dt`
+  color: ${theme.colors.gray500};
+`;
+const ProjMetaValue = styled.dd`
+  margin: 0;
+  color: #5c5b56;
+`;
+const ProjArrow = styled(Link)`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  background: #f8f8f8;
-  border-radius: 4px;
-  padding: 0 16px;
-  text-align: center;
-  flex-shrink: 0;
-`;
-const KPIValue = styled.div`
-  font-size: clamp(26px, 2.2vw, 34px);
-  font-weight: 800;
-  color: ${theme.colors.black};
-  letter-spacing: -0.04em;
-  line-height: 1;
-`;
-const KPILabel = styled.div`
-  font-size: 12px;
+  justify-content: flex-end;
+  width: 32px;
+  height: 32px;
+  font-size: 18px;
   color: ${theme.colors.gray500};
-  margin-top: 5px;
-  line-height: 1.4;
-`;
-const KPIGoalBadge = styled.div`
-  font-size: 10px;
-  font-weight: 700;
-  color: ${theme.colors.gray500};
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  margin-top: 4px;
+  transition:
+    color 0.15s,
+    transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  ${ProjectRow}:has(a:hover) & {
+    color: ${theme.colors.accent};
+    transform: translateX(3px);
+  }
+  @media (max-width: ${theme.breakpoints.md}) {
+    position: absolute;
+    top: 14px;
+    right: 0;
+    width: 44px;
+    height: 44px;
+  }
 `;
 
 /* ── Team Cards ── */
@@ -429,19 +434,15 @@ const FEATURED_SLUGS = ["b2b-design-system", "global-credit-bank", "mlops-b2b-da
 
 const mainProjects = FEATURED_SLUGS.map((slug) => projects.find((p) => p.slug === slug))
   .filter((p): p is (typeof projects)[number] => Boolean(p))
-  .map((p) => {
-    const resultMetric = p.metrics.find((m) => m.kind === "result") ?? p.metrics[0];
-    return {
-      name: p.subtitle,
-      category: p.category,
-      tags: p.tags.slice(0, 2),
-      href: `/works/${p.slug}`,
-      desc: p.cardDesc ?? "",
-      kpiValue: resultMetric?.value ?? "",
-      kpiLabel: resultMetric?.label ?? "",
-      kpiKind: resultMetric?.kind ?? "result",
-    };
-  });
+  .map((p) => ({
+    name: p.subtitle,
+    category: p.category,
+    tags: p.tags.slice(0, 2),
+    href: `/works/${p.slug}`,
+    desc: p.cardDesc ?? "",
+    year: p.year,
+    role: p.role,
+  }));
 
 const teamCards = [
   {
@@ -526,11 +527,15 @@ function AnimatedProjectRow({ p, index }: { p: (typeof mainProjects)[number]; in
         </ProjChipsRow>
       </div>
       <ProjDesc>{p.desc}</ProjDesc>
-      <ProjKPI>
-        <KPIValue>{p.kpiValue}</KPIValue>
-        <KPILabel>{p.kpiLabel}</KPILabel>
-        {p.kpiKind === "goal" && <KPIGoalBadge>목표치</KPIGoalBadge>}
-      </ProjKPI>
+      <ProjMeta>
+        <ProjMetaLabel>기간</ProjMetaLabel>
+        <ProjMetaValue>{p.year} ~</ProjMetaValue>
+        <ProjMetaLabel>역할</ProjMetaLabel>
+        <ProjMetaValue>{p.role}</ProjMetaValue>
+      </ProjMeta>
+      <ProjArrow href={p.href} aria-label={`${p.name} 프로젝트 보기`}>
+        →
+      </ProjArrow>
     </ProjectRow>
   );
 }
