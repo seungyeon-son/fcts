@@ -1514,7 +1514,16 @@ export const projects: Project[] = [
     year: "2025",
     role: "Product Designer (2인 중 1인)",
     // 아래 세 칸은 채우면 덱에 나타나고, 비어 있으면 숨겨집니다 (/portfolio-deck?guide=1 로 자리 미리보기)
-    contribution: { team: "", stages: [] }, // 예) { stage: "IA·플로우", level: "주도" }
+    contribution: {
+      team: "디자이너 2인(나 포함) · 기획 · 영업",
+      stages: [
+        { stage: "IA", level: "주도" },
+        { stage: "경보 색 체계", level: "주도" },
+        { stage: "화면 디자인", level: "주도" },
+        { stage: "인터랙션", level: "주도" },
+        { stage: "퍼블리싱", level: "주도" },
+      ],
+    },
     evidence: [
       {
         source: "고객사 요구사항 문서 · RFP",
@@ -1662,7 +1671,7 @@ export const projects: Project[] = [
       },
       {
         title: "해결하지 못한 것",
-        body: "1920px 데스크탑 우선으로 설계해 모바일 대응은 범위 밖으로 남겼고, 경보 색의 색맹 접근성(색+아이콘+텍스트 3중 표기)은 일부만 적용해 대비비 검증을 다음 과제로 남겼습니다.",
+        body: "1920px 데스크탑 우선으로 설계해 모바일 대응은 범위 밖으로 남겼고, 경보 색의 색맹 접근성(색+아이콘+텍스트 3중 표기)은 일부만 적용해 대비비 검증을 다음 과제로 남겼습니다. 무엇보다 현장 운영자를 직접 관찰하지 못해, 요구사항 문서와 전달받은 의견에 기대어 설계했습니다.",
       },
       {
         title: "다음 ITERATION",
