@@ -947,8 +947,8 @@ function HighlightsText({ list }: { list: HL[] }) {
 function Reflection({ p }: { p: Project }) {
   const guide = React.useContext(GuideCtx);
   const hasOutcome = !!p.outcome?.length || guide;
-  // 결과 칸이 채워지면 "다음 ITERATION"은 측정 계획과 겹치므로 덱에서는 뺀다 (사이트에는 유지)
-  const refl = p.outcome?.length ? p.reflection.filter((r) => !/iteration/i.test(r.title)) : p.reflection;
+  // 측정 계획 카드가 있으면 "다음 ITERATION"과 겹치므로 덱에서는 뺀다 (사이트에는 유지)
+  const refl = p.outcome?.some((o) => o.kind === "plan") ? p.reflection.filter((r) => !/iteration/i.test(r.title)) : p.reflection;
   return (
     <Body>
       <Eyebrow>{hasOutcome ? "Outcome & Reflection" : "Reflection"}</Eyebrow>

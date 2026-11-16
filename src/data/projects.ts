@@ -1568,7 +1568,13 @@ export const projects: Project[] = [
         decision: "지도를 벗어나지 않는 Section popup으로 드릴다운",
       },
     ],
-    outcome: [], // 예) { kind: "qualitative", title: "...", body: "..." }
+    outcome: [
+      {
+        kind: "qualitative",
+        title: "출시 전, 고객사 VOC 단계",
+        body: "설계와 퍼블리싱까지 마쳤고, 출시 전 공공기관 고객사를 대상으로 VOC를 진행한 단계입니다.",
+      },
+    ],
     heroContext:
       "SDT 디자인 시스템을 산업 관제 도메인으로 확장한 작업입니다. 24시간 돌아가는 모니터링 화면에서는 색 하나가 곧 대응 속도가 된다는 것을 기준으로 삼았습니다.",
     metrics: [
