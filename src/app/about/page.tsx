@@ -373,7 +373,7 @@ const values = [
   {
     icon: "🔗",
     bg: "#faeeda",
-    title: "핸드오프 손실을 0으로 만듭니다",
+    title: "핸드오프 손실을 줄입니다",
     desc: "HTML/CSS 퍼블리싱 경험으로 개발 제약을 이해하고 현실적인 설계를 합니다. 토큰·스펙으로 개발팀이 의도 그대로 구현하도록 간극을 메웁니다.",
     pill: "→ 핸드오프 가이드 보기",
     href: "/post/design-process-os",
