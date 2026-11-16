@@ -783,7 +783,24 @@ export const projects: Project[] = [
     role: "Product Designer · 설계 50% / 퍼블리싱 100%",
     // 아래 세 칸은 채우면 덱에 나타나고, 비어 있으면 숨겨집니다 (/portfolio-deck?guide=1 로 자리 미리보기)
     contribution: { team: "", stages: [] }, // 예) { stage: "IA·플로우", level: "주도" }
-    evidence: [], // 예) { source: "VOC 분석", scale: "3개월 N건", finding: "...", decision: "..." }
+    evidence: [
+      {
+        source: "제품 전반 현황 감사",
+        finding: "제품마다 컬러·간격·타이포 정의가 달랐고, 같은 버튼·인풋을 제품별로 다시 그리고 다시 구현하고 있었습니다.",
+        decision: "색상·타이포·스페이싱·radius를 단일 토큰으로 통일",
+      },
+      {
+        source: "핸드오프·QA 수정 이력",
+        finding: "디자인과 코드의 컴포넌트 명칭·구조가 달라, 같은 화면을 두고 QA 수정이 반복됐습니다.",
+        decision: "Figma 컴포넌트를 React/Tailwind 구조와 1:1 매핑하고 Page Template 제공",
+      },
+      {
+        source: "브랜드 컬러 변경",
+        scale: "Crimson → Quantum Veriperi",
+        finding: "토큰이 없으면 색 하나를 바꾸는 데도 전 컴포넌트를 일일이 고쳐야 했습니다.",
+        decision: "토큰만 바꾸면 전 제품에 반영되는 갱신 체계(v0.0.2)",
+      },
+    ],
     outcome: [], // 예) { kind: "qualitative", title: "...", body: "..." }
     heroContext:
       "디자인과 퍼블리싱을 동시에 해온 사람으로서, 디자인 의도가 코드에서 손상되는 지점을 누구보다 잘 알았습니다. 그 간극을 0으로 만드는 시스템을 0에서 만들었습니다.",
@@ -1515,11 +1532,11 @@ export const projects: Project[] = [
     role: "Product Designer (2인 중 1인)",
     // 아래 세 칸은 채우면 덱에 나타나고, 비어 있으면 숨겨집니다 (/portfolio-deck?guide=1 로 자리 미리보기)
     contribution: {
-      team: "디자이너 2인(나 포함) · 기획 · 영업",
+      team: "사수 디자이너(초기 방향 · 메인 대시보드 구성) · 기획 · 영업",
       stages: [
         { stage: "IA", level: "주도" },
         { stage: "경보 색 체계", level: "주도" },
-        { stage: "화면 디자인", level: "주도" },
+        { stage: "화면 디자인", level: "주도", note: "메인 대시보드 구성은 사수" },
         { stage: "인터랙션", level: "주도" },
         { stage: "퍼블리싱", level: "주도" },
       ],
