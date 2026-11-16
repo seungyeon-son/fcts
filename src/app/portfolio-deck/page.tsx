@@ -46,6 +46,16 @@ const num = (n: number) => String(n).padStart(2, "0");
 const clean = (s: string) => s.replace(/\s+/g, "");
 // ?guide=1 - 아직 안 채운 기여·근거·결과 칸을 점선 자리표시로 보여준다 (기본은 숨김)
 const GuideCtx = React.createContext(false);
+// 줄바꿈(\n)을 블록 단위로 쪼갠다 - pre-line 줄바꿈은 Figma 캡처에서 사라지기 때문
+const Lines = ({ text }: { text: string }) => (
+  <>
+    {text.split("\n").map((l) => (
+      <span key={l} style={{ display: "block" }}>
+        {l}
+      </span>
+    ))}
+  </>
+);
 
 /* ════════════════ frame ════════════════ */
 // 사이트 GNB·푸터·Next 개발 배지는 덱에서 숨긴다
@@ -641,7 +651,7 @@ function ProjectTitle({ p, no }: { p: Project; no: number }) {
           {p.category} · {p.year}
         </Eyebrow>
         <div style={{ fontSize: 24, fontWeight: 600, color: C.muted, marginBottom: 14 }}>{p.subtitle}</div>
-        <H1>{p.title}</H1>
+        <H1><Lines text={p.title} /></H1>
         {p.heroContext && (
           <P $size={19} style={{ marginTop: 28 }}>
             {p.heroContext}
@@ -984,7 +994,7 @@ function Summary({ p, no }: { p: Project; no: number }) {
           </Eyebrow>
         </div>
         <div style={{ fontSize: 22, fontWeight: 600, color: C.muted, margin: "18px 0 10px" }}>{p.subtitle}</div>
-        <H2 style={{ fontSize: 40 }}>{p.title}</H2>
+        <H2 style={{ fontSize: 40 }}><Lines text={p.title} /></H2>
         <P $size={17.5} style={{ marginTop: 20 }}>
           {p.problemContext.coreChallengeDetail}
         </P>
