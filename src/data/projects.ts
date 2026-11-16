@@ -1512,10 +1512,21 @@ export const projects: Project[] = [
     client: "SDT Inc.",
     tags: ["UX", "B2B", "Dashboard", "Data Viz"],
     year: "2025",
-    role: "Product Designer (50%)",
+    role: "Product Designer (2인 중 1인)",
     // 아래 세 칸은 채우면 덱에 나타나고, 비어 있으면 숨겨집니다 (/portfolio-deck?guide=1 로 자리 미리보기)
     contribution: { team: "", stages: [] }, // 예) { stage: "IA·플로우", level: "주도" }
-    evidence: [], // 예) { source: "VOC 분석", scale: "3개월 N건", finding: "...", decision: "..." }
+    evidence: [
+      {
+        source: "고객사 요구사항 문서 · RFP",
+        finding: "경보 범위 설정은 기본 요구였지만, 모든 경보가 중요해 보이는 상황에서 무엇을 먼저 볼지는 정해져 있지 않았습니다.",
+        decision: "정상 위에 4단계 위계를 정의하고, 기준 설정을 플로우 첫 단계로",
+      },
+      {
+        source: "영업·기획을 통해 받은 고객 의견",
+        finding: "현장 기술자는 섹션 상세를 볼 때마다 페이지를 전환해야 했고, 그때마다 지도 맥락을 놓쳤습니다.",
+        decision: "지도를 벗어나지 않는 Section popup으로 드릴다운",
+      },
+    ],
     outcome: [], // 예) { kind: "qualitative", title: "...", body: "..." }
     heroContext:
       "SDT 디자인 시스템을 산업 관제 도메인으로 확장한 작업입니다. 24시간 돌아가는 모니터링 화면에서는 색 하나가 곧 대응 속도가 된다는 것을 기준으로 삼았습니다.",
