@@ -691,6 +691,107 @@ const NotesIntro = styled.p`
   margin: -8px 0 24px;
 `;
 
+/* ════════════════════════════════
+   CONTRIBUTION · EVIDENCE · OUTCOME
+════════════════════════════════ */
+const SubLabel = styled.div`
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: ${theme.colors.gray500};
+  margin-bottom: 10px;
+`;
+
+const ContribGrid = styled.div<{ $n: number }>`
+  display: grid;
+  grid-template-columns: repeat(${({ $n }) => $n}, 1fr);
+  gap: 6px;
+  @media (max-width: ${theme.breakpoints.md}) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+`;
+
+const ContribCell = styled.div<{ $level: "주도" | "공동" | "참여" }>`
+  background: white;
+  border: 1px solid ${theme.colors.gray200};
+  border-top: 2px solid
+    ${({ $level }) => ($level === "주도" ? theme.colors.accent : $level === "공동" ? theme.colors.black : theme.colors.gray500)};
+  border-radius: 0 0 6px 6px;
+  padding: 10px 12px;
+  .stage {
+    font-size: 12px;
+    color: ${theme.colors.gray500};
+  }
+  .level {
+    font-size: 14px;
+    font-weight: 700;
+    color: ${theme.colors.black};
+    margin-top: 2px;
+  }
+  .note {
+    font-size: 11px;
+    color: ${theme.colors.gray500};
+    margin-top: 2px;
+    line-height: 1.4;
+  }
+`;
+
+const ContribTeam = styled.div`
+  font-size: 12px;
+  color: ${theme.colors.gray500};
+  margin-top: 8px;
+`;
+
+const CardGrid = styled.div<{ $n: number }>`
+  display: grid;
+  grid-template-columns: repeat(${({ $n }) => $n}, 1fr);
+  gap: 12px;
+  @media (max-width: ${theme.breakpoints.md}) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const InfoCard = styled.div`
+  background: white;
+  border: 1px solid ${theme.colors.gray200};
+  border-radius: 8px;
+  padding: 20px 22px;
+  .head {
+    font-size: 14px;
+    font-weight: 700;
+    color: ${theme.colors.black};
+  }
+  .scale {
+    font-weight: 500;
+    color: ${theme.colors.gray500};
+  }
+  .kind {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: ${theme.colors.gray500};
+    margin-bottom: 6px;
+  }
+  .kind.plan {
+    color: ${theme.colors.accent};
+  }
+  p {
+    font-size: 14px;
+    color: ${theme.colors.gray600};
+    line-height: 1.7;
+    margin-top: 8px;
+  }
+  .decision {
+    font-size: 14px;
+    font-weight: 600;
+    color: ${theme.colors.black};
+    line-height: 1.6;
+    margin-top: 8px;
+  }
+`;
+
+const OUTCOME_LABEL = { measured: "측정값", qualitative: "정성 결과", plan: "측정 계획" } as const;
+
 const ReflectionGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -858,6 +959,22 @@ export default function WorkDetailPage({ params }: { params: Promise<{ slug: str
                   )}
                 </InfoItem>
               </InfoGrid>
+
+              {project.contribution && project.contribution.stages.length > 0 && (
+                <div style={{ marginTop: 20 }}>
+                  <SubLabel>기여 범위</SubLabel>
+                  <ContribGrid $n={project.contribution.stages.length}>
+                    {project.contribution.stages.map((st) => (
+                      <ContribCell key={st.stage} $level={st.level}>
+                        <div className="stage">{st.stage}</div>
+                        <div className="level">{st.level}</div>
+                        {st.note && <div className="note">{st.note}</div>}
+                      </ContribCell>
+                    ))}
+                  </ContribGrid>
+                  {project.contribution.team && <ContribTeam>함께한 사람 · {project.contribution.team}</ContribTeam>}
+                </div>
+              )}
             </HeroLeft>
 
             <HeroImage $img={project.heroImage ?? project.coverImage} />
@@ -928,6 +1045,23 @@ export default function WorkDetailPage({ params }: { params: Promise<{ slug: str
               <p>{project.problemContext.coreChallengeDetail}</p>
             </ContextBox>
           </ContextGrid>
+          {project.evidence && project.evidence.length > 0 && (
+            <div style={{ marginTop: 28 }}>
+              <SubLabel>근거</SubLabel>
+              <CardGrid $n={project.evidence.length}>
+                {project.evidence.map((e) => (
+                  <InfoCard key={e.source}>
+                    <div className="head">
+                      {e.source}
+                      {e.scale && <span className="scale"> · {e.scale}</span>}
+                    </div>
+                    <p>{e.finding}</p>
+                    <div className="decision">→ {e.decision}</div>
+                  </InfoCard>
+                ))}
+              </CardGrid>
+            </div>
+          )}
         </Container>
       </Section>
 
@@ -1030,6 +1164,20 @@ export default function WorkDetailPage({ params }: { params: Promise<{ slug: str
       {/* Reflection */}
       <Section $bg={theme.colors.gray100}>
         <Container>
+          {project.outcome && project.outcome.length > 0 && (
+            <div style={{ marginBottom: 48 }}>
+              <SectionLabel>Outcome</SectionLabel>
+              <CardGrid $n={project.outcome.length}>
+                {project.outcome.map((o) => (
+                  <InfoCard key={o.title}>
+                    <div className={`kind ${o.kind}`}>{OUTCOME_LABEL[o.kind]}</div>
+                    <div className="head">{o.title}</div>
+                    <p>{o.body}</p>
+                  </InfoCard>
+                ))}
+              </CardGrid>
+            </div>
+          )}
           <SectionLabel>Reflection</SectionLabel>
           <ReflectionGrid>
             {project.reflection.map((r, i) => (
