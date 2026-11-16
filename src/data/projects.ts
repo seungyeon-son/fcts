@@ -780,28 +780,43 @@ export const projects: Project[] = [
     client: "SDT Inc.",
     tags: ["Design System", "Design Token", "Publishing", "Figma"],
     year: "2023",
-    role: "Product Designer · 설계 50% / 퍼블리싱 100%",
+    role: "Product Designer · 디자인 2인 중 1인 / 퍼블리싱 1인",
     // 아래 세 칸은 채우면 덱에 나타나고, 비어 있으면 숨겨집니다 (/portfolio-deck?guide=1 로 자리 미리보기)
-    contribution: { team: "", stages: [] }, // 예) { stage: "IA·플로우", level: "주도" }
+    contribution: {
+      team: "사수 디자이너(디자인 공동) · 개발팀",
+      stages: [
+        { stage: "현황 감사", level: "공동" },
+        { stage: "토큰 정의", level: "공동" },
+        { stage: "컴포넌트 설계", level: "공동" },
+        { stage: "코드 매핑", level: "주도" },
+        { stage: "퍼블리싱", level: "주도", note: "1인" },
+      ],
+    },
     evidence: [
       {
         source: "제품 전반 현황 감사",
+        scale: "2개 제품 · SDT Cloud · DTS",
         finding: "제품마다 컬러·간격·타이포 정의가 달랐고, 같은 버튼·인풋을 제품별로 다시 그리고 다시 구현하고 있었습니다.",
         decision: "색상·타이포·스페이싱·radius를 단일 토큰으로 통일",
       },
       {
-        source: "핸드오프·QA 수정 이력",
-        finding: "디자인과 코드의 컴포넌트 명칭·구조가 달라, 같은 화면을 두고 QA 수정이 반복됐습니다.",
+        source: "핸드오프 후 되돌아온 화면",
+        finding: "컴포넌트 명칭·구조가 디자인과 코드에서 달라, 넘긴 화면이 디자인·퍼블리싱 모두 다시 돌아왔습니다. 개발팀도 같은 불편을 겪고 있었습니다.",
         decision: "Figma 컴포넌트를 React/Tailwind 구조와 1:1 매핑하고 Page Template 제공",
       },
+    ],
+    outcome: [
       {
-        source: "브랜드 컬러 변경",
-        scale: "Crimson → Quantum Veriperi",
-        finding: "토큰이 없으면 색 하나를 바꾸는 데도 전 컴포넌트를 일일이 고쳐야 했습니다.",
-        decision: "토큰만 바꾸면 전 제품에 반영되는 갱신 체계(v0.0.2)",
+        kind: "qualitative",
+        title: "리브랜딩과 확장을 한 번의 업데이트로",
+        body: "시스템을 만든 뒤 브랜드 컬러가 Crimson → Quantum Veriperi로 바뀌었고, 기본형 UI에 컴포넌트를 계속 더하던 시점과 겹쳤습니다. 토큰 교체와 컴포넌트 정리를 v0.0.2 한 벌로 묶어 반영했습니다.",
+      },
+      {
+        kind: "qualitative",
+        title: "3개 제품이 같은 시스템으로",
+        body: "SDT Cloud · DTS · AquaRack이 이 토큰과 컴포넌트로 화면을 만듭니다.",
       },
     ],
-    outcome: [], // 예) { kind: "qualitative", title: "...", body: "..." }
     heroContext:
       "디자인과 퍼블리싱을 동시에 해온 사람으로서, 디자인 의도가 코드에서 손상되는 지점을 누구보다 잘 알았습니다. 그 간극을 0으로 만드는 시스템을 0에서 만들었습니다.",
     metrics: [
@@ -882,7 +897,7 @@ export const projects: Project[] = [
           },
         ],
         tradeoff:
-          "개발팀은 'Figma 파일 공유만으로 핸드오프가 가능하다'고 했습니다. 저는 컴포넌트 명칭과 구조가 코드와 불일치하면 QA 수정이 반복된다는 실제 사례를 근거로 설득했고, React/Tailwind 코드 매핑 문서와 Page Template을 추가 작성하는 방향으로 합의했습니다.",
+          "Figma 파일만 공유하는 기존 핸드오프는 이미 한계를 드러내고 있었습니다. 넘긴 화면이 디자인·퍼블리싱 모두 다시 돌아왔고, 개발팀도 같은 불편을 느끼고 있어 설득할 필요 없이 방향이 맞았습니다. 그래서 파일 공유에 그치지 않고, 컴포넌트 명칭·구조를 코드와 맞춘 React/Tailwind 매핑 문서와 Page Template을 함께 만들었습니다.",
       },
       {
         area: "영역 3",
