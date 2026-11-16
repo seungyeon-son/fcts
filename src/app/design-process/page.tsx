@@ -474,7 +474,7 @@ const projectCards = [
     href: "/works/global-credit-bank",
     cat: "B2C UX SERVICE",
     name: "UBION 글로벌 학점은행제",
-    desc: "복잡한 학점 취득 플로우를 3-Zone 구조로 재설계해 전환율을 높인 프로젝트",
+    desc: "언어·결제 장벽을 넘어 외국인 학습자의 9단계 학위 여정을 설계한 프로젝트",
   },
   {
     href: "/works/mlops-b2b-dashboard",
@@ -492,7 +492,7 @@ const projectCards = [
     href: "/works/b2b-design-system",
     cat: "DESIGN SYSTEM",
     name: "SDT 공통 디자인 시스템",
-    desc: "두 B2B 제품의 일관성을 위한 운영 원칙 중심의 디자인 시스템 구축",
+    desc: "세 B2B 제품이 함께 쓰는 토큰·컴포넌트 중심의 디자인 시스템 구축",
   },
 ];
 
