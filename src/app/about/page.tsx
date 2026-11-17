@@ -553,9 +553,9 @@ export default function AboutPage() {
       <Closing>
         <Container>
           <ClosingText>
-            좋은 UX는 사용자가 길을 잃지 않게 합니다.
+            긴 포트폴리오를 읽어 주셔서 감사합니다.
             <br />
-            저는 그 <b>길</b>을 설계합니다.
+            더 궁금한 내용이 있다면 면접에서 더 자세히 말씀드리겠습니다.
           </ClosingText>
         </Container>
       </Closing>

@@ -1009,9 +1009,10 @@ function Closing() {
     <div style={{ position: "absolute", inset: 0, padding: `0 ${PX}px`, display: "flex", flexDirection: "column", justifyContent: "center" }}>
       <Eyebrow $c={C.accent}>Thank you</Eyebrow>
       <div style={{ fontSize: 64, fontWeight: 700, lineHeight: 1.35, letterSpacing: "-0.03em", color: "#fff" }}>
-        좋은 UX는 사용자가 길을 잃지 않게 합니다.
-        <br />
-        저는 그 <span style={{ color: C.accent }}>길</span>을 설계합니다.
+        긴 포트폴리오를 읽어 주셔서 감사합니다.
+      </div>
+      <div style={{ marginTop: 24, fontSize: 28, lineHeight: 1.5, color: "rgba(255,255,255,0.7)" }}>
+        더 궁금한 내용이 있다면 면접에서 더 자세히 말씀드리겠습니다.
       </div>
       <div style={{ marginTop: 72, display: "grid", gridTemplateColumns: "repeat(3, auto)", justifyContent: "start", columnGap: 96, fontSize: 22, color: "#fff" }}>
         <div>
