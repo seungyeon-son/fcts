@@ -330,7 +330,7 @@ function Cover() {
 }
 
 /* ════════════════ 2. profile ════════════════ */
-const skills = ["Figma", "Adobe Illustrator", "Framer", "HTML/CSS", "Git", "UX Research", "Design System", "Prototyping", "AutoCAD"];
+const skills = ["Figma", "Adobe Illustrator", "Framer", "HTML/CSS", "React", "Git", "UX Research", "Design System", "Prototyping", "AutoCAD"];
 const InfoRow = styled.div`
   display: grid;
   grid-template-columns: 140px 1fr;
@@ -364,8 +364,8 @@ function Profile() {
         <P $size={21}>
           산업용 IoT 대시보드부터 글로벌 에듀테크 서비스까지, 저는 늘 한 가지를 먼저 묻습니다.
           {"\n"}“이 사용자는 지금 무엇을 판단해야 하는가.”
-          {"\n\n"}복잡한 정보를 사용자의 멘탈모델로 번역하고, 디자인 시스템과 운영 원칙으로 팀 전체의 설계 효율을 높입니다.
-          화면을 완성하는 것만이 아니라 작동하는 시스템을 구축하는 것을 목표로 합니다.
+          {"\n\n"}복잡한 정보를 사용자가 이해하는 순서로 다시 짜고, 디자인 시스템으로 팀이 같은 기준 위에서 만들게 합니다.
+          만든 화면이 개발과 운영에서도 그대로 쓰이도록 시스템까지 같이 만듭니다.
         </P>
       </div>
       <div style={{ flex: 1 }}>
@@ -398,76 +398,50 @@ function Profile() {
   );
 }
 
-/* ════════════════ 3. values ════════════════ */
+/* ════════════════ 3. how I work (About 가치 + 프로세스를 한 장으로) ════════════════ */
 const values = [
-  ["비즈니스 맥락을 이해합니다", "기능 명세서를 넘어 왜 이 기능이 필요한지, 어떤 지표를 움직여야 하는지 먼저 파악합니다. 요구사항이 불명확해도 가설을 세우고 빠르게 검증하며 앞으로 나아갑니다.", "UBION 글로벌 학점은행제"],
-  ["핸드오프 손실을 줄입니다", "HTML/CSS 퍼블리싱 경험으로 개발 제약을 이해하고 현실적인 설계를 합니다. 토큰·스펙으로 개발팀이 의도 그대로 구현하도록 간극을 메웁니다.", "SDT Design System · Dear Klairs"],
-  ["팀 생산성에 직접 기여합니다", "디자인 시스템과 컴포넌트 정비로 팀 전체의 작업 속도를 높입니다. 결정 이유와 맥락을 기록해 팀원이 언제든 이어받을 수 있는 환경을 만듭니다.", "SDT Design System"],
-  ["근거 있는 디자인을 합니다", "감각이 아닌 데이터와 구조로 설명합니다. 모든 결정에는 “왜”가 있습니다.", "코스모스 LXP 스마트 가이드"],
-  ["문제를 재정의합니다", "기능의 목적과 성공 기준이 불명확해 의사결정이 반복적으로 바뀌는 문제를 겪은 뒤로, 디자인에 들어가기 전에 문제 정의·사용자·성공 지표를 먼저 확인하고 기획의 빈틈을 조기에 질문합니다.", "코스모스 LXP 모바일 앱"],
+  [
+    "문제부터 다시 정의합니다",
+    "목적과 성공 기준이 흐릿해 결정이 자주 뒤집히는 걸 겪은 뒤로, 맡은 과제도 바로 그리지 않습니다. 쌓인 데이터와 실제 사용 경로로 진짜 문제가 무엇인지 먼저 확인합니다.",
+    "코스모스 LXP 모바일 앱 · UBION 글로벌 학점은행제",
+  ],
+  [
+    "근거를 남기며 결정합니다",
+    "데이터·요구사항·비즈니스 맥락으로 판단하고, 고려한 대안과 고른 이유를 기록해 둡니다. 리뷰에서 다시 설명할 수 있고, 팀원이 언제든 이어받을 수 있게 합니다.",
+    "코스모스 LXP 스마트 가이드 · UBION 글로벌 학점은행제",
+  ],
+  [
+    "코드까지 이어지게 만듭니다",
+    "퍼블리싱과 React 컴포넌트를 직접 작성한 경험으로 개발 제약 안에서 설계합니다. 토큰과 컴포넌트를 코드와 맞춰, 핸드오프에서 새는 비용을 줄입니다.",
+    "SDT Design System · Dear Klairs",
+  ],
 ];
+const steps = ["Overview", "Research & Strategy", "Concept", "Design System", "Deliverables", "Guide & QA"];
 function Values() {
   return (
     <Body>
       <Eyebrow>How I Work</Eyebrow>
-      <H2>저는 이런 팀원입니다</H2>
-      <P $size={20} style={{ marginTop: 12 }}>
-        매 프로젝트에서 비즈니스 목표와 사용자 경험을 함께 고민합니다.
-      </P>
-      <div style={{ flex: 1, minHeight: 0, marginTop: 56, display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 20 }}>
+      <H2>이렇게 일합니다</H2>
+      <div style={{ marginTop: 64, display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
         {values.map(([t, d, ref], i) => (
-          <div key={t} style={{ background: C.gray, borderRadius: 8, padding: "40px 32px", display: "flex", flexDirection: "column" }}>
-            <div style={{ fontSize: 15, fontWeight: 700, color: i === 3 ? C.accent : C.muted, letterSpacing: "0.1em" }}>{num(i + 1)}</div>
-            <H3 style={{ margin: "28px 0 18px", fontSize: 25 }}>{t}</H3>
-            <P $size={17.5}>{d}</P>
+          <div key={t} style={{ background: C.gray, borderRadius: 8, padding: "48px 44px", minHeight: 480, display: "flex", flexDirection: "column" }}>
+            <div style={{ fontSize: 15, fontWeight: 700, color: i === 0 ? C.accent : C.muted, letterSpacing: "0.1em" }}>{num(i + 1)}</div>
+            <H3 style={{ margin: "32px 0 24px", fontSize: 32 }}>{t}</H3>
+            <P $size={21}>{d}</P>
             <div style={{ marginTop: "auto", paddingTop: 24, fontSize: 15, color: C.muted, borderTop: `1px solid ${C.line}` }}>관련 사례 · {ref}</div>
           </div>
         ))}
       </div>
-    </Body>
-  );
-}
-
-/* ════════════════ 4. process ════════════════ */
-const principles = [
-  ["목표 지표를 먼저 정의합니다", "기획서를 받으면 KPI를 먼저 찾습니다. 어떤 숫자를 움직여야 하는지 정의된 후 설계를 시작합니다."],
-  ["모든 결정엔 근거가 있습니다", "직관이 아닌 데이터·요구사항·비즈니스 맥락으로 결정합니다. 리뷰에서 “왜”에 항상 답할 수 있습니다."],
-  ["디자인 언어를 시스템화합니다", "컴포넌트, 토큰, 운영 원칙까지 포함한 디자인 시스템을 설계합니다. 구조를 먼저 생각합니다."],
-  ["퍼블 단계까지 책임집니다", "HTML/CSS 구현 경험으로 개발 제약을 이해합니다. 핸드오프 후에도 QA와 피드백을 직접 처리합니다."],
-];
-const steps = [
-  ["Overview", "목표와 맥락을 정의하고 프로젝트 스코프를 확인합니다."],
-  ["Research & Strategy", "운영 데이터·요구사항 분석, 인터뷰, 경쟁사 분석을 통해 전략 방향을 수립합니다."],
-  ["Concept", "정보 구조 설계와 와이어프레임으로 핵심 경험을 구체화합니다."],
-  ["Design System", "컴포넌트와 토큰을 정의해 일관성 있는 시각 언어를 만듭니다."],
-  ["Deliverables", "프로토타입, 스펙 문서, 핸드오프 가이드를 완성합니다."],
-  ["Guide & QA", "개발팀과 협력해 구현 품질을 검증하고 최종 QA를 진행합니다."],
-];
-function Process() {
-  return (
-    <Body>
-      <Eyebrow>Design Process</Eyebrow>
-      <H2>모든 프로젝트는 6단계로.</H2>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 40, marginTop: 56 }}>
-        {principles.map(([t, d]) => (
-          <div key={t}>
-            <H3 style={{ fontSize: 22, marginBottom: 12 }}>{t}</H3>
-            <P $size={17.5}>{d}</P>
-          </div>
-        ))}
-      </div>
-      <div style={{ marginTop: "auto", display: "grid", gridTemplateColumns: "repeat(6, 1fr)" }}>
-        {steps.map(([n, d], i) => (
-          <div key={n} style={{ paddingRight: 28 }}>
-            <div style={{ display: "flex", alignItems: "center", marginBottom: 24 }}>
-              <span style={{ width: 14, height: 14, borderRadius: "50%", background: i === 0 ? C.accent : C.dark, flex: "0 0 14px" }} />
-              <span style={{ flex: 1, height: 1, background: C.line, marginLeft: 12 }} />
-            </div>
-            <div style={{ fontSize: 15, fontWeight: 700, color: C.accent, letterSpacing: "0.08em" }}>{num(i + 1)}</div>
-            <H3 style={{ fontSize: 22, margin: "8px 0 10px" }}>{n}</H3>
-            <P $size={16.5}>{d}</P>
-          </div>
-        ))}
+      <div style={{ marginTop: "auto", paddingTop: 32, borderTop: `1px solid ${C.line}`, display: "flex", alignItems: "center", gap: 28 }}>
+        <span style={{ fontSize: 15, fontWeight: 700, color: C.accent, letterSpacing: "0.1em" }}>PROCESS</span>
+        <div style={{ flex: 1, display: "flex", alignItems: "center", gap: 14, fontSize: 19, fontWeight: 600 }}>
+          {steps.map((n, i) => (
+            <span key={n} style={{ display: "contents" }}>
+              {i > 0 && <span style={{ color: C.muted, fontWeight: 400 }}>→</span>}
+              <span>{n}</span>
+            </span>
+          ))}
+        </div>
       </div>
     </Body>
   );
@@ -1060,8 +1034,7 @@ function buildSlides(): SlideDef[] {
   const list: SlideDef[] = [];
   list.push({ key: "cover", section: "", bg: C.gray, bare: true, node: <Cover /> });
   list.push({ key: "profile", section: "About", node: <Profile /> });
-  list.push({ key: "values", section: "About", node: <Values /> });
-  list.push({ key: "process", section: "Design Process", node: <Process /> });
+  list.push({ key: "values", section: "How I Work", node: <Values /> });
   const contentsIdx = list.length;
   list.push({ key: "contents", section: "Contents", node: null });
 

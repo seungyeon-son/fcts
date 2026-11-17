@@ -116,7 +116,7 @@ export const projects: Project[] = [
       },
     ],
     heroContext:
-      "대학이 쓰는 학습 플랫폼의 모바일 앱을 운영하면서 개선합니다. 무엇이 문제인지는 감이 아니라 쌓인 피드백에서 확인하고, 고친 뒤에는 같은 도구로 다시 확인하는 루프를 만들고 있습니다. 첫 개선 건인 로그인은 디자인을 마쳤고 출시 전입니다.",
+      "대학이 쓰는 학습 플랫폼의 모바일 앱을 운영하면서 개선합니다. 무엇이 문제인지는 쌓인 피드백에서 확인하고, 고친 뒤에는 같은 도구로 다시 확인하는 루프를 만들고 있습니다. 첫 개선 건인 로그인은 디자인을 마쳤고 출시 전입니다.",
     metrics: [
       {
         value: "815건",
@@ -139,7 +139,7 @@ export const projects: Project[] = [
     },
     approach: [
       { step: 1, title: "피드백 수집", desc: "앱 내 문의·스토어 리뷰·슬랙을 하나의 노션 DB로 모으는 도구 제작" },
-      { step: 2, title: "과제 검증", desc: "맡은 로그인 개선이 맞는 순서인지 확인 - 서버 영역(로딩)을 빼면 디자인으로 풀 수 있는 1순위" },
+      { step: 2, title: "과제 검증", desc: "맡은 로그인 개선이 맞는 순서인지 확인. 서버 영역(로딩)을 빼면 디자인으로 풀 수 있는 1순위" },
       { step: 3, title: "문제 재정의", desc: "로그인 화면이 아니라 '어떤 경로로 로그아웃되어 오는가'를 기준으로" },
       { step: 4, title: "설계", desc: "경로별 재진입 · 학교 선택 A/B안 · 저장 범위별 동의 3단계" },
       { step: 5, title: "재확인 계획", desc: "출시 후 같은 피드백 DB로 로그인 관련 불만 변화 확인" },
@@ -150,11 +150,11 @@ export const projects: Project[] = [
       direction: "VoC 반복 불만 막대그래프 + 수집→재정의→설계→출시→재확인 루프 도식",
     },
     keyDecisionsIntro:
-      "아래는 첫 개선 건인 로그인을 설계하며 내린 판단입니다. 디자인은 마쳤고 출시 전이라, 결과 수치가 아니라 판단의 근거를 남겼습니다.",
+      "아래는 첫 개선 건인 로그인을 설계하며 내린 판단입니다. 디자인은 마쳤고 출시 전이라, 결과 수치 대신 판단의 근거를 남겼습니다.",
     keyDecisions: [
       {
         area: "영역 1",
-        areaTitle: "세 가지 상황이 같은 빈 화면으로 - 경로별로 다시 들어오게",
+        areaTitle: "같은 첫 화면으로 가던 세 경로를 나눴다",
         items: [
           {
             icon: "현황",
@@ -184,7 +184,7 @@ export const projects: Project[] = [
       },
       {
         area: "영역 2",
-        areaTitle: "학교는 한 번만 묻는다 - 그래서 그 한 번을 따로 떼었다",
+        areaTitle: "학교는 한 번만 묻고, 그 한 번은 따로 뗐다",
         items: [
           {
             icon: "현황",
@@ -194,7 +194,7 @@ export const projects: Project[] = [
           {
             icon: "목표",
             title: "",
-            body: "오입력을 원천 차단하고, 한 번 고른 학교는 다시 묻지 않기.",
+            body: "없는 학교명은 아예 입력되지 않게 하고, 한 번 고른 학교는 다시 묻지 않기.",
           },
           {
             icon: "UX",
@@ -215,7 +215,7 @@ export const projects: Project[] = [
       },
       {
         area: "영역 3",
-        areaTitle: "편해지는 만큼 무엇을 저장하는지 분명히 - 동의 3단계",
+        areaTitle: "편해지는 만큼 무엇을 저장하는지 알리는 동의 3단계",
         items: [
           {
             icon: "현황",
@@ -312,7 +312,7 @@ export const projects: Project[] = [
     keyDecisions: [
       {
         area: "영역 1",
-        areaTitle: "첫 시선 - 매뉴얼 메뉴에서 질문으로",
+        areaTitle: "첫 시선을 매뉴얼 메뉴에서 질문으로",
         items: [
           {
             icon: "현황",
@@ -393,7 +393,7 @@ export const projects: Project[] = [
   },
   {
     slug: "global-credit-bank",
-    title: "언어·결제 장벽을 허문\n외국인 학습자 학위 취득 플랫폼",
+    title: "언어·결제 장벽을 넘도록 설계한\n외국인 학습자 학위 취득 플랫폼",
     subtitle: "UBION 글로벌 학점은행제",
     cardDesc: "한국어·결제 장벽 때문에 열려 있지 않던 외국인 학습자의 학위 여정을 9단계 End-to-End로 설계한 프로젝트",
     coverImage: "/img/works/covers/gcb.jpg",
@@ -447,7 +447,7 @@ export const projects: Project[] = [
       },
     ],
     heroContext:
-      "복잡한 B2B 데이터 서비스에서 '얽힌 도메인을 명료한 구조로 푸는' 일을 해왔습니다. 그 시각으로, 외국인 학습자가 인지부터 학위까지 9단계 여정에서 한 번도 길을 잃지 않도록 설계했습니다.",
+      "외국인 학습자는 서비스를 처음 알게 된 순간부터 학위를 받을 때까지 9단계를 거칩니다. 그중 어디서도 한국어나 결제 때문에 멈추지 않도록 흐름을 설계했습니다.",
     metrics: [
       {
         value: "9단계",
@@ -495,11 +495,11 @@ export const projects: Project[] = [
         "들어갈 이미지: 인지→가입→학력인증→결제→수강→학점신청→학위 9단계를 가로 타임라인으로 그린 유저 저니 맵. 단계별 사용자 감정 곡선과 이탈 위험 구간(언어·결제)을 빨강으로 강조한 Figma 보드 캡처.",
     },
     keyDecisionsIntro:
-      "아래는 이 서비스를 설계하며 내린 핵심 판단들입니다. 일부는 확정한 결정이고, 일부는 더 나은 방향을 탐색하며 검토한 설계안이에요. 각 판단을 더 깊이 풀어둔 노트도 함께 연결해 두었습니다.",
+      "아래는 이 서비스를 설계하며 내린 핵심 판단들입니다. 일부는 확정한 결정이고, 일부는 더 나은 방향을 탐색하며 검토한 설계안입니다. 각 판단을 더 깊이 풀어둔 노트도 함께 연결해 두었습니다.",
     keyDecisions: [
       {
         area: "영역 1",
-        areaTitle: "결제 장벽 - 전환을 막을 마지막 관문 열기",
+        areaTitle: "거주국에서 쓸 수 있는 결제수단만 보여주기",
         relatedNoteSlugs: ["gcb-global-checkout-dropout"],
         items: [
           {
@@ -531,7 +531,7 @@ export const projects: Project[] = [
       },
       {
         area: "영역 2",
-        areaTitle: "한 서비스, 두 사용자 - 개인 학습자와 기관(대학)을 분기하기",
+        areaTitle: "한 서비스 안에서 개인 학습자와 기관(대학)을 나누기",
         relatedNoteSlugs: ["reframing-information-by-value"],
         items: [
           {
@@ -552,7 +552,7 @@ export const projects: Project[] = [
           {
             icon: "설 계",
             title: "",
-            body: "이수(진도 80%+평가) → 학점 신청 → 위변조 방지 수료증까지 상태(Variants)를 끊김 없이 연결.",
+            body: "이수(진도 80%+평가) → 학점 신청 → 위변조 방지 수료증까지 상태(Variants)를 중간에 빠지는 단계 없이 연결.",
           },
         ],
         image: "/img/works/gcb-kd3.jpg",
@@ -564,19 +564,19 @@ export const projects: Project[] = [
     designHighlights: [
       {
         zone: "Global Landing",
-        title: "첫 화면부터 ‘외국인을 위한 서비스’임을 선언",
+        title: "첫 화면에서 외국인을 위한 서비스임을 바로 알게",
         desc: "영문 헤드카피와 글로벌 학습자 이미지로, 비회원도 진입 즉시 자신을 위한 서비스임을 인지하도록 랜딩을 설계했습니다.",
         image: "/img/works/gcb1.jpg",
       },
       {
         zone: "Curriculum",
-        title: "4개 전공을 카드로 - 탐색 부담을 줄이기",
+        title: "4개 전공을 카드로 나눠 고르기 쉽게",
         desc: "한국어학·경영세무·IT컴퓨터공학·한국화예술 4개 전공을 카드로 정리해, 외국인 학습자가 자신에게 맞는 학습 경로를 빠르게 고르도록 했습니다.",
         image: "/img/works/gcb2.jpg",
       },
       {
         zone: "Credit Management",
-        title: "학점부터 졸업까지 - 여정을 시뮬레이션",
+        title: "졸업까지 남은 학점과 기간을 직접 계산",
         desc: "학점 계산기·강의 계획 시뮬레이션·1:1 컨설팅 예약을 한 화면에 묶어, 졸업까지 남은 학점과 예상 기간을 스스로 그려볼 수 있게 했습니다.",
         image: "/img/works/gcb3.jpg",
       },
@@ -584,7 +584,7 @@ export const projects: Project[] = [
     reflection: [
       {
         title: "배운 것",
-        body: "‘글로벌 서비스’는 화면을 번역하는 일이 아니라, 언어·결제·인증·권한이 거주 국가에 따라 연쇄적으로 달라지는 구조를 설계하는 일이라는 걸 배웠습니다. i18n은 기능이 아니라 설계의 전제였습니다.",
+        body: "글로벌 서비스는 번역으로 끝나지 않았습니다. 거주 국가에 따라 언어·결제·인증·권한이 줄줄이 달라져서, 다국어는 나중에 붙이는 기능이 될 수 없고 처음부터 구조에 넣어야 했습니다.",
       },
       {
         title: "해결하지 못한 것",
@@ -633,7 +633,7 @@ export const projects: Project[] = [
         "특수한 출발점이었습니다 - 정식 기획서도, 기획자도 없었습니다. 입력은 강의 대본 1편과 외부 디자인 제안서뿐. 비즈니스 목표·KPI·페이지 구조가 모두 미정인 상태에서, 추정값과 확인 질문을 분리하며 디자이너 단독으로 가설을 픽스해 진행했습니다.",
       coreChallenge: "핵심 페인포인트",
       coreChallengeDetail:
-        "‘오뒷세이아 7화’ 하나만을 위한 화면을 그리면, 다음 작품이 들어올 때마다 새로 설계해야 합니다. 한 에피소드에 묶이지 않고 어떤 고전(문학·철학·역사)으로 교체해도 어색하지 않은 회차 상세페이지 구조를 만드는 것이 핵심 과제였습니다.",
+        "‘오뒷세이아 7화’ 하나만을 위한 화면을 그리면, 다음 작품이 들어올 때마다 새로 설계해야 합니다. 한 에피소드에 묶이지 않고 어떤 고전(문학·철학·역사)으로 교체해도 어색하지 않은 회차 상세페이지 구조를 만들어야 했습니다.",
     },
     approach: [
       {
@@ -657,7 +657,7 @@ export const projects: Project[] = [
     keyDecisions: [
       {
         area: "영역 1",
-        areaTitle: "한 에피소드에 묶이지 않게 - 8섹션 5막 보편 구조",
+        areaTitle: "어느 에피소드에도 쓰는 8섹션 5막 구조",
         items: [
           {
             icon: "현황",
@@ -667,7 +667,7 @@ export const projects: Project[] = [
           {
             icon: "목표",
             title: "",
-            body: "ATTRACT→ORIENT→IMMERSE→DEEPEN→CONVERT 5막을 8개 섹션으로 펼치고, 작품별 데이터를 끼워 넣는 슬롯으로 추상화하는 것을 목표로 했습니다.",
+            body: "ATTRACT→ORIENT→IMMERSE→DEEPEN→CONVERT 5막을 8개 섹션으로 펼치고, 작품별 데이터를 끼워 넣는 슬롯으로 추상화하기.",
           },
           {
             icon: "UX",
@@ -683,7 +683,7 @@ export const projects: Project[] = [
       },
       {
         area: "영역 2",
-        areaTitle: "시스템 제약을 디자인으로 - 회차 상세를 catalog + 컨텍스트로",
+        areaTitle: "시스템 제약 안에서 회차 상세를 catalog + 컨텍스트로",
         items: [
           {
             icon: "현황",
@@ -709,7 +709,7 @@ export const projects: Project[] = [
       },
       {
         area: "영역 3",
-        areaTitle: "빨강 단일 톤 유지 - sub-브랜드보다 통합 카탈로그",
+        areaTitle: "sub-브랜드 대신 빨강 단일 톤의 통합 카탈로그",
         items: [
           {
             icon: "현황",
@@ -817,7 +817,7 @@ export const projects: Project[] = [
       },
     ],
     heroContext:
-      "디자인과 퍼블리싱을 동시에 해온 사람으로서, 디자인 의도가 코드에서 손상되는 지점을 누구보다 잘 알았습니다. 그 간극을 줄이는 시스템을 처음부터 만들었습니다.",
+      "디자인과 퍼블리싱을 같이 하다 보니, 넘긴 화면이 코드에서 어디서 달라지는지 매번 직접 봤습니다. 그 간극을 줄이는 시스템을 처음부터 만들었습니다.",
     metrics: [
       { value: "0→1", kind: "result", label: "사내 최초 디자인 시스템 구축", sub: "토큰·컴포넌트·코드 매핑까지 정립" },
       { value: "40종+", kind: "result", label: "Atomic 컴포넌트 체계", sub: "버튼·인풋·테이블·모달 등 공통 구성" },
@@ -846,7 +846,7 @@ export const projects: Project[] = [
     keyDecisions: [
       {
         area: "영역 1",
-        areaTitle: "폰트·컬러·간격을 단일 토큰으로 - 바꾸면 전 제품에 번지게",
+        areaTitle: "폰트·컬러·간격을 단일 토큰으로, 바꾸면 전 제품에 번지게",
         items: [
           {
             icon: "현황",
@@ -856,7 +856,7 @@ export const projects: Project[] = [
           {
             icon: "목표",
             title: "",
-            body: "색상·타이포·스페이싱·radius를 단일 디자인 토큰으로 통일해, 토큰 하나를 바꾸면 이를 쓰는 모든 컴포넌트에 자동 반영되게 하는 것을 목표로 했습니다.",
+            body: "색상·타이포·스페이싱·radius를 단일 디자인 토큰으로 통일해, 토큰 하나를 바꾸면 그 토큰을 쓰는 모든 컴포넌트가 함께 바뀌게 하기.",
           },
           {
             icon: "UX",
@@ -872,7 +872,7 @@ export const projects: Project[] = [
       },
       {
         area: "영역 2",
-        areaTitle: "디자이너가 만든 게 개발에서 안 깨지도록 - 코드 매핑 핸드오프",
+        areaTitle: "디자인과 코드의 컴포넌트 이름·구조를 1:1로 맞춘 핸드오프",
         items: [
           {
             icon: "현황",
@@ -882,7 +882,7 @@ export const projects: Project[] = [
           {
             icon: "목표",
             title: "",
-            body: "Figma 컴포넌트를 React/Tailwind 코드 구조와 1:1로 매핑해, 디자인 의도가 구현 단계에서 손상되지 않게 하는 것을 목표로 했습니다.",
+            body: "Figma 컴포넌트를 React/Tailwind 코드 구조와 1:1로 매핑해, 디자인 의도가 구현 단계에서 달라지지 않게 하기.",
           },
           {
             icon: "UX",
@@ -900,7 +900,7 @@ export const projects: Project[] = [
       },
       {
         area: "영역 3",
-        areaTitle: "브랜드가 바뀌어도 무너지지 않게 - 토큰 기반 리브랜딩",
+        areaTitle: "브랜드 컬러가 바뀌어도 토큰만 교체하는 리브랜딩",
         items: [
           {
             icon: "현황",
@@ -910,7 +910,7 @@ export const projects: Project[] = [
           {
             icon: "목표",
             title: "",
-            body: "브랜드·고객사 변경이 와도 토큰만 교체하면 전 컴포넌트에 자동 반영되는 갱신 체계(v0.0.2)를 만드는 것을 목표로 했습니다.",
+            body: "브랜드·고객사 변경이 와도 토큰만 교체하면 전 컴포넌트에 자동 반영되는 갱신 체계(v0.0.2) 만들기.",
           },
           {
             icon: "UX",
@@ -928,7 +928,7 @@ export const projects: Project[] = [
     designHighlights: [
       {
         zone: "Design Tokens",
-        title: "단일 토큰 - 색상·타이포·간격·radius",
+        title: "색상·타이포·간격·radius 단일 토큰",
         desc: "프로젝트마다 달랐던 기준을 Figma 토큰으로 통일해, 토큰 하나를 바꾸면 이를 쓰는 모든 컴포넌트에 자동 반영되도록 설계했습니다.",
         image: "/img/works/ds1.jpg",
       },
@@ -948,7 +948,7 @@ export const projects: Project[] = [
     reflection: [
       {
         title: "배운 것",
-        body: "디자인 시스템은 결과물이 아니라 '조직의 반복 비용을 줄이는 자산'이라는 걸 배웠습니다. 한 번 잘 만든 토큰·컴포넌트가 세 제품에서 계속 쓰이며 레버리지를 냈습니다.",
+        body: "세 제품이 같은 토큰과 컴포넌트를 계속 가져다 쓰는 걸 보며, 디자인 시스템은 만들 때보다 쓰일 때 값어치가 생긴다는 걸 배웠습니다.",
       },
       {
         title: "해결하지 못한 것",
@@ -999,10 +999,10 @@ export const projects: Project[] = [
       domainDetail:
         "SDT CLOUD는 산업 현장에서 발생하는 복잡한 데이터를 효율적으로 활용하기 위한 MLOps 플랫폼입니다. 현장 장비에서 데이터를 수집(Blokworks)하고, 클라우드에 저장·분석(Datalake)하고, ML 모델을 학습·배포(Cobiops)해, 불량 감소·다운타임 최소화·자동화로 잇는 4in1 서비스로 구성됩니다.",
       domainContextExtra:
-        "저는 양자 컴퓨팅 기업에서 초고밀도 데이터를 다뤘습니다. 그 경험에서, 시스템이 복잡할수록 '상태를 한눈에 읽을 수 있는 화면'이 곧 운영 리스크를 줄인다는 걸 체감했습니다.",
+        "저는 양자 컴퓨팅 기업에서 초고밀도 데이터를 다뤘습니다. 그 경험에서, 시스템이 복잡할수록 상태를 한눈에 읽을 수 있어야 운영 중 실수가 줄어든다는 걸 겪었습니다.",
       coreChallenge: "핵심 페인포인트",
       coreChallengeDetail:
-        "엔지니어·데이터 담당자는 장비 연결·데이터 가공·모델 배포를 서로 다른 영역에서 관리했고, 현장 장비와 그 데이터로 만들어진 앱이 '어떻게 연결돼 있는지'를 한 화면에서 파악할 수 없었습니다. 복잡한 산업 시스템을 단순하고 직관적으로 보여주는 것이 핵심 과제였습니다.",
+        "엔지니어·데이터 담당자는 장비 연결·데이터 가공·모델 배포를 서로 다른 영역에서 관리했고, 현장 장비와 그 데이터로 만들어진 앱이 '어떻게 연결돼 있는지'를 한 화면에서 파악할 수 없었습니다. 장비부터 앱까지 이어지는 연결을 한 화면에서 따라갈 수 있게 해야 했습니다.",
     },
     approach: [
       {
@@ -1028,7 +1028,7 @@ export const projects: Project[] = [
           {
             icon: "목표",
             title: "",
-            body: "메인 대시보드에서 장비↔앱 연결을 노드 그래프로 시각화해, 복잡한 산업 시스템 전체를 단일 화면에서 직관적으로 읽히도록 하는 것을 목표로 했습니다.",
+            body: "메인 대시보드에서 장비↔앱 연결을 노드 그래프로 시각화해, 장비가 어떤 앱과 이어져 있는지 한 화면에서 따라가며 읽히게 하기.",
           },
           {
             icon: "UX",
@@ -1072,7 +1072,7 @@ export const projects: Project[] = [
       },
       {
         area: "영역 3",
-        areaTitle: "복잡한 산업 시스템일수록 화면은 더 단순하게 - 모듈형 라이트 UI",
+        areaTitle: "시스템이 복잡한 만큼 화면은 단순한 모듈형 라이트 UI로",
         items: [
           {
             icon: "현황",
@@ -1082,7 +1082,7 @@ export const projects: Project[] = [
           {
             icon: "목표",
             title: "",
-            body: "‘복잡한 시스템을 단순하고 직관적으로 표현한다’를 톤&매너 원칙으로 잡고, 흰 배경 기반 라이트 UI로 데이터 자체가 주인공이 되게 했습니다.",
+            body: "‘시스템이 복잡할수록 화면은 단순하게’를 톤&매너 원칙으로 잡고, 흰 배경 기반 라이트 UI로 데이터 자체가 주인공이 되게 했습니다.",
           },
           {
             icon: "UX",
@@ -1106,7 +1106,7 @@ export const projects: Project[] = [
       },
       {
         zone: "Monitoring",
-        title: "장비 상태 모니터링 - 테이블 + 라인 차트",
+        title: "장비 상태 모니터링 · 테이블 + 라인 차트",
         desc: "장비 목록 테이블과 라인 차트를 함께 배치해 수치와 추세를 한 화면에서 파악하고, 상세 정보는 Bottom Sheet로 펼치도록 했습니다.",
         image: "/img/works/cloud2.png",
       },
@@ -1120,7 +1120,7 @@ export const projects: Project[] = [
     reflection: [
       {
         title: "배운 것",
-        body: "양자 컴퓨팅 기업에서 얻은 '기술이 복잡할수록 인터페이스는 더 단순해야 한다'는 원칙을, 정보 밀도가 높은 산업 MLOps 도메인에서 실제로 검증한 작업이었습니다. 행동을 유도하는 흐름을 만드는 것이 UX의 핵심이라는 것도 다시 확인했습니다.",
+        body: "양자 컴퓨팅 기업에서 얻은 '기술이 복잡할수록 인터페이스는 더 단순해야 한다'는 원칙을, 정보 밀도가 높은 산업 MLOps 도메인에서 적용해 본 작업이었습니다. 화면을 단순하게 하는 것만큼, 다음에 무엇을 할지 보이게 하는 흐름이 중요했습니다.",
       },
       {
         title: "해결하지 못한 것",
@@ -1128,7 +1128,7 @@ export const projects: Project[] = [
       },
       {
         title: "다음 ITERATION",
-        body: "노드 그래프에 이상 탐지 결과를 오버레이해, 장애가 표면화되기 전에 대응하는 선제적 모니터링 UX를 실험할 계획입니다.",
+        body: "노드 그래프에 이상 탐지 결과를 오버레이해, 장애가 드러나기 전에 먼저 대응할 수 있는 모니터링 UX를 실험할 계획입니다.",
       },
     ],
   },
@@ -1188,7 +1188,7 @@ export const projects: Project[] = [
           {
             icon: "목표",
             title: "",
-            body: '"필름 선택 → 사례 확인 → 견적/구매"로 이어지는 의사결정 흐름에 맞춰 화면 위계를 다시 잡는 것을 목표로 했습니다.',
+            body: '"필름 선택 → 사례 확인 → 견적/구매"로 이어지는 의사결정 흐름에 맞춰 화면 위계를 다시 잡기.',
           },
           {
             icon: "UX",
@@ -1335,7 +1335,7 @@ export const projects: Project[] = [
           {
             icon: "목표",
             title: "",
-            body: "여백과 절제된 색, 명확한 타이포 위계로 '고요함과 신뢰'의 톤을 화면 전반에 담는 것을 목표로 했습니다.",
+            body: "여백과 절제된 색, 명확한 타이포 위계로 '고요함과 신뢰'의 톤을 화면 전반에 담기.",
           },
           {
             icon: "UX",
@@ -1359,7 +1359,7 @@ export const projects: Project[] = [
       },
       {
         zone: "About ・ News",
-        title: "수도회 소개 - 환영과 정체성 그리고 수녀원 소식 · 사도직 안내",
+        title: "수도회 소개 · 환영과 정체성, 수녀원 소식, 사도직 안내",
         desc: "첫 진입 이후 수도회의 정신과 정체성을 차분한 톤으로 소개하는 섹션으로 구성했습니다. 또한 수녀원 소식과 사도직 안내를 정돈된 리스트로 정리해, 필요한 정보를 빠르게 찾도록 했습니다.",
         image: "/img/works/fatima2.jpg",
       },
@@ -1367,7 +1367,7 @@ export const projects: Project[] = [
     reflection: [
       {
         title: "배운 것",
-        body: "정보의 양보다 '톤과 위계'가 신뢰를 만든다는 것을 다시 확인했습니다. 절제된 디자인이 오히려 메시지를 더 선명하게 전달했습니다.",
+        body: "정보를 더 넣기보다 톤과 위계를 정리하는 쪽이 이 사이트에는 맞았습니다. 덜어낼수록 전하려는 말이 잘 보였습니다.",
       },
       {
         title: "진행 상황",
@@ -1411,7 +1411,7 @@ export const projects: Project[] = [
         "Dear Klairs는 ‘Positive Beauty’를 철학으로 민감 피부를 위한 비건 스킨케어를 만드는 글로벌 K-뷰티 브랜드입니다. 80여 개국에 전개되는 브랜드인 만큼, 제품과 브랜드 철학·글로벌 신뢰를 한 사이트에서 일관되게 전달하는 것이 중요했습니다.",
       coreChallenge: "핵심 페인포인트",
       coreChallengeDetail:
-        "기존 사이트는 제품·브랜드 스토리·신뢰 지표가 평면적으로 흩어져, 방문자가 ‘이 브랜드가 무엇을 지향하고 왜 믿을 만한지’를 한 흐름으로 읽기 어려웠습니다. 감각적인 제품 비주얼과 브랜드 서사를 위계 있게 잇는 것이 핵심 과제였습니다.",
+        "기존 사이트는 제품·브랜드 스토리·신뢰 지표가 평면적으로 흩어져, 방문자가 ‘이 브랜드가 무엇을 지향하고 왜 믿을 만한지’를 한 흐름으로 읽기 어려웠습니다. 제품 비주얼과 브랜드 이야기를 한 흐름으로 이어 읽히게 해야 했습니다.",
     },
     approach: [
       { step: 1, title: "현황 진단", desc: "기존 사이트 정보·브랜드 톤 분석" },
@@ -1433,7 +1433,7 @@ export const projects: Project[] = [
           {
             icon: "목표",
             title: "",
-            body: "About 섹션을 Positive Beauty(철학) → Across the Globe(글로벌 전개) → Proven by Millions(판매 증거) 3단 서사로 재구성하는 것을 목표로 했습니다.",
+            body: "About 섹션을 Positive Beauty(철학) → Across the Globe(글로벌 전개) → Proven by Millions(판매 증거) 3단 서사로 재구성하기.",
           },
           {
             icon: "UX",
@@ -1449,7 +1449,7 @@ export const projects: Project[] = [
       },
       {
         area: "영역 2",
-        areaTitle: "제품을 ‘고르기 쉽게’ - 비주얼 중심 제품 그리드",
+        areaTitle: "제품을 고르기 쉽게 만든 비주얼 중심 그리드",
         items: [
           {
             icon: "현황",
@@ -1459,7 +1459,7 @@ export const projects: Project[] = [
           {
             icon: "목표",
             title: "",
-            body: "제품 비주얼과 텍스처 이미지를 함께 보여주는 카드 그리드로, 감각적이면서도 탐색이 쉬운 제품 영역을 만드는 것을 목표로 했습니다.",
+            body: "제품 비주얼과 텍스처 이미지를 함께 보여주는 카드 그리드로, 감각적이면서도 탐색이 쉬운 제품 영역 만들기.",
           },
           {
             icon: "UX",
@@ -1475,7 +1475,7 @@ export const projects: Project[] = [
       },
       {
         area: "영역 3",
-        areaTitle: "디자인 의도가 구현에서 안 깨지게 - 디자인+퍼블리싱 단독 연결",
+        areaTitle: "디자인부터 퍼블리싱까지 혼자 이어 의도를 그대로 구현",
         items: [
           {
             icon: "현황",
@@ -1485,7 +1485,7 @@ export const projects: Project[] = [
           {
             icon: "목표",
             title: "",
-            body: "디자인(50%)과 퍼블리싱(100%)을 직접 이어, 시안의 여백·타이포·인터랙션이 그대로 구현되게 하는 것을 목표로 했습니다.",
+            body: "디자인(50%)과 퍼블리싱(100%)을 직접 이어, 시안의 여백·타이포·인터랙션이 그대로 구현되게 하기.",
           },
           {
             icon: "UX",
@@ -1503,7 +1503,7 @@ export const projects: Project[] = [
     designHighlights: [
       {
         zone: "Hero",
-        title: "제품을 주인공으로 - 감각적 히어로 슬라이더",
+        title: "제품을 앞세운 히어로 슬라이더",
         desc: "비타민 젤리 클렌저 등 대표 제품을 큰 비주얼과 카피로 전면에 내세운 히어로 슬라이더로, 첫 화면에서 브랜드의 감각을 전달합니다.",
       },
       {
@@ -1520,7 +1520,7 @@ export const projects: Project[] = [
     reflection: [
       {
         title: "배운 것",
-        body: "글로벌 뷰티 브랜드의 리뉴얼은 ‘예쁘게 만드는 일’이 아니라, 브랜드 철학과 신뢰의 근거를 한 흐름으로 잇는 정보 설계라는 걸 배웠습니다.",
+        body: "글로벌 뷰티 브랜드 리뉴얼에서 화면을 예쁘게 다듬는 일보다 오래 걸린 건, 브랜드 철학과 신뢰의 근거를 한 흐름으로 잇는 정보 설계였습니다.",
       },
       {
         title: "해결하지 못한 것",
@@ -1575,7 +1575,7 @@ export const projects: Project[] = [
       },
     ],
     heroContext:
-      "SDT 디자인 시스템을 산업 관제 도메인으로 확장한 작업입니다. 24시간 돌아가는 모니터링 화면에서는 색 하나가 곧 대응 속도가 된다는 것을 기준으로 삼았습니다.",
+      "SDT 디자인 시스템을 산업 관제 도메인으로 확장한 작업입니다. 24시간 켜 두는 관제 화면이라, 경보 색만 보고도 무엇부터 처리할지 알 수 있게 하는 것을 기준으로 삼았습니다.",
     metrics: [
       { value: "4단계", kind: "result", label: "경보 위계 색 체계화", sub: "정상 상태 위에 관심·주의·경계·심각 4단계를 전 컴포넌트에 통일" },
       { value: "5종 팝업", kind: "result", label: "맥락 유지형 Section popup", sub: "페이지 전환 없이 섹션 상세 확인" },
@@ -1592,7 +1592,7 @@ export const projects: Project[] = [
         "DTS는 광섬유 케이블 기반 분산온도감지(Distributed Temperature Sensing) 시스템으로, 케이블 전 구간의 온도를 실시간으로 수집해 이상 징후를 조기에 감지합니다. SDT Inc.의 산업 고객사 현장 운영자(센터장·현장 기술자)가 24시간 상시 모니터링하는 전문가용 웹 대시보드입니다.",
       coreChallenge: "핵심 페인포인트",
       coreChallengeDetail:
-        "정보 과부하 속에서 '핵심 이상만' 빠르게 감지해야 하는 것이 핵심 과제였습니다. 모든 경보가 중요해 보일 때 무엇을 우선해 보여줄지, 한 지점에 경보가 중첩될 때 무엇을 먼저 판단하게 할지, 그리고 지도 맥락을 잃지 않고 섹션 상세를 확인하게 할지가 관건이었습니다.",
+        "정보가 많은 화면에서 정말 이상한 곳만 빨리 찾아야 했습니다. 모든 경보가 중요해 보일 때 무엇을 먼저 보여줄지, 한 지점에 경보가 겹칠 때 무엇부터 판단하게 할지, 지도를 벗어나지 않고 섹션 상세를 어떻게 볼지 정해야 했습니다.",
     },
     approach: [
       { step: 1, title: "기획 연계", desc: "SDT 디자인 시스템과 SDT Cloud의 UX 흐름을 관제 도메인으로 확장" },
@@ -1604,7 +1604,7 @@ export const projects: Project[] = [
     keyDecisions: [
       {
         area: "영역 1",
-        areaTitle: "경보 우선순위 - 4단계 위계 색을 일관되게",
+        areaTitle: "경보 4단계 색을 모든 컴포넌트에 똑같이",
         items: [
           {
             icon: "현황",
@@ -1619,7 +1619,7 @@ export const projects: Project[] = [
           {
             icon: "UX",
             title: "",
-            body: "Toast Card·Alert pin·Alarm List·Connection-status 등 모든 컴포넌트에 동일한 4단계 색(관심=노랑·주의=주황·경계=주황레드·심각=레드)을 적용해 인지 부담을 줄였습니다.",
+            body: "Toast Card·Alert pin·Alarm List·Connection-status 등 모든 컴포넌트에 동일한 4단계 색(관심=노랑·주의=주황·경계=주황레드·심각=레드)을 적용해, 어느 화면에서든 같은 색이 같은 단계를 뜻하게 했습니다.",
           },
           {
             icon: "설 계",
@@ -1630,7 +1630,7 @@ export const projects: Project[] = [
       },
       {
         area: "영역 2",
-        areaTitle: "중첩 경보 - 값과 위치 중 우선순위 식별",
+        areaTitle: "경보가 겹치면 값보다 위치를 먼저",
         items: [
           {
             icon: "현황",
@@ -1650,13 +1650,13 @@ export const projects: Project[] = [
           {
             icon: "설 계",
             title: "",
-            body: "핀에 생성된 경보 수(multi alarm)를 표기해, 경보가 밀집된 지점의 심각도를 직관적으로 전달했습니다.",
+            body: "핀에 생성된 경보 수(multi alarm)를 표기해, 경보가 몰린 지점이 얼마나 심각한지 숫자로 바로 보이게 했습니다.",
           },
         ],
       },
       {
         area: "영역 3",
-        areaTitle: "지도 맥락을 잃지 않게 - Section popup으로 드릴다운",
+        areaTitle: "지도를 벗어나지 않는 Section popup 드릴다운",
         items: [
           {
             icon: "현황",
@@ -1666,7 +1666,7 @@ export const projects: Project[] = [
           {
             icon: "목표",
             title: "",
-            body: "지도 화면을 벗어나지 않고도 섹션의 온도·거리·시간 상세를 확인할 수 있도록, 맥락 유지형 드릴다운을 목표로 했습니다.",
+            body: "지도 화면을 벗어나지 않고도 섹션의 온도·거리·시간 상세를 확인할 수 있는 드릴다운 만들기.",
           },
           {
             icon: "UX",
@@ -1684,19 +1684,19 @@ export const projects: Project[] = [
     designHighlights: [
       {
         zone: "Dashboard",
-        title: "메인 대시보드 - 맵 + 경보 현황",
-        desc: "지도 위 Alert pin으로 경보 발생 위치를 표시하고, Critical-alert_top5로 핵심 위험 순위를 함께 배치해 위험을 직관적으로 파악하도록 했습니다.",
+        title: "메인 대시보드 · 맵 + 경보 현황",
+        desc: "지도 위 Alert pin으로 경보 발생 위치를 표시하고, Critical-alert_top5로 핵심 위험 순위를 함께 배치해, 어디가 가장 위험한지 지도와 목록에서 동시에 보이게 했습니다.",
         image: "/img/works/dts1.png",
       },
       {
         zone: "Sections",
-        title: "온도 분포 - 그라데이션 바와 섹션 팝업",
+        title: "온도 분포 · 그라데이션 바와 섹션 팝업",
         desc: "Temp overview 그라데이션 바(노랑→주황→레드)로 전체 온도 분포를 보여주고, 위험 구간 선택 시 Section popup으로 상세 온도·거리를 노출합니다.",
         image: "/img/works/dts2.png",
       },
       {
         zone: "Settings",
-        title: "경보 설정 - 4단계 온도 범위 세팅",
+        title: "경보 설정 · 4단계 온도 범위 세팅",
         desc: "관심·주의·경계·심각 4단계 임계치를 채널마다 세팅하도록 레이아웃을 분배하고, 최소·최대치 설정과 토글·범위 추가/삭제를 지원합니다.",
         image: "/img/works/dts3.png",
       },
@@ -1704,7 +1704,7 @@ export const projects: Project[] = [
     reflection: [
       {
         title: "배운 것",
-        body: "복잡한 관제 환경에서는 '색의 일관성'이 곧 사용자의 판단 속도라는 것을 확인했습니다. 경보 4단계 위계 색을 전 컴포넌트에 통일한 것이 핵심 결정이었습니다.",
+        body: "경보가 여러 개 겹치는 화면에서는 색이 컴포넌트마다 같아야 순서를 읽을 수 있었습니다. 그래서 4단계 색을 모든 컴포넌트에 똑같이 적용하는 것부터 정했습니다.",
       },
       {
         title: "해결하지 못한 것",
@@ -1712,7 +1712,7 @@ export const projects: Project[] = [
       },
       {
         title: "다음 ITERATION",
-        body: "이상 탐지 알고리즘 결과를 지도·그래프에 오버레이해, 경보가 뜨기 전에 대응하는 선제적 관제 UX로 확장할 계획입니다.",
+        body: "이상 탐지 알고리즘 결과를 지도·그래프에 오버레이해, 경보가 뜨기 전에 먼저 대응할 수 있는 관제 UX로 확장할 계획입니다.",
       },
     ],
   },

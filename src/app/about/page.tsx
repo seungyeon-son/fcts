@@ -354,6 +354,7 @@ const skills = [
   "Adobe Illustrator",
   "Framer",
   "HTML/CSS",
+  "React",
   "Git",
   "UX Research",
   "Design System",
@@ -390,7 +391,7 @@ const values = [
     icon: "📋",
     bg: "#ff5229",
     title: "근거 있는 디자인을 합니다",
-    desc: '감각이 아닌 데이터와 구조로 설명합니다. 모든 결정에는 "왜"가 있습니다.',
+    desc: "데이터·요구사항·비즈니스 맥락으로 판단하고, 고려한 대안과 고른 이유를 기록해 둡니다.",
     pill: "→ 프로세스 페이지 보기",
     href: "/design-process",
   },
@@ -514,8 +515,8 @@ export default function AboutPage() {
           </ProfileMeta>
           <ProfileDesc>
             산업용 IoT 대시보드부터 글로벌 에듀테크 서비스까지, 저는 늘 한 가지를 먼저 묻습니다. <br /> “이 사용자는
-            지금 무엇을 판단해야 하는가.” 복잡한 정보를 사용자의 멘탈모델로 번역하고, 디자인 시스템과 운영 원칙으로 팀
-            전체의 설계 효율을 높입니다. 화면을 완성하는 것만이 아니라 작동하는 시스템을 구축하는 것을 목표로 합니다.
+            지금 무엇을 판단해야 하는가.” 복잡한 정보를 사용자가 이해하는 순서로 다시 짜고, 디자인 시스템으로 팀이 같은
+            기준 위에서 만들게 합니다. 만든 화면이 개발과 운영에서도 그대로 쓰이도록 시스템까지 같이 만듭니다.
           </ProfileDesc>
           <SkillsRow>
             {skills.map((s) => (
